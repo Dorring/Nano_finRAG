@@ -12,6 +12,17 @@ import re
 from decimal import Decimal, InvalidOperation
 from typing import Any, Iterable, Mapping
 
+from rag_v2.contracts.financial_semantics import (
+    canonical_decimal,
+    magnitude_multiplier,
+    magnitude_of,
+    magnitude_tokens,
+    measurement_unit_tokens,
+    representation_of,
+    representation_tokens,
+    token_pattern,
+)
+
 from .contracts import (AnswerEnvelopeV1, GenerationValidationFindingV1,
                         GenerationValidationReportV1, ValidationSeverity)
 
@@ -19,7 +30,16 @@ _CITATION_RE = re.compile(r"\[([^\[\]]+)\]")
 _NUMBER_RE = re.compile(r"(?<![A-Za-z0-9])[-+]?\d[\d,]*(?:\.\d+)?(?:[eE][-+]?\d+)?%?")
 _PERIOD_RE = re.compile(r"\b(?:FY\s*\d{4}|Q[1-4]\s*FY?\s*\d{4}|\d{4}\s*Q[1-4]|20\d{2})\b", re.I)
 _CURRENCY_RE = re.compile(r"(?:\$|€|£|¥|\b(?:USD|EUR|GBP|JPY|CNY)\b)", re.I)
-_UNIT_RE = re.compile(r"\b(?:millions?|billions?|thousands?|percent|percentage|ratio|shares?|dollars?)\b|%", re.I)
+
+#: The unit/scale tokens this validator scans for.  Which words it looks for in
+#: an answer is a lexical choice that stays here; what those words *mean* does
+#: not, so the alternation is built from the shared financial semantics rather
+#: than re-typed.  Re-typing it is how this file and `semantic_claims.py` came
+#: to hold two vocabularies that agreed only by luck.
+_UNIT_TOKENS = token_pattern(
+    set(magnitude_tokens()) | set(representation_tokens()) | set(measurement_unit_tokens())
+)
+_UNIT_RE = re.compile(rf"\b(?:{_UNIT_TOKENS})\b|%", re.I)
 
 
 def _text(value: Any) -> str:
@@ -52,6 +72,29 @@ def _iter_evidence(packet: Mapping[str, Any]) -> Iterable[Mapping[str, Any]]:
     for item in packet.get("evidence_items", ()):
         if isinstance(item, Mapping):
             yield item
+
+
+def _rendered_locator_numbers(packet: Mapping[str, Any]) -> list[Decimal]:
+    """Source-locator values the renderer legitimately emits, from structure.
+
+    A rendered operand reads "current = 391,000,000.00 -- report.pdf, p.12": the
+    value is a claim, the 12 is where it came from.  Both are numbers in the
+    answer, so both must be *supported* -- the page is legitimately stated by
+    the rendering, not fabricated by the answer.
+
+    Derived from the operand's own ``page`` field rather than from the renderer's
+    format, so the validator needs no knowledge of how a locator is written and
+    nothing is removed from any string.
+    """
+
+    values: list[Decimal] = []
+    calculation = packet.get("calculation_result")
+    if not isinstance(calculation, Mapping):
+        return values
+    for operand in calculation.get("operands", ()):
+        if isinstance(operand, Mapping):
+            values.extend(_numbers(operand.get("page")))
+    return values
 
 
 def _supported_numbers(packet: Mapping[str, Any]) -> list[Decimal]:
@@ -138,8 +181,40 @@ class RuntimeGenerationValidatorV1:
 
         # Do not count years in an explicit period as numeric claims.
         answer_without_periods = _CITATION_RE.sub(" ", _PERIOD_RE.sub(" ", envelope.answer_text))
+        # Nor count a source locator as a claim.  A rendered operand reads
+        # "current = 391,000,000.00 -- report.pdf, p.12": the value is a claim,
+        # the 12 is where it came from.
+        #
+        # Until H2A-1C.1 this subtracted the locator from the text, by
+        # reconstructing the renderer's string and `str.replace`-ing it out.  That
+        # made the validator a consumer of the renderer's *format*: the two
+        # duplicated the same three branches and could drift, one locator could
+        # be a prefix of another, and -- because `document_name` is data -- a
+        # name shaped like claim text could remove a claim rather than a locator.
+        # None of those is reachable today, but the mechanism is fragile in ways
+        # that are invisible in the string it operates on.
+        #
+        # So the check reads structure instead.  For a calculation answer that is
+        # provably complete: the routing policy forces a CALCULATION plan onto
+        # the deterministic calculator, so the answer *is* the rendering and its
+        # claim surface is exactly these values -- nothing is removed from a
+        # string, and no locator string is reconstructed.
+        # Claim surface: the answer text is scanned in full.  An earlier
+        # revision read the numbers out of the calculation and never looked at
+        # the text, which made this check a tautology -- any fabricated number
+        # passed whenever a calculation was present.  That is sound only if the
+        # answer is *provably* the deterministic rendering, and that holds for
+        # the TV2 coordinator but not for every runtime reachable by
+        # configuration.
         answer_nums = _numbers(answer_without_periods)
         supported = _supported_numbers(packet)
+        # Provenance the renderer emits is answer content too, and supporting it
+        # is what lets the text be scanned in full.  The version before this one
+        # subtracted locator *strings* from the answer, which made the validator
+        # depend on the renderer's format and let a document name delete claim
+        # text; the correction leaned on a routing assumption that does not hold
+        # everywhere.  Reading the operand's own page field has neither problem.
+        supported += _rendered_locator_numbers(packet)
         calculation = packet.get("calculation_result")
         if calculation and isinstance(calculation, Mapping):
             canonical = _numbers(calculation.get("value"))
@@ -164,28 +239,57 @@ class RuntimeGenerationValidatorV1:
         answer_units = {item.lower() for item in _UNIT_RE.findall(envelope.answer_text)}
         known_unit_tokens = {item.lower() for item in _known_units(packet)}
         if answer_units and known_unit_tokens:
-            incompatible = {"percent", "percentage", "%", "ratio"} & answer_units
-            known_ratio = {"ratio", "percent", "percentage", "%"} & known_unit_tokens
-            if incompatible and known_ratio and not incompatible & known_ratio:
+            # Which tokens are representation kinds is not this file's to
+            # decide.  ``percent`` and ``ratio`` used to sit in the same set as
+            # ``million`` here, which is the conflation the shared vocabulary
+            # exists to remove -- so the classification is asked for, not
+            # re-listed.
+            #
+            # NOTE (H2A-2B, verified): the predicate below is unreachable, and
+            # was unreachable before this phase as well.  ``incompatible`` is
+            # the same set as ``answer_ratio_units``, so it reads
+            # ``A and K and not (A and K)`` -- false for every input, which is
+            # why the ratio family has never actually been enforced here.
+            # Recorded rather than repaired: making it live would introduce a
+            # HARD_FAIL that has never fired on any answer, and choosing what it
+            # should reject is a validator decision this phase was not asked to
+            # make.
+            answer_ratio_units = {
+                item for item in answer_units if representation_of(item) is not None
+            }
+            known_ratio_units = {
+                item for item in known_unit_tokens if representation_of(item) is not None
+            }
+            incompatible = answer_ratio_units
+            # A deterministic ratio result is conventionally rendered as a
+            # percentage (for example, 0.064 -> 6.40%). Treat those tokens
+            # as one structured unit family. Other unit claims remain strict.
+            if incompatible and known_ratio_units and not (answer_ratio_units and known_ratio_units):
                 add("GV5_UNIT_CURRENCY_SCALE_FIDELITY", ValidationSeverity.HARD_FAIL,
                     "answer unit conflicts with packet")
-        scale_words = {"thousand": 1, "thousands": 1, "million": 1000000, "millions": 1000000,
-                       "billion": 1000000000, "billions": 1000000000}
-        answer_scales = {scale_words[item.lower()] for item in _UNIT_RE.findall(envelope.answer_text)
-                         if item.lower() in scale_words}
+        # The magnitude of each scale word comes from the shared semantics.  This
+        # table used to be local, and it mapped ``thousand`` to 1 while mapping
+        # ``million`` to 1000000 -- a word meaning a magnitude one order off
+        # from the one the same word means everywhere else in the repository.
+        answer_scales = {
+            int(magnitude_multiplier(scale))
+            for item in _UNIT_RE.findall(envelope.answer_text)
+            if (scale := magnitude_of(item)) is not None
+        }
         packet_scales: set[int] = set()
-        for item in _iter_evidence(packet):
-            raw = _text(item.get("scale")).replace(",", "").strip()
-            if raw:
-                try:
-                    packet_scales.add(int(Decimal(raw)))
-                except (InvalidOperation, ValueError):
-                    pass
-        if isinstance(calculation, Mapping) and calculation.get("scale"):
-            try:
-                packet_scales.add(int(Decimal(_text(calculation["scale"]))))
-            except (InvalidOperation, ValueError):
-                pass
+        # One parse for both spellings.  The evidence loop stripped commas by
+        # hand and the calculation branch did not, so `1,000,000` and
+        # `1000000` were read by two different rules in the same check -- and
+        # the by-hand rule turned `1,5` into 15.  A scale this project cannot
+        # read is skipped, which leaves the comparison unable to fire rather
+        # than firing on a number nobody wrote.
+        for raw in (
+            *(item.get("scale") for item in _iter_evidence(packet)),
+            calculation.get("scale") if isinstance(calculation, Mapping) else None,
+        ):
+            number = canonical_decimal(raw)
+            if number is not None:
+                packet_scales.add(int(number))
         if answer_scales and packet_scales and not any(scale in packet_scales for scale in answer_scales):
             add("GV5_UNIT_CURRENCY_SCALE_FIDELITY", ValidationSeverity.HARD_FAIL,
                 "answer scale conflicts with packet")

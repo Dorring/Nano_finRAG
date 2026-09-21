@@ -350,6 +350,61 @@ class AtomicFact:
     currency_code: str | None
     equivalent_group_id: str | None
     source_traceback: dict[str, Any]
+    #: The filing's own structural coordinates for the cell this fact came from.
+    #:
+    #: `column_header` is the dimension the canonical store was missing.  Two
+    #: cells of one row -- `Net income` under `Corporate` and the same row under
+    #: `Total` -- differ by it, and by nothing else the fact records: same
+    #: document, same table, same row.  Without it the two are one coordinate
+    #: holding two values, which is what the operand guard refuses and what
+    #: P1.6-0C measured at 18.2% of the store.
+    #:
+    #: Carried explicitly rather than folded into `source_traceback`, so a later
+    #: stage cannot drop it silently: a missing field is a schema error, a
+    #: missing dict key is not.
+    column_header: str | None = None
+    row_label: str | None = None
+    #: The inline-XBRL facts stated in this cell, as the parse recorded them.
+    ixbrl_anchors: tuple[dict[str, Any], ...] = ()
+
+    #: A3-W4-B2: the period identity the admission decision admitted on.
+    #:
+    #: Minimal on purpose.  `status` and `granularity` say what the source *stated*, so a
+    #: `YEAR(2025)` survives persistence as a year and is never rendered into a date it
+    #: never claimed -- which is the whole reason this is a separate bridge and not a
+    #: convenience on `period_end`.  The full provenance -- method, source cells, target
+    #: scope -- is W5: this layer saves *what* the period is, W5 saves *why* it is believed.
+    period_binding_status: str | None = None
+    period_granularity: str | None = None
+
+    #: A3-W5: *why* that identity is believed, carried across the store boundary.
+    #:
+    #: W4-B2 saved WHAT the period is; these save WHY.  The distinction is what makes a
+    #: store record auditable rather than only trustworthy: `normalized_period = "2025"`
+    #: cannot say whether the source wrote a year or whether a default filled a day in,
+    #: and `method` plus `source_cells` is what settles it.  Each source cell carries
+    #: document, table, row and column, so it resolves back to the cell rather than to a
+    #: string that merely resembles one.
+    #:
+    #: Behaviour-neutral by construction: admission already withheld any binding without
+    #: source cells, so nothing here decides anything.  The store holds the same records
+    #: with and without these fields.
+    period_binding_method: str | None = None
+    period_target_scope: str | None = None
+    period_source_cells: tuple[dict[str, Any], ...] = ()
+    #: A withheld `CONFLICT` keeps its competing candidates rather than being flattened,
+    #: so a disagreement survives as a disagreement.  Empty on every stored fact today --
+    #: a conflict is withheld before this point -- and present so that stays visible if it
+    #: ever changes.
+    period_conflict_candidates: tuple[dict[str, Any], ...] = ()
+    temporal_kind_method: str | None = None
+    temporal_kind_source_cells: tuple[dict[str, Any], ...] = ()
+    #: The A3 kind, whose method and source cells are the two fields above.  Deliberately
+    #: not named `temporal_kind`: that name is taken by the legacy axis kind, which
+    #: `semantic_equivalence` groups canonical facts on and which this must not disturb.
+    #: The two can disagree, and the store keeps both rather than picking one.
+    binding_temporal_kind: str | None = None
+    temporal_kind_matched_text: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

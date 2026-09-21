@@ -23,7 +23,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Callable
 
-from src.domain.calculation import CalculationOperand, CalculationOperation
+from src.domain.calculation import (
+    CalculationOperand,
+    CalculationOperation,
+)
 from src.finance.primitive_tools import (
     ToolResult,
     average_values,
@@ -37,10 +40,46 @@ from src.finance.primitive_tools import (
 )
 
 
+#: A ranking's operand ceiling.  A bound rather than a limit anyone expects to
+#: reach -- the largest question in the canonical set ranks four companies -- so
+#: that `max_operands` stays a real constraint rather than a placeholder.
+MAX_RANKING_OPERANDS = 64
+
 # Type alias for the adapter functions that wrap primitive_tools calls.
-# Each adapter takes a tuple of operands and a precision int, returning
-# a ``ToolResult``.
-CalculationFunc = Callable[[tuple[CalculationOperand, ...], int], ToolResult]
+# Each adapter takes a tuple of operands and a precision int and returns a
+# ``ToolResult`` -- or, for a relational operation, a ``RelationalToolResult``.
+# The union is what lets the nine arithmetic adapters stay byte-identical while
+# two operations answer with a relation instead of a quantity.
+CalculationFunc = Callable[
+    [tuple[CalculationOperand, ...], int],
+    "ToolResult | RelationalToolResult",
+]
+
+
+@dataclass(frozen=True)
+class RelationalToolResult:
+    """What a relational adapter returns, before it becomes a result.
+
+    Executor-internal, exactly as ``ToolResult`` is: this is the adapter's
+    return, not the Harness's artifact.  ``CalculationResult`` remains the one
+    authority the validator reads, so nothing downstream has to know this type
+    exists.
+
+    ``ok`` mirrors ``ToolResult.ok`` so that an adapter can decline
+    deterministically -- operands that may not be ordered against each other are
+    a refusal, not an exception -- and the executor maps both kinds of decline
+    through the same BLOCKED path.
+
+    Exactly one of ``relation`` / ``ordering_groups`` is populated on success,
+    and which one is fixed by the operation's own contract rather than by the
+    executor reading the operation's name.  Dispatching on a name would put a
+    second copy of "which operation expects which shape" beside the adapters
+    that already embody it.
+    """
+
+    ok: bool
+    ordering_groups: tuple[tuple[str, ...], ...] | None = None
+    error: str | None = None
 
 
 @dataclass(frozen=True)
@@ -163,6 +202,115 @@ def _scale_conversion_adapter(
 # Registry
 # ---------------------------------------------------------------------------
 
+def _units_agree(operands: tuple[CalculationOperand, ...]) -> bool:
+    """Whether the operands are stated in a single unit.
+
+    Checked here, on the *operands*, because the primitives cannot: every
+    adapter hands them ``operand.value``, so `difference` and `average_values`
+    receive bare ``Decimal``s and a USD/EUR mismatch is invisible to them.  An
+    earlier version of this comment claimed the primitives already refused
+    mismatched units; they do not, and a test caught it.
+
+    ``None`` means the record did not state a unit, which is unknown rather than
+    different, so it does not disagree with anything.  Two *stated* units that
+    differ always do.
+    """
+
+    stated = {operand.unit for operand in operands if operand.unit is not None}
+    return len(stated) <= 1
+
+
+def _comparison_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> RelationalToolResult:
+    """Which of exactly two operands is larger, as an ordering over two.
+
+    A comparison answers with the *same shape* a ranking does -- an ordering
+    over ``slot_id`` -- rather than with a "left"/"right" relation of its own.
+    That is not tidiness.  A relation naming a left and a right has to get them
+    from somewhere, and the only somewhere available is the order of
+    ``operands``, which is provenance and carries no meaning; comparison would
+    then have kept exactly the implicit container-order authority that was
+    removed from ranking.
+
+    The operand order still reaches the subtraction below, and deliberately: it
+    decides only which way round the sign comes out.  Both ways round produce the
+    same ordering, so nothing of it survives into the result.
+    """
+
+    if len(operands) != 2:
+        return RelationalToolResult(
+            ok=False, error=f"comparison requires exactly 2 operands, got {len(operands)}"
+        )
+    if not _units_agree(operands):
+        return RelationalToolResult(
+            ok=False,
+            error=(
+                "operands_are_not_comparable: "
+                f"{operands[0].unit!r} vs {operands[1].unit!r}"
+            ),
+        )
+
+    first, second = operands
+    delta = difference(first.value, second.value, precision=precision)
+    if not delta.ok or delta.points_value is None:
+        return RelationalToolResult(
+            ok=False, error=delta.error or "operands_are_not_comparable"
+        )
+
+    if delta.points_value == 0:
+        groups: tuple[tuple[str, ...], ...] = ((first.slot_id, second.slot_id),)
+    elif delta.points_value > 0:
+        groups = ((first.slot_id,), (second.slot_id,))
+    else:
+        groups = ((second.slot_id,), (first.slot_id,))
+    return RelationalToolResult(ok=True, ordering_groups=groups)
+
+
+def _ranking_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> RelationalToolResult:
+    """Every operand, ordered descending, with equals grouped.
+
+    The refs are ``slot_id``.  A ranking is a claim about which *required
+    operands* stand in what order; keying it on evidence would make the same
+    ranking a different result whenever a different support of one canonical
+    fact happened to be bound.
+
+    ``average_values`` is called as a cheap numeric sanity probe -- it declines
+    on a mixture of kinds, which sorts would silently accept.  It cannot see
+    units, so those are checked separately.
+    """
+
+    if len(operands) < 2:
+        return RelationalToolResult(
+            ok=False, error=f"ranking requires at least 2 operands, got {len(operands)}"
+        )
+    if not _units_agree(operands):
+        return RelationalToolResult(
+            ok=False, error="operands_are_not_comparable: mixed units"
+        )
+    probe = average_values([operand.value for operand in operands], precision=precision)
+    if not probe.ok:
+        return RelationalToolResult(
+            ok=False, error=probe.error or "operands_are_not_comparable"
+        )
+
+    # `slot_id` breaks ties in the *ordering of construction* only; equal values
+    # still land in one group, so this cannot change the result, only the order
+    # groups are emitted in -- and groups are compared as an ordering of sets.
+    ordered = sorted(operands, key=lambda item: (-item.value, item.slot_id))
+    groups: list[tuple[str, ...]] = []
+    previous: object = object()
+    for operand in ordered:
+        if groups and operand.value == previous:
+            groups[-1] = groups[-1] + (operand.slot_id,)
+        else:
+            groups.append((operand.slot_id,))
+        previous = operand.value
+    return RelationalToolResult(ok=True, ordering_groups=tuple(groups))
+
+
 CALCULATION_REGISTRY: dict[CalculationOperation, OperationEntry] = {
     CalculationOperation.DIFFERENCE: OperationEntry(
         operation=CalculationOperation.DIFFERENCE,
@@ -254,6 +402,33 @@ CALCULATION_REGISTRY: dict[CalculationOperation, OperationEntry] = {
         max_operands=1,
         operand_roles=("value",),
     ),
+    # Relational operations.  Their adapters return ``RelationalToolResult``
+    # rather than ``ToolResult``, and the executor dispatches on the returned
+    # type -- never on the operation's name, which would put a second copy of
+    # "which operation expects which shape" beside the adapters that embody it.
+    CalculationOperation.COMPARISON: OperationEntry(
+        operation=CalculationOperation.COMPARISON,
+        func=_comparison_adapter,
+        formula="sign(lhs - rhs) as an explicit relation",
+        formula_version="comparison.v1",
+        unit="relation",
+        min_operands=2,
+        max_operands=2,
+        operand_roles=("lhs", "rhs"),
+    ),
+    CalculationOperation.RANKING: OperationEntry(
+        operation=CalculationOperation.RANKING,
+        func=_ranking_adapter,
+        formula="operands ordered descending, equals grouped",
+        formula_version="ranking.v1",
+        unit="ordering",
+        min_operands=2,
+        max_operands=MAX_RANKING_OPERANDS,
+        # No fixed roles: a ranking is over however many slots the plan asked
+        # for, and naming them here would be a second statement of the plan's
+        # cardinality.
+        operand_roles=(),
+    ),
 }
 
 
@@ -262,3 +437,30 @@ def get_operation_entry(
 ) -> OperationEntry | None:
     """Return the registry entry for ``operation``, or None if not registered."""
     return CALCULATION_REGISTRY.get(operation)
+
+
+def supports(operation: "CalculationOperation | str | None") -> bool:
+    """Whether this operation can be executed deterministically.
+
+    The question "may the calculator run for this plan" is answered here, by the
+    registry, and not by the plan's intent.  An operation is executable exactly
+    when an entry describes how to execute it; intent describes what the
+    question wanted, which is a routing concern.
+
+    Those were conflated: the calculator refused anything that was not
+    `Intent.CALCULATION`, and cross-entity comparison and ranking are planned as
+    `MULTI_EVIDENCE`, so an entire stratum could never reach deterministic
+    execution no matter what operation it named.
+
+    ``None`` is not executable.  A plan that names no operation has nothing to
+    execute, and saying so is not the same as calling it unsupported.
+    """
+
+    if operation is None:
+        return False
+    if isinstance(operation, CalculationOperation):
+        return operation in CALCULATION_REGISTRY
+    try:
+        return CalculationOperation(str(operation)) in CALCULATION_REGISTRY
+    except ValueError:
+        return False

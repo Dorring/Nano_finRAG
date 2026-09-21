@@ -5,7 +5,7 @@ import sqlite3
 import hashlib
 import time
 import os
-from typing import Optional, Dict, Any, List
+from contextlib import contextmanager
 
 from .sqlite_migrations import run_component_migrations
 
@@ -62,8 +62,24 @@ class DocumentRegistry:
         self.db_path = db_path
         self._init_schema()
 
+    @contextmanager
     def _conn(self):
-        return sqlite3.connect(self.db_path, timeout=10)
+        """Yield a SQLite connection and always close it after the operation.
+
+        ``sqlite3.Connection`` implements a transaction context manager, but
+        its ``__exit__`` method does not close the connection.  Wrapping it
+        here keeps every registry operation bounded and avoids lingering file
+        locks on Windows or during worker reloads.
+        """
+        connection = sqlite3.connect(self.db_path, timeout=10)
+        try:
+            yield connection
+            connection.commit()
+        except BaseException:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
 
     def _init_schema(self):
         with self._conn() as conn:

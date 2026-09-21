@@ -12,9 +12,16 @@ try:
 except ImportError:  # pragma: no cover - provider extras are optional in unit tests
     OpenAI = None  # type: ignore[assignment,misc]
 
-from rag_v2.contracts.evidence import EvidenceBinding
+from rag_v2.contracts.evidence import BindingStatus, EvidenceBinding
 
 from .prompt import BINDER_RESPONSE_FORMAT, build_binder_messages
+
+
+# DeepSeek and some other OpenAI-compatible endpoints expose JSON Mode but do
+# not implement the OpenAI ``json_schema`` response format. The API provider
+# therefore requests JSON Mode and keeps the frozen EvidenceBinding schema
+# enforcement local in ``_binding_from_payload`` below.
+API_BINDER_RESPONSE_FORMAT: dict[str, str] = {"type": "json_object"}
 
 
 class BinderProviderError(RuntimeError):
@@ -126,6 +133,46 @@ def _usage_int(usage: Any, name: str) -> int | None:
     return int(value) if isinstance(value, (int, float)) else None
 
 
+def _status_the_binding_supports(
+    claimed: Any,
+    slot_bindings: Mapping[str, Any],
+    missing_slots: Any,
+    ambiguous_slots: Any,
+    invalid_reasons: Any,
+) -> Any:
+    """The status a binding's own content supports, not the one it claims.
+
+    A provider that answers ``BOUND`` and then lists the slots it did not bind
+    contradicts itself, and the frozen contract rejects the *whole response* --
+    which throws away the slots that were bound and skips the targeted-slot
+    repair loop that exists to fill the rest.  Four compare cases fail this way,
+    and the provider metadata says so: ``provider_response_success=True``,
+    ``structured_output_success=False``, ``BOUND binding must be complete and
+    error-free``.
+
+    The contract's invariant is right and is left alone: ``BOUND`` means
+    complete.  What is wrong is trusting a self-report over the thing it reports
+    on, so the status is derived here, in the adapter that builds the object,
+    from the completeness of what actually came back.  ``status`` becomes a
+    property of the binding rather than a claim about it -- the same shape as
+    ``PlanSemanticAlignment.allowed``, which is derived from ``status`` for the
+    same reason.
+
+    A truthful provider is unaffected: nothing is downgraded unless the binding
+    names its own gaps.
+    """
+
+    if claimed != BindingStatus.BOUND.value:
+        return claimed
+    if not slot_bindings or missing_slots or ambiguous_slots or invalid_reasons:
+        if invalid_reasons:
+            return BindingStatus.INVALID.value
+        if ambiguous_slots:
+            return BindingStatus.AMBIGUOUS.value
+        return BindingStatus.MISSING.value
+    return claimed
+
+
 def _binding_from_payload(payload: Any) -> EvidenceBinding:
     if not isinstance(payload, dict):
         raise BinderProviderError("EvidenceBinding response must be an object")
@@ -141,7 +188,10 @@ def _binding_from_payload(payload: Any) -> EvidenceBinding:
             raise BinderProviderError(f"{field} must be an array of strings")
     try:
         return EvidenceBinding(
-            status=payload["status"],
+            status=_status_the_binding_supports(
+                payload["status"], payload["slot_bindings"], payload["missing_slots"],
+                payload["ambiguous_slots"], payload["invalid_reasons"],
+            ),
             slot_bindings={key: tuple(value) for key, value in payload["slot_bindings"].items()},
             missing_slots=tuple(payload["missing_slots"]),
             ambiguous_slots=tuple(payload["ambiguous_slots"]),
@@ -149,6 +199,193 @@ def _binding_from_payload(payload: Any) -> EvidenceBinding:
         )
     except Exception as exc:
         raise BinderProviderError("EvidenceBinding response failed frozen contract validation") from exc
+
+
+class APIBinderProvider:
+    """OpenAI-compatible strict JSON binder provider (e.g. DeepSeek, generic API).
+
+    This provider targets any OpenAI-compatible endpoint that supports
+    ``response_format={"type": "json_object"}`` (JSON Mode).
+
+    Security contract:
+    - Only ``message.content`` is read; ``reasoning_content`` and any other
+      private model-reasoning fields are explicitly discarded and never logged.
+    - The frozen ``EvidenceBinding`` schema is enforced via ``_binding_from_payload``.
+    """
+
+    provider_name = "api"
+    provider_role = "evidence_binder"
+    model_role = "strong_general_llm"
+
+    def __init__(
+        self,
+        *,
+        base_url: str,
+        api_key: str,
+        model_name: str,
+        temperature: float = 0.0,
+        max_tokens: int = 1024,
+        timeout: float = 180.0,
+        max_retries: int = 0,
+        http_client: Any | None = None,
+        enable_thinking: bool | None = None,
+    ) -> None:
+        if OpenAI is None:
+            raise RuntimeError("the API binder provider requires the openai package")
+        if isinstance(max_tokens, bool) or not isinstance(max_tokens, int) or max_tokens < 1:
+            raise ValueError("max_tokens must be a positive integer")
+        client_kwargs: dict[str, Any] = {
+            "base_url": base_url,
+            "api_key": api_key,
+            "timeout": timeout,
+            "max_retries": max_retries,
+        }
+        if http_client is not None:
+            client_kwargs["http_client"] = http_client
+        self.client = OpenAI(**client_kwargs)
+        self.model_name = model_name
+        self.temperature = temperature
+        self.max_tokens = max_tokens
+        self.max_retries = max_retries
+        if enable_thinking is not None and not isinstance(enable_thinking, bool):
+            raise ValueError("enable_thinking must be a bool or None")
+        self.enable_thinking = enable_thinking
+        self.client_created_at = _datetime.datetime.now(_datetime.timezone.utc).isoformat()
+        self.last_call: BinderCallMetadata | None = None
+        self.last_raw_response: str | None = None
+
+    def close(self) -> None:
+        self.client.close()
+
+    def bind(self, request: Mapping[str, Any]) -> BinderProviderResult:
+        started = time.perf_counter()
+        self.last_raw_response = None
+        response: Any | None = None
+        try:
+            body: dict[str, Any] = {
+                "model": self.model_name,
+                "messages": build_binder_messages(request),
+                "temperature": self.temperature,
+                "max_tokens": self.max_tokens,
+                "response_format": API_BINDER_RESPONSE_FORMAT,
+            }
+            # Preserve generic OpenAI compatibility by leaving the extension
+            # absent unless the production builder has explicitly selected a
+            # DeepSeek-compatible thinking-mode control path.
+            if self.enable_thinking is not None:
+                body["extra_body"] = {
+                    "thinking": {
+                        "type": "enabled" if self.enable_thinking else "disabled",
+                    },
+                }
+            response = self.client.chat.completions.create(**body)
+            message = response.choices[0].message if response.choices else None
+            # Explicitly read only `content`; discard `reasoning_content` or
+            # any other private chain-of-thought fields returned by the model.
+            content = getattr(message, "content", None) if message is not None else None
+            raw = content if isinstance(content, str) else None
+            self.last_raw_response = raw
+            if not raw or not raw.strip():
+                raise BinderProviderError("API binder returned an empty EvidenceBinding response")
+            try:
+                payload = json.loads(raw.strip())
+            except json.JSONDecodeError as exc:
+                raise BinderProviderError("API binder response was not strict JSON") from exc
+            binding = _binding_from_payload(payload)
+            metadata = self._metadata(
+                response,
+                started,
+                structured=True,
+                raw_content_length=len(raw),
+                request_id=getattr(response, "id", None),
+            )
+            self.last_call = metadata
+            return BinderProviderResult(binding=binding, metadata=metadata, raw_response=raw)
+        except BinderProviderError as exc:
+            cause = exc.__cause__ or exc.__context__
+            metadata = self._metadata(
+                response,
+                started,
+                structured=False,
+                error=str(exc),
+                provider_success=response is not None,
+                exception_type=type(exc).__name__,
+                exception_cause_type=type(cause).__name__ if cause is not None else None,
+                exception_cause_message=_safe_message(cause) if cause is not None else None,
+                raw_content_length=len(self.last_raw_response or ""),
+                request_id=getattr(response, "id", None),
+                http_status=_exception_http_status(exc),
+                exception_chain=_exception_chain(exc),
+            )
+            self.last_call = metadata
+            raise
+        except Exception as exc:
+            cause = exc.__cause__ or exc.__context__
+            metadata = self._metadata(
+                response,
+                started,
+                structured=False,
+                error=_safe_message(exc),
+                provider_success=False,
+                exception_type=type(exc).__name__,
+                exception_cause_type=type(cause).__name__ if cause is not None else None,
+                exception_cause_message=_safe_message(cause) if cause is not None else None,
+                errno=getattr(exc, "errno", None),
+                raw_content_length=len(self.last_raw_response or ""),
+                request_id=getattr(response, "id", None),
+                http_status=_exception_http_status(exc),
+                exception_chain=_exception_chain(exc),
+            )
+            self.last_call = metadata
+            raise BinderProviderError(f"API binder call failed: {_safe_message(exc)}") from exc
+
+    def _metadata(
+        self,
+        response: Any,
+        started: float,
+        *,
+        structured: bool,
+        error: str | None = None,
+        provider_success: bool = True,
+        exception_type: str | None = None,
+        exception_cause_type: str | None = None,
+        exception_cause_message: str | None = None,
+        errno: int | str | None = None,
+        raw_content_length: int | None = None,
+        request_id: str | None = None,
+        http_status: int | None = None,
+        exception_chain: tuple[dict[str, Any], ...] = (),
+    ) -> BinderCallMetadata:
+        usage = getattr(response, "usage", None) if response is not None else None
+        details = getattr(usage, "completion_tokens_details", None) if usage is not None else None
+        reasoning = getattr(details, "reasoning_tokens", None) if details is not None else None
+        choice = response.choices[0] if response is not None and getattr(response, "choices", None) else None
+        finish_reason = getattr(choice, "finish_reason", None) if choice is not None else None
+        response_http_status = getattr(response, "status_code", None) if response is not None else None
+        resolved_http_status = http_status if http_status is not None else response_http_status
+        return BinderCallMetadata(
+            provider=self.provider_name,
+            model=self.model_name,
+            provider_role=self.provider_role,
+            model_role=self.model_role,
+            latency_ms=(time.perf_counter() - started) * 1000,
+            provider_response_success=provider_success,
+            structured_output_success=structured,
+            input_tokens=_usage_int(usage, "prompt_tokens"),
+            output_tokens=_usage_int(usage, "completion_tokens"),
+            total_tokens=_usage_int(usage, "total_tokens"),
+            reasoning_tokens=int(reasoning) if isinstance(reasoning, (int, float)) else None,
+            error=error,
+            exception_type=exception_type,
+            exception_cause_type=exception_cause_type,
+            exception_cause_message=exception_cause_message,
+            errno=errno if isinstance(errno, (int, str)) else None,
+            http_status=int(resolved_http_status) if isinstance(resolved_http_status, (int, float)) else None,
+            finish_reason=str(finish_reason) if finish_reason is not None else None,
+            raw_content_length=raw_content_length,
+            request_id=request_id,
+            exception_chain=exception_chain,
+        )
 
 
 class BailianBinderProvider:

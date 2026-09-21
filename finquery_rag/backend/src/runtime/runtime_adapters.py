@@ -301,6 +301,7 @@ class LegacyFinancialRuntimeAdapter(FinancialQARuntime):
             status=status,
             answer=answer,
             citations=sources,
+            calculations=calculations,
             evidence_ids=evidence_ids,
             citation_ids=citation_ids,
             calculation_ids=calculation_ids,

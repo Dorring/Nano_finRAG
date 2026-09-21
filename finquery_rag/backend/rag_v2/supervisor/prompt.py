@@ -22,8 +22,14 @@ Allowed operation values are exactly: difference, growth_rate,
 percentage_share, sum, average, gross_margin, net_margin, debt_ratio,
 scale_conversion. Use operation null for non-calculation intents.
 
-Each required slot must contain exactly these keys:
+Each required slot must contain these keys:
 slot_id, metric, period, role, value_type, unit.
+A slot may also carry the evidence coordinates entity, entity_id, scope and
+scope_id, and may omit them. Use entity when two slots would otherwise be
+identical -- two companies at one metric and period -- because a slot that
+cannot be told from another is one requirement written twice, and the runtime
+will refuse it rather than answer half the question. Give entity as the wording
+the question used; the runtime derives entity_id, and you should not invent one.
 Use the requested financial metric and the period wording from the question;
 do not invent a canonical fact label. Use unit null when it is not stated.
 Use value_type numeric for a numeric fact and percentage for a percentage fact.
@@ -31,6 +37,17 @@ Use these existing operation role names when applicable:
 current_period/base_period, numerator/denominator,
 minuend/subtrahend, operand, value, gross_profit/revenue,
 net_income/revenue, debt/assets, and value.
+
+Hard consistency rules:
+- If operation is non-null, intent must be CALCULATION.
+- If the question explicitly asks for growth, year-over-year growth, or a
+  difference across two explicit periods, use CALCULATION with the matching
+  operation and one slot per period.
+- Never emit MULTI_EVIDENCE together with an operation; never attach an
+  operation to a non-calculation plan.
+- For growth_rate, the later period is current_period and the earlier period
+  is base_period. For difference, the later period is minuend and the earlier
+  period is subtrahend.
 
 The JSON object must have exactly these top-level keys:
 intent, required_slots, operation, next_action.
@@ -57,6 +74,14 @@ SUPERVISOR_PLAN_JSON_SCHEMA: dict[str, Any] = {
                     "role": {"type": "string", "minLength": 1},
                     "value_type": {"type": "string", "minLength": 1},
                     "unit": {"type": ["string", "null"]},
+                    # Optional coordinates. The six above stay required so a
+                    # supervisor that does not emit these still parses; a slot
+                    # with no entity keeps the behaviour it had before they
+                    # existed.
+                    "entity": {"type": ["string", "null"]},
+                    "entity_id": {"type": ["string", "null"]},
+                    "scope": {"type": ["string", "null"]},
+                    "scope_id": {"type": ["string", "null"]},
                 },
             },
         },

@@ -9,7 +9,9 @@ Generator, Validator, and TrustedRAGRuntimeV2 remain later-stage components.
 from __future__ import annotations
 
 import copy
-from collections.abc import Iterable, Mapping
+import hashlib
+import json
+from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass
 from typing import Any
 
@@ -25,15 +27,18 @@ from rag_v2.adaptive import (
 )
 from rag_v2.contracts.plan import Action, Intent, SupervisorPlan
 from rag_v2.supervisor import (
+    PlanSemanticAlignment,
     SemanticAlignmentStatus,
     SupervisorService,
     UnknownSemanticPolicy,
     align_query_to_plan,
     coerce_unknown_semantic_policy,
+    derive_slot_identities,
     validate_plan_v2_01,
 )
 
-from .runtime_contract import ReleaseStatus
+from .harness_runtime_mode import AgentRuntimeMode, coerce_agent_runtime_mode
+from .runtime_contract import ContextTrustLevel, ReleaseStatus
 from .trusted_v2_capabilities import TrustedV2CapabilityPorts
 from .trusted_v2_generation import CandidateExecutionResult
 from .trusted_v2_validation import (
@@ -60,10 +65,123 @@ def _stable_unique(values: Iterable[str]) -> list[str]:
     return result
 
 
-def _plan_id(request: V2ExecutionRequest, plan: SupervisorPlan) -> str:
-    import hashlib
-    import json
+def _structured_evidence_identity(item: Mapping[str, Any]) -> str:
+    for key in ("evidence_id", "fact_id", "candidate_id", "candidate_key", "chunk_id"):
+        value = item.get(key)
+        if value is not None and str(value).strip():
+            return str(value).strip()
+    return ""
 
+
+def _structured_citations(
+    state: AdaptiveRAGStateV1 | None,
+    evidence_ids: Iterable[str],
+    citation_ids: Iterable[str],
+) -> list[dict[str, Any]]:
+    """Expose only Binder-admitted evidence as public source metadata.
+
+    The API source shape is reconstructed from the structured evidence packet,
+    never from the answer string. Retrieval candidates that were not admitted
+    by the Binder cannot appear because evidence_ids is the post-admission set
+    supplied by the coordinator.
+    """
+
+    if state is None:
+        return []
+    packets: dict[str, Mapping[str, Any]] = {}
+    for raw in getattr(state, "evidence_packets", ()):
+        if not isinstance(raw, Mapping):
+            continue
+        identity = _structured_evidence_identity(raw)
+        if identity and identity not in packets:
+            packets[identity] = raw
+    allowed_citations = {
+        str(value).strip()
+        for value in citation_ids
+        if str(value).strip()
+    }
+    sources: list[dict[str, Any]] = []
+    for evidence_id in _stable_unique(evidence_ids):
+        packet = packets.get(evidence_id)
+        if packet is None:
+            continue
+        source: dict[str, Any] = {
+            "evidence_id": evidence_id,
+            "chunk_id": (
+                packet.get("chunk_id")
+                or packet.get("candidate_key")
+                or packet.get("candidate_id")
+                or evidence_id
+            ),
+        }
+        citation_id = packet.get("citation_id")
+        if citation_id is not None and str(citation_id).strip():
+            normalized_citation = str(citation_id).strip()
+            if not allowed_citations or normalized_citation in allowed_citations:
+                source["citation_id"] = normalized_citation
+        filename = (
+            packet.get("filename")
+            or packet.get("document_name")
+            or packet.get("document_id")
+            or packet.get("source_id")
+            or packet.get("physical_source_id")
+        )
+        if filename is not None and str(filename).strip():
+            source["filename"] = str(filename).strip()
+        page = packet.get("page", packet.get("pdf_page"))
+        if page is not None:
+            try:
+                source["page"] = int(page)
+            except (TypeError, ValueError):
+                source["page"] = str(page)
+        source_type = (
+            packet.get("type")
+            or packet.get("block_type")
+            or packet.get("evidence_type")
+        )
+        if source_type is not None and str(source_type).strip():
+            source["type"] = str(source_type).strip()
+        sources.append(source)
+    return sources
+
+
+def _structured_calculations(
+    state: AdaptiveRAGStateV1 | None,
+    calculation_ids: Iterable[str],
+) -> list[dict[str, Any]]:
+    """Serialize the structured calculator result without answer parsing.
+
+    Refuses to publish a result the runtime has not admitted.  The gate is on
+    the *result*, not on the ids the caller supplies: a non-None calculation id
+    must never by itself make a result publishable, and a caller that paired a
+    BLOCKED result with an id gets nothing rather than a trusted-looking payload.
+
+    This is a projection boundary, so an inadmissible calculation yields nothing
+    here.  It must not be read as "no calculation was requested" -- that
+    conclusion belongs upstream, where a required calculation that cannot be
+    admitted terminates with a reason code rather than being erased.
+    """
+
+    ids = _stable_unique(calculation_ids)
+    if state is None or not ids:
+        return []
+    calculation = getattr(state, "_calculation_result_obj", None)
+    try:
+        from src.domain.calculation import CalculationResult
+    except ImportError:
+        return []
+    if not isinstance(calculation, CalculationResult):
+        return []
+    # A BLOCKED or FAILED result has no identity of its own, so there is nothing
+    # here to publish and no way for the caller's ids to manufacture one.
+    if not calculation.is_admissible or calculation.calculation_id is None:
+        return []
+    payload = calculation.to_public_dict()
+    payload["calculation_id"] = calculation.calculation_id
+    return [payload]
+
+
+def _plan_id(request: V2ExecutionRequest, plan: SupervisorPlan) -> str:
     payload = {
         "request_id": request.request_id,
         "standalone_query": request.standalone_query,
@@ -71,6 +189,98 @@ def _plan_id(request: V2ExecutionRequest, plan: SupervisorPlan) -> str:
     }
     encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+
+
+def _execution_id(request: V2ExecutionRequest, plan_id: str | None) -> str:
+    """Return a stable identifier for one logical V2 execution."""
+
+    payload = {
+        "request_id": request.request_id,
+        "plan_id": plan_id,
+        "standalone_query": request.standalone_query,
+    }
+    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+
+
+_TRACE_FORBIDDEN_KEY_MARKERS = (
+    "chain_of_thought",
+    "chainofthought",
+    "cot",
+    "hidden_reasoning",
+    "private_reasoning",
+    "model_reasoning",
+    "model_thought",
+    "thought_process",
+    "reasoning",
+    "thought",
+)
+
+
+def _trace_key_is_forbidden(key: Any) -> bool:
+    normalized = str(key).casefold().replace("-", "_").replace(" ", "_")
+    return any(marker in normalized for marker in _TRACE_FORBIDDEN_KEY_MARKERS)
+
+
+def _sanitize_trace_payload(value: Any) -> Any:
+    """Keep trace data structured while dropping provider-private reasoning."""
+
+    if isinstance(value, Mapping):
+        return {
+            key: _sanitize_trace_payload(item)
+            for key, item in value.items()
+            if not _trace_key_is_forbidden(key)
+        }
+    if isinstance(value, (list, tuple)):
+        return [_sanitize_trace_payload(item) for item in value]
+    return copy.deepcopy(value)
+
+
+def _normalize_trace_levels(
+    value: Iterable[ContextTrustLevel | str] | None,
+    field_name: str,
+) -> tuple[str, ...]:
+    levels: list[str] = []
+    for item in value or ():
+        try:
+            level = (
+                item
+                if isinstance(item, ContextTrustLevel)
+                else ContextTrustLevel(item)
+            )
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"{field_name} contains an unknown trust level") from exc
+        if level.value not in levels:
+            levels.append(level.value)
+    return tuple(levels)
+
+
+def _observed_context_trust_levels(
+    request: V2ExecutionRequest,
+    state: AdaptiveRAGStateV1 | None,
+    capability_trace: Mapping[str, Any],
+) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    """Separate semantic context observations from financial authority."""
+
+    levels = list(_normalize_trace_levels(
+        request.context_trust_levels,
+        "context_trust_levels",
+    ))
+    bound_ids = getattr(state, "bound_evidence_ids", ()) if state is not None else ()
+    bound_ids = tuple(
+        str(item).strip() for item in bound_ids if str(item).strip()
+    )
+    if state is not None and state.evidence_packets:
+        candidate_level = ContextTrustLevel.RETRIEVED_CANDIDATE.value
+        if candidate_level not in levels:
+            levels.append(candidate_level)
+    financial_levels: tuple[str, ...] = ()
+    if bound_ids:
+        admitted_level = ContextTrustLevel.BINDER_ADMITTED_EVIDENCE.value
+        if admitted_level not in levels:
+            levels.append(admitted_level)
+        financial_levels = (admitted_level,)
+    return tuple(levels), financial_levels
 
 
 @dataclass(frozen=True)
@@ -87,6 +297,7 @@ class V2ExecutionTrace:
     same_tool_retry_count: int
     no_progress_count: int
     terminal_state: str
+    execution_id: str | None = None
     retrieval_rounds: tuple[dict[str, Any], ...] = ()
     candidate_count_per_round: tuple[int, ...] = ()
     candidate_ids_per_round: tuple[tuple[str, ...], ...] = ()
@@ -120,6 +331,66 @@ class V2ExecutionTrace:
     release_status: str | None = None
     semantic_alignment: dict[str, Any] | None = None
     claim_provenance: tuple[dict[str, Any], ...] = ()
+    context_trust_levels: tuple[str, ...] = ()
+    financial_fact_context_levels: tuple[str, ...] = ()
+    # The run's decision trace: one record per action the controller took, plus
+    # the ordered action names.  Additive; existing consumers keep working.
+    turns: tuple[dict[str, Any], ...] = ()
+    turn_count: int = 0
+    action_trace: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if self.execution_id is not None and not str(self.execution_id).strip():
+            raise ValueError("execution_id must not be empty")
+        object.__setattr__(
+            self,
+            "execution_id",
+            str(self.execution_id) if self.execution_id is not None else None,
+        )
+        object.__setattr__(
+            self,
+            "context_trust_levels",
+            _normalize_trace_levels(
+                self.context_trust_levels,
+                "context_trust_levels",
+            ),
+        )
+        financial_levels = _normalize_trace_levels(
+            self.financial_fact_context_levels,
+            "financial_fact_context_levels",
+        )
+        if any(
+            item != ContextTrustLevel.BINDER_ADMITTED_EVIDENCE.value
+            for item in financial_levels
+        ):
+            raise ValueError(
+                "financial_fact_context_levels may contain only "
+                "BINDER_ADMITTED_EVIDENCE",
+            )
+        object.__setattr__(self, "financial_fact_context_levels", financial_levels)
+        for field_name in (
+            "transitions",
+            "tool_history",
+            "retrieval_rounds",
+            "turns",
+            "semantic_alignment",
+            "claim_provenance",
+        ):
+            value = getattr(self, field_name)
+            if field_name in {"semantic_alignment"}:
+                normalized = (
+                    _sanitize_trace_payload(value)
+                    if isinstance(value, Mapping)
+                    else value
+                )
+            else:
+                # Sequence-of-mappings fields: transitions, tool_history,
+                # retrieval_rounds, turns, claim_provenance.
+                normalized = tuple(
+                    _sanitize_trace_payload(item)
+                    for item in value
+                )
+            object.__setattr__(self, field_name, normalized)
 
     @classmethod
     def from_state(
@@ -132,9 +403,12 @@ class V2ExecutionTrace:
         capability_trace: Mapping[str, Any] | None = None,
         semantic_alignment: Mapping[str, Any] | None = None,
         claim_provenance: Iterable[Mapping[str, Any]] = (),
+        execution_id: str | None = None,
+        context_trust_levels: Iterable[ContextTrustLevel | str] = (),
+        financial_fact_context_levels: Iterable[ContextTrustLevel | str] = (),
     ) -> "V2ExecutionTrace":
         no_progress_count = int(state.stop_reason == ReasonCode.NO_PROGRESS.value)
-        capability_trace = capability_trace or {}
+        capability_trace = _sanitize_trace_payload(capability_trace or {})
         retrieval = capability_trace.get("retrieval", {})
         binder = capability_trace.get("binder", {})
         calculation = capability_trace.get("calculation", {})
@@ -167,12 +441,16 @@ class V2ExecutionTrace:
             plan_id=plan_id,
             transitions=tuple(copy.deepcopy(state.transitions)),
             tool_history=tuple(copy.deepcopy(state.tool_history)),
+            turns=tuple(copy.deepcopy(state.turns)),
+            turn_count=len(state.turns),
+            action_trace=tuple(str(item.get("action")) for item in state.turns),
             reason_codes=tuple(_stable_unique(trace_reason_codes)),
             replan_count=state.replan_rounds,
             tool_call_count=state.tool_calls,
             same_tool_retry_count=sum(state.same_tool_retries.values()),
             no_progress_count=no_progress_count,
             terminal_state=state.status,
+            execution_id=execution_id,
             retrieval_rounds=retrieval_rounds,
             candidate_count_per_round=candidate_counts,
             candidate_ids_per_round=candidate_ids,
@@ -253,17 +531,23 @@ class V2ExecutionTrace:
                 else None
             ),
             semantic_alignment=(
-                copy.deepcopy(dict(semantic_alignment))
+                _sanitize_trace_payload(dict(semantic_alignment))
                 if isinstance(semantic_alignment, Mapping)
                 else None
             ),
-            claim_provenance=tuple(copy.deepcopy(dict(item)) for item in claim_provenance),
+            claim_provenance=tuple(
+                _sanitize_trace_payload(dict(item))
+                for item in claim_provenance
+            ),
+            context_trust_levels=tuple(context_trust_levels),
+            financial_fact_context_levels=tuple(financial_fact_context_levels),
         )
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "request_id": self.request_id,
             "plan_id": self.plan_id,
+            "execution_id": self.execution_id,
             "transitions": copy.deepcopy(list(self.transitions)),
             "tool_history": copy.deepcopy(list(self.tool_history)),
             "reason_codes": list(self.reason_codes),
@@ -311,7 +595,49 @@ class V2ExecutionTrace:
                 else None
             ),
             "claim_provenance": copy.deepcopy(list(self.claim_provenance)),
+            "context_trust_levels": list(self.context_trust_levels),
+            "financial_fact_context_levels": list(
+                self.financial_fact_context_levels,
+            ),
+            "turns": copy.deepcopy(list(self.turns)),
+            "turn_count": self.turn_count,
+            "action_trace": list(self.action_trace),
         }
+
+
+#: Exception types whose message is a fixed identifier rather than a description.
+#:
+#: The distinction is not cosmetic.
+#: ``test_capability_crash_is_execution_error_not_policy_refusal`` pins that a
+#: capability exception's message never reaches the outcome's serialised form,
+#: and it is right to: a message is arbitrary text from an arbitrary failure and
+#: can carry whatever that failure was holding.  But the diagnostic value is
+#: real -- the reason code says only that *something* raised, and pinning one
+#: canonical case to ``binder_returned_invalid_schema`` took a probe wrapping two
+#: internal methods, because nothing on the result said which raise site fired.
+#:
+#: So the type is recorded for every exception, and the message only for the ones
+#: this codebase raises with a literal code.  A new type belongs here only if its
+#: message is a constant in the source, never if it interpolates a value.
+_STATIC_CODE_EXCEPTIONS = frozenset({"SemanticBinderCapabilityError"})
+
+
+def _capability_error_detail(errors: Iterable[BaseException]) -> dict[str, Any]:
+    """Which capability exceptions fired, in the detail the outcome may carry.
+
+    Observation only.  Nothing reads this back, and the reason code, the status
+    and the release decision are all unchanged -- an untraced failure stays a
+    failure rather than becoming a different one.
+    """
+
+    detail: list[dict[str, str]] = []
+    for exc in errors:
+        name = type(exc).__name__
+        entry = {"type": name}
+        if name in _STATIC_CODE_EXCEPTIONS:
+            entry["code"] = str(exc)
+        detail.append(entry)
+    return {"capability_errors": detail}
 
 
 class _EvaluatorAdapter:
@@ -452,6 +778,10 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         unknown_semantic_policy: UnknownSemanticPolicy | str = (
             UnknownSemanticPolicy.COMPATIBILITY
         ),
+        runtime_mode: AgentRuntimeMode | str | None = None,
+        alignment_override: PlanSemanticAlignment | None = None,
+        source_label_grounding: Callable[[SupervisorPlan], Mapping[str, str]]
+        | None = None,
     ) -> None:
         if not isinstance(supervisor, SupervisorService):
             raise TypeError("supervisor must be SupervisorService")
@@ -462,6 +792,30 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         self.unknown_semantic_policy = coerce_unknown_semantic_policy(
             unknown_semantic_policy,
         )
+        # ``legacy`` (the default) keeps answer production outside the loop.
+        # ``harness_v3`` runs calculation inside the loop as a harness phase.
+        self.runtime_mode = coerce_agent_runtime_mode(runtime_mode)
+        # P1.2.  ``None`` everywhere in production -- the production builder does
+        # not pass it, and no environment variable can set it.  It exists so a
+        # benchmark can measure the chain *after* the semantic-alignment gate
+        # without pretending the gate passed: the real verdict is still computed
+        # and still recorded beside the override, so a run that used one is
+        # distinguishable from a run that did not.  A seam that hid its own use
+        # would be worse than no seam, because its results would be quotable as
+        # production behaviour.
+        if alignment_override is not None and not isinstance(
+            alignment_override, PlanSemanticAlignment
+        ):
+            raise TypeError(
+                "alignment_override must be a PlanSemanticAlignment or None, got "
+                f"{type(alignment_override).__name__}"
+            )
+        self.alignment_override = alignment_override
+        # Wider than the ontology, narrower than a string match: the row labels
+        # the *source* holds at a coordinate that identifies one value.  ``None``
+        # leaves the gate exactly as it was -- an ontology and nothing else --
+        # which is what every test that does not pass one still measures.
+        self.source_label_grounding = source_label_grounding
 
     @staticmethod
     def _slot_dicts(plan: SupervisorPlan) -> list[dict[str, Any]]:
@@ -499,6 +853,18 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         return requirements
 
     def _capability_trace(self) -> dict[str, Any]:
+        """Collect each port's own trace snapshot.
+
+        The numbers and lists in these snapshots are **lifetime** figures: the
+        ports count calls and accumulate rounds for as long as they live, and
+        this method reports them verbatim.  That is only the same thing as "this
+        request" because ``build_trusted_v2_runtime_for_request`` constructs a
+        fresh port set per request.  A coordinator that reused ports across
+        requests would report a lifetime in a per-run trace, so
+        ``tests/test_trusted_v2_production_builder.py`` pins the per-request
+        identity of all five ports.
+        """
+
         trace: dict[str, Any] = {}
         for name, port in (
             ("retrieval", self.capabilities.retrieval),
@@ -514,7 +880,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 except Exception:
                     snapshot = {}
                 if isinstance(snapshot, Mapping):
-                    trace[name] = snapshot
+                    trace[name] = _sanitize_trace_payload(snapshot)
         return trace
 
     def _trace(
@@ -528,6 +894,13 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         claim_provenance: Iterable[Mapping[str, Any]] = (),
     ) -> V2ExecutionTrace:
         capability_trace = self._capability_trace()
+        context_trust_levels, financial_fact_context_levels = (
+            _observed_context_trust_levels(
+                request,
+                state,
+                capability_trace,
+            )
+        )
         if state is not None:
             return V2ExecutionTrace.from_state(
                 request_id=request.request_id,
@@ -537,6 +910,9 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 capability_trace=capability_trace,
                 semantic_alignment=semantic_alignment,
                 claim_provenance=claim_provenance,
+                execution_id=_execution_id(request, plan_id),
+                context_trust_levels=context_trust_levels,
+                financial_fact_context_levels=financial_fact_context_levels,
             )
         return V2ExecutionTrace(
             request_id=request.request_id,
@@ -549,20 +925,18 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             same_tool_retry_count=0,
             no_progress_count=0,
             terminal_state=terminal_state,
-            bound_evidence_ids=tuple(
-                str(item)
-                for item in capability_trace.get("binder", {}).get(
-                    "bound_evidence_ids", ()
-                )
-            ),
+            execution_id=_execution_id(request, plan_id),
+            bound_evidence_ids=(),
             semantic_alignment=(
-                copy.deepcopy(dict(semantic_alignment))
+                _sanitize_trace_payload(dict(semantic_alignment))
                 if isinstance(semantic_alignment, Mapping)
                 else None
             ),
             claim_provenance=tuple(
-                copy.deepcopy(dict(item)) for item in claim_provenance
+                _sanitize_trace_payload(dict(item)) for item in claim_provenance
             ),
+            context_trust_levels=context_trust_levels,
+            financial_fact_context_levels=financial_fact_context_levels,
         )
 
     @staticmethod
@@ -595,6 +969,112 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             or getattr(self.capabilities.generation, "candidate_mode", False)
         )
 
+    def _harness_calculator(self, sink: dict[str, Any]) -> Any | None:
+        """Return the in-loop calculator, capturing what it returns.
+
+        The harness runs the calculator inside the loop; the candidate stage
+        must then validate *that* result rather than invoke the calculator a
+        second time.  The result is captured at this boundary rather than read
+        back from the capability afterwards, because ``calculate(state) ->
+        CalculationResult`` is the entire port contract -- ``last_result`` is a
+        private implementation detail that a conforming calculator need not
+        maintain.
+
+        Gated on exactly the same condition as ``_harness_finalizer``, not on the
+        runtime mode alone.  In a configuration where the candidate path is not
+        enabled, ``legacy`` returns at READY_TO_GENERATE and never reaches the
+        candidate stage's ``calculate()`` -- so running CALCULATE as a phase
+        would have the ablation invoke the calculator where the baseline does
+        not.  That divergence is contract-blind (the decision surface is
+        identical) and invisible in every differential test; only the port's own
+        call count and the state it mutates show it.
+        """
+
+        if self.runtime_mode is not AgentRuntimeMode.HARNESS_V3:
+            return None
+        if not self._candidate_generation_enabled():
+            return None
+        calculation = self.capabilities.calculation
+        if calculation is None:
+            return None
+        calculate = getattr(calculation, "calculate", None)
+        if not callable(calculate):
+            return None
+
+        def calculator(state: AdaptiveRAGStateV1) -> Any:
+            result = calculate(state)
+            sink["result"] = result
+            return result
+
+        return calculator
+
+    def _release_verdict(self, state: AdaptiveRAGStateV1, candidate: Any) -> bool:
+        """Read the validator's verdict as a bool, for the harness VERIFY phase.
+
+        Validators may return either a bool or a result object.  A result
+        object is truthy regardless of its verdict, so the judgement must be
+        read from the result rather than from its presence.
+        """
+
+        result = self.capabilities.release_validator.validate(state, candidate)
+        return bool(getattr(result, "passed", result))
+
+    def _harness_finalizer(
+        self,
+        *,
+        request: V2ExecutionRequest,
+        plan: SupervisorPlan,
+        plan_id: str,
+        evaluator_adapter: "_EvaluatorAdapter",
+        finalization: dict[str, Any],
+        calculation_sink: dict[str, Any],
+    ) -> tuple[Any, Any]:
+        """Run the existing candidate/validation path as the harness tail.
+
+        The harness decides *when* generation happens.  It does not decide
+        *whether* an answer may be released: the deterministic validator inside
+        the candidate stage still owns that, and this finalizer only reports its
+        verdict back to the loop.  No release logic is duplicated here.
+        """
+
+        def generate(current_state: AdaptiveRAGStateV1) -> bool:
+            outcome = self._candidate_stage(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                state=current_state,
+                evaluator_adapter=evaluator_adapter,
+                harness_calculation=calculation_sink.get("result"),
+            )
+            finalization["outcome"] = outcome
+            return bool(outcome.status is V2ExecutionStatus.READY_FOR_RELEASE)
+
+        def verify(current_state: AdaptiveRAGStateV1, verdict: Any) -> bool:
+            # ``verdict`` is the release decision the candidate stage already
+            # made.  The harness must not reinterpret a validated verdict.
+            return bool(verdict)
+
+        return generate, verify
+
+    @staticmethod
+    def _binder_admission_is_authoritative(
+        state: AdaptiveRAGStateV1,
+        evaluator_adapter: _EvaluatorAdapter,
+    ) -> bool:
+        """Require Binder-admitted IDs before calculation or generation."""
+
+        state_ids = {
+            str(item).strip()
+            for item in getattr(state, "bound_evidence_ids", ())
+            if str(item).strip()
+        }
+        adapter_ids = {
+            str(item).strip()
+            for item in evaluator_adapter.bound_evidence_ids
+            if str(item).strip()
+        }
+        return bool(adapter_ids) and adapter_ids <= state_ids
+
     def _candidate_stage(
         self,
         *,
@@ -603,13 +1083,37 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         plan_id: str,
         state: AdaptiveRAGStateV1,
         evaluator_adapter: _EvaluatorAdapter,
+        harness_calculation: Any = None,
     ) -> V2ExecutionOutcome:
         """Prepare one Candidate and, when wired, cross the TV2-05 gate."""
+
+        if not self._binder_admission_is_authoritative(state, evaluator_adapter):
+            return self._outcome(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                state=state,
+                reason_codes=["BINDER_ADMISSION_REQUIRED"],
+                status=V2ExecutionStatus.FAIL_CLOSED,
+                terminal_state="EVIDENCE_READY",
+                evidence_ids=(),
+                citation_ids=(),
+            )
 
         calculation_ids: tuple[str, ...] = ()
         candidate_answer: str | None = None
         extra: dict[str, Any] = {}
-        if plan.intent is Intent.CALCULATION:
+        # The *operation* decides whether the calculator is offered this plan,
+        # not the intent.  Reading the intent here is the other half of the gate
+        # `calculate` used to hold: cross-entity comparison and ranking are
+        # planned as MULTI_EVIDENCE, so a plan naming `comparison` was never
+        # offered to the calculator at all.
+        #
+        # A plan that declares CALCULATION intent and names no operation is
+        # still included, so it reaches the calculator and fails there rather
+        # than quietly becoming prose -- "asked for a calculation, named none"
+        # is a planning fault and should be reported as one.
+        if plan.operation is not None or plan.intent is Intent.CALCULATION:
             capability = self.capabilities.calculation
             if capability is None:
                 return self._outcome(
@@ -620,17 +1124,23 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     evidence_ids=evaluator_adapter.bound_evidence_ids,
                     citation_ids=evaluator_adapter.citation_ids,
                 )
-            try:
-                result = capability.calculate(state)
-            except Exception:
-                return self._outcome(
-                    request=request, plan=plan, plan_id=plan_id, state=state,
-                    reason_codes=["CALCULATOR_EXCEPTION"],
-                    status=V2ExecutionStatus.EXECUTION_ERROR,
-                    terminal_state="CALCULATE",
-                    evidence_ids=evaluator_adapter.bound_evidence_ids,
-                    citation_ids=evaluator_adapter.citation_ids,
-                )
+            if state.calculation_attempted:
+                # harness_v3 ran the calculator inside the loop.  Validate the
+                # value it returned, captured at the call boundary, rather than
+                # running it twice or reading the port's private state.
+                result = harness_calculation
+            else:
+                try:
+                    result = capability.calculate(state)
+                except Exception:
+                    return self._outcome(
+                        request=request, plan=plan, plan_id=plan_id, state=state,
+                        reason_codes=["CALCULATOR_EXCEPTION"],
+                        status=V2ExecutionStatus.EXECUTION_ERROR,
+                        terminal_state="CALCULATE",
+                        evidence_ids=evaluator_adapter.bound_evidence_ids,
+                        citation_ids=evaluator_adapter.citation_ids,
+                    )
             from src.domain.calculation import CalculationResult, CalculationStatus
 
             if not isinstance(result, CalculationResult):
@@ -666,9 +1176,10 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 if getattr(capability, "last_calculation_id", None)
                 else ()
             )
-            state.calculation_result_id = calculation_ids[0] if calculation_ids else None
             extra["calculation_status"] = result.status.value
             extra["calculation_result_id"] = state.calculation_result_id
+            if state.calculation_attempted:
+                extra["calculation_in_harness"] = True
 
         generation = self.capabilities.generation
         if generation is None:
@@ -1061,6 +1572,24 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 "semantic_alignment",
                 copy.deepcopy(dict(alignment_metadata)),
             )
+        if state is not None and isinstance(state.plan, Mapping):
+            normalization = state.plan.get("supervisor_plan_normalization")
+            if isinstance(normalization, Mapping):
+                metadata_extra.setdefault(
+                    "supervisor_plan_normalization",
+                    copy.deepcopy(dict(normalization)),
+                )
+            # P1.2.  An overridden run says so in its own outcome metadata.  The
+            # effective verdict is recorded under ``semantic_alignment`` above
+            # and the gate's real one here, so a reader of this outcome alone
+            # can tell that the gate did not in fact allow it -- which is the
+            # difference between a measurement and a claim.
+            override_record = state.plan.get("semantic_alignment_override")
+            if isinstance(override_record, Mapping):
+                metadata_extra.setdefault(
+                    "semantic_alignment_override",
+                    copy.deepcopy(dict(override_record)),
+                )
         trace = self._trace(
             request,
             plan_id,
@@ -1070,9 +1599,21 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             semantic_alignment=alignment_metadata,
             claim_provenance=claim_provenance,
         )
+        public_citations = (
+            _structured_citations(state, evidence_id_list, citation_id_list)
+            if status is V2ExecutionStatus.READY_FOR_RELEASE
+            else []
+        )
+        public_calculations = (
+            _structured_calculations(state, calculation_id_list)
+            if status is V2ExecutionStatus.READY_FOR_RELEASE
+            else []
+        )
         return V2ExecutionOutcome(
             status=status,
             answer=answer,
+            citations=public_citations,
+            calculations=public_calculations,
             evidence_ids=evidence_id_list,
             citation_ids=citation_id_list,
             reason_codes=reason_list,
@@ -1165,7 +1706,18 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 status=V2ExecutionStatus.EXECUTION_ERROR,
                 terminal_state="SUPERVISOR",
             )
+        # The Harness derives each slot's identity from the mention it carries,
+        # before the plan is hashed into its id, so that the id names the plan
+        # everything downstream actually sees.  Derivation overwrites rather
+        # than fills: a plan may not assert an identity its own mention
+        # contradicts.
+        plan = derive_slot_identities(plan)
         plan_id = _plan_id(request, plan)
+        plan_normalization = (
+            supervisor_run.normalization.to_dict()
+            if supervisor_run.normalization is not None
+            else None
+        )
         try:
             validate_plan_v2_01(plan)
         except Exception:
@@ -1191,7 +1743,31 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 )
                 else None
             ),
+            # Asked of the *source*, not of the ontology: which of the plan's
+            # rows the filing itself reports at one determinate value.  The gate
+            # still tests whether the question carries the label -- this supplies
+            # vocabulary, not a verdict.
+            grounded_labels=(
+                self.source_label_grounding(plan)
+                if self.source_label_grounding is not None
+                else None
+            ),
         )
+        # P1.2.  The gate is always computed, and it is what decides unless a
+        # benchmark explicitly installed a different verdict.  Recording the
+        # computed one beside the effective one is the whole point: a reader
+        # must be able to tell "the gate allowed this" from "we said it did".
+        alignment_override_record: dict[str, Any] | None = None
+        if self.alignment_override is not None:
+            alignment_override_record = {
+                "computed_status": semantic_alignment.status.value,
+                "computed_allowed": semantic_alignment.allowed,
+                "computed_mismatches": list(semantic_alignment.mismatches),
+                "computed_unknown_query_fields": list(
+                    semantic_alignment.unknown_query_fields
+                ),
+            }
+            semantic_alignment = self.alignment_override
         if not semantic_alignment.allowed:
             reason_code_by_status = {
                 SemanticAlignmentStatus.MISMATCH: ReasonCode.QUERY_PLAN_SEMANTIC_MISMATCH,
@@ -1209,6 +1785,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 state=None,
                 reason_codes=[reason_code],
                 status=V2ExecutionStatus.FAIL_CLOSED,
+                extra_metadata=(
+                    {"supervisor_plan_normalization": plan_normalization}
+                    if plan_normalization is not None
+                    else None
+                ),
                 semantic_alignment=semantic_alignment.to_dict(),
                 terminal_state="PLAN",
             )
@@ -1234,6 +1815,16 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 "supervisor_plan": plan.to_dict(),
                 "plan_id": plan_id,
                 "semantic_alignment": semantic_alignment.to_dict(),
+                **(
+                    {"semantic_alignment_override": alignment_override_record}
+                    if alignment_override_record is not None
+                    else {}
+                ),
+                **(
+                    {"supervisor_plan_normalization": plan_normalization}
+                    if plan_normalization is not None
+                    else {}
+                ),
             },
             calculation_requirements=self._calculation_requirements(
                 plan, request.request_metadata
@@ -1262,13 +1853,45 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         )
         generator = None
         verifier = None
+        # The test-release wiring is for a generator that returns a *string* --
+        # it exists so the pre-closure loop can release in tests, and the
+        # post-loop release branch rejects anything that is not a string.
+        #
+        # It must therefore not engage when the candidate path is enabled: those
+        # ports return a CandidateExecutionResult, so wiring them here made
+        # legacy run the raw generator, reach RELEASE, and then fail the
+        # post-loop isinstance check with GENERATION_CONTRACT_INVALID -- while
+        # harness_v3, whose finalizer ignores this flag, released normally. The
+        # two modes disagreed on nine decision-bearing fields, and no test
+        # covered the combination because the flag's own tests use generators
+        # without `candidate_mode`.
         if (
             self.allow_test_release
+            and not self._candidate_generation_enabled()
             and self.capabilities.generation is not None
             and self.capabilities.release_validator is not None
         ):
             generator = self.capabilities.generation.generate
-            verifier = self.capabilities.release_validator.validate
+            # Never hand the raw validator to the loop.  A validator that
+            # returns a result object rather than a bool is always truthy, so
+            # `bool(verifier(...))` would release a candidate the validator just
+            # rejected.  _release_verdict reads the verdict explicitly.
+            verifier = self._release_verdict
+
+        finalization: dict[str, Any] = {}
+        calculation_sink: dict[str, Any] = {}
+        if (
+            self.runtime_mode is AgentRuntimeMode.HARNESS_V3
+            and self._candidate_generation_enabled()
+        ):
+            generator, verifier = self._harness_finalizer(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                evaluator_adapter=evaluator_adapter,
+                finalization=finalization,
+                calculation_sink=calculation_sink,
+            )
 
         try:
             bounded_result = BoundedAdaptiveRAGV1(
@@ -1278,6 +1901,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 state,
                 tools,
                 initial_action=initial_action,
+                calculator=self._harness_calculator(calculation_sink),
                 generator=generator,
                 verifier=verifier,
             )
@@ -1292,6 +1916,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     if capability_errors
                     else ["COORDINATOR_EXCEPTION"]
                 ),
+                extra_metadata=_capability_error_detail(capability_errors),
                 evidence_ids=evaluator_adapter.bound_evidence_ids,
                 citation_ids=evaluator_adapter.citation_ids,
                 status=V2ExecutionStatus.EXECUTION_ERROR,
@@ -1305,6 +1930,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan_id=plan_id,
                 state=state,
                 reason_codes=["CAPABILITY_EXCEPTION"],
+                extra_metadata=_capability_error_detail(capability_errors),
                 evidence_ids=evaluator_adapter.bound_evidence_ids,
                 citation_ids=evaluator_adapter.citation_ids,
                 status=V2ExecutionStatus.EXECUTION_ERROR,
@@ -1312,6 +1938,58 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             )
 
         final_state = bounded_result.state.status
+
+        # harness_v3: generation, validation and release ran *inside* the loop.
+        # The candidate stage produced the authoritative decision, but it built
+        # its trace mid-loop.  Rebuild the outcome against the completed state so
+        # the trace covers GENERATE / VERIFY / RELEASE as well.
+        if finalization.get("outcome") is not None:
+            candidate = finalization["outcome"]
+            candidate_trace = candidate.debug_metadata.get("trace", {})
+            return self._outcome(
+                request=request,
+                plan=plan,
+                plan_id=plan_id,
+                state=bounded_result.state,
+                # The candidate's own release reasons, not the trace's.  The
+                # trace deliberately folds in every binder round's reason codes,
+                # so reusing it here would label a clean release with a recovery
+                # code that was already resolved (e.g. WRONG_PERIOD).
+                reason_codes=candidate.reason_codes,
+                status=candidate.status,
+                answer=candidate.answer,
+                # Without this the rebuilt outcome would report the plan intent
+                # as its route, contradicting the trace's generation_route.
+                route=candidate.route,
+                evidence_ids=candidate.evidence_ids,
+                citation_ids=candidate.citation_ids,
+                calculation_ids=candidate.calculation_ids,
+                validator_status=candidate.validator_status,
+                terminal_state=(
+                    candidate.runtime_metadata.get("terminal_state")
+                    or bounded_result.state.status
+                ),
+                extra_metadata=candidate.runtime_metadata,
+                semantic_alignment=candidate_trace.get("semantic_alignment"),
+            )
+
+        # harness_v3 runs the calculator inside the loop, so a calculator that
+        # raises is caught there rather than in the calculation branch below.
+        # Map it back to the legacy terminal so the ablation does not change the
+        # observable failure class (EXECUTION_ERROR, not a policy refusal).
+        if (
+            self.runtime_mode is AgentRuntimeMode.HARNESS_V3
+            and state.stop_reason == ReasonCode.CALCULATION_ERROR.value
+        ):
+            return self._outcome(
+                request=request, plan=plan, plan_id=plan_id, state=state,
+                reason_codes=["CALCULATOR_EXCEPTION"],
+                status=V2ExecutionStatus.EXECUTION_ERROR,
+                terminal_state="CALCULATE",
+                evidence_ids=evaluator_adapter.bound_evidence_ids,
+                citation_ids=evaluator_adapter.citation_ids,
+            )
+
         if final_state == "READY_TO_GENERATE" and self._candidate_generation_enabled():
             return self._candidate_stage(
                 request=request,
@@ -1319,6 +1997,10 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 plan_id=plan_id,
                 state=state,
                 evaluator_adapter=evaluator_adapter,
+                # Both call sites must supply the captured result, so that
+                # state.calculation_attempted and the value stay coupled no
+                # matter which path reached the candidate stage.
+                harness_calculation=calculation_sink.get("result"),
             )
         evaluation_reasons = (
             item.value

@@ -39,9 +39,20 @@ _COMPARISON_RE = re.compile(
     re.IGNORECASE,
 )
 # Bucket: "Less than 1 year", "1-3 years", "More than 5 years"
+#
+# The last four alternatives are word-bounded, and that is a fix rather than a tidy-up.
+# `rating` was matching inside `ope·rating· activities`, so every cash flow statement
+# section labelled "Operating activities" classified as a *bucket*, routed to
+# DISAGGREGATION_AXIS, and had its entire table withheld -- 835 cells across four verified
+# primary statements. The same substring hazard sat in `range` (orange, arrange), `grade`
+# (upgraded, downgrade) and `tier` (frontier).
+#
+# `s?` on each is deliberate. `ratings` contains `rating`, so a bare `\brating\b` would
+# stop matching the plural and silently *narrow* the rule. The boundary is the fix; the
+# plural is what keeps everything the rule already legitimately matched still matching.
 _BUCKET_RE = re.compile(
     r"less\s+than|more\s+than|over\s+\d|\d\s*[-–to]+\s*\d\s*year"
-    r"|range|rating|grade|tier",
+    r"|\b(?:ranges?|ratings?|grades?|tiers?)\b",
     re.IGNORECASE,
 )
 # Segment: "Americas", "EMEA", "APAC", "U.S.", "International"

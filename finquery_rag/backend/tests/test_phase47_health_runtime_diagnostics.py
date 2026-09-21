@@ -107,11 +107,36 @@ def test_health_snapshot_missing_feedback_is_reported_but_not_unready(tmp_path, 
         _close_session(sessions)
 
 
+def test_health_snapshot_blocks_v2_when_production_assets_are_missing(monkeypatch):
+    monkeypatch.setenv("FINANCIAL_RUNTIME_MODE", "v2")
+
+    snapshot = collect_health_snapshot(trusted_v2_preflight=True)
+
+    trusted_v2 = snapshot["checks"]["trusted_v2"]
+    assert trusted_v2["required"] is True
+    assert trusted_v2["ok"] is False
+    assert trusted_v2["status"] == "blocked"
+    assert "TRUSTED_V2_RUNTIME_BUILDER" in trusted_v2["error"]
+    assert "TRUSTED_V2_R4_INDEX_DIR" in trusted_v2["error"]
+
+
+def test_health_snapshot_skips_v2_preflight_for_explicit_v1(monkeypatch):
+    monkeypatch.setenv("FINANCIAL_RUNTIME_MODE", "v1")
+
+    snapshot = collect_health_snapshot(trusted_v2_preflight=True)
+
+    trusted_v2 = snapshot["checks"]["trusted_v2"]
+    assert trusted_v2 == {
+        "ok": True,
+        "required": False,
+        "mode": "v1",
+        "status": "skipped",
+    }
+
+
 def test_readyz_passes_feedback_store_static():
     root = os.path.join(os.path.dirname(__file__), "..")
     main = open(os.path.join(root, "src", "main.py"), encoding="utf-8").read()
     readyz_block = main[main.index('@app.get("/readyz")'):main.index('@app.get("/me"')]
 
     assert "feedback_store=feedback_store" in readyz_block
-
-

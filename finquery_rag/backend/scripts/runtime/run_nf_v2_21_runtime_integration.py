@@ -45,6 +45,46 @@ from src.generation.local_specialist_generator import (
     LocalSpecialistUnavailableError,
     sha256_file,
 )
+def _render_specialist_prompt(
+    query: str,
+    evidence: list[dict[str, Any]],
+    calculation: dict[str, Any] | None,
+) -> str:
+    """Render the specialist prompt through the Harness.
+
+    H2A-3B3.  This runner used to hand the model three loose arguments, which is
+    how it came to re-implement context construction -- complete with its own
+    ``"Metric"`` / ``"Period"`` / ``"1"`` defaults and its own decision to pass
+    ``source_text`` through.  The renderer takes a compiled pack now, so what a
+    model sees here is governed by the same Disclosure Authority the runtime
+    uses.
+
+    The runner's committed artifacts predate this.  Re-running it produces
+    prompts without the narrative evidence text, because ``source_text`` is not
+    on the SPECIALIST profile -- that difference is the Authority doing its job,
+    not a regression to chase.
+    """
+
+    from rag_v2.context import (
+        ContextCompilerV1,
+        ContextRequestV1,
+        ContextRoleV1,
+        SpecialistContextPolicyV1,
+    )
+    from src.generation.specialist_prompt import render_specialist_prompt
+
+    pack = ContextCompilerV1(SpecialistContextPolicyV1()).compile(
+        ContextRequestV1(
+            role=ContextRoleV1.SPECIALIST,
+            invocation_id="nf-v2-21-runtime-integration",
+            query=query,
+            admitted_evidence=tuple(evidence),
+            calculation=calculation,
+        )
+    )
+    return render_specialist_prompt(pack)
+
+
 from src.generation.runtime_validator_chain import (
     RuntimeValidatorChain,
     ValidationOutcome,
@@ -358,7 +398,9 @@ def main() -> None:
         gen_out = None
         val_res = None
         if decision.target == GeneratorTarget.LOCAL_SPECIALIST:
-            gen_res = specialist.generate(tc["query"], tc["evidence"], tc["calc"])
+            gen_res = specialist.generate(
+                _render_specialist_prompt(tc["query"], tc["evidence"], tc["calc"])
+            )
             gen_out = gen_res["raw_output"]
             val_outcome = RuntimeValidatorChain.validate(gen_out, tc["evidence"], tc["calc"])
             val_res = val_outcome.to_dict()
@@ -391,7 +433,9 @@ def main() -> None:
     ]
     c1_results = []
     for ctc in c1_test_cases:
-        gen = specialist.generate(ctc["query"], ctc["evidence"], ctc["calc"])
+        gen = specialist.generate(
+            _render_specialist_prompt(ctc["query"], ctc["evidence"], ctc["calc"])
+        )
         raw = gen["raw_output"]
         val = RuntimeValidatorChain.validate(raw, ctc["evidence"], ctc["calc"])
         preserves_c1 = ctc["expected_number"] in raw
@@ -474,7 +518,7 @@ def main() -> None:
             })
 
         t0 = time.perf_counter()
-        gen = specialist.generate(q, formatted_ev, calc)
+        gen = specialist.generate(_render_specialist_prompt(q, formatted_ev, calc))
         t_gen = time.perf_counter() - t0
         latencies_94.append(t_gen)
 
@@ -579,7 +623,7 @@ def main() -> None:
             })
 
         # Run generator
-        gen_res = specialist.generate(q, formatted_ev, calc)
+        gen_res = specialist.generate(_render_specialist_prompt(q, formatted_ev, calc))
         raw = gen_res["raw_output"]
         val_res = RuntimeValidatorChain.validate(raw, formatted_ev, calc)
 

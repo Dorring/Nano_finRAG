@@ -5,6 +5,8 @@ Extracted from RAGEngine to isolate context assembly logic.
 import re
 from dataclasses import dataclass
 
+from rag_v2.evidence.disclosure import EvidenceDisclosureProfile, project
+
 
 @dataclass(frozen=True)
 class SufficiencyResult:
@@ -31,6 +33,11 @@ class ContextBuilder:
         # must use these (including parent expansion/truncation), rather than
         # a stale pre-context child chunk set.
         self._last_context_evidence: list[dict] = []
+        #: Which disclosure profile governed this build, and the field names
+        #: it let through.  Names only, never values: a disclosure question
+        #: must be answerable without putting document text into a trace.
+        self.last_disclosure_profile: str | None = None
+        self.last_disclosed_fields: tuple[str, ...] = ()
 
     @property
     def last_context_evidence(self) -> list[dict]:
@@ -42,6 +49,26 @@ class ContextBuilder:
         self._last_context_evidence = []
         if not chunks:
             return "", []
+
+        # Disclosure happens here, at the entry to the formatter that produces
+        # the model-facing context, rather than at each caller.  Every caller is
+        # then covered by construction, and the projection precedes formatting
+        # instead of sanitising a finished context string -- a raw string cannot
+        # be projected back into fields.
+        #
+        # V1_ANSWER is a permission set wide enough to preserve this runtime's
+        # behaviour: retrieved chunk text is what V1 answering reads, so it is
+        # allowed on purpose.  What does not cross is the retrieval object
+        # itself, its metadata dictionary wholesale, or any key added to that
+        # metadata later.
+        chunks = [
+            project(chunk, profile=EvidenceDisclosureProfile.V1_ANSWER)
+            for chunk in chunks
+        ]
+        self.last_disclosure_profile = EvidenceDisclosureProfile.V1_ANSWER.value
+        self.last_disclosed_fields = tuple(
+            sorted({field for chunk in chunks for field in chunk})
+        )
 
         # Deduplicate chunks by content
         seen_content = set()

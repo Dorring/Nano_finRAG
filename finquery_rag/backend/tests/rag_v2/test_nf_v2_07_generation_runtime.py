@@ -42,6 +42,30 @@ def test_period_unit_and_scale_conflicts_are_hard_failures() -> None:
     assert "GV5_UNIT_CURRENCY_SCALE_FIDELITY" in validator.validate(packet(), envelope("100 million USD in FY2025 [EV-1].")).failure_codes
 
 
+def test_ratio_can_be_rendered_as_percentage_without_unit_conflict() -> None:
+    ratio_packet = packet()
+    ratio_packet["evidence_items"] = [{
+        "citation_id": "EV-1",
+        "value": "0.2",
+        "period": "FY2025",
+        "unit": "ratio",
+        "currency": None,
+        "scale": "1",
+    }]
+    ratio_packet["calculation_result"] = {
+        "status": "executed",
+        "value": "0.2",
+        "unit": "ratio",
+        "period": "FY2025",
+    }
+    report = RuntimeGenerationValidatorV1().validate(
+        ratio_packet,
+        envelope("20.00% in FY2025 [EV-1]."),
+    )
+    assert report.status is ValidationSeverity.PASS
+    assert report.failure_codes == ()
+
+
 def test_first_pass_pass_releases() -> None:
     provider = MockGeneratorProviderV1(response={"query_id": "q1", "route": "DIRECT",
         "answer_text": "100 USD in FY2025 [EV-1].", "citation_ids": ["EV-1"], "generator_model": "mock"})

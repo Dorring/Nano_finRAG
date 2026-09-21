@@ -119,11 +119,24 @@ def _tokenize_for_index(text: str) -> str:
 
 
 class CandidateViewIndexBuilder:
-    """Build 4 isolated shadow lanes for candidate-aligned retrieval."""
+    """Build 4 isolated shadow lanes for candidate-aligned retrieval.
 
-    def __init__(self, out_dir: Path, encoder_model: str = "all-MiniLM-L6-v2") -> None:
+    ``encoder_device`` applies only while constructing offline dense assets;
+    the runtime reader remains independently configured.  Keeping the default
+    CPU preserves existing evaluation/reproducibility behavior while allowing
+    an explicitly provisioned build job to use an isolated GPU.
+    """
+
+    def __init__(
+        self,
+        out_dir: Path,
+        encoder_model: str = "all-MiniLM-L6-v2",
+        *,
+        encoder_device: str = "cpu",
+    ) -> None:
         self.out_dir = Path(out_dir)
         self.encoder_model = encoder_model
+        self.encoder_device = str(encoder_device).strip() or "cpu"
         self._encoder = None
         self._stats: dict[str, Any] = {}
 
@@ -133,7 +146,10 @@ class CandidateViewIndexBuilder:
         if self._encoder is None:
             from sentence_transformers import SentenceTransformer  # type: ignore
 
-            self._encoder = SentenceTransformer(self.encoder_model, device="cpu")
+            self._encoder = SentenceTransformer(
+                self.encoder_model,
+                device=self.encoder_device,
+            )
         return self._encoder
 
     def _lane_dir(self, lane: str) -> Path:
@@ -423,9 +439,27 @@ class CandidateViewIndexBuilder:
 class CandidateViewIndexReader:
     """Read-only reader for the 4 candidate-aligned shadow lanes."""
 
-    def __init__(self, index_dir: Path, *, rrf_k: int = 60) -> None:
+    def __init__(
+        self,
+        index_dir: Path,
+        *,
+        rrf_k: int = 60,
+        encoder_model: str | None = None,
+    ) -> None:
         self.index_dir = Path(index_dir)
         self.rrf_k = int(rrf_k)
+        # Keep the reader aligned with the process-wide retrieval model
+        # configuration. A model-hub name is useful in development, but an
+        # offline production host must be able to point at its local snapshot
+        # explicitly (the previous hard-coded name triggered network lookups
+        # even when the snapshot was already present on disk).
+        if encoder_model is None:
+            from src.services.retrieval_config import get_embedding_model_name
+
+            encoder_model = get_embedding_model_name()
+        self.encoder_model = str(encoder_model).strip()
+        if not self.encoder_model:
+            raise ValueError("embedding_model_name_empty")
         meta_path = self.index_dir / "candidate-metadata.sqlite"
         if not meta_path.is_file():
             raise FileNotFoundError(f"metadata_not_found:{meta_path}")
@@ -514,7 +548,8 @@ class CandidateViewIndexReader:
         if self._encoder is None:
             from sentence_transformers import SentenceTransformer  # type: ignore
 
-            self._encoder = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+            self._encoder = SentenceTransformer(self.encoder_model, device="cpu")
+
         return self._encoder
 
     def _query_vector(self, query: str) -> np.ndarray:

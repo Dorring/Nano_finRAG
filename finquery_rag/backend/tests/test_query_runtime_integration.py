@@ -281,3 +281,14 @@ class TestQueryRuntimeIntegration:
         assert direct.status_code == adapted.status_code == 500
         assert direct.json()["detail"]["error_code"] == "query_error"
         assert adapted.json()["detail"]["error_code"] == "query_error"
+
+
+# Declared, not inherited.  See `legacy_single_turn_endpoint` in conftest.py for
+# why a test that patches the RAG engine must say which runtime it exercises
+# rather than depend on whichever mode is currently the default.
+
+
+@pytest.fixture(autouse=True)
+def _declared_runtime(legacy_single_turn_endpoint: None) -> None:
+    """This module drives the query runtime with a patched engine and asserts
+    the V1 lifecycle's engine invocation contract."""

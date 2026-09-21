@@ -6,6 +6,7 @@ from typing import Any, Mapping
 from rag_v2.contracts.evidence import BindingStatus, EvidenceBinding
 from rag_v2.contracts.plan import SupervisorPlan
 
+from .binder_fact_view import build_runtime_binder_fact_views
 from .binder_provider import BinderCallMetadata, BinderProvider, BinderProviderError, BinderProviderResult
 from .binding_validator import BindingValidationResult, validate_binding
 
@@ -22,13 +23,23 @@ class BinderRequest:
         return self.plan.required_slots
 
     def to_dict(self) -> dict[str, Any]:
+        """Serialize the model-facing Binder request without raw candidate text.
+
+        ``facts`` remains available on this in-process immutable request for
+        deterministic validation and downstream provenance. Only the compact
+        source-derived projection is sent to a Binder provider. This prevents
+        retrieval blobs or conversational fields from becoming accidental
+        evidence context while preserving the real fact IDs the provider is
+        allowed to select.
+        """
+
         return {
             "question_id": self.question_id,
             "question": self.question,
             "intent": self.plan.intent.value,
             "operation": self.plan.operation,
             "required_slots": [slot.to_dict() for slot in self.plan.required_slots],
-            "financial_facts": [dict(fact) for fact in self.facts],
+            "financial_facts": build_runtime_binder_fact_views(self.facts),
         }
 
 

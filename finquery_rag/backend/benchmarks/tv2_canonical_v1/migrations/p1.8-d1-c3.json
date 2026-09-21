@@ -1,0 +1,189 @@
+{
+  "applied": true,
+  "c5_invariant": {
+    "tv2f01-s3-crossdiff-001": {
+      "binds": true,
+      "first_mention": "NVIDIA",
+      "satisfied": true,
+      "second_mention": "Tesla",
+      "slot_entities": [
+        "NVIDIA",
+        "Tesla"
+      ]
+    },
+    "tv2f01-s3-crossdiff-002": {
+      "binds": true,
+      "first_mention": "Apple",
+      "satisfied": true,
+      "second_mention": "Microsoft",
+      "slot_entities": [
+        "Apple",
+        "Microsoft"
+      ]
+    },
+    "tv2f01-s3-crossdiff-003": {
+      "binds": true,
+      "first_mention": "Apple",
+      "satisfied": true,
+      "second_mention": "Tesla",
+      "slot_entities": [
+        "Apple",
+        "Tesla"
+      ]
+    },
+    "tv2f01-s3-crossdiff-004": {
+      "binds": true,
+      "first_mention": "The Coca-Cola Company",
+      "satisfied": true,
+      "second_mention": "Visa",
+      "slot_entities": [
+        "The Coca-Cola Company",
+        "Visa"
+      ]
+    },
+    "tv2f01-s3-crossdiff-005": {
+      "binds": true,
+      "first_mention": "NVIDIA",
+      "satisfied": true,
+      "second_mention": "The Coca-Cola Company",
+      "slot_entities": [
+        "NVIDIA",
+        "The Coca-Cola Company"
+      ]
+    }
+  },
+  "control": {
+    "cases": [
+      "tv2f01-s3-crossdiff-003",
+      "tv2f01-s3-crossdiff-004",
+      "tv2f01-s3-crossdiff-005"
+    ],
+    "result": "contract reproduces v8 slot entities for all three"
+  },
+  "generation": {
+    "code_path": "scripts/evaluation/build_p1_2_plan_fixtures.py::author_plan -> _multi_evidence_slots (one slot per gold.fact_ids entry, in the gold's order, entity read from the fact store)",
+    "command": ".venv/bin/python scripts/evaluation/build_p1_8_d1_fixture_v9.py --apply",
+    "commit_sha": "ffc8d834378947aea3aea003031bd37873066e5f",
+    "contract_script_sha256": "9062a35b6aa619985db5c4ad03a16a43e6dd8710c77f41155149b59d0846f2ff",
+    "driver_script_sha256": "a2fcf39cb6d9cbf8b1ae232c81a1c4d0a86fc95778e43f0dbd3c1012a7686ce6",
+    "invoked_as": "module import; the contract is called, not restated"
+  },
+  "migration": "p1.8-d1-c3",
+  "new_fixture": {
+    "path": "/disk/qh/nano-finrag/artifacts/evaluation/p1-8-d1-c3/plan-fixtures-v9.jsonl",
+    "sha256": "c20afaec24bcab1360bbcbf9e880d9c8661c24551a1bcef2c59dc0248f3147da"
+  },
+  "old_fixture": {
+    "path": "/disk/qh/nano-finrag/artifacts/evaluation/p1-8-c-v2/plan-fixtures-v8.jsonl",
+    "sha256": "7463b45a5bfc309d0a5ab29cdb15b3f070c13c8526ae5d1486ca67847dda362d"
+  },
+  "out_of_scope_observed": "`crossdiff-003/004/005` carry the same class of stale *question string* (`difference in Total between ...` where the canonical question says `Total liabilities`), but their operand order already agrees with the contract, so they are not operand-order defects and are left unchanged to keep this migration attributable to D1.",
+  "provenance": {
+    "eval_set": "/disk/qh/nano-finrag/artifacts/evaluation/p1-8-c-v2/canonical-eval-v1.jsonl",
+    "eval_set_sha256": "227f0341d94ab8d4b9e7ee033feaa9b40e86ec32c3137a74d2931657e9281ece",
+    "fact_store": "/disk/qh/nano-finrag/data/trusted-v2/fact-store/financial-facts.jsonl",
+    "fact_store_sha256": "0382c6a17f7065516c0edd0d2ca10d5ea6e0e0c7bb0dff68acae38134fc4db57",
+    "gold": "/disk/qh/nano-finrag/artifacts/evaluation/p1-8-c-v2/gold-evidence-v1.jsonl",
+    "gold_sha256": "a3d17211bbb42c83c07d1077cb1ed7ef81c2af7e0d27159cac2b58c591f8f6e4",
+    "ixbrl_fact_store": "/disk/qh/nano-finrag/data/trusted-v2/fact-store/financial-facts-ixbrl-v1.jsonl",
+    "ixbrl_fact_store_sha256": "f46dd01f46e2fc1a16808e9b426f2fada07ca45b7c4cf34499ffbba4b6a00dc1"
+  },
+  "root_cause_addressed": "STALE_PINNED_PLAN_FIXTURE",
+  "row_digests": {
+    "tv2f01-s3-crossdiff-001": {
+      "field_diff": {
+        "coordinate_candidates.s1": {
+          "new": 3,
+          "old": 1
+        },
+        "plan.required_slots[0].entity": {
+          "new": "NVIDIA",
+          "old": "Tesla"
+        },
+        "plan.required_slots[0].entity_id": {
+          "new": "nvda",
+          "old": "tsla"
+        },
+        "plan.required_slots[1].entity": {
+          "new": "Tesla",
+          "old": "NVIDIA"
+        },
+        "plan.required_slots[1].entity_id": {
+          "new": "tsla",
+          "old": "nvda"
+        },
+        "question": {
+          "new": "What is the difference in Net income between NVIDIA and Tesla in FY2025?",
+          "old": "What is the difference in Additions between Tesla and NVIDIA in FY2025?"
+        }
+      },
+      "new_question": "What is the difference in Net income between NVIDIA and Tesla in FY2025?",
+      "new_question_sha256": "3f38075806c5ac562333190a12ebec130ef9b01a2d5e96e0d9995f983e7ff559",
+      "new_row_sha256": "e39c95efa205d8ce4a1e3845eee4f02191078560c429bd2cb1a6bd5566f7faea",
+      "new_slot_entities": [
+        "NVIDIA",
+        "Tesla"
+      ],
+      "old_row_sha256": "9f71a5bf02927e825e455ad16ec3a6becad34fa3a002cc700ce5878ce49268ee",
+      "old_slot_entities": [
+        "Tesla",
+        "NVIDIA"
+      ],
+      "question": "What is the difference in Additions between Tesla and NVIDIA in FY2025?",
+      "question_sha256": "73b2b1855b0a3175656dfe8be9979189c3e2ba839cc4c73f78be3555ce01d4dc"
+    },
+    "tv2f01-s3-crossdiff-002": {
+      "field_diff": {
+        "coordinate_candidates.s1": {
+          "new": 3,
+          "old": 1
+        },
+        "coordinate_candidates.s2": {
+          "new": 2,
+          "old": 1
+        },
+        "plan.required_slots[0].entity": {
+          "new": "Apple",
+          "old": "Microsoft"
+        },
+        "plan.required_slots[0].entity_id": {
+          "new": "aapl",
+          "old": "msft"
+        },
+        "plan.required_slots[1].entity": {
+          "new": "Microsoft",
+          "old": "Apple"
+        },
+        "plan.required_slots[1].entity_id": {
+          "new": "msft",
+          "old": "aapl"
+        },
+        "question": {
+          "new": "What is the difference in Net income between Apple and Microsoft in FY2025?",
+          "old": "What is the difference in Other between Microsoft and Apple in FY2025?"
+        }
+      },
+      "new_question": "What is the difference in Net income between Apple and Microsoft in FY2025?",
+      "new_question_sha256": "df71b3754bbd6082b54385c687d4307e78b19189b1d1c3c75ec1c0c5614330c7",
+      "new_row_sha256": "e394d8a52bf430ab23251d258cd9ef0627e491686794d3903e16e16e2b54ee4e",
+      "new_slot_entities": [
+        "Apple",
+        "Microsoft"
+      ],
+      "old_row_sha256": "7cbb8e8917ba9584f6509e16a3954e774c18540aca64b01c7c52c01746f1e1d2",
+      "old_slot_entities": [
+        "Microsoft",
+        "Apple"
+      ],
+      "question": "What is the difference in Other between Microsoft and Apple in FY2025?",
+      "question_sha256": "76dab517924d3b834a5ae2cdcd6392a1546e5b6a0a323e74811c3da11724a8e6"
+    }
+  },
+  "rows_changed": [
+    "tv2f01-s3-crossdiff-001",
+    "tv2f01-s3-crossdiff-002"
+  ],
+  "stage": "P1.8-D1-C3-CONTRACT-REGENERATION",
+  "validator_note": "`enrich_and_validate` is not run over the whole set here: it aborts on `tv2f01-s3-compare-001` with `an answerable slot selects no fact`. That is pre-existing and unrelated to this stratum -- the coordinate index folds a record's `metric` field, which is empty on every rebuilt-iXBRL row, while a slot names the metric in prose. The C5 invariant is therefore checked directly instead.",
+  "why_stale": "The P1.6-0H migration rewrote each cross-entity slot's metric, the gold's fact_ids and the canonical question, but never re-derived the slot entities or their order and never refreshed the fixture's own question string. The slot order is therefore a fossil of the pre-0H question: `crossdiff-001` was asked as `Additions between Tesla and NVIDIA` and still stores Tesla as the minuend, while the canonical question, the gold fact_ids order and the gold expected_value all put NVIDIA first."
+}

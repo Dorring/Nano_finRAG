@@ -22,8 +22,16 @@ LAUNCHER="${RUNTIME_DIR}/.launch_model.sh"
 : "${MODEL_MAX_TOKENS:=512}"
 : "${CONDA_ENV_NAME:=nano}"
 : "${MODEL_PYTHON:=}"
+: "${HF_ENDPOINT:=}"
+: "${HF_HOME:=}"
 : "${HF_HUB_OFFLINE:=1}"
 : "${HF_DATASETS_OFFLINE:=1}"
+: "${TRANSFORMERS_OFFLINE:=1}"
+# Loading the production checkpoint can legitimately take longer than two
+# minutes on a busy GPU host.  Keep the timeout configurable so a slow load is
+# not mistaken for a model failure (and so start_all.sh does not roll back a
+# healthy process that is still initializing).
+: "${MODEL_HEALTH_TIMEOUT_SECONDS:=300}"
 
 write_status() { printf '%s\n' "$1" > "${STATUS_FILE}"; }
 
@@ -44,6 +52,11 @@ fi
 # Pre-flight checks.
 if [[ -z "${CUDA_VISIBLE_DEVICES:-}" ]]; then
     echo "[model] CUDA_VISIBLE_DEVICES is not set." >&2
+    write_status "FAILED"
+    exit 1
+fi
+if ! [[ "${MODEL_HEALTH_TIMEOUT_SECONDS}" =~ ^[1-9][0-9]*$ ]]; then
+    echo "[model] MODEL_HEALTH_TIMEOUT_SECONDS must be a positive integer (got ${MODEL_HEALTH_TIMEOUT_SECONDS})." >&2
     write_status "FAILED"
     exit 1
 fi
@@ -90,8 +103,11 @@ fi
     printf 'set -e\n'
     printf 'echo $$ > %s\n' "$(shell_squote "${PID_FILE}")"
     printf 'cd %s\n' "$(shell_squote "${REPO_ROOT}")"
+    printf 'export HF_ENDPOINT=%s\n' "$(shell_squote "${HF_ENDPOINT}")"
+    printf 'export HF_HOME=%s\n' "$(shell_squote "${HF_HOME}")"
     printf 'export HF_HUB_OFFLINE=%s\n' "$(shell_squote "${HF_HUB_OFFLINE}")"
     printf 'export HF_DATASETS_OFFLINE=%s\n' "$(shell_squote "${HF_DATASETS_OFFLINE}")"
+    printf 'export TRANSFORMERS_OFFLINE=%s\n' "$(shell_squote "${TRANSFORMERS_OFFLINE}")"
     printf '%sCUDA_VISIBLE_DEVICES=%s exec %s -m scripts.chat_openai_compat --source %s --model-tag %s --step %s --model-name %s --port %s --host %s --temperature %s --max-tokens %s > %s 2>&1\n' \
         "${__CONDA_PRE}" \
         "$(shell_squote "${CUDA_VISIBLE_DEVICES}")" \
@@ -110,10 +126,10 @@ fi
 : > "${LOG_FILE}"
 tmux new-session -d -s "${SESSION}" "bash $(shell_squote "${LAUNCHER}")"
 
-echo "[model] Started in tmux session '${SESSION}'. Waiting for /health (up to 120s)..."
+echo "[model] Started in tmux session '${SESSION}'. Waiting for /health (up to ${MODEL_HEALTH_TIMEOUT_SECONDS}s)..."
 
 __URL="http://${MODEL_HOST}:${MODEL_PORT}/health"
-if wait_for_http_checked "${__URL}" 120 "${PID_FILE}"; then
+if wait_for_http_checked "${__URL}" "${MODEL_HEALTH_TIMEOUT_SECONDS}" "${PID_FILE}"; then
     __pid="$(cat "${PID_FILE}" 2>/dev/null || true)"
     if [[ -n "${__pid}" ]]; then
         write_pid_meta "${PID_FILE}" "${__pid}" "chat_openai_compat" "${SESSION}"

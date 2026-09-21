@@ -29,6 +29,23 @@ class TestContextualQueryResolver(unittest.TestCase):
         self.assertFalse(res.requires_context)
         self.assertEqual(res.standalone_query, query)
 
+    def test_explicit_calculation_is_self_contained_despite_growth_marker(self):
+        query = (
+            "What was the year-over-year growth rate of total net sales "
+            "reported by Apple from FY2024 to FY2025?"
+        )
+        self.assertTrue(self.resolver.is_self_contained_fast_path(query))
+
+    def test_elliptical_growth_follow_up_still_requires_context(self):
+        self.assertFalse(self.resolver.is_self_contained_fast_path("How much did it grow?"))
+
+    def test_metric_period_without_entity_still_requires_context(self):
+        self.assertFalse(
+            self.resolver.is_self_contained_fast_path(
+                "What was the revenue growth rate from FY2024 to FY2025?"
+            )
+        )
+
     def test_entity_inheritance(self):
         state = DialogueState(
             conversation_id="c1",

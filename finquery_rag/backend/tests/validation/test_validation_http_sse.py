@@ -448,3 +448,15 @@ class TestValidationSSEEndpoint:
         # Done event carries the blocked validation status.
         assert done[0]["validation"]["status"] == "blocked"
         assert done[0]["repair"]["fallback_used"] is True
+
+
+# Declared, not inherited.  See `legacy_single_turn_endpoint` in conftest.py for
+# why a test that patches the RAG engine must say which runtime it exercises
+# rather than depend on whichever mode is currently the default.
+
+
+@pytest.fixture(autouse=True)
+def _declared_runtime(legacy_single_turn_endpoint: None) -> None:
+    """This module drives the real /query HTTP and SSE routes with a patched
+    RAG engine. Only the V1 lifecycle calls get_rag_engine, so the runtime
+    under test is V1 single-turn."""

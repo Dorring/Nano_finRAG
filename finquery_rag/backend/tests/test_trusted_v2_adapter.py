@@ -85,6 +85,7 @@ def test_adapter_is_runtime_port_and_maps_released_outcome() -> None:
     assert result.citation_ids == ["cite-1"]
     assert result.calculation_ids == ["calc-1"]
     assert result.citations == [{"citation_id": "cite-1", "page": 4}]
+    assert result.calculations == []
     assert result.runtime_metadata is not None
     assert result.runtime_metadata.attributes["production_routing"] is False
     assert result.runtime_metadata.attributes["route"] == "DIRECT_FACT"
@@ -201,6 +202,43 @@ def test_answer_text_does_not_create_provenance() -> None:
     assert result.status is RuntimeStatus.ANSWER
     assert result.evidence_ids == []
     assert result.citation_ids == []
+    assert result.calculation_ids == []
+    assert result.calculations == []
+
+
+def test_adapter_maps_structured_calculation_payload_without_answer_parsing() -> None:
+    calculation = {
+        "calculation_id": "calc-1",
+        "status": "executed",
+        "operation": "difference",
+        "value": "10",
+        "formula": "current - previous",
+        "formula_version": "difference.v1",
+        "operands": [
+            {
+                "name": "current",
+                "value": "20",
+                "evidence_chunk_id": "fact-current",
+            },
+            {
+                "name": "previous",
+                "value": "10",
+                "evidence_chunk_id": "fact-previous",
+            },
+        ],
+    }
+    outcome = V2ExecutionOutcome(
+        status=V2ExecutionStatus.READY_FOR_RELEASE,
+        answer="The answer text contains no structured IDs.",
+        calculations=[calculation],
+        release_status=ReleaseStatus.RELEASED,
+    )
+
+    result = asyncio.run(
+        TrustedFinancialRuntimeV2(FakeCoordinator(outcome)).execute(_request()),
+    )
+
+    assert result.calculations == [calculation]
     assert result.calculation_ids == []
 
 

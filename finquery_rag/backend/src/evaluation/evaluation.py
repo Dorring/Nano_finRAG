@@ -1489,7 +1489,8 @@ def _run_expected_calculation(expected: ExpectedCalculation) -> Decimal | None:
         result = format_ratio_percent(args.get("value"))
     else:
         return None
-    return result.value if result.ok else None
+    # Named, not defaulted: the two readings differ for a percentage.
+    return result.points_value if result.ok else None
 
 
 def _decimal_or_none(value: Any) -> Decimal | None:

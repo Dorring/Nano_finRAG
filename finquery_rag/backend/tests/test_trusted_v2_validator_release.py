@@ -123,30 +123,71 @@ def test_calculation_candidate_passes_and_preserves_c1_provenance() -> None:
     assert calculation.calls == 1
 
 
+def test_calculation_release_report_has_no_hidden_generation_hard_fail() -> None:
+    facts = {
+        "CURRENT": _fact("CURRENT", period="FY2024", slots=("current",), value="391"),
+        "PRIOR": _fact("PRIOR", period="FY2023", slots=("prior",), value="383"),
+    }
+    retrieval, binder, _, _, _ = _real_capabilities(
+        [["CURRENT", "PRIOR"]], facts, SelectingBinderProvider()
+    )
+    calculation = DeterministicCalculationCapability()
+    validator = TrustedReleaseValidationCapability()
+    plan = _plan(
+        _slot("current", period="FY2024", role="current"),
+        _slot("prior", period="FY2023", role="prior"),
+        intent=Intent.CALCULATION,
+        operation="growth_rate",
+    )
+    outcome = asyncio.run(
+        _coordinator(
+            "Compare years",
+            plan,
+            retrieval,
+            binder,
+            calculation=calculation,
+            generation=TrustedV2GenerationCapability(),
+            validator=validator,
+        ).execute(_request("Compare years", "tv2-05-calc-report"))
+    )
+
+    assert outcome.status is V2ExecutionStatus.READY_FOR_RELEASE
+    report = outcome.runtime_metadata["validation"]["generation_report"]
+    assert report["status"] == "PASS"
+    assert report["failure_codes"] == []
+    assert all(item["severity"] != "HARD_FAIL" for item in report["findings"])
+
+
 class _Specialist:
     def __init__(self, answer: str, citation_ids: list[str]) -> None:
         self.answer = answer
         self.citation_ids = citation_ids
         self.calls = 0
 
-    def generate(self, question: str, evidence_items: list[dict[str, Any]], calculation_result: dict[str, Any] | None):
-        del question, evidence_items, calculation_result
+    def generate(self, prompt: str):
+        del prompt
         self.calls += 1
         return {"answer_text": self.answer, "citation_ids": self.citation_ids}
 
 
 def test_specialist_candidate_uses_same_release_authority() -> None:
+    # Two distinct facts, one per period.  Both rows were previously FY2024
+    # Revenue with the same value -- the same canonical fact twice -- which
+    # H2A-2C-1 now renders deterministically instead of sending to a generator.
+    # The subject of this test is that a specialist candidate passes through the
+    # *same* release authority, so the state has to be one the specialist is
+    # genuinely selected for.
     facts = {
-        "E1": _fact("E1", slots=("a",)),
-        "E2": _fact("E2", slots=("b",)),
+        "E1": _fact("E1", slots=("a",), period="FY2024"),
+        "E2": _fact("E2", slots=("b",), period="FY2023"),
     }
     retrieval, binder, _, _, _ = _real_capabilities(
         [["E1", "E2"]], facts, SelectingBinderProvider()
     )
     specialist = _Specialist("Revenue [citation-E1]", ["citation-E1"])
-    generation = TrustedV2GenerationCapability(specialist=specialist)
+    generation = TrustedV2GenerationCapability(model_backend=specialist)
     validator = TrustedReleaseValidationCapability()
-    plan = _plan(_slot("a"), _slot("b"))
+    plan = _plan(_slot("a", period="FY2024"), _slot("b", period="FY2023"))
     outcome = asyncio.run(
         _coordinator(
             "Summarize revenue",

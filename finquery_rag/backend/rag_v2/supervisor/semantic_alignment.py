@@ -20,7 +20,7 @@ import re
 import unicodedata
 from dataclasses import dataclass
 from enum import Enum
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable, Mapping, Sequence
 from typing import Any
 
 from rag_v2.contracts.plan import Intent, SupervisorPlan
@@ -108,6 +108,46 @@ class ScopeMention:
 
     scope_id: str
     surface_form: str
+
+
+class EvidenceScope(str, Enum):
+    """Small, source-derived scope classification for an admitted fact.
+
+    The query/plan alignment gate cannot infer a business scope from a
+    metric name alone.  This enum is therefore deliberately conservative:
+    ``UNKNOWN`` means that the indexed source did not expose enough row
+    context to classify the fact, not that the fact is consolidated.
+    """
+
+    CONSOLIDATED = "consolidated"
+    SEGMENT = "segment"
+    UNKNOWN = "unknown"
+
+
+@dataclass(frozen=True)
+class EvidenceScopeClassification:
+    """Deterministic classification of source row/reporting scope."""
+
+    scope: EvidenceScope = EvidenceScope.UNKNOWN
+    scope_label: str | None = None
+    source: str | None = None
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.scope, EvidenceScope):
+            object.__setattr__(self, "scope", EvidenceScope(self.scope))
+        if self.scope_label is not None:
+            label = str(self.scope_label).strip()
+            object.__setattr__(self, "scope_label", label or None)
+        if self.source is not None:
+            source = str(self.source).strip()
+            object.__setattr__(self, "source", source or None)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "scope": self.scope.value,
+            "scope_label": self.scope_label,
+            "source": self.source,
+        }
 
 
 @dataclass(frozen=True)
@@ -290,6 +330,8 @@ class BoundEvidenceSemanticCheck:
     query_metric_ids: tuple[str, ...] = ()
     query_entity_ids: tuple[str, ...] = ()
     query_period_ids: tuple[str, ...] = ()
+    query_scope_ids: tuple[str, ...] = ()
+    fact_scope_ids: tuple[str, ...] = ()
 
     @property
     def allowed(self) -> bool:
@@ -304,6 +346,8 @@ class BoundEvidenceSemanticCheck:
             "query_metric_ids": list(self.query_metric_ids),
             "query_entity_ids": list(self.query_entity_ids),
             "query_period_ids": list(self.query_period_ids),
+            "query_scope_ids": list(self.query_scope_ids),
+            "fact_scope_ids": list(self.fact_scope_ids),
         }
 
 
@@ -311,6 +355,15 @@ class BoundEvidenceSemanticCheck:
 # added when the business meaning is equivalent; notably, operating income
 # and net income are separate metrics and must never be aliases.
 _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
+    MetricDefinition(
+        "total_operating_expenses",
+        (
+            "total operating expenses",
+            "total operating expense",
+            "operating expenses",
+            "operating expense",
+        ),
+    ),
     MetricDefinition(
         "operating_income",
         (
@@ -338,6 +391,8 @@ _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
         "revenue",
         (
             "total revenue",
+            "total revenues",
+            "total net sales",
             "net sales",
             "sales revenue",
             "revenue",
@@ -347,6 +402,29 @@ _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
             "销售收入",
             "营收",
             "净销售额",
+        ),
+    ),
+    # ``net revenue`` is intentionally a separate canonical concept.  It is
+    # common in payment/financial-service filings (for example Visa), but it
+    # is not universally interchangeable with gross or aggregate revenue.
+    # Keeping it distinct prevents a plan for generic ``revenue`` from being
+    # silently accepted for an explicitly requested net measure while still
+    # allowing the exact filing label to align end to end.
+    MetricDefinition(
+        "net_revenue",
+        (
+            "net revenue",
+            "net revenues",
+            # Filing-specific aggregate labels used by financial-services
+            # and beverage issuers. These remain under the distinct
+            # ``net_revenue`` concept rather than collapsing into generic
+            # ``revenue``.
+            "total net revenue",
+            "total net revenues",
+            "net operating revenue",
+            "net operating revenues",
+            "total net operating revenue",
+            "total net operating revenues",
         ),
     ),
     MetricDefinition(
@@ -391,12 +469,136 @@ _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
         "cost_of_revenue",
         (
             "cost of revenue",
+            "cost of revenues",
             "cost of sales",
             "costs of revenue",
             "cogs",
             "营业成本",
             "销售成本",
         ),
+    ),
+    # ------------------------------------------------------------------
+    # P1.6-E2.  Twelve concepts added after auditing every label the
+    # alignment gate was refusing (docs/evaluation/p1-6-e2-ontology-review.md).
+    #
+    # Each was admitted on one test only: the label names one quantity, it
+    # would be recognised in any filing that reports it, and the mapping
+    # would still be wanted with a different benchmark. Whether adding it
+    # releases a case was not asked and is not recorded anywhere -- that
+    # would be fitting the ontology to the evaluation set.
+    #
+    # Each is a NEW canonical metric, not an alias onto an existing one.
+    # `leasehold_improvements` is not a kind of `assets`, and mapping it
+    # there to make the gate pass would be exactly the false equivalence
+    # the NO_COLLISION rule exists to prevent. Only genuine synonyms belong
+    # in an existing entry's alias tuple.
+    # ------------------------------------------------------------------
+    MetricDefinition(
+        "accumulated_depreciation",
+        ("accumulated depreciation", "累计折旧"),
+    ),
+    MetricDefinition(
+        "finished_goods",
+        ("finished goods", "finished goods inventory", "产成品"),
+    ),
+    MetricDefinition(
+        "other_long_term_liabilities",
+        ("other long-term liabilities", "other non-current liabilities"),
+    ),
+    MetricDefinition(
+        "selling_and_marketing",
+        (
+            "selling and marketing",
+            "销售及市场推广",
+        ),
+    ),
+    MetricDefinition(
+        "basic_eps",
+        ("basic earnings per share", "basic eps", "基本每股收益"),
+    ),
+    MetricDefinition(
+        "basic_weighted_average_shares",
+        (
+            "basic weighted average shares",
+            "basic weighted-average shares",
+            "basic weighted average shares outstanding",
+        ),
+    ),
+    MetricDefinition(
+        "diluted_weighted_average_shares",
+        (
+            "weighted-average shares—diluted",
+            "diluted weighted average shares",
+            "diluted weighted-average shares",
+            "weighted average shares diluted",
+        ),
+    ),
+    MetricDefinition(
+        "tangible_book_value_per_share",
+        ("tangible book value per share", "tbvps", "有形账面价值每股"),
+    ),
+    MetricDefinition(
+        "lending_related_commitments",
+        ("total lending-related commitments", "lending-related commitments"),
+    ),
+    MetricDefinition(
+        "us_treasury_securities",
+        ("u.s. treasury securities", "us treasury securities", "美国国债"),
+    ),
+    MetricDefinition(
+        "leasehold_improvements",
+        ("leasehold improvements", "租赁资产改良"),
+    ),
+    MetricDefinition(
+        "land",
+        ("land", "土地"),
+    ),
+    # ------------------------------------------------------------------
+    # P1.6-E3.  Eight more from the E3-1 audit
+    # (docs/evaluation/p1-6-e3-semantic-coverage.md), on the same test as the
+    # twelve above: one quantity, table-independent, wanted with a different
+    # benchmark.  `total_comprehensive_income` is separate from
+    # `other_comprehensive_income` because total CI is net income plus OCI --
+    # aliasing them would be the false equivalence the rules forbid.
+    # ------------------------------------------------------------------
+    MetricDefinition(
+        "interest_expense",
+        ("interest expense", "利息费用"),
+    ),
+    MetricDefinition(
+        "stock_based_compensation",
+        ("stock-based compensation expense", "stock based compensation",
+         "share-based compensation", "股份支付费用"),
+    ),
+    MetricDefinition(
+        "other_comprehensive_income",
+        ("other comprehensive income (loss)", "other comprehensive income"),
+    ),
+    MetricDefinition(
+        "total_comprehensive_income",
+        ("total comprehensive income", "综合收益总额"),
+    ),
+    MetricDefinition(
+        "foreign_currency_translation_adjustment",
+        ("foreign currency translation adjustment",
+         "net foreign currency translation adjustments",
+         "外币报表折算差额"),
+    ),
+    MetricDefinition(
+        "return_on_equity",
+        ("return on equity", "roe", "净资产收益率"),
+    ),
+    MetricDefinition(
+        "risk_free_interest_rate",
+        ("risk-free interest rate", "risk free interest rate", "无风险利率"),
+    ),
+    MetricDefinition(
+        "statutory_federal_income_tax_rate",
+        ("statutory federal income tax rate",),
+    ),
+    MetricDefinition(
+        "noncurrent_term_debt",
+        ("total non-current portion of term debt", "non-current portion of term debt"),
     ),
 )
 
@@ -418,7 +620,36 @@ _ENTITY_DEFINITIONS: tuple[_VocabularyDefinition, ...] = (
     _VocabularyDefinition("orcl", ("oracle", "orcl", "甲骨文")),
     _VocabularyDefinition("nvda", ("nvidia", "nvda", "英伟达")),
     _VocabularyDefinition("meta", ("meta", "facebook", "脸书")),
-    _VocabularyDefinition("ko", ("coca cola", "coca-cola", "ko")),
+    _VocabularyDefinition(
+        "ko",
+        (
+            "coca cola",
+            "coca-cola",
+            "coca cola company",
+            "the coca cola company",
+            "the coca-cola company",
+            "ko",
+        ),
+    ),
+    _VocabularyDefinition(
+        "jpmorganchase",
+        (
+            "jpmorgan",
+            "jpmorgan chase",
+            "jpmorganchase",
+            "j p morgan",
+            "jpmorgan chase co",
+            "jpmorgan chase and co",
+        ),
+    ),
+    _VocabularyDefinition("visa", ("visa", "visa inc", "visa inc company")),
+    # Added after the P1.3 fixture audit: `pfe_fy2024` is a document in the
+    # corpus and Pfizer is ten questions in the canonical eval set, but the
+    # vocabulary did not know it, so `canonical_entity_id("Pfizer")` returned
+    # None.  A slot carrying the mention still binds -- the mention is matched
+    # as text when there is no id -- but a slot that could have carried an
+    # identity could not, and the audit could not tell "unnamed" from "unknown".
+    _VocabularyDefinition("pfe", ("pfizer", "pfe", "辉瑞")),
     _VocabularyDefinition("ford", ("ford", "福特")),
 )
 
@@ -431,7 +662,18 @@ _OPERATION_DEFINITIONS: tuple[_VocabularyDefinition, ...] = (
             "year-over-year",
             "yoy",
             "grew",
+            "grow",
             "growth",
+            "increased",
+            "increase",
+            # `percentage change` is a growth rate and `change` alone is not.
+            # Aliases are matched longest-first and an overlapping span is
+            # dropped, so adding the longer form here is what stops `percentage
+            # change in X` reading as `change in` -- the difference operation --
+            # and disagreeing with a planner that read it correctly.
+            "percentage change",
+            "percent change",
+            "percentage change in",
             "同比",
             "增长率",
         ),
@@ -474,8 +716,34 @@ _SCOPE_DEFINITIONS: tuple[_VocabularyDefinition, ...] = (
 )
 
 
-def _normalize_surface(value: Any) -> str:
-    text = unicodedata.normalize("NFKC", str(value or "")).casefold()
+#: A footnote marker welded onto a row label by the extractor: `Commercial(3)`,
+#: `Interest^{(f)}`, `Cost of revenues (1)`.  Deliberately narrow -- a digit or a
+#: SINGLE letter -- because a wider pattern would eat a meaningful parenthetical:
+#: `Earnings per share (diluted)` must not collapse onto `Earnings per share`,
+#: which is a different concept and a collision the gate exists to prevent.
+_FOOTNOTE_SUFFIX = re.compile(
+    r"(?:\s*\(\s*(?:\d{1,2}|[a-z])\s*\)"
+    r"|\s*\^\s*\{\s*(?:\d{1,2}|[a-z])\s*\})+\s*$",
+    re.IGNORECASE,
+)
+
+
+def _normalize_surface(value: Any, *, strip_footnote: bool = True) -> str:
+    """NFKC, casefold, punctuation-stripped, whitespace-collapsed.
+
+    ``strip_footnote`` is on for the *concept* lookup and off for the *literal*
+    identity.  A marker is table furniture when the question is which concept a
+    label names -- ``Cost of revenues (1)`` is cost of revenue -- and part of the
+    row's identity when the question is which row it is.  Pfizer files both
+    ``Acquired in-process research and development expenses`` and the ``(g)``
+    row stating different numbers, and collapsing them made the two
+    indistinguishable to the one layer whose job is telling facts apart.
+    """
+
+    raw = str(value or "")
+    if strip_footnote:
+        raw = _FOOTNOTE_SUFFIX.sub("", raw)
+    text = unicodedata.normalize("NFKC", raw).casefold()
     text = text.replace("’", "'")
     # Retain Unicode word characters (including Chinese), while making
     # punctuation-separated phrases comparable to the prompt's plain text.
@@ -485,6 +753,26 @@ def _normalize_surface(value: Any) -> str:
 
 def _is_cjk_phrase(value: str) -> bool:
     return any("\u4e00" <= char <= "\u9fff" for char in value)
+
+
+def _query_mentions_label(query: str, label: str) -> bool:
+    """Whether the query quotes a whole row label.
+
+    Word-bounded, so the label ``Deferred`` is not read out of a question asking
+    for ``Deferred taxes`` -- that is a different row and the planner naming it
+    is exactly the case this has to keep honest.  Footnote markers are kept on
+    both sides, for the reason the literal identity keeps them.
+
+    Normalisation is the one the ontology's own aliases go through, so a label
+    matches however the question spells its punctuation and spacing.  It is
+    deliberately a containment test and not a parse: what it establishes is that
+    the question carries the row, which is all the source can testify to.
+    """
+
+    want = _normalize_surface(label, strip_footnote=False)
+    if not want:
+        return False
+    return _alias_matches(_normalize_surface(query, strip_footnote=False), want)
 
 
 def _alias_matches(text: str, alias: str) -> bool:
@@ -618,6 +906,50 @@ def canonical_metric_id(value: Any) -> str | None:
     return None
 
 
+#: Prefix marking a metric identity that is the fact's own surface rather than
+#: an ontology id.  Interior spaces become underscores so the id is one token.
+LITERAL_METRIC_PREFIX = "literal:"
+
+
+def metric_identity(value: Any) -> str | None:
+    """A metric's identity: the ontology's id, or the metric's own exact surface.
+
+    The ontology cannot name every metric a filing reports.  ``Impact of the
+    State Aid Decision`` is a real row in the corpus and no amount of aliasing
+    makes it ``revenue``; before this, it resolved to ``None`` and *nothing could
+    bind it* -- a slot naming it was unsatisfiable while the fact existed.
+
+    The fallback is deliberately the weakest thing that works.  It is the
+    normalized surface and nothing else: no synonym expansion, no stemming, no
+    fuzzy distance.  Two metrics share a literal identity exactly when they are
+    the same string after casefolding, punctuation stripping and whitespace
+    collapsing, which is the same normalisation the ontology's own aliases go
+    through.  ``"Impact of the State Aid Decision."`` and
+    ``"impact  of the state aid decision"`` are one metric; ``"Impact of the
+    State Aid"`` is a different one.
+
+    This cannot forge a metric.  A literal identity is only ever *compared*; it
+    names nothing on its own, and a slot carrying one still binds only if a fact
+    from the store carries the same literal.  A question asking for
+    ``Number of Employees`` gets a literal identity and finds no such fact, which
+    is exactly the abstention it was authored to be.
+    """
+
+    known = canonical_metric_id(value)
+    if known is not None:
+        return known
+    # Footnote markers survive into the literal identity even though the concept
+    # lookup above strips them.  `Acquired in-process research and development
+    # expenses(g)` and the unmarked row are different rows of the same table
+    # stating different numbers; an identity that merged them would let a slot
+    # for one bind the other, which is the failure this identity exists to
+    # prevent rather than to cause.
+    normalized = _normalize_surface(value, strip_footnote=False)
+    if not normalized:
+        return None
+    return LITERAL_METRIC_PREFIX + normalized.replace(" ", "_")
+
+
 def metric_alias_registry() -> Mapping[str, tuple[str, ...]]:
     """Return a copy of the explicit metric ontology used by the gate.
 
@@ -665,6 +997,355 @@ def canonical_scope_id(value: Any) -> str | None:
     """Resolve a known reporting-scope qualifier."""
 
     return _canonical_vocabulary_id(value, _SCOPE_INDEX)
+
+
+_TOTAL_REVENUE_MARKERS = frozenset(
+    {
+        "total revenue",
+        "total revenues",
+        "total net sales",
+        "total sales",
+        "consolidated revenue",
+        "consolidated revenues",
+        "consolidated net sales",
+    }
+)
+_SEGMENT_HEADER_MARKERS = frozenset(
+    {
+        "segment",
+        "segments",
+        "business segment",
+        "business segments",
+        "revenue by segment",
+        "revenues by segment",
+        "segment revenue",
+        "segment revenues",
+    }
+)
+_ROW_HEADER_MARKERS = frozenset(
+    {
+        "metric",
+        "metrics",
+        "line item",
+        "line items",
+        "description",
+        "descriptions",
+        "item",
+        "items",
+    }
+)
+_REVENUE_ROW_MARKERS = frozenset(
+    {
+        "revenue",
+        "revenues",
+        "net sales",
+        "sales",
+        "total revenue",
+        "total revenues",
+        "total net sales",
+        "total sales",
+    }
+)
+
+
+def _scope_mapping_values(
+    fact: Mapping[str, Any],
+) -> tuple[Mapping[str, Any], ...]:
+    """Return the fact and linked source mappings without following text."""
+
+    values: list[Mapping[str, Any]] = [fact]
+    for key in ("metadata", "retrieval_context", "source_metadata"):
+        value = fact.get(key)
+        if isinstance(value, Mapping):
+            values.append(value)
+    return tuple(values)
+
+
+def _scope_texts(fact: Mapping[str, Any]) -> tuple[str, ...]:
+    texts: list[str] = []
+    for mapping in _scope_mapping_values(fact):
+        for key in (
+            "retrieval_text",
+            "source_text",
+            "raw_content",
+            "raw_text",
+            "content",
+            "row_label",
+            "table_title",
+            "statement_title",
+            "section_title",
+        ):
+            value = mapping.get(key)
+            if isinstance(value, str) and value.strip():
+                texts.append(value)
+        nested_texts = mapping.get("retrieval_texts")
+        if isinstance(nested_texts, (list, tuple)):
+            texts.extend(
+                str(item) for item in nested_texts if isinstance(item, str) and item.strip()
+            )
+    return tuple(dict.fromkeys(texts))
+
+
+def _scope_labels(value: Any) -> tuple[str, ...]:
+    if value is None:
+        return ()
+    if isinstance(value, str):
+        values = (value,)
+    elif isinstance(value, (list, tuple, set)):
+        values = tuple(str(item) for item in value)
+    else:
+        values = (str(value),)
+    return tuple(item.strip() for item in values if str(item).strip())
+
+
+def _pipe_row_scope(text: str) -> EvidenceScopeClassification | None:
+    """Classify an explicitly labelled pipe-delimited source row.
+
+    Candidate-aligned views preserve the original table row.  Looking at the
+    labelled row/cell structure is safer than searching arbitrary prose and
+    does not use an answer or a model-generated summary.
+    """
+
+    # Candidate-aligned structured views may serialize a table row over two
+    # lines: a section/segment label followed by the pipe-delimited metric
+    # row. Keep only a plausible immediately preceding label. In particular,
+    # ``Document:``, ``Page:``, and ``Source:`` metadata lines must never leak
+    # into the scope label; the previous implementation did exactly that when
+    # a source row had a ``Page:`` line between the header and the table.
+    preceding_label: str | None = None
+    generic_labels = _ROW_HEADER_MARKERS | _SEGMENT_HEADER_MARKERS | {
+        "income statement",
+        "statements of income",
+        "consolidated statements of income",
+        "consolidated statements of operations",
+        "microsoft corporation",
+        "apple inc",
+        "tesla, inc",
+        "fiscal year",
+        "fiscal years",
+        "year",
+        "years",
+        "period",
+        "periods",
+    }
+
+    def label_candidate(value: str) -> str | None:
+        candidate = " ".join(value.split()).strip(" |:-")
+        normalized = _normalize_surface(candidate)
+        if not candidate or not normalized:
+            return None
+        if normalized in generic_labels:
+            return None
+        if re.match(
+            r"^(?:document|page|source|fact type|metric|period|periods|"
+            r"value|values|fact|table|row|rows)\s*:",
+            candidate,
+            flags=re.IGNORECASE,
+        ):
+            return None
+        if normalized in _TOTAL_REVENUE_MARKERS or normalized in _REVENUE_ROW_MARKERS:
+            return None
+        return candidate
+
+    for line in text.splitlines():
+        stripped_line = line.strip()
+        if stripped_line and "|" not in stripped_line:
+            preceding_label = label_candidate(stripped_line)
+        if "|" not in line:
+            continue
+        cells = [item.strip() for item in line.split("|")]
+        cells = [item for item in cells if item]
+        if not cells or all(set(item) <= {"-", ":"} for item in cells):
+            continue
+        normalized_cells = [_normalize_surface(item) for item in cells]
+        # A one-cell pipe row is how the candidate index encodes a section or
+        # segment header (for example ``| Productivity and Business
+        # Processes |``). Remember it for the following metric row rather
+        # than accidentally retaining ``Page: N`` from the preamble.
+        if len(cells) == 1:
+            normalized_label = normalized_cells[0]
+            if normalized_label in _TOTAL_REVENUE_MARKERS or normalized_label == "total":
+                return EvidenceScopeClassification(
+                    EvidenceScope.CONSOLIDATED,
+                    source="structured_total_row",
+                )
+            preceding_label = label_candidate(cells[0])
+            continue
+        if any(item in _TOTAL_REVENUE_MARKERS for item in normalized_cells):
+            return EvidenceScopeClassification(
+                EvidenceScope.CONSOLIDATED,
+                source="structured_total_row",
+            )
+        metric_indices = [
+            index
+            for index, item in enumerate(normalized_cells)
+            if item in _REVENUE_ROW_MARKERS
+        ]
+        if not metric_indices:
+            continue
+        metric_index = metric_indices[0]
+        if metric_index <= 0 and not (metric_index == 0 and preceding_label):
+            continue
+        if metric_index == 0 and preceding_label:
+            return EvidenceScopeClassification(
+                EvidenceScope.SEGMENT,
+                scope_label=preceding_label,
+                source="structured_segment_header",
+            )
+        label = cells[0]
+        normalized_label = normalized_cells[0]
+        if (
+            not normalized_label
+            or normalized_label in _ROW_HEADER_MARKERS
+            or normalized_label in _REVENUE_ROW_MARKERS
+        ):
+            continue
+        if normalized_label in _TOTAL_REVENUE_MARKERS or normalized_label == "total":
+            return EvidenceScopeClassification(
+                EvidenceScope.CONSOLIDATED,
+                source="structured_total_row",
+            )
+        if preceding_label:
+            return EvidenceScopeClassification(
+                EvidenceScope.SEGMENT,
+                scope_label=preceding_label,
+                source="structured_segment_header",
+            )
+        return EvidenceScopeClassification(
+            EvidenceScope.SEGMENT,
+            scope_label=label,
+            source="structured_segment_row",
+        )
+    return None
+
+
+def classify_evidence_scope(
+    fact: Mapping[str, Any],
+) -> EvidenceScopeClassification:
+    """Classify a fact using only explicit structured/source row context.
+
+    ``UNKNOWN`` is intentionally preserved when the source does not expose a
+    trustworthy scope.  In particular, this function never treats an
+    unqualified ``Revenue`` metric as a company total by default.
+    """
+
+    if not isinstance(fact, Mapping):
+        raise TypeError("fact must be a mapping")
+    mappings = _scope_mapping_values(fact)
+    if any(bool(mapping.get("scope_conflict")) for mapping in mappings):
+        return EvidenceScopeClassification(
+            EvidenceScope.UNKNOWN,
+            source="conflicting_source_scope",
+        )
+    for mapping in mappings:
+        for key in ("scope", "normalized_scope", "raw_scope"):
+            for value in _scope_labels(mapping.get(key)):
+                scope_id = canonical_scope_id(value)
+                normalized = _normalize_surface(value)
+                if scope_id in {"consolidated", "company_total"} or normalized in {
+                    "total",
+                    "aggregate",
+                    "aggregated",
+                }:
+                    return EvidenceScopeClassification(
+                        EvidenceScope.CONSOLIDATED,
+                        source=f"explicit_{key}",
+                    )
+                if scope_id == "segment" or "segment" in normalized or "分部" in normalized:
+                    label = next(
+                        (
+                            item
+                            for label_key in ("scope_label", "segment_label", "segment")
+                            for item in _scope_labels(mapping.get(label_key))
+                            if _normalize_surface(item) not in {"segment", "segments", "分部"}
+                        ),
+                        None,
+                    )
+                    return EvidenceScopeClassification(
+                        EvidenceScope.SEGMENT,
+                        scope_label=label or (None if normalized in {"segment", "segments", "分部"} else value),
+                        source=f"explicit_{key}",
+                    )
+        for key in ("segment", "segment_label", "segments"):
+            labels = _scope_labels(mapping.get(key))
+            if labels:
+                return EvidenceScopeClassification(
+                    EvidenceScope.SEGMENT,
+                    scope_label=labels[0],
+                    source=f"explicit_{key}",
+                )
+
+    # A metric path of ``Total`` is source structure, not a metric synonym.
+    # It is only promoted to consolidated scope here; metric normalization is
+    # handled by the R4 adapter when the row is explicitly Total Revenue.
+    for mapping in mappings:
+        paths: list[str] = []
+        for key in ("row_path", "row_hierarchy", "metric_path", "metric_paths"):
+            paths.extend(_scope_labels(mapping.get(key)))
+        normalized_paths = {_normalize_surface(item) for item in paths}
+        if any(
+            path in {"total", "total revenue", "total revenues", "total net sales"}
+            for path in normalized_paths
+        ):
+            return EvidenceScopeClassification(
+                EvidenceScope.CONSOLIDATED,
+                source="structured_metric_path",
+            )
+
+    for text in _scope_texts(fact):
+        normalized = _normalize_surface(text)
+        if any(marker in normalized for marker in _TOTAL_REVENUE_MARKERS):
+            return EvidenceScopeClassification(
+                EvidenceScope.CONSOLIDATED,
+                source="structured_total_text",
+            )
+        row_scope = _pipe_row_scope(text)
+        if row_scope is not None:
+            return row_scope
+        if any(marker in normalized for marker in _SEGMENT_HEADER_MARKERS):
+            return EvidenceScopeClassification(
+                EvidenceScope.SEGMENT,
+                source="structured_segment_text",
+            )
+    return EvidenceScopeClassification()
+
+
+def query_allows_evidence_scope(
+    query: str,
+    frame: QuerySemanticFrame,
+    classification: EvidenceScopeClassification,
+    *,
+    known_segment_labels: Iterable[str] = (),
+) -> bool:
+    """Apply the default company-total convention without guessing labels.
+
+    ``known_segment_labels`` is source-derived context from the current
+    candidate packet. It lets the firewall reject an aggregate candidate when
+    the user explicitly named a concrete segment, even when the query did not
+    contain the generic word ``segment``.
+    """
+
+    normalized_query = _normalize_surface(query)
+    if classification.scope is EvidenceScope.UNKNOWN:
+        # An explicit scope in the question must be verifiable in the source.
+        return bool(not frame.scope_ids)
+    requested = set(frame.scope_ids)
+    explicit_segment = "segment" in requested or any(
+        label
+        and _alias_matches(normalized_query, _normalize_surface(label))
+        for label in known_segment_labels
+    )
+    if classification.scope is EvidenceScope.CONSOLIDATED:
+        return not explicit_segment
+    if explicit_segment:
+        return True
+    if classification.scope_label:
+        normalized_label = _normalize_surface(classification.scope_label)
+        if normalized_label and _alias_matches(normalized_query, normalized_label):
+            return True
+    # An unqualified financial fact conventionally means the company total;
+    # a segment candidate must never silently satisfy it.
+    return False
 
 
 def canonical_period_id(value: Any) -> str | None:
@@ -760,12 +1441,78 @@ def extract_query_semantic_frame(query: str) -> QuerySemanticFrame:
     )
 
 
+def _aliases_by_id(
+    definitions: Iterable[Any],
+    id_field: str,
+) -> Mapping[str, tuple[str, ...]]:
+    mapping: dict[str, list[str]] = {}
+    for definition in definitions:
+        canonical = getattr(definition, id_field)
+        mapping.setdefault(canonical, []).extend(definition.aliases)
+    return {key: tuple(dict.fromkeys(value)) for key, value in mapping.items()}
+
+
+_METRIC_ALIASES_BY_ID = _aliases_by_id(_METRIC_DEFINITIONS, "metric_id")
+_OPERATION_ALIASES_BY_ID = _aliases_by_id(_OPERATION_DEFINITIONS, "canonical_id")
+
+
+def _mention_spans(text: str, alias: str) -> list[tuple[int, int]]:
+    """Every word-bounded occurrence of one alias, as offsets into ``text``."""
+
+    normalized_text = _normalize_surface(text)
+    normalized_alias = _normalize_surface(alias)
+    if not normalized_alias:
+        return []
+    return [
+        (match.start(), match.end())
+        for match in re.finditer(
+            rf"(?<!\w){re.escape(normalized_alias)}(?!\w)", normalized_text
+        )
+    ]
+
+
+def _phrase_spans(query: str, phrases: Iterable[str]) -> list[tuple[int, int]]:
+    spans: list[tuple[int, int]] = []
+    for phrase in phrases:
+        spans.extend(_mention_spans(query, phrase))
+    return spans
+
+
+def _named_only_inside(
+    query: str,
+    aliases: Iterable[str],
+    spans: Sequence[tuple[int, int]],
+) -> bool:
+    """Whether every mention of a vocabulary term sits inside ``spans``.
+
+    The rule this exists for: **a term that appears only inside the name of the
+    thing being asked for is part of that name.**  ``Weighted-average
+    shares-diluted`` is a metric, and reading its ``average`` as a request to
+    average something made the gate contradict a plan that had read the question
+    correctly.  The same rule covers a metric word inside a longer row label:
+    ``revenue`` inside ``International transaction revenue`` is the label's
+    revenue, not a second thing asked for.
+
+    A term with no mention at all returns False -- there is nothing to be
+    inside of, and silence is not subsumption.
+    """
+
+    found = [span for alias in aliases for span in _mention_spans(query, alias)]
+    if not found:
+        return False
+    return all(
+        any(start <= left and right <= end for start, end in spans)
+        for left, right in found
+    )
+
+
 def align_query_to_plan(
     query: str,
     plan: SupervisorPlan,
     *,
     unknown_policy: UnknownSemanticPolicy | str = UnknownSemanticPolicy.COMPATIBILITY,
     semantic_context: Mapping[str, Any] | None = None,
+    grounded_labels: Mapping[str, str] | None = None,
 ) -> PlanSemanticAlignment:
     """Compare explicit query semantics with all plan slot semantics.
 
@@ -775,19 +1522,85 @@ def align_query_to_plan(
     context may provide already-authorized expected metric, period, entity, or
     scope expectations; it is never inferred from a candidate or from the
     answer.
+
+    ``grounded_labels`` maps a source row label the ontology cannot name to the
+    identity it resolves to, for labels the caller has established are
+    *determinate in the source* -- the store holds one value at that coordinate.
+    The gate reads the mention itself, so a label the question does not quote
+    authorizes nothing, and the identity it contributes is compared exactly like
+    an ontology id.
+
+    This widens what the gate can *name*, never what it will *accept*: a plan
+    metric is admitted only when the question carries it, whether the ontology
+    recognised it or the source grounded it.  What the gate gives up for these
+    labels is the claim that it knows what the row means -- ``iPad`` is not a
+    financial concept and no ontology makes it one.  What it keeps, and what the
+    source can actually testify to, is that the question quotes a row the filing
+    reports at one determinate value.
     """
 
     if not isinstance(plan, SupervisorPlan):
         raise TypeError("plan must be a SupervisorPlan")
     policy = coerce_unknown_semantic_policy(unknown_policy)
     frame = extract_query_semantic_frame(query)
-    query_metric_ids = frame.metric_ids
+    query_metric_ids = list(frame.metric_ids)
+    # A row label the ontology cannot name is still a metric the question can be
+    # about.  The mention test lives here, with the rest of the query reading,
+    # rather than being asserted by the caller: a caller that supplied a label
+    # the question never mentions must not thereby authorize it.
+    for surface, identity in (grounded_labels or {}).items():
+        if not identity or identity in query_metric_ids:
+            continue
+        if _query_mentions_label(query, surface):
+            query_metric_ids.append(identity)
+    # A metric word inside a longer row label the question states is the label's
+    # word.  `International transaction revenue` is one row; the ontology also
+    # recognises `revenue` inside it, and keeping that second mention made the
+    # gate report a contradiction between a question and a plan that had read it
+    # correctly.  Only a label actually admitted above can subsume anything --
+    # otherwise a plan could silence a metric by naming a longer phrase.
+    grounded_spans: list[tuple[int, int]] = [
+        span
+        for surface, identity in (grounded_labels or {}).items()
+        if identity and identity in query_metric_ids
+        for span in _mention_spans(query, surface)
+    ]
+    if grounded_spans:
+        subsumed = [
+            metric_id
+            for metric_id in query_metric_ids
+            if metric_id in _METRIC_ALIASES_BY_ID
+            and _named_only_inside(
+                query, _METRIC_ALIASES_BY_ID[metric_id], grounded_spans)
+        ]
+        if subsumed:
+            query_metric_ids = [
+                metric_id for metric_id in query_metric_ids
+                if metric_id not in subsumed
+            ]
     query_period_ids = frame.period_ids
     query_entity_ids = frame.entity_ids
     query_operation_ids = frame.operation_ids
+    # Same rule for an operation: `Weighted-average shares-diluted` is a metric,
+    # and reading its `average` as a request to average something made the gate
+    # contradict a plan that had read the question correctly.
+    metric_spans = _phrase_spans(
+        query,
+        (str(getattr(slot, "metric", "") or "") for slot in plan.required_slots),
+    )
+    if metric_spans:
+        query_operation_ids = tuple(
+            operation_id
+            for operation_id in query_operation_ids
+            if not _named_only_inside(
+                query, _OPERATION_ALIASES_BY_ID.get(operation_id, ()), metric_spans)
+        )
     query_scope_ids = frame.scope_ids
     plan_metric_ids: list[str] = []
     unknown_plan_metrics: list[str] = []
+    #: Plan metrics the ontology could not name and the source did.  They are
+    #: admissible, but only against a question that carries them.
+    literal_plan_metrics: list[str] = []
     plan_period_ids: list[str] = []
     unknown_plan_periods: list[str] = []
     mismatches: list[str] = []
@@ -796,8 +1609,11 @@ def align_query_to_plan(
         metric_id = canonical_metric_id(slot.metric)
         if metric_id is None:
             unknown_plan_metrics.append(slot.metric)
-        else:
-            plan_metric_ids.append(metric_id)
+        identity = metric_identity(slot.metric)
+        if identity is not None:
+            plan_metric_ids.append(identity)
+            if metric_id is None:
+                literal_plan_metrics.append(identity)
         period_id = canonical_period_id(slot.period)
         if period_id is None:
             unknown_plan_periods.append(slot.period)
@@ -870,10 +1686,19 @@ def align_query_to_plan(
             )
     if len(query_metric_ids) > 1 and query_set != plan_set:
         ambiguous_query_fields.append("metric")
-    if unknown_plan_metrics:
+    # A plan metric the ontology cannot name is admitted only against a question
+    # that carries it.  Stated here rather than inside the DIRECT_FACT branch
+    # below because a calculation plan has no planned-versus-query metric check
+    # of its own -- its operands are not the answer -- so without this a
+    # calculation could name any row in the store and align to a question that
+    # never mentioned it.
+    if literal_plan_metrics:
+        named = set(query_metric_ids)
+        result_metric = _result_metric_for_operation(plan.operation)
         mismatches.extend(
-            f"unrecognized_plan_metric:{metric}"
-            for metric in dict.fromkeys(unknown_plan_metrics)
+            f"literal_plan_metric_not_in_query:{metric_id}"
+            for metric_id in dict.fromkeys(literal_plan_metrics)
+            if metric_id not in named and metric_id != result_metric
         )
 
     # A comparison or growth plan may include an implicit prior period not
@@ -951,7 +1776,7 @@ def align_query_to_plan(
 
     return PlanSemanticAlignment(
         status=status,
-        query_metric_ids=query_metric_ids,
+        query_metric_ids=tuple(query_metric_ids),
         plan_metric_ids=plan_metric_ids_tuple,
         unknown_plan_metrics=tuple(dict.fromkeys(unknown_plan_metrics)),
         mismatches=tuple(dict.fromkeys(mismatches)),
@@ -1060,6 +1885,7 @@ def align_bound_evidence_to_query(
             query_metric_ids=frame.metric_ids,
             query_entity_ids=frame.entity_ids,
             query_period_ids=frame.period_ids,
+            query_scope_ids=frame.scope_ids,
         )
 
     slot_map = {slot.slot_id: slot for slot in plan.required_slots}
@@ -1069,12 +1895,26 @@ def align_bound_evidence_to_query(
         if metric_id
     }
     mismatches: list[str] = []
+    fact_scope_ids: list[str] = []
+    known_segment_labels = tuple(
+        label
+        for fact in fact_map.values()
+        for label in (classify_evidence_scope(fact).scope_label,)
+        if label
+    )
     for slot_id, fact_ids in slot_bindings.items():
         slot = slot_map.get(str(slot_id))
         if slot is None:
             mismatches.append(f"unknown_slot_binding:{slot_id}")
             continue
-        expected_metric = canonical_metric_id(slot.metric)
+        # Matching uses the wider identity, reporting keeps the vocabulary.
+        # A metric the ontology cannot name is still a metric a fact can carry,
+        # and refusing to compare it left every such slot unsatisfiable.  The
+        # gate's own ``unknown_plan_metric`` signal is raised from
+        # ``canonical_metric_id`` above, so widening the comparison does not
+        # silence it -- the plan is still told its metric is unrecognised, and
+        # now the binding can succeed anyway when a fact really carries it.
+        expected_metric = metric_identity(slot.metric)
         expected_period = canonical_period_id(slot.period)
         for fact_id in fact_ids:
             normalized_id = str(fact_id).strip()
@@ -1082,7 +1922,29 @@ def align_bound_evidence_to_query(
             if fact is None:
                 mismatches.append(f"bound_fact_not_supplied:{normalized_id}")
                 continue
-            fact_metric = canonical_metric_id(
+            scope_classification = classify_evidence_scope(fact)
+            fact_scope_ids.append(scope_classification.scope.value)
+            if scope_classification.source == "conflicting_source_scope":
+                mismatches.append(f"fact_scope_conflict:{normalized_id}")
+            elif not query_allows_evidence_scope(
+                query,
+                frame,
+                scope_classification,
+                known_segment_labels=known_segment_labels,
+            ):
+                if scope_classification.scope is EvidenceScope.SEGMENT:
+                    mismatches.append(
+                        f"fact_segment_scope_not_requested:{normalized_id}"
+                    )
+                elif scope_classification.scope is EvidenceScope.CONSOLIDATED:
+                    mismatches.append(
+                        f"fact_consolidated_scope_not_requested:{normalized_id}"
+                    )
+                else:
+                    mismatches.append(
+                        f"fact_scope_unverifiable:{normalized_id}"
+                    )
+            fact_metric = metric_identity(
                 _fact_value(fact, "metric", "normalized_metric", "raw_metric")
             )
             fact_period = canonical_period_id(
@@ -1096,13 +1958,25 @@ def align_bound_evidence_to_query(
                 mismatches.append(
                     f"fact_period_not_matching_slot:{normalized_id}:{slot.slot_id}"
                 )
+            # The query-side and plan-side metric sets are built from the
+            # ontology, so they can only ever hold metrics the ontology names.
+            # A literal identity is therefore never in them, and these branches
+            # used to read that as "the fact is about something the query never
+            # asked about" -- which is not what an unnamed metric means.
+            #
+            # The failure needs a *mix* to appear, which is why it stayed hidden:
+            # with every metric unnamed the frame set is empty and the check is
+            # skipped, so the case passed.  Naming one metric makes the set
+            # non-empty, the check fires, and the fact for the metric still
+            # unnamed is rejected -- for a query that names both.
+            fact_metric_is_named = not fact_metric.startswith(LITERAL_METRIC_PREFIX)
             if frame.metric_ids and plan.intent is Intent.DIRECT_FACT:
                 if fact_metric is None:
                     mismatches.append(f"fact_metric_unverifiable:{normalized_id}")
-                elif fact_metric not in set(frame.metric_ids):
+                elif fact_metric_is_named and fact_metric not in set(frame.metric_ids):
                     mismatches.append(f"fact_metric_not_in_query:{normalized_id}")
             elif frame.metric_ids and fact_metric is not None:
-                if fact_metric not in plan_metric_ids:
+                if fact_metric_is_named and fact_metric not in plan_metric_ids:
                     mismatches.append(f"fact_metric_not_in_plan:{normalized_id}")
 
             if frame.entity_ids:
@@ -1132,12 +2006,16 @@ def align_bound_evidence_to_query(
         query_metric_ids=frame.metric_ids,
         query_entity_ids=frame.entity_ids,
         query_period_ids=frame.period_ids,
+        query_scope_ids=frame.scope_ids,
+        fact_scope_ids=tuple(dict.fromkeys(fact_scope_ids)),
     )
 
 
 __all__ = [
     "BoundEvidenceAlignmentStatus",
     "BoundEvidenceSemanticCheck",
+    "EvidenceScope",
+    "EvidenceScopeClassification",
     "EntityMention",
     "MetricMention",
     "MetricDefinition",
@@ -1155,6 +2033,8 @@ __all__ = [
     "canonical_operation_id",
     "canonical_period_id",
     "canonical_scope_id",
+    "classify_evidence_scope",
     "coerce_unknown_semantic_policy",
     "extract_query_semantic_frame",
+    "query_allows_evidence_scope",
 ]

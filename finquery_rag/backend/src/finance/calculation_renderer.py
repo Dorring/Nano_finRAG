@@ -19,7 +19,11 @@ Value formatting:
 - other units    -> raw Decimal string.
 
 Layer dependency: ``domain -> finance -> application -> services``. This
-module imports from ``src.domain.calculation`` only and stdlib.
+module imports from ``src.domain.calculation`` and its own layer's
+``src.finance.relational_directory`` -- both allowed -- plus stdlib. It
+deliberately does not import the supervisor: a renderer that could read the plan
+would be able to build a second `slot_id -> entity` lookup, and one that could
+recompute would be a second executor.
 """
 
 from __future__ import annotations
@@ -27,19 +31,43 @@ from __future__ import annotations
 from decimal import Decimal
 
 from src.domain.calculation import (
+    RELATIONAL_OPERATIONS,
     CalculationOperand,
     CalculationResult,
     CalculationStatus,
 )
+from src.finance.relational_directory import (
+    RelationalOperandDirectory,
+    render_relational_result,
+    resolve_relational_result,
+)
 
 
-def render_calculation_result(result: CalculationResult) -> str:
+def render_calculation_result(
+    result: CalculationResult,
+    *,
+    directory: "RelationalOperandDirectory | None" = None,
+) -> str:
     """Render a ``CalculationResult`` into a human-readable answer string.
 
     Returns a non-empty string for EXECUTED and BLOCKED results.
     Returns an empty string for NOT_APPLICABLE and FAILED (the LLM
     handles those).
+
+    A **relational** result is different in kind and says so.  Its answer is an
+    ordering over ``slot_id``s, which cannot be stated without names for them,
+    so it needs a `RelationalOperandDirectory`; without one this returns ``""``
+    rather than falling through to the quantity path.  Falling through would
+    format ``value``, and a relational result has none -- so the failure would
+    be a crash, or worse, whatever ``None`` happened to render as.
     """
+
+    if result.operation in RELATIONAL_OPERATIONS:
+        if directory is None:
+            return ""
+        resolved = resolve_relational_result(result, directory)
+        return "" if resolved is None else render_relational_result(resolved)
+
     if result.status is CalculationStatus.EXECUTED:
         return _render_executed(result)
     if result.status is CalculationStatus.BLOCKED:

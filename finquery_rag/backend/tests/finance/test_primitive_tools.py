@@ -119,17 +119,17 @@ class TestDifference:
     def test_basic_subtraction(self):
         r = difference("110", "100")
         assert r.ok
-        assert r.value == Decimal("10")
+        assert r.points_value == Decimal("10")
 
     def test_negative_result(self):
         r = difference("90", "110")
         assert r.ok
-        assert r.value == Decimal("-20")
+        assert r.points_value == Decimal("-20")
 
     def test_precision(self):
         r = difference("1.123456", "0", precision=2)
         assert r.ok
-        assert r.value == Decimal("1.12")
+        assert r.points_value == Decimal("1.12")
 
     def test_rejects_invalid(self):
         r = difference("abc", "100")
@@ -146,12 +146,12 @@ class TestAverageValues:
     def test_basic_average(self):
         r = average_values(["10", "20", "30"])
         assert r.ok
-        assert r.value == Decimal("20")
+        assert r.points_value == Decimal("20")
 
     def test_precision(self):
         r = average_values(["1", "2"], precision=4)
         assert r.ok
-        assert r.value == Decimal("1.5000")
+        assert r.points_value == Decimal("1.5000")
 
     def test_empty_list_returns_error(self):
         r = average_values([])
@@ -172,12 +172,12 @@ class TestGrossMargin:
     def test_basic_margin(self):
         r = gross_margin("1000", "600")
         assert r.ok
-        assert r.value == Decimal("0.4")
+        assert r.points_value == Decimal("0.4")
 
     def test_full_precision(self):
         r = gross_margin("1000", "333", precision=4)
         assert r.ok
-        assert r.value == Decimal("0.6670")
+        assert r.points_value == Decimal("0.6670")
 
     def test_zero_revenue_returns_error(self):
         r = gross_margin("0", "100")
@@ -188,7 +188,7 @@ class TestGrossMargin:
         """If cogs is negative (refund), margin can exceed 1 — that's valid arithmetic."""
         r = gross_margin("1000", "-200")
         assert r.ok
-        assert r.value == Decimal("1.2")
+        assert r.points_value == Decimal("1.2")
 
 
 # ---------------------------------------------------------------------------
@@ -200,7 +200,7 @@ class TestNetMargin:
     def test_basic_margin(self):
         r = net_margin("1000", "80")
         assert r.ok
-        assert r.value == Decimal("0.08")
+        assert r.points_value == Decimal("0.08")
 
     def test_zero_revenue_returns_error(self):
         r = net_margin("0", "10")
@@ -209,7 +209,7 @@ class TestNetMargin:
     def test_negative_net_income(self):
         r = net_margin("1000", "-50")
         assert r.ok
-        assert r.value == Decimal("-0.05")
+        assert r.points_value == Decimal("-0.05")
 
 
 # ---------------------------------------------------------------------------
@@ -221,7 +221,7 @@ class TestDebtRatio:
     def test_basic_ratio(self):
         r = debt_ratio("600", "1000")
         assert r.ok
-        assert r.value == Decimal("0.6")
+        assert r.points_value == Decimal("0.6")
 
     def test_zero_assets_returns_error(self):
         r = debt_ratio("100", "0")
@@ -231,7 +231,7 @@ class TestDebtRatio:
     def test_liabilities_exceed_assets(self):
         r = debt_ratio("1200", "1000")
         assert r.ok
-        assert r.value == Decimal("1.2")
+        assert r.points_value == Decimal("1.2")
 
 
 # ---------------------------------------------------------------------------

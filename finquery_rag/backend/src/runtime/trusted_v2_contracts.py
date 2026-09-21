@@ -16,6 +16,7 @@ from typing import Any, Protocol, runtime_checkable
 
 from .runtime_contract import (
     ClaimProvenance,
+    ContextTrustLevel,
     FinancialQueryRequest,
     ReleaseStatus,
 )
@@ -57,6 +58,33 @@ def _normalize_ids(value: Iterable[Any] | None, field_name: str) -> list[str]:
             seen.add(normalized)
             result.append(normalized)
     return result
+
+
+def _normalize_context_trust_levels(
+    value: Iterable[Any] | None,
+    field_name: str,
+) -> tuple[ContextTrustLevel, ...]:
+    """Normalize semantic context labels while preserving first-seen order.
+
+    The request boundary may describe context used for interpretation, but it
+    may not self-attest Binder authority.  Binder admission is created only by
+    the V2 execution path after evidence evaluation.
+    """
+
+    if value is None:
+        return ()
+    if isinstance(value, (str, bytes)) or not isinstance(value, Iterable):
+        raise TypeError(f"{field_name} must be an iterable of context trust levels")
+    normalized: list[ContextTrustLevel] = []
+    for item in value:
+        level = _coerce_enum(item, ContextTrustLevel, field_name)
+        if level is ContextTrustLevel.BINDER_ADMITTED_EVIDENCE:
+            raise ValueError(
+                "BINDER_ADMITTED_EVIDENCE is produced only after Binder admission",
+            )
+        if level not in normalized:
+            normalized.append(level)
+    return tuple(normalized)
 
 
 def _normalize_citations(
@@ -137,6 +165,7 @@ class V2ExecutionRequest:
     conversation_metadata: dict[str, Any] = field(default_factory=dict)
     runtime_budget: dict[str, Any] = field(default_factory=dict)
     trace_metadata: dict[str, Any] = field(default_factory=dict)
+    context_trust_levels: tuple[ContextTrustLevel, ...] = ()
 
     def __post_init__(self) -> None:
         object.__setattr__(
@@ -189,6 +218,19 @@ class V2ExecutionRequest:
             "trace_metadata",
             _copy_mapping(self.trace_metadata, "trace_metadata"),
         )
+        context_levels = list(
+            _normalize_context_trust_levels(
+                self.context_trust_levels,
+                "context_trust_levels",
+            ),
+        )
+        if ContextTrustLevel.USER_EXPLICIT_QUERY not in context_levels:
+            context_levels.insert(0, ContextTrustLevel.USER_EXPLICIT_QUERY)
+        if self.conversation_resolved and (
+            ContextTrustLevel.STRUCTURED_DIALOGUE_STATE not in context_levels
+        ):
+            context_levels.append(ContextTrustLevel.STRUCTURED_DIALOGUE_STATE)
+        object.__setattr__(self, "context_trust_levels", tuple(context_levels))
 
     @classmethod
     def from_financial_request(
@@ -197,6 +239,13 @@ class V2ExecutionRequest:
     ) -> "V2ExecutionRequest":
         if not isinstance(request, FinancialQueryRequest):
             raise TypeError("request must be a FinancialQueryRequest")
+        metadata_levels: Iterable[Any] = ()
+        if isinstance(request.conversation_metadata, Mapping):
+            raw_levels = request.conversation_metadata.get(
+                "context_trust_levels",
+                (),
+            )
+            metadata_levels = () if raw_levels is None else raw_levels
         return cls(
             request_id=request.request_id,
             user_id=request.user_id,
@@ -206,6 +255,15 @@ class V2ExecutionRequest:
             conversation_resolved=request.query_as_resolved,
             request_metadata=request.request_metadata,
             conversation_metadata=request.conversation_metadata,
+            context_trust_levels=(
+                ContextTrustLevel.USER_EXPLICIT_QUERY,
+                *(
+                    (ContextTrustLevel.STRUCTURED_DIALOGUE_STATE,)
+                    if request.query_as_resolved
+                    else ()
+                ),
+                *metadata_levels,
+            ),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -220,6 +278,9 @@ class V2ExecutionRequest:
             "conversation_metadata": copy.deepcopy(self.conversation_metadata),
             "runtime_budget": copy.deepcopy(self.runtime_budget),
             "trace_metadata": copy.deepcopy(self.trace_metadata),
+            "context_trust_levels": [
+                level.value for level in self.context_trust_levels
+            ],
         }
 
     @classmethod
@@ -237,6 +298,7 @@ class V2ExecutionRequest:
             conversation_metadata=value.get("conversation_metadata"),
             runtime_budget=value.get("runtime_budget"),
             trace_metadata=value.get("trace_metadata"),
+            context_trust_levels=value.get("context_trust_levels"),
         )
 
     def to_json(self) -> str:
@@ -268,6 +330,7 @@ class V2ExecutionOutcome:
     status: V2ExecutionStatus
     answer: str | None = None
     citations: list[dict[str, Any]] = field(default_factory=list)
+    calculations: list[dict[str, Any]] = field(default_factory=list)
     evidence_ids: list[str] = field(default_factory=list)
     citation_ids: list[str] = field(default_factory=list)
     calculation_ids: list[str] = field(default_factory=list)
@@ -315,6 +378,11 @@ class V2ExecutionOutcome:
             self,
             "citations",
             _normalize_citations(self.citations),
+        )
+        object.__setattr__(
+            self,
+            "calculations",
+            _normalize_citations(self.calculations),
         )
         for field_name in (
             "evidence_ids",
@@ -396,6 +464,7 @@ class V2ExecutionOutcome:
             "status": self.status.value,
             "answer": self.answer,
             "citations": copy.deepcopy(self.citations),
+            "calculations": copy.deepcopy(self.calculations),
             "evidence_ids": list(self.evidence_ids),
             "citation_ids": list(self.citation_ids),
             "calculation_ids": list(self.calculation_ids),
@@ -422,6 +491,7 @@ class V2ExecutionOutcome:
             status=value.get("status"),
             answer=value.get("answer"),
             citations=value.get("citations"),
+            calculations=value.get("calculations"),
             evidence_ids=value.get("evidence_ids"),
             citation_ids=value.get("citation_ids"),
             calculation_ids=value.get("calculation_ids"),
@@ -472,6 +542,7 @@ class TrustedV2ExecutionCoordinator(Protocol):
 
 
 __all__ = [
+    "ContextTrustLevel",
     "TrustedV2ExecutionCoordinator",
     "ClaimProvenance",
     "V2ExecutionOutcome",

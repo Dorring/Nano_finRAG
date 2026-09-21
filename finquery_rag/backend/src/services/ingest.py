@@ -1,9 +1,12 @@
 import pymupdf
 import re
 import os
+from typing import Any
+
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_text_splitters import MarkdownHeaderTextSplitter
+
 from .process_tables import enhance_table_with_context, extract_tables_with_camelot
 from .chunk_id import make_chunk_id
 from .mineru_parser import (
@@ -676,15 +679,29 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
         page_text = page.get_text("text")
 
         for table_idx, table_md_dict in enumerate(table_list):
-            # 使用 NVIDIA API 增强表格（不再需要 llm_client 参数）
-            enhanced_table = enhance_table_with_context(table_md_dict, page_text, actual_page_num)
             doc_id = make_chunk_id(user_id, doc_name, f"page_{actual_page_num}::table_{table_idx + 1}")
-
-            # 将增强结果拼接为字符串，与文本块的 content 类型保持一致
-            table_content = enhanced_table["content"]
-            if enhanced_table["summary"]:
-                table_content = f"Summary: {enhanced_table['summary']}\n\n{table_content}"
             table_parent_id = make_chunk_id(user_id, doc_name, f"page_{actual_page_num}::table_parent_{table_idx + 1}")
+
+            # H2A-3D.  The authoritative artifact this table came from, named
+            # before the model is called -- the model's answer is only ever a
+            # derived candidate for *this* table, so the lineage has to exist
+            # before there is anything to attach it to.
+            source_reference = (
+                f"{pdf_path}::page_{actual_page_num}::table_{table_idx + 1}"
+            )
+
+            enhanced_table = enhance_table_with_context(
+                table_md_dict,
+                page_text,
+                actual_page_num,
+                source_reference=source_reference,
+            )
+
+            # H2A-3D.  This is the authoritative table or an admitted derivative
+            # of it.  It is never raw model output and never the model's prose
+            # summary: before this phase it could be either, and nothing here
+            # could tell.
+            table_content = enhanced_table["content"]
 
             chunks.append({
                 "content": table_content,
@@ -698,6 +715,10 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
                     "parent_page": actual_page_num,
                     "parent_excerpt": _compact_parent_excerpt(table_content),
                     "parent_child": True,
+                    # H2A-3D.  Names and a reason, never content.  ``None``
+                    # means no model produced this chunk's text, so a reader is
+                    # holding source-original content.
+                    "derived_admission": enhanced_table["admission_record"],
                 }
             })
 

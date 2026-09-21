@@ -147,8 +147,13 @@ def _extract_numbers_from_sentence(sentence: str) -> list[tuple[Decimal, str]]:
         if scale_word:
             raw = sentence[match.start() : end + len(scale_word)]
         parsed = parse_financial_number(raw)
-        if parsed.ok and parsed.value is not None:
-            results.append((parsed.value, raw))
+        # The number as the sentence states it.  A filing that writes `5.49 %`
+        # in a rate row is stating 5.49, and that number is what binds to the
+        # fact; the ratio form is a reading taken later, by whoever needs a
+        # multiplicative factor.  This used to come out 100x apart depending on
+        # whether the sign was written against the number or after a space.
+        if parsed.ok and parsed.points_value is not None:
+            results.append((parsed.points_value, raw))
     return results
 
 

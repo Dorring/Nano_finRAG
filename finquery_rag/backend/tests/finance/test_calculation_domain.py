@@ -23,9 +23,36 @@ from src.domain.calculation import (
 # ---------------------------------------------------------------------------
 
 
+#: The nine arithmetic operations as they stood before relational operations
+#: were added.  Frozen as an explicit set rather than asserted by count: a count
+#: moves for any addition, so it would be rewritten on every extension and would
+#: stop saying anything.  This says which operations must not move, and is
+#: imported by the other guards that want the same answer rather than restated
+#: in each -- a second copy would be a second thing to forget to update.
+LEGACY_ARITHMETIC_OPERATIONS = frozenset(
+    {
+        "difference",
+        "growth_rate",
+        "percentage_share",
+        "sum",
+        "average",
+        "gross_margin",
+        "net_margin",
+        "debt_ratio",
+        "scale_conversion",
+    }
+)
+
+
 class TestCalculationOperation:
-    def test_has_exactly_nine_operations(self):
-        assert len(CalculationOperation) == 9
+    def test_the_legacy_arithmetic_operations_are_still_present(self):
+        assert {op.value for op in CalculationOperation} >= LEGACY_ARITHMETIC_OPERATIONS
+
+    def test_relational_operations_were_added(self):
+        """Their answer is a relation between operands, not a quantity."""
+
+        assert CalculationOperation.COMPARISON.value == "comparison"
+        assert CalculationOperation.RANKING.value == "ranking"
 
     @pytest.mark.parametrize(
         "name,value",

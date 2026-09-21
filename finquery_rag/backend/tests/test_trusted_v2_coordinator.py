@@ -5,6 +5,8 @@ from __future__ import annotations
 import asyncio
 from typing import Any
 
+import pytest
+
 from rag_v2.adaptive import AdaptiveRAGBudgetV1, AdaptiveRAGStateV1
 from rag_v2.adaptive import ReasonCode, ReplanActionV1
 from rag_v2.contracts import Action, Intent, RequiredSlot, SupervisorPlan
@@ -99,6 +101,7 @@ def _coordinator(
     generation: Any = None,
     validator: Any = None,
     allow_test_release: bool = False,
+    alignment_override: Any = None,
 ) -> BoundedTrustedV2Coordinator:
     provider = DeterministicFallbackProvider(
         {"What was revenue?": plan, "Compare years": plan},
@@ -113,6 +116,7 @@ def _coordinator(
         ),
         budget=budget,
         allow_test_release=allow_test_release,
+        alignment_override=alignment_override,
     )
 
 
@@ -257,6 +261,36 @@ def test_capability_crash_is_execution_error_not_policy_refusal() -> None:
     assert "retrieval secret" not in str(outcome.to_dict())
 
 
+def test_the_capability_error_detail_keeps_the_type_and_withholds_the_message() -> None:
+    """The other half of the property the test above pins.
+
+    The reason code says only that a capability raised, so which one and where
+    is unrecoverable from the result -- pinning one canonical case to
+    ``binder_returned_invalid_schema`` took a probe wrapping two internal
+    methods, because nothing on the outcome said so.  The type closes that for
+    every exception.  The message does not: it is arbitrary text from an
+    arbitrary failure, so it is kept only for the types whose message is a
+    literal in the source rather than a description.
+    """
+
+    from src.runtime.trusted_v2_binder import SemanticBinderCapabilityError
+    from src.runtime.trusted_v2_coordinator import _capability_error_detail
+
+    detail = _capability_error_detail(
+        [
+            RuntimeError("retrieval secret"),
+            SemanticBinderCapabilityError("binder_returned_invalid_schema"),
+        ]
+    )
+
+    assert detail["capability_errors"][0] == {"type": "RuntimeError"}
+    assert detail["capability_errors"][1] == {
+        "type": "SemanticBinderCapabilityError",
+        "code": "binder_returned_invalid_schema",
+    }
+    assert "retrieval secret" not in str(detail)
+
+
 def test_invalid_plan_has_zero_capability_calls() -> None:
     invalid = object.__new__(SupervisorPlan)
     object.__setattr__(invalid, "intent", Intent.DIRECT_FACT)
@@ -356,3 +390,152 @@ def test_capability_port_container_is_injectable() -> None:
     ports = TrustedV2CapabilityPorts()
     assert ports.retrieval is None
     assert ports.calculation is None
+
+
+# --- P1.2: the alignment override seam ---------------------------------------------------------
+#
+# The seam exists so a benchmark can measure the chain *after* the semantic
+# alignment gate.  These tests exist because a seam that cannot be told apart
+# from normal operation is worse than no seam: its results would be quotable as
+# production behaviour.  Three things are asserted -- production never sets it,
+# it can carry a run past the gate, and the run says so in its own outcome.
+
+
+def _mismatching_plan_and_query() -> tuple[SupervisorPlan, str]:
+    """A plan whose metric is not in the canonical vocabulary.
+
+    The alignment gate reads an unrecognized plan metric as a mismatch, so this
+    pair is rejected with ``QUERY_PLAN_SEMANTIC_MISMATCH`` -- asserted in the
+    first test below rather than assumed, because if the gate ever stopped
+    rejecting it the rest of this section would be testing nothing.
+    """
+
+    query = "What was revenue?"
+    plan = _plan(_slot("m", metric="Deferred"))
+    return plan, query
+
+
+def _aligned_override(plan: SupervisorPlan, query: str):
+    import dataclasses
+
+    from rag_v2.supervisor import (
+        SemanticAlignmentStatus,
+        UnknownSemanticPolicy,
+        align_query_to_plan,
+    )
+
+    computed = align_query_to_plan(
+        query, plan, unknown_policy=UnknownSemanticPolicy.STRICT_DIRECT_FACT
+    )
+    assert computed.allowed is False, (
+        "the fixture must actually be rejected, or this section proves nothing"
+    )
+    return dataclasses.replace(
+        computed,
+        status=SemanticAlignmentStatus.ALIGNED,
+        mismatches=(),
+        ambiguous_query_fields=(),
+    )
+
+
+def test_a_coordinator_is_built_without_an_alignment_override() -> None:
+    """The production default, asserted rather than documented.
+
+    ``_coordinator`` builds one the way every other call site does, so if the
+    override were ever given a non-``None`` default this fails.
+    """
+
+    coordinator = _coordinator(_plan(_slot("revenue")), ScriptedRetrieval([[]]))
+
+    assert coordinator.alignment_override is None
+
+
+def test_an_alignment_override_is_refused_when_it_is_not_one() -> None:
+    plan, _ = _mismatching_plan_and_query()
+
+    with pytest.raises(TypeError):
+        _coordinator(
+            plan,
+            ScriptedRetrieval([[]]),
+            alignment_override=object(),
+        )
+
+
+def test_the_gate_rejects_the_fixture_without_an_override() -> None:
+    """The control.  Without this, the next test would not mean anything."""
+
+    plan, query = _mismatching_plan_and_query()
+    coordinator = _coordinator(plan, ScriptedRetrieval([[]]))
+
+    outcome = asyncio.run(coordinator.execute(_request(query)))
+
+    assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
+    assert "QUERY_PLAN_SEMANTIC_MISMATCH" in outcome.reason_codes
+
+
+def test_an_alignment_override_carries_the_run_past_the_gate() -> None:
+    """Same query, same plan, one injected verdict -- and a different ending.
+
+    The run does not succeed; it fails later, for a reason that is not the gate.
+    That is the whole claim: the override moves the decision, it does not
+    manufacture an answer.
+    """
+
+    plan, query = _mismatching_plan_and_query()
+    coordinator = _coordinator(
+        plan,
+        ScriptedRetrieval([[]]),
+        alignment_override=_aligned_override(plan, query),
+    )
+
+    outcome = asyncio.run(coordinator.execute(_request(query)))
+
+    assert "QUERY_PLAN_SEMANTIC_MISMATCH" not in outcome.reason_codes
+    assert "QUERY_PLAN_SEMANTIC_AMBIGUOUS" not in outcome.reason_codes
+    assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
+
+
+def test_an_overridden_run_records_both_verdicts() -> None:
+    """A reader of the outcome alone can tell the gate did not allow this.
+
+    ``semantic_alignment`` is the verdict that was acted on; the override record
+    is the gate's real one.  Collapsing them would make a measurement
+    indistinguishable from a claim.
+    """
+
+    plan, query = _mismatching_plan_and_query()
+    coordinator = _coordinator(
+        plan,
+        ScriptedRetrieval([[]]),
+        alignment_override=_aligned_override(plan, query),
+    )
+
+    outcome = asyncio.run(coordinator.execute(_request(query)))
+
+    record = outcome.runtime_metadata.get("semantic_alignment_override")
+    assert isinstance(record, dict), outcome.runtime_metadata
+    assert record["computed_status"] == "MISMATCH"
+    assert record["computed_allowed"] is False
+    # The plan names `Deferred` and the question does not, and the ontology
+    # cannot name `Deferred` at all -- so the mismatch is reported against the
+    # row's own literal identity rather than as an unrecognised plan metric.
+    # The claim the assertion is here for is unchanged: the computed verdict
+    # names the row that made it a mismatch, so a reader can see why.
+    assert "literal_plan_metric_not_in_query:literal:deferred" in (
+        record["computed_mismatches"]
+    )
+
+    effective = outcome.runtime_metadata.get("semantic_alignment")
+    assert isinstance(effective, dict)
+    assert effective["status"] == "ALIGNED"
+
+
+def test_a_run_without_an_override_records_no_override() -> None:
+    """The absence is the evidence that the other tests' record is real."""
+
+    plan, query = _mismatching_plan_and_query()
+    coordinator = _coordinator(plan, ScriptedRetrieval([[]]))
+
+    outcome = asyncio.run(coordinator.execute(_request(query)))
+
+    assert "semantic_alignment_override" not in outcome.runtime_metadata

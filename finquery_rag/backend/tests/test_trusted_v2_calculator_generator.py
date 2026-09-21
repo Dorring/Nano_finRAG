@@ -11,7 +11,6 @@ from rag_v2.supervisor import DeterministicFallbackProvider, SupervisorService
 from src.domain.calculation import CalculationStatus
 from src.runtime import (
     DeterministicCalculationCapability,
-    LocalSpecialistGenerationAdapter,
     TrustedV2CapabilityPorts,
     TrustedV2GenerationCapability,
     V2ExecutionStatus,
@@ -178,9 +177,7 @@ def test_zero_denominator_is_fail_closed_without_specialist_fallback() -> None:
     )
     calculation = DeterministicCalculationCapability()
     generation = TrustedV2GenerationCapability(
-        specialist=LocalSpecialistGenerationAdapter(
-            _FakeSpecialist("should-not-be-called")
-        )
+        model_backend=_FakeSpecialist("should-not-be-called")
     )
     outcome = asyncio.run(
         _coordinator(
@@ -207,34 +204,36 @@ class _FakeSpecialist:
         self.answer = answer
         self.citation_ids = citation_ids or []
         self.calls = 0
-        self.last_items: list[dict[str, Any]] = []
+        self.last_prompt: str | None = None
 
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: dict[str, Any] | None,
-    ) -> dict[str, Any]:
+    def generate(self, prompt: str) -> dict[str, Any]:
         self.calls += 1
-        self.last_items = evidence_items
+        self.last_prompt = prompt
         return {"answer_text": self.answer, "citation_ids": self.citation_ids}
 
 
 def test_qualitative_route_calls_specialist_with_bound_evidence_only() -> None:
+    # Two genuinely distinct facts: the same metric in two periods, which is a
+    # multi-fact state.  Both rows used to be FY2024 with the same value, so
+    # they were one canonical fact stated twice -- and H2A-2C-1 stopped sending
+    # that to a generator, because the structured renderer states it correctly.
+    # The specialist is now reached for what it is actually for, and every
+    # assertion below is about the disclosure and citation boundary rather than
+    # about which route got there.
     facts = {
-        "E1": _fact("E1", slots=("cause_a",), metric="Operating Margin"),
-        "E2": _fact("E2", slots=("cause_b",), metric="Operating Margin"),
+        "E1": _fact("E1", slots=("cause_a",), metric="Operating Margin", period="FY2024"),
+        "E2": _fact("E2", slots=("cause_b",), metric="Operating Margin", period="FY2023"),
     }
     retrieval, binder, _, _, _ = _real_capabilities(
         [["E1", "E2"]], facts, SelectingBinderProvider()
     )
     specialist = _FakeSpecialist("Margin declined because of costs.", ["unknown-X"])
     generation = TrustedV2GenerationCapability(
-        specialist=LocalSpecialistGenerationAdapter(specialist)
+        model_backend=specialist
     )
     plan = _plan(
-        _slot("cause_a", metric="Operating Margin", role="operand"),
-        _slot("cause_b", metric="Operating Margin", role="operand"),
+        _slot("cause_a", metric="Operating Margin", period="FY2024", role="operand"),
+        _slot("cause_b", metric="Operating Margin", period="FY2023", role="operand"),
         intent=Intent.MULTI_EVIDENCE,
     )
     outcome = asyncio.run(
@@ -248,7 +247,13 @@ def test_qualitative_route_calls_specialist_with_bound_evidence_only() -> None:
     )
 
     assert specialist.calls == 1
-    assert {item["evidence_id"] for item in specialist.last_items} == {"E1", "E2"}
+    # H2A-3B3.  What the specialist is handed is now the rendered prompt; the
+    # evidence that reached the boundary is read from the compiled pack, which
+    # is where the production path put it and what Disclosure Authority governed.
+    assert generation.last_context_pack is not None
+    assert set(generation.last_context_pack.evidence_ids) == {"E1", "E2"}
+    assert specialist.last_prompt is not None
+    assert "Operating Margin" in specialist.last_prompt
     assert outcome.status is V2ExecutionStatus.FAIL_CLOSED
     assert outcome.citation_ids == ["citation-E1", "citation-E2"]
     assert "unknown-X" not in outcome.citation_ids
@@ -272,7 +277,7 @@ def test_candidate_paths_never_emit_released_status() -> None:
     assert outcome.status is not V2ExecutionStatus.READY_FOR_RELEASE
 
 
-def test_all_nine_registry_operations_use_existing_executor() -> None:
+def test_every_registry_operation_executes_through_the_same_path() -> None:
     from rag_v2.adaptive import AdaptiveRAGStateV1
     from rag_v2.contracts import RequiredSlot
     from src.domain.calculation import CalculationOperation, CalculationStatus
@@ -298,6 +303,11 @@ def test_all_nine_registry_operations_use_existing_executor() -> None:
             ("2",),
             {"source_scale": "million", "target_scale": "billion"},
         ),
+        # Relational operations.  They execute through the same path and end at
+        # the same authority artifact; what differs is that the result carries a
+        # relation or an ordering instead of a value.
+        "comparison": (("lhs", "rhs"), ("10", "4"), {}),
+        "ranking": (("a", "b", "c"), ("10", "4", "7"), {}),
     }
 
     for operation, (roles, values, requirements) in fixtures.items():

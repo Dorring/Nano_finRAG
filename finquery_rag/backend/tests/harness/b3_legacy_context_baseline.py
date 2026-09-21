@@ -1,0 +1,678 @@
+"""The B3 legacy context baseline: what the boundary produces, captured.
+
+What this is, and what it is not
+--------------------------------
+
+This module records **what the specialist boundary produced at the commit that
+froze it** -- the route decision, the admitted evidence it selected, the
+post-disclosure field set, the exact model input, and the candidate it returned.
+
+It is a **change detector, not an oracle.**  Every expected value below was
+captured from the implementation, so it cannot testify that the implementation is
+*correct*.  What it can testify is that the implementation has not *moved* --
+which is precisely the question H2A-3B3 has to answer when it replaces the
+hand-written `select -> project -> assemble` sequence with
+`ContextCompiler.compile(...)`.
+
+That distinction is the whole reason this file exists rather than a set of
+hand-written expectations.  H2A-2's independent-oracle matrix applies to claims
+about *correctness*; a migration differential is a claim about *equivalence*, and
+equivalence to a predecessor can only be established against the predecessor's
+recorded behaviour.  The two are complements, and migration needs both:
+
+* this baseline, for "the compiler changed nothing";
+* independently authored semantic assertions, for "and the result was right".
+
+Neither substitutes for the other, and a differential that ships only this file
+would be the tautology the anti-circularity rule forbids.
+
+Two baselines, and only one of them is a target
+-----------------------------------------------
+
+``BASELINE_V1`` lived in this module until H2A-3B2 and has moved to
+``b3_legacy_context_baseline_v1``.  It is the pre-F10 rendering -- the one that
+asserted ``Scope: Revenue``, ``Scale: 1`` and ``Metric: Metric`` -- and it is
+kept as a historical record of a defect, not as something to migrate against.
+A prompt diff during migration has to be attributable to the migration, and it
+could not be if the target still contained fabrications the migration would not
+introduce.
+
+**``BASELINE_V3`` below is the migration target.**  It is the same live path,
+re-captured after F10 was fixed and before any compiler took over the boundary,
+which is what makes it a valid predecessor for H2A-3B3 to be equivalent to.
+
+The move changed four of the five scenarios and nothing else: ``prompt`` and
+``prompt_sha256`` differ wherever a fabricated default was being rendered, and
+``multi_fact`` -- the one scenario whose evidence carries every field -- is
+byte-identical across the two.  The blast radius is the evidence that the change
+was the F10 removal and not a rewrite.
+
+The inputs are authored, the outputs are captured
+--------------------------------------------------
+
+The states below are hand-written; the expectations are recorded.  Keeping the
+inputs authored is what stops the baseline from degenerating into "whatever the
+code does, frozen" -- the scenarios are chosen to cover the shapes B3 is
+actually reached with, and a scenario that stopped reaching the specialist would
+fail here rather than silently record a new route.
+
+Token counts are NOT DETERMINED
+--------------------------------
+
+B3 is the one boundary with a real tokenizer, and it is the checkpoint's -- which
+lives behind `torch` and a SHA256-pinned checkpoint.  Neither is available to the
+suite, so `input_tokens` is recorded as `NOT_DETERMINED` rather than approximated
+with a character or word count.  Reciting a number here would be exactly the
+fabrication H2A-3A's tokenizer matrix was written to prevent.  The canonical
+environment can fill it; nothing else may.
+"""
+
+from __future__ import annotations
+
+import hashlib
+from typing import Any
+
+#: Sentinel for a measurement this environment cannot take honestly.
+NOT_DETERMINED = "NOT_DETERMINED"
+
+#: Authored inputs.  Chosen to cover every shape that actually reaches B3:
+#: multi-fact, temporal, qualitative-single, calculation-with-explanation, and
+#: the page shapes H2A-3B0 fixed.
+SCENARIOS: dict[str, dict[str, Any]] = {
+    "multi_fact": {
+        "question": "What was revenue?",
+        "intent": "DIRECT_FACT",
+        "evidence": [
+            {
+                "evidence_id": "e1", "metric": "Revenue", "value": "391",
+                "period": "FY2024", "scope": "consolidated", "unit": "USD",
+                "currency": "USD", "scale": "million", "document_id": "doc-1",
+                "citation_id": "citation:a", "page": 7,
+            },
+            {
+                "evidence_id": "e2", "metric": "Revenue", "value": "383",
+                "period": "FY2023", "scope": "consolidated", "unit": "USD",
+                "currency": "USD", "scale": "million", "document_id": "doc-1",
+                "citation_id": "citation:b", "page": 0,
+            },
+        ],
+        "calculation": None,
+    },
+    "temporal": {
+        "question": "Compare revenue year-over-year.",
+        "intent": "DIRECT_FACT",
+        "evidence": [
+            {
+                "evidence_id": "e1", "metric": "Revenue", "value": "391",
+                "period": "FY2024", "scope": "consolidated", "unit": "USD",
+                "document_id": "doc-2", "page": 12,
+            },
+            {
+                "evidence_id": "e2", "metric": "Revenue", "value": "383",
+                "period": "FY2023", "scope": "consolidated", "unit": "USD",
+                "document_id": "doc-2",
+            },
+        ],
+        "calculation": None,
+    },
+    "qualitative_single": {
+        "question": "What are the principal risk factors?",
+        "intent": "DIRECT_FACT",
+        "evidence": [
+            {
+                "evidence_id": "e1", "metric": "Risk", "value": "supply chain",
+                "period": "FY2024", "scope": "consolidated", "document_id": "doc-3",
+                "page": 41,
+            },
+        ],
+        "calculation": None,
+    },
+    "calculation_with_explanation": {
+        "question": "Why did revenue change?",
+        "intent": "MULTI_EVIDENCE",
+        "evidence": [
+            {
+                "evidence_id": "e1", "metric": "Revenue", "value": "391",
+                "period": "FY2024", "scope": "consolidated", "unit": "USD",
+                "document_id": "doc-1", "page": 7,
+            },
+            {
+                "evidence_id": "e2", "metric": "Revenue", "value": "383",
+                "period": "FY2023", "scope": "consolidated", "unit": "USD",
+                "document_id": "doc-1", "page": 7,
+            },
+        ],
+        "calculation": {"operation": "difference", "value": "8", "unit": "USD"},
+    },
+    "page_variants": {
+        "question": "Summarise the reported figures.",
+        "intent": "DIRECT_FACT",
+        "evidence": [
+            {
+                "evidence_id": "e1", "metric": "Revenue", "value": "391",
+                "period": "FY2024", "document_id": "doc-1", "page": 7,
+            },
+            {
+                "evidence_id": "e2", "metric": "Cost of revenue", "value": "214",
+                "period": "FY2024", "document_id": "doc-1", "page": 0,
+            },
+            {
+                "evidence_id": "e3", "metric": "Operating income", "value": "123",
+                "period": "FY2024", "document_id": "doc-1",
+            },
+        ],
+        "calculation": None,
+    },
+}
+
+
+class RecordingSpecialist:
+    """Records exactly what the boundary handed it.
+
+    H2A-3B3.  This used to render the prompt itself from
+    ``(question, evidence_items, calculation_result)``.  It now receives the
+    prompt the capability rendered from the compiled pack, so ``prompts`` is a
+    recording of the production model input rather than a re-rendering of it --
+    which is a stronger thing for this file to hold, since a baseline that
+    rendered its own copy could agree with itself while the boundary drifted.
+    """
+
+    def __init__(self) -> None:
+        self.prompts: list[str] = []
+
+    def generate(self, prompt: str) -> str:
+        self.prompts.append(prompt)
+        return "The reported revenue was 391 million USD [E1]."
+
+
+def _calculation(spec: dict[str, Any]):
+    from decimal import Decimal
+
+    from src.domain.calculation import (
+        CalculationOperation,
+        CalculationResult,
+        CalculationStatus,
+    )
+
+    return CalculationResult(
+        status=CalculationStatus.EXECUTED,
+        operation=CalculationOperation(spec["operation"]),
+        value=Decimal(spec["value"]),
+        unit=spec.get("unit"),
+    )
+
+
+def build_state(scenario: str):
+    """Build the authoritative state for an authored scenario."""
+
+    from rag_v2.adaptive.adaptive_contracts import AdaptiveRAGStateV1, EvidencePacketV1
+
+    spec = SCENARIOS[scenario]
+    state = AdaptiveRAGStateV1.new(
+        f"b3-baseline-{scenario}",
+        spec["question"],
+        intent=spec["intent"],
+    )
+    state.add_evidence(
+        [EvidencePacketV1.from_mapping(item) for item in spec["evidence"]]
+    )
+    state.bound_evidence_ids = [item["evidence_id"] for item in spec["evidence"]]
+    if spec["calculation"] is not None:
+        state._calculation_result_obj = _calculation(spec["calculation"])
+    return state
+
+
+def observe(scenario: str) -> dict[str, Any]:
+    """Run the B3 context path and record everything it decided.
+
+    One implementation, used by both the capture and the assertion, so the
+    frozen values and the checked values cannot drift apart.
+
+    H2A-3B3.  ``projected_evidence`` and ``projected_calculation`` now come from
+    the compiled pack rather than from what the backend was handed -- the
+    backend is handed a string now, which is the migration's point.  The
+    *expected* values below are unchanged: they were captured from the legacy
+    path before the compiler took over, so this function producing them again is
+    the differential, not a restatement of it.
+    """
+
+    from src.runtime.trusted_v2_generation import TrustedV2GenerationCapability
+
+    specialist = RecordingSpecialist()
+    capability = TrustedV2GenerationCapability(model_backend=specialist)
+    result = capability.generate(build_state(scenario))
+
+    pack = capability.last_context_pack
+    if pack is None:
+        raise AssertionError(
+            f"the {scenario} scenario did not reach a specialist invocation, so "
+            f"it has no compiled context to record"
+        )
+
+    return {
+        # what was selected
+        "route": result.route,
+        "route_reason": result.route_reason,
+        "route_target": capability.last_decision.target.value,
+        "bound_evidence_ids": list(result.bound_evidence_ids),
+        "citation_ids": list(result.citation_ids),
+        "calculation_ids": list(result.calculation_ids),
+        # what the disclosure authority let across
+        "disclosed_fields": list(capability.trace_snapshot()["disclosed_fields"]),
+        "projected_evidence": [dict(item) for item in pack.evidence],
+        "projected_calculation": (
+            None if pack.calculation is None else dict(pack.calculation)
+        ),
+        # the model input
+        "prompt": specialist.prompts[0],
+        # Carried alongside the text so a regression reports a changed digest
+        # rather than a sixty-line string diff.  Derived from the prompt in the
+        # same call, so it cannot describe a different one.
+        "prompt_sha256": hashlib.sha256(
+            specialist.prompts[0].encode("utf-8")
+        ).hexdigest(),
+        "input_tokens": NOT_DETERMINED,
+        # the candidate
+        "candidate_answer": result.candidate_answer,
+        "candidate_status": result.candidate_status,
+        "candidate_generation_id": result.candidate_generation_id,
+    }
+
+
+#: Captured from the implementation at the H2A-3B0 commit, with F5 fixed and the
+#: compiler not yet introduced.  See the module docstring for what this may and
+#: may not be used to claim.
+BASELINE_V3: dict[str, dict[str, Any]] = {   'calculation_with_explanation': {   'bound_evidence_ids': ['e1', 'e2'],
+                                        'calculation_ids': ['C1-1965a2ad00ce9277'],
+                                        'candidate_answer': 'The reported revenue was '
+                                                            '391 million USD [E1].',
+                                        'candidate_generation_id': 'G1-4fb459f0e6f7144f',
+                                        'candidate_status': 'CANDIDATE_READY_FOR_VALIDATION',
+                                        'citation_ids': [],
+                                        'disclosed_fields': [   'evidence.document_id',
+                                                                'evidence.evidence_id',
+                                                                'evidence.metric',
+                                                                'evidence.page',
+                                                                'evidence.period',
+                                                                'evidence.scope',
+                                                                'evidence.unit',
+                                                                'evidence.value',
+                                                                'calculation.operation',
+                                                                'calculation.unit',
+                                                                'calculation.value'],
+                                        'input_tokens': 'NOT_DETERMINED',
+                                        'projected_calculation': {   'operation': 'difference',
+                                                                     'unit': 'USD',
+                                                                     'value': '8'},
+                                        'projected_evidence': [   {   'document_id': 'doc-1',
+                                                                      'evidence_id': 'e1',
+                                                                      'metric': 'Revenue',
+                                                                      'page': 7,
+                                                                      'period': 'FY2024',
+                                                                      'scope': 'consolidated',
+                                                                      'unit': 'USD',
+                                                                      'value': '391'},
+                                                                  {   'document_id': 'doc-1',
+                                                                      'evidence_id': 'e2',
+                                                                      'metric': 'Revenue',
+                                                                      'page': 7,
+                                                                      'period': 'FY2023',
+                                                                      'scope': 'consolidated',
+                                                                      'unit': 'USD',
+                                                                      'value': '383'}],
+                                        'prompt': '[QUESTION]\n'
+                                                  'Why did revenue change?\n'
+                                                  '\n'
+                                                  '[VERIFIED EVIDENCE]\n'
+                                                  '\n'
+                                                  '[E1]\n'
+                                                  'Metric: Revenue\n'
+                                                  'Period: FY2024\n'
+                                                  'Scope: consolidated\n'
+                                                  'Value: 391\n'
+                                                  'Unit: USD\n'
+                                                  'Currency: not specified\n'
+                                                  'Scale: not specified\n'
+                                                  'Source: doc-1:7\n'
+                                                  '\n'
+                                                  '[E2]\n'
+                                                  'Metric: Revenue\n'
+                                                  'Period: FY2023\n'
+                                                  'Scope: consolidated\n'
+                                                  'Value: 383\n'
+                                                  'Unit: USD\n'
+                                                  'Currency: not specified\n'
+                                                  'Scale: not specified\n'
+                                                  'Source: doc-1:7\n'
+                                                  '\n'
+                                                  '[VERIFIED CALCULATION]\n'
+                                                  '\n'
+                                                  '[C1]\n'
+                                                  'Operation: difference\n'
+                                                  'Value: 8 USD\n'
+                                                  '\n'
+                                                  '[ANSWER RULES]\n'
+                                                  '1. Use only the verified evidence '
+                                                  'and calculation above.\n'
+                                                  '2. Do not introduce outside '
+                                                  'financial knowledge.\n'
+                                                  '3. Preserve supplied numbers, '
+                                                  'periods, units, currencies and '
+                                                  'scales exactly.\n'
+                                                  '4. Do not recalculate canonical '
+                                                  'calculation results.\n'
+                                                  '5. Cite factual claims using the '
+                                                  'supplied [E#] / [C#] IDs.\n'
+                                                  '6. If required evidence is missing, '
+                                                  'explicitly state that the provided '
+                                                  'evidence is insufficient.\n'
+                                                  '7. Answer concisely.',
+                                        'prompt_sha256': '680818283e145ac0245e180226a2d32f931d592f8fda5aad5c9816b8762a5a0d',
+                                        'route': 'CALCULATION_WITH_EXPLANATION',
+                                        'route_reason': 'Calculation with synthesis: '
+                                                        'Local Specialist consumes '
+                                                        'pre-computed C1 and cites '
+                                                        'evidence.',
+                                        'route_target': 'LOCAL_SPECIALIST'},
+    'multi_fact': {   'bound_evidence_ids': ['e1', 'e2'],
+                      'calculation_ids': [],
+                      'candidate_answer': 'The reported revenue was 391 million USD '
+                                          '[citation:a].',
+                      'candidate_generation_id': 'G1-4f188d8a01da1543',
+                      'candidate_status': 'CANDIDATE_READY_FOR_VALIDATION',
+                      'citation_ids': ['citation:a'],
+                      'disclosed_fields': [   'evidence.citation_id',
+                                              'evidence.currency',
+                                              'evidence.document_id',
+                                              'evidence.evidence_id',
+                                              'evidence.metric',
+                                              'evidence.page',
+                                              'evidence.period',
+                                              'evidence.scale',
+                                              'evidence.scope',
+                                              'evidence.unit',
+                                              'evidence.value'],
+                      'input_tokens': 'NOT_DETERMINED',
+                      'projected_calculation': None,
+                      'projected_evidence': [   {   'citation_id': 'citation:a',
+                                                    'currency': 'USD',
+                                                    'document_id': 'doc-1',
+                                                    'evidence_id': 'e1',
+                                                    'metric': 'Revenue',
+                                                    'page': 7,
+                                                    'period': 'FY2024',
+                                                    'scale': 'million',
+                                                    'scope': 'consolidated',
+                                                    'unit': 'USD',
+                                                    'value': '391'},
+                                                {   'citation_id': 'citation:b',
+                                                    'currency': 'USD',
+                                                    'document_id': 'doc-1',
+                                                    'evidence_id': 'e2',
+                                                    'metric': 'Revenue',
+                                                    'page': 0,
+                                                    'period': 'FY2023',
+                                                    'scale': 'million',
+                                                    'scope': 'consolidated',
+                                                    'unit': 'USD',
+                                                    'value': '383'}],
+                      'prompt': '[QUESTION]\n'
+                                'What was revenue?\n'
+                                '\n'
+                                '[VERIFIED EVIDENCE]\n'
+                                '\n'
+                                '[E1]\n'
+                                'Metric: Revenue\n'
+                                'Period: FY2024\n'
+                                'Scope: consolidated\n'
+                                'Value: 391\n'
+                                'Unit: USD\n'
+                                'Currency: USD\n'
+                                'Scale: million\n'
+                                'Source: doc-1:7\n'
+                                '\n'
+                                '[E2]\n'
+                                'Metric: Revenue\n'
+                                'Period: FY2023\n'
+                                'Scope: consolidated\n'
+                                'Value: 383\n'
+                                'Unit: USD\n'
+                                'Currency: USD\n'
+                                'Scale: million\n'
+                                'Source: doc-1:0\n'
+                                '\n'
+                                '[ANSWER RULES]\n'
+                                '1. Use only the verified evidence and calculation '
+                                'above.\n'
+                                '2. Do not introduce outside financial knowledge.\n'
+                                '3. Preserve supplied numbers, periods, units, '
+                                'currencies and scales exactly.\n'
+                                '4. Do not recalculate canonical calculation results.\n'
+                                '5. Cite factual claims using the supplied [E#] / [C#] '
+                                'IDs.\n'
+                                '6. If required evidence is missing, explicitly state '
+                                'that the provided evidence is insufficient.\n'
+                                '7. Answer concisely.',
+                      'prompt_sha256': '3b9f6c4ecd5989117bfcfd485f5ec28c6d60db36b67c30e80d11b832437d1214',
+                      'route': 'MULTI',
+                      'route_reason': 'Multi-fact synthesis: Local Specialist combines '
+                                      'distinct verified facts.',
+                      'route_target': 'LOCAL_SPECIALIST'},
+    'page_variants': {   'bound_evidence_ids': ['e1', 'e2', 'e3'],
+                         'calculation_ids': [],
+                         'candidate_answer': 'The reported revenue was 391 million USD '
+                                             '[E1].',
+                         'candidate_generation_id': 'G1-bb689d5479800896',
+                         'candidate_status': 'CANDIDATE_READY_FOR_VALIDATION',
+                         'citation_ids': [],
+                         'disclosed_fields': [   'evidence.document_id',
+                                                 'evidence.evidence_id',
+                                                 'evidence.metric',
+                                                 'evidence.page',
+                                                 'evidence.period',
+                                                 'evidence.value'],
+                         'input_tokens': 'NOT_DETERMINED',
+                         'projected_calculation': None,
+                         'projected_evidence': [   {   'document_id': 'doc-1',
+                                                       'evidence_id': 'e1',
+                                                       'metric': 'Revenue',
+                                                       'page': 7,
+                                                       'period': 'FY2024',
+                                                       'value': '391'},
+                                                   {   'document_id': 'doc-1',
+                                                       'evidence_id': 'e2',
+                                                       'metric': 'Cost of revenue',
+                                                       'page': 0,
+                                                       'period': 'FY2024',
+                                                       'value': '214'},
+                                                   {   'document_id': 'doc-1',
+                                                       'evidence_id': 'e3',
+                                                       'metric': 'Operating income',
+                                                       'period': 'FY2024',
+                                                       'value': '123'}],
+                         'prompt': '[QUESTION]\n'
+                                   'Summarise the reported figures.\n'
+                                   '\n'
+                                   '[VERIFIED EVIDENCE]\n'
+                                   '\n'
+                                   '[E1]\n'
+                                   'Metric: Revenue\n'
+                                   'Period: FY2024\n'
+                                   'Scope: not specified\n'
+                                   'Value: 391\n'
+                                   'Unit: not specified\n'
+                                   'Currency: not specified\n'
+                                   'Scale: not specified\n'
+                                   'Source: doc-1:7\n'
+                                   '\n'
+                                   '[E2]\n'
+                                   'Metric: Cost of revenue\n'
+                                   'Period: FY2024\n'
+                                   'Scope: not specified\n'
+                                   'Value: 214\n'
+                                   'Unit: not specified\n'
+                                   'Currency: not specified\n'
+                                   'Scale: not specified\n'
+                                   'Source: doc-1:0\n'
+                                   '\n'
+                                   '[E3]\n'
+                                   'Metric: Operating income\n'
+                                   'Period: FY2024\n'
+                                   'Scope: not specified\n'
+                                   'Value: 123\n'
+                                   'Unit: not specified\n'
+                                   'Currency: not specified\n'
+                                   'Scale: not specified\n'
+                                   'Source: doc-1:not specified\n'
+                                   '\n'
+                                   '[ANSWER RULES]\n'
+                                   '1. Use only the verified evidence and calculation '
+                                   'above.\n'
+                                   '2. Do not introduce outside financial knowledge.\n'
+                                   '3. Preserve supplied numbers, periods, units, '
+                                   'currencies and scales exactly.\n'
+                                   '4. Do not recalculate canonical calculation '
+                                   'results.\n'
+                                   '5. Cite factual claims using the supplied [E#] / '
+                                   '[C#] IDs.\n'
+                                   '6. If required evidence is missing, explicitly '
+                                   'state that the provided evidence is insufficient.\n'
+                                   '7. Answer concisely.',
+                         'prompt_sha256': 'd78613aef815e01848d4eed9541e97d03c3d1f9a145494e81e7cb1552f4f3375',
+                         'route': 'MULTI',
+                         'route_reason': 'Multi-fact synthesis: Local Specialist '
+                                         'combines distinct verified facts.',
+                         'route_target': 'LOCAL_SPECIALIST'},
+    'qualitative_single': {   'bound_evidence_ids': ['e1'],
+                              'calculation_ids': [],
+                              'candidate_answer': 'The reported revenue was 391 '
+                                                  'million USD [E1].',
+                              'candidate_generation_id': 'G1-33bc1706f5827798',
+                              'candidate_status': 'CANDIDATE_READY_FOR_VALIDATION',
+                              'citation_ids': [],
+                              'disclosed_fields': [   'evidence.document_id',
+                                                      'evidence.evidence_id',
+                                                      'evidence.metric',
+                                                      'evidence.page',
+                                                      'evidence.period',
+                                                      'evidence.scope',
+                                                      'evidence.value'],
+                              'input_tokens': 'NOT_DETERMINED',
+                              'projected_calculation': None,
+                              'projected_evidence': [   {   'document_id': 'doc-3',
+                                                            'evidence_id': 'e1',
+                                                            'metric': 'Risk',
+                                                            'page': 41,
+                                                            'period': 'FY2024',
+                                                            'scope': 'consolidated',
+                                                            'value': 'supply chain'}],
+                              'prompt': '[QUESTION]\n'
+                                        'What are the principal risk factors?\n'
+                                        '\n'
+                                        '[VERIFIED EVIDENCE]\n'
+                                        '\n'
+                                        '[E1]\n'
+                                        'Metric: Risk\n'
+                                        'Period: FY2024\n'
+                                        'Scope: consolidated\n'
+                                        'Value: supply chain\n'
+                                        'Unit: not specified\n'
+                                        'Currency: not specified\n'
+                                        'Scale: not specified\n'
+                                        'Source: doc-3:41\n'
+                                        '\n'
+                                        '[ANSWER RULES]\n'
+                                        '1. Use only the verified evidence and '
+                                        'calculation above.\n'
+                                        '2. Do not introduce outside financial '
+                                        'knowledge.\n'
+                                        '3. Preserve supplied numbers, periods, units, '
+                                        'currencies and scales exactly.\n'
+                                        '4. Do not recalculate canonical calculation '
+                                        'results.\n'
+                                        '5. Cite factual claims using the supplied '
+                                        '[E#] / [C#] IDs.\n'
+                                        '6. If required evidence is missing, '
+                                        'explicitly state that the provided evidence '
+                                        'is insufficient.\n'
+                                        '7. Answer concisely.',
+                              'prompt_sha256': '644105c2bb58df7fc843de244ef1e16e945c63977e011dca6379df795c1cddfc',
+                              'route': 'QUALITATIVE',
+                              'route_reason': 'Qualitative grounded QA: Local '
+                                              'Specialist generates verified text '
+                                              'answer.',
+                              'route_target': 'LOCAL_SPECIALIST'},
+    'temporal': {   'bound_evidence_ids': ['e1', 'e2'],
+                    'calculation_ids': [],
+                    'candidate_answer': 'The reported revenue was 391 million USD '
+                                        '[E1].',
+                    'candidate_generation_id': 'G1-c3ea4ba3b6313dd3',
+                    'candidate_status': 'CANDIDATE_READY_FOR_VALIDATION',
+                    'citation_ids': [],
+                    'disclosed_fields': [   'evidence.document_id',
+                                            'evidence.evidence_id',
+                                            'evidence.metric',
+                                            'evidence.page',
+                                            'evidence.period',
+                                            'evidence.scope',
+                                            'evidence.unit',
+                                            'evidence.value'],
+                    'input_tokens': 'NOT_DETERMINED',
+                    'projected_calculation': None,
+                    'projected_evidence': [   {   'document_id': 'doc-2',
+                                                  'evidence_id': 'e1',
+                                                  'metric': 'Revenue',
+                                                  'page': 12,
+                                                  'period': 'FY2024',
+                                                  'scope': 'consolidated',
+                                                  'unit': 'USD',
+                                                  'value': '391'},
+                                              {   'document_id': 'doc-2',
+                                                  'evidence_id': 'e2',
+                                                  'metric': 'Revenue',
+                                                  'period': 'FY2023',
+                                                  'scope': 'consolidated',
+                                                  'unit': 'USD',
+                                                  'value': '383'}],
+                    'prompt': '[QUESTION]\n'
+                              'Compare revenue year-over-year.\n'
+                              '\n'
+                              '[VERIFIED EVIDENCE]\n'
+                              '\n'
+                              '[E1]\n'
+                              'Metric: Revenue\n'
+                              'Period: FY2024\n'
+                              'Scope: consolidated\n'
+                              'Value: 391\n'
+                              'Unit: USD\n'
+                              'Currency: not specified\n'
+                              'Scale: not specified\n'
+                              'Source: doc-2:12\n'
+                              '\n'
+                              '[E2]\n'
+                              'Metric: Revenue\n'
+                              'Period: FY2023\n'
+                              'Scope: consolidated\n'
+                              'Value: 383\n'
+                              'Unit: USD\n'
+                              'Currency: not specified\n'
+                              'Scale: not specified\n'
+                              'Source: doc-2:not specified\n'
+                              '\n'
+                              '[ANSWER RULES]\n'
+                              '1. Use only the verified evidence and calculation '
+                              'above.\n'
+                              '2. Do not introduce outside financial knowledge.\n'
+                              '3. Preserve supplied numbers, periods, units, '
+                              'currencies and scales exactly.\n'
+                              '4. Do not recalculate canonical calculation results.\n'
+                              '5. Cite factual claims using the supplied [E#] / [C#] '
+                              'IDs.\n'
+                              '6. If required evidence is missing, explicitly state '
+                              'that the provided evidence is insufficient.\n'
+                              '7. Answer concisely.',
+                    'prompt_sha256': 'b5fd1896999c2bfb156ce72e98e92d4bb7394a42dbd5976d7eff8bb01b346069',
+                    'route': 'TEMPORAL_SYNTHESIS',
+                    'route_reason': 'Temporal/multi-period synthesis: Local Specialist '
+                                    'synthesizes timeline.',
+                    'route_target': 'LOCAL_SPECIALIST'}}

@@ -9,9 +9,6 @@ import time
 from typing import Any
 
 from .services.auth import create_access_token, get_current_user, get_password_hash, verify_password
-from .services.ingest import get_ingest_lineage, process_pdf
-from .services.vector_store import add_documents, list_all_documents, delete_document_collection, get_collection_stats
-from .services.rag_engine import RAGEngine
 from .services.document_registry import DocumentRegistry, VALID_TRANSITIONS
 from .services.session_manager import SessionManager
 from .services.memory_profile import UserMemoryStore
@@ -119,7 +116,7 @@ llm_client = OpenAI(
 )
 llm_model_name = os.getenv("LLM_MODEL_NAME", "nanochat")
 
-rag_engine: RAGEngine | None = None
+rag_engine: Any | None = None
 document_registry = DocumentRegistry()
 session_manager = SessionManager()
 memory_store = UserMemoryStore()
@@ -190,6 +187,8 @@ def get_rag_engine():
     Returns:
         RAGEngine: 初始化后的 RAGEngine 实例。
     """
+    from .services.rag_engine import RAGEngine
+
     global rag_engine
     if rag_engine is None:
         rag_engine = RAGEngine(
@@ -241,6 +240,11 @@ def _financial_runtime_adapter_enabled() -> bool:
 
 def _financial_runtime_mode() -> str:
     return resolve_financial_runtime_mode(environ=os.environ)
+
+
+def _financial_runtime_requires_legacy_engine() -> bool:
+    """Return whether the selected mode still needs the V1 RAG engine."""
+    return _financial_runtime_mode() in {"v1", "shadow"}
 
 
 def _financial_runtime_shadow_timeout_ms() -> int:
@@ -439,6 +443,21 @@ def _assistant_session_metadata(result=None, sources=None, trace_id=None, contex
 
 def _resolve_query_document_names_for_user(user_id, requested_doc_names):
     """Return ready document names for query, rejecting stale/unready filters."""
+    # Official V2 owns its R4 index and does not use the legacy Chroma/BM25
+    # document registry as an execution prerequisite.  Keep an explicit
+    # document scope when supplied, but never import the V1 vector store just
+    # to discover a fallback list.  V1 and shadow retain the historical
+    # registry validation because their primary runtime still queries it.
+    if _financial_runtime_mode() == "v2":
+        if requested_doc_names is None:
+            return []
+        resolved, _ = resolve_query_document_names(
+            requested_doc_names,
+            requested_doc_names,
+            (),
+        )
+        return resolved
+
     ready_names = [
         row.get("filename")
         for row in document_registry.list_documents(user_id)
@@ -446,6 +465,8 @@ def _resolve_query_document_names_for_user(user_id, requested_doc_names):
     ]
     fallback_names = []
     if not ready_names:
+        from .services.vector_store import list_all_documents
+
         fallback_names = [
             row.get("name")
             for row in list_all_documents(user_id)
@@ -609,6 +630,7 @@ async def readyz():
         document_registry=document_registry,
         session_manager=session_manager,
         feedback_store=feedback_store,
+        trusted_v2_preflight=True,
     )
     status_code = 200 if snapshot["ready"] else 503
     return JSONResponse(status_code=status_code, content=snapshot)
@@ -648,6 +670,8 @@ async def list_documents(current_user: User = Depends(get_current_user)):
     """
     if not os.path.exists("./chroma_db"):
         return DocumentsListResponse(documents=[], total_documents=0)
+
+    from .services.vector_store import list_all_documents
 
     docs = list_all_documents(current_user.id)
 
@@ -933,6 +957,8 @@ async def get_document_stats(doc_name: str, current_user: User = Depends(get_cur
     Raises:
         HTTPException: 如果指定文档不存在，抛出 404 异常。
     """
+    from .services.vector_store import get_collection_stats
+
     stats = get_collection_stats(doc_name, current_user.id)
 
     if not stats["exists"]:
@@ -1037,6 +1063,12 @@ async def upload_document(file: UploadFile = File(...), current_user: User = Dep
     Raises:
         HTTPException: 如果文件非 PDF 格式抛出 400 异常；如果 PDF 未提取到内容抛出 400 异常；处理过程中发生其他错误抛出 500 异常。
     """
+    from .services.ingest import get_ingest_lineage, process_pdf
+    from .services.vector_store import (
+        add_documents,
+        delete_document_collection,
+    )
+
     # Validate and normalize file name before using it in temp paths or indexes.
     safe_filename = _safe_upload_filename(file.filename)
     temp_dir = tempfile.mkdtemp()
@@ -1219,6 +1251,7 @@ def _get_query_lifecycle_service() -> QueryLifecycleService:
         assistant_session_metadata=_assistant_session_metadata,
         execution_service_factory=QueryExecutionService,
         financial_runtime_factory=_build_financial_runtime,
+        financial_runtime_requires_engine=_financial_runtime_requires_legacy_engine,
     )
 
 
@@ -1293,6 +1326,7 @@ async def query_documents(
     except HTTPException:
         raise
     except Exception as exc:
+        logger.exception("query lifecycle execution failed")
         raise api_error(500, "query_error", f"Query error: {exc}") from exc
 
 
@@ -1312,6 +1346,7 @@ async def query_documents_stream(
     except HTTPException:
         raise
     except Exception as exc:
+        logger.exception("query lifecycle execution failed")
         raise api_error(500, "query_error", f"Query error: {exc}") from exc
 
     async def generate():
@@ -1493,6 +1528,8 @@ async def delete_document(doc_name: str, current_user: User = Depends(get_curren
     Raises:
         HTTPException: 如果指定文档不存在，抛出 404 异常。
     """
+    from .services.vector_store import delete_document_collection
+
     doc_name = _safe_document_filename(doc_name, require_pdf=False)
 
     # Failed uploads may have a registry row but no Chroma/BM25 chunks. Treat
@@ -1536,6 +1573,8 @@ async def clear_all_documents(current_user: User = Depends(get_current_user)):
     Raises:
         HTTPException: 如果清除过程中发生错误，抛出 500 异常。
     """
+    from .services.vector_store import delete_document_collection
+
     errors = []
     # Delete current user's vectors from ChromaDB
     # Note: delete_document_collection returns False when no data exists (by design).
@@ -1576,6 +1615,8 @@ async def retrieval_candidates(
     session, or mutate indexes. It is authenticated and intended for the
     NF37 candidate-pool exporter.
     """
+    from .services.vector_store import list_all_documents
+
     document_names = list(request.document_names or [])
     if not document_names:
         document_names = [

@@ -8,7 +8,7 @@ import threading
 import time
 from typing import Any
 
-from rag_v2.contracts.plan import SupervisorPlan
+from rag_v2.contracts.plan import SupervisorPlan, slot_key_error
 
 from .api_provider import OpenAI
 from .prompt import SUPERVISOR_PLAN_JSON_SCHEMA, build_messages
@@ -61,8 +61,11 @@ def _strict_plan(raw: str) -> SupervisorPlan:
     if not isinstance(slots, list):
         raise SupervisorProviderError("Bailian required_slots is not an array")
     for slot in slots:
-        if not isinstance(slot, dict) or set(slot) != {"slot_id", "metric", "period", "role", "value_type", "unit"}:
-            raise SupervisorProviderError("Bailian slot does not satisfy the frozen schema")
+        slot_error = slot_key_error(slot)
+        if slot_error is not None:
+            raise SupervisorProviderError(
+                f"Bailian slot does not satisfy the frozen schema: {slot_error}"
+            )
     try:
         return SupervisorPlan.from_dict(payload)
     except Exception as exc:

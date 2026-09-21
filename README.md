@@ -1,260 +1,530 @@
 <div align="center">
 
-# 🚀 NanoFinance: Trusted Financial Agentic RAG
+# Nano_finRAG
 
-**融合金融领域模型、Agentic 调度编排与确定性可信计算的金融多轮问答系统**
+**A trusted financial agent harness: bounded planning, evidence-bound retrieval, deterministic calculation, and fail-closed release.**
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.12-green.svg)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.4%20CUDA%2012.6-ee4c2c.svg)](https://pytorch.org/)
-[![Model Size](https://img.shields.io/badge/Model-2.08B%20Specialist-blueviolet.svg)](finquery_rag/backend/docs/showcase/nano-finance-interview-evidence.md)
-[![Holdout Accuracy](https://img.shields.io/badge/ORCL%20Holdout-99.80%25-success.svg)](finquery_rag/backend/docs/showcase/nano-finance-interview-evidence.md)
-[![Retrieval Latency](https://img.shields.io/badge/Retrieval%20P95-31.2ms-brightgreen.svg)](finquery_rag/backend/docs/showcase/nano-finance-interview-evidence.md)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.9%20CUDA%2012.8-ee4c2c.svg)](https://pytorch.org/)
+[![Release Coverage](https://img.shields.io/badge/Trusted%20Release-67.53%25-success.svg)](#62-trusted-end-to-end)
+[![Incorrect Release](https://img.shields.io/badge/Incorrect%20Release-0-brightgreen.svg)](#62-trusted-end-to-end)
+[![Tests](https://img.shields.io/badge/Tests-5148%20passed-brightgreen.svg)](#73-reliability--tests)
 
-[**[系统架构]**](#-系统全景架构) • [**[核心指标]**](#-核心评测与量化效果) • [**[关键技术]**](#-四大核心技术模块) • [**[多轮评测]**](#-140-case-多轮上下文基准) • [**[快速上手]**](#-快速上手)
+[English](README.md) · [中文](README.zh-CN.md)
 
 </div>
 
 ---
 
-## 📌 项目介绍
-
-在上市公司财报分析与专业金融问答场景中，通用大模型与传统 RAG 面临三大核心工程挑战：
-1. **复杂表格检索噪声高**：财报行列交叉、附注交叉披露导致单查询召回容易丢失多槽位关键证据；
-2. **数值计算幻觉频发**：纯生成式模型擅自篡改数字、量纲（如把 `$49.8M` 篡改成 `$49.8%`）或执行不可靠的浮点心算；
-3. **多轮对话上下文稀释与污染**：历史会话中的未核验数字被错误当作后续计算事实，长会话导致 Token 与延迟线性爆炸。
-
-**NanoFinance** 构建了一套**端到端分层解耦的金融智能体推理体系**：通过在 17.7B Token 混合语料上预训练的 **2.08B 本地金融专家模型**，结合 **Agentic RAG 调度编排**、**多轮上下文自适应降噪**、**9 类确定性金融计算工具**与**零释放权限外部强校验链**，实现数值计算与自然语言生成的彻底解耦，保障财报问答的绝对事实准确性与安全可信。
-
----
-
-## 📊 核心评测与量化效果
-
-> 本项目所有指标均来自严格对齐的基准测试集、未见过的上市公司盲测集（Company-Held-Out）及端到端自动化回归套件。
-
-| 核心维度 | 评测基准 / 范围 | 对照基线 (Baseline) | NanoFinance 最终效果 | 核心增益 / 性能优势 |
-| :--- | :--- | :--- | :--- | :--- |
-| **金融领域模型能力** | 金融多任务宏观评测 (Macro QA) | Qwen3.5-2B: `7.86%` | **NanoFinance 2.08B: 19.78%** | **+11.92 pp** (性能提升 2.5x) |
-| **证据约束生成能力** | ORCL 500 题盲测集 (Company-Held-Out) | 原始通用模型: ~12% | **Step-156 专家: 99.80% (499/500)** | **释放正确率 100%**，实质错误 0 |
-| **生成器训练效果** | 严格对齐 68-Packet 消费回归 | 原始 Financial SFT: `11.76%` | **Step-156 专家: 76.47% (52/68)** | **+64.71 pp** (净拯救 44 题，0 回归) |
-| **检索第一阶段召回** | T²-RAGBench 财报复杂检索集 | 基础 BM25 检索: `78.1%` | **R4 组合检索: 88.6% (Recall@5)** | **Recall@10 达 100.0%**，多槽位召回 100% |
-| **多轮独立意图重构** | 140-Case 多轮金融问答压力基准 | 基础拼接: 易受旧主题污染 | **独立问题重构率: 97.86% (137/140)** | 歧义澄清率 **100%**，信任违规 0 |
-| **可信计算与执行安全** | 全流程端到端执行回归 | 传统 Agent 心算易错 | **False Binding = 0, False Execution = 0** | **未核验证据零泄露**，异常 Fail-Closed |
-| **工程端到端时延** | 真实生产环境压测 (RTX A6000) | 传统多 Agent 级联: >5s | **检索 P95 31.2ms / P50 15.6ms** | 模型生成 P50 1.89s，0 额外 LLM 重写开销 |
-
----
-
-## 🏗️ 系统全景架构
-
-NanoFinance 确立了严格清晰的**三层职责分离架构**：
-- **Layer 1** 负责 *“理解用户在多轮中到底想问什么”*（将省略句恢复为独立金融请求）；
-- **Layer 2** 负责 *“拆解金融任务并受约束地调度能力与工具”*；
-- **Layer 3** 负责 *“依据可信证据与数学引擎，严格决定答案能否释放”*。
-
-```
-                       ┌──────────────────────────────────────────────┐
-                       │        User Turn (多轮对话输入 / Session)      │
-                       └──────────────────────┬───────────────────────┘
-                                              │
-                                              ▼
-┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-│  Layer 1 — Conversation Context Layer (多轮会话管理与意图重构)                                     │
-│  ├─ 动态相关性过滤 (Relevance Filter): Query + State + Recent Turns 多维信号评分动态降噪          │
-│  ├─ 三层分层记忆管理 (L1 原始近期轮次 / L2 结构化语义状态 / L3 话题摘要压缩): 500 轮 Token 恒定收敛   │
-│  ├─ 上下文预算控制 (Application Context Budget): 严格 application-level 预算裁剪，防注意力稀释   │
-│  ├─ 指代与相对时期消解: 自动还原实体继承、指标继承、相对时间 (如 "上一年" -> "FY2023")            │
-│  ├─ 显式优先准则 (Explicit Query Override): 用户当前输入 100% 优先，历史仅补全缺失槽位          │
-│  ├─ 主动歧义澄清门禁 (Ambiguity Clarification Gate): 多指标歧义主动返回选项交互，严禁模型盲猜     │
-│  └─ 自包含快速旁路 (Fast-Path Bypass): 单轮与自包含请求直接直通，0 额外模型开销                  │
-└─────────────────────────────────────┬──────────────────────────────────────────────────────────┘
-                                      │
-                                      ▼ [重构为语义完备的 Standalone Financial Query]
-┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-│  Layer 2 — Agentic Orchestration (Financial RAG Supervisor 金融调度中枢)                         │
-│  ├─ 受约束请求解析 (SupervisorPlan): 确定性提取 Query 语义坐标与意图                             │
-│  ├─ 能力与工具分流 (GeneratorRoutingPolicy):                                                   │
-│  │   ├── STRUCTURED_SINGLE  ──► 确定性结构化渲染器 (Deterministic Renderer)                     │
-│  │   ├── CALCULATION        ──► 9 类确定性金融计算工具 / C1 算术核验 (Deterministic Calculator)    │
-│  │   └── QUALITATIVE/MULTI  ──► 2.08B 本地金融专家模型 (Local Financial Specialist)            │
-│  └─ 有界状态机控制: 依据证据完整性与异常原因码 (Reason Codes) 触发有界定向补检与安全退出           │
-└─────────────────────────────────────┬──────────────────────────────────────────────────────────┘
-                                      │
-                                      ▼
-┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-│  Layer 3 — Trusted Financial Execution (可信证据检索、绑定、计算与零释放权限校验链)                 │
-│  ├─ R4 组合检索架构:                                                                           │
-│  │   ├── 结构化文档元数据检索 (Structured Sidecar Search) ──► 财报表头/版本信息 100% 召回        │
-│  │   └── 分槽感知检索 (Slot-Aware Retrieval & Dedup Merge) ──► 解决跨表/附注第二证据挤压缺失      │
-│  ├─ 语义证据绑定器 (Semantic Evidence Binder): 强制执行 RequiredSlot 语义对齐与证据约束         │
-│  ├─ 2.08B 本地金融专家模型: 基于 FinancialGenerationViewV1 结构化证据契约受约束生成               │
-│  ├─ 确定性计算引擎: 浮点精确计算同比增长、毛利率变动、EPS、复合增长率等，与生成彻底解耦           │
-│  ├─ 外部零释放权限强校验链 (Runtime Validator Chain):                                          │
-│  │   ├── 语义断言验证 (SemanticClaimVerifier) ──► 严禁无源事实                                  │
-│  │   ├── 数值与量纲校验 (Numeric / UnitCurrencyScaleValidator) ──► 拦截 "$49.8% M" 等畸变       │
-│  │   ├── 期间与引用校验 (Period / CitationValidator) ──► 校验财报时期与事实溯源                 │
-│  │   └── 算术一致性校验 (C1Validator) ──► 强制校验生成内容与计算工具输出完全一致                │
-│  └─ 确定性安全门禁 (Fail-Closed Release Gate): 校验链拥有一票否决权，模型自身 0 释放权限        │
-└─────────────────────────────────────┬──────────────────────────────────────────────────────────┘
-                                      │
-                 ┌────────────────────┴────────────────────┐
-                 ▼                                         ▼
-      【 Verified Trusted Answer 】               【 Safe Fail-Closed 】
-      (全链路强核验证据与确定性答案)               (证据不足/校验失败时安全拒答)
-```
-
----
-
-## 💡 四大核心技术模块
-
-### 1. 金融领域模型端到端预训练与证据约束生成对齐 (Financial LLM & Grounded SFT)
-- **领域持续预训练 (CPT)**：基于 SEC 10-K/10-Q 财报、金融研报与结构化披露等 **17.7B Token 金融混合语料库**，完成 2.08B 参数模型的金融领域知识注入。
-- **多任务指令微调 (SFT)**：构建 **4 万条高质量金融多任务指令数据集**，涵盖财报指标提取、跨期对比、比率分析与风险因素归纳，金融多任务评测达到 **19.78%**（较同参数通用模型 Qwen3.5-2B **绝对提升 +11.92pp**）。
-- **可信证据约束蒸馏 (Grounded V3 Distillation)**：构建 **1.6 万条**高精度 Teacher 蒸馏样本，混合 20% 领域通用回放数据（80/20 Mixture），通过仅对 Response 计算 Loss 的严谨微调，强化模型在多证据综合、事实引用溯源与计算结果保持上的能力。
-- **词典序模型选择 (Lexicographic Selection)**：制定 `Safety Invariants (0 违规) -> Financial Macro Retention (≥18%) -> Strict Correct (盲测最高)` 的多级筛选准则，选出最优 Step-156 Checkpoint。在未参与训练的 **ORCL 500 题全新盲测集**上达到 **99.80% Strict Correct (499/500)**。
-
----
-
-### 2. 多轮会话管理与 Agentic RAG 编排 (Multi-turn Context & Supervisor)
-- **三层分层上下文管理机制**：坚持 `Model Context Capacity != Conversation Memory Strategy` 原则。即便外层模型具备大窗口，依然通过 **L1（最近 4 轮原始交互）+ L2（结构化语义状态）+ L3（高阶话题摘要压缩）** 进行分层管理，并在 **500 轮长会话压力测试**下保证有效上下文稳定收敛在 ~500 tokens，杜绝语义稀释与上下文污染。
-- **动态相关性降噪 (Context Relevance Filter)**：综合考虑当前 Query、DialogueState 实体、活动主题、显式引用与时效衰减，对历史轮次进行多维评分与动态淘汰，精准隔离闲聊与过时主题。
-- **强信息优先级与显式覆盖**：确立 $\text{当前显式输入} > \text{明确引用轮次} > \text{结构化状态} > \text{历史摘要}$ 的优先级准则（`EXPLICIT_QUERY_OVERRIDE`），历史仅用于补全省略槽位，绝不反向污染用户当前指定的实体。
-- **Financial RAG Supervisor 与有界状态机**：Supervisor 接收重构后的独立金融请求，根据 `SupervisorPlan` 进行确定性意图分流与工具调度；依据异常原因码（如 `FIRST_STAGE_MISS`、`MULTI_SLOT_INCOMPLETE`）触发有界定向补检，达成高效闭环。
-
----
-
-### 3. 可信推理与确定性计算解耦 (Trusted Inference & Deterministic Execution)
-- **结构化证据契约 (`FinancialGenerationViewV1`)**：定义包含文档元数据、时间跨度语义、表格单元格溯源标识（Cell ID/Table ID）的权威视图契约，统一检索与生成的交互接口。
-- **9 类确定性金融计算工具**：针对财务分析中的**同比增长率 (YoY)、环比增长率 (QoQ)、结构占比、毛利率变动 (Margin Delta)、每股收益 (EPS)、复合年均增长率 (CAGR)、营运资金变动**等，通过确定性 Python 数学引擎精确计算，彻底杜绝大模型浮点运算幻觉。
-- **不可信会话信任边界 (`CONVERSATION_CONTEXT_NOT_EVIDENCE`)**：确立不可动摇的安全准则——历史会话中的 Assistant 回答即便包含数字，也绝不转换为权威证据或直接填入计算工具操作数；所有数值必须重新通过检索与证据绑定器从财报源头提取。
-
----
-
-### 4. 外部零释放权限强校验链与 Fail-Closed 门禁 (Runtime Validator Chain)
-- **解耦生成与准入权限**：2.08B 本地金融专家模型**仅承担受约束的自然语言组织与观点陈述，模型自身具备 0 释放权限**。
-- **多维度强校验流水线**：
-  1. `SemanticClaimVerifier`：校验生成内容中的每一个金融事实断言是否均存在对应的已核验证据；
-  2. `Numeric & UnitCurrencyScaleValidator`：严格比对生成文本中的数值与量纲（拦截如 `$49.8% million`、`百万元 vs 十亿元` 等常见单位混乱）；
-  3. `PeriodValidator & CitationValidator`：校验财务时期与引用标签的严格一致性，杜绝伪造引用（Phantom Citations）；
-  4. `C1Validator`：强制比对模型陈述的计算结果与确定性计算工具输出，差异为 0 方可通过。
-- **确定性 Fail-Closed 机制**：一旦校验链中任何一项规则未通过，系统立即拦截并执行 Fail-Closed 安全拒答，确保进入生产环境的答案**实质性错误释放数为 0**。
-
----
-
-## 🧪 140-Case 多轮上下文基准评测
-
-为了全面验证 Conversation Context Layer 在复杂多轮财务交互中的稳定性，构建了覆盖 11 个维度的 **140-Case Multi-Turn Context Benchmark**：
+## Metrics snapshot
 
 ```text
-======================================================================
-140-Case Multi-Turn Context Extension Benchmark Results
-======================================================================
-  [01] 实体继承 (Entity inheritance)            : 12 / 15 ( 80.00%) | 违规: 0
-  [02] 指标继承 (Metric inheritance)            : 15 / 15 (100.00%) | 违规: 0
-  [03] 时期继承 (Period inheritance)            : 15 / 15 (100.00%) | 违规: 0
-  [04] 相对时期消解 (Relative-time resolution)  : 10 / 10 (100.00%) | 违规: 0
-  [05] 代词指代消解 (Pronoun/reference)         : 10 / 10 (100.00%) | 违规: 0
-  [06] 跨轮多步计算 (Cross-turn calculation)    : 15 / 15 (100.00%) | 违规: 0
-  [07] 主题切换降噪 (Topic switch / noise)      : 15 / 15 (100.00%) | 违规: 0
-  [08] 歧义主动澄清 (Ambiguity clarification)   : 15 / 15 (100.00%) | 违规: 0 (15/15 触发澄清)
-  [09] 长上下文压力 (Long-context stress)       : 10 / 10 (100.00%) | 违规: 0
-  [10] 信任边界对抗 (Trust-boundary adversarial): 10 / 10 (100.00%) | 违规: 0 (
-  [11] 独立性保持 (Standalone preservation)     : 10 / 10 (100.00%) | 违规: 0
-----------------------------------------------------------------------
-  总体独立意图重构准确率: 137 / 140 (97.86%) | 信任边界违规: 0 | 状态污染: 0
-======================================================================
+Offline retrieval — production Hybrid RRF
+  Recall@5            50.7%      Recall@10   58.0%     Recall@20   65.3%
+
+Offline retrieval — STRUCTURED RERANK (experimental, default OFF)
+  Recall@5            85.3%      Recall@10   93.3%     Recall@20   95.3%
+
+Trusted end-to-end (Benchmark V2, 77 answerable / 43 abstention)
+  Release coverage    52/77 = 67.53%
+  Released accuracy   52/52 = 100%
+  Incorrect release   0
+  Correct refusal     43/43 = 100%
+  Citation P/R        96.0% / 95.3%   (canonical identity)
 ```
+
+> **85.3% is an offline structured-reranking result, not production retrieval.**
+> The production retrieval path is Hybrid RRF at **50.7%** R@5. The reranker is
+> benchmark-positive and **off by default** — see
+> [§6.1](#61-offline-retrieval) and [§10](#10-design-decisions).
+
+> **67.53% is trusted release coverage, not answer accuracy.** It is the share of
+> answerable questions the system is willing to answer. Every answer it does
+> release is correct, and it releases nothing when the evidence conflicts.
 
 ---
 
-## 📂 项目工程目录结构
+## 1. Overview
+
+Nano_finRAG answers questions over SEC filings — income statements, balance
+sheets, segment tables and their notes — and is built around a single premise:
+
+> **An answer that cannot be grounded should not be released, and the system
+> should be able to say why.**
+
+That premise drives the architecture. A bounded planner turns a question into
+required slots. Retrieval fills them. A binder decides whether each slot is
+evidenced by exactly one value at its coordinate. Arithmetic runs in a
+deterministic calculator, never in the language model. A validator checks the
+numeric payload against the bound evidence before anything is released. When any
+step cannot be satisfied, the run **fails closed** and reports the stage that
+stopped it.
+
+The system is evaluated on **Benchmark V2** — 120 questions over eight filings
+(AAPL, JPM, KO, MSFT, NVDA, PFE, TSLA, V), 77 answerable and 43 designed to be
+refused.
+
+## 2. Why not "just a RAG demo"
+
+| A typical RAG demo | Nano_finRAG |
+|---|---|
+| Retrieve chunks, generate an answer | Retrieve **evidence**, bind it to **required slots**, then compute |
+| Numbers come from the model | Numbers come from a **deterministic calculator**; the model never does arithmetic |
+| One shot, best effort | Bounded **RunState / Budget / StopPolicy** — the run has a shape and a cost |
+| Failure = a wrong answer | Failure = **fail-closed with a reason code**; wrong answers are the thing being prevented |
+| "Answer accuracy" | **Release coverage** (what it will answer) and **released accuracy** (of what it answered) reported separately |
+| Quality is a prompt | Quality is a **harness**: planner, binder, calculator, validator, finalizer |
+
+The interesting number here is not how many questions it answers. It is that it
+answers **52 of 77** and is wrong **zero** times, while refusing **43 of 43**
+questions that should be refused.
+
+## 3. Architecture
+
+```mermaid
+flowchart TD
+    Q[User query] --> H[Trusted V2 Harness<br/>RunState · Budget · StopPolicy]
+    H --> P[Bounded Planner<br/>required slots + operation]
+    P --> A{Semantic alignment gate}
+    A -- refuse --> FC[Fail-closed]
+    A -- allow --> R[Hybrid Retrieval<br/>BM25 + dense, RRF fusion]
+    R --> B[Evidence Binder<br/>one value per slot coordinate]
+    B -- ambiguous / missing --> FC
+    B --> C[Deterministic Calculator<br/>9 operations, operand guard]
+    C --> G[Financial specialist LM<br/>narrative only]
+    G --> V[Validator<br/>numeric · scope · citation]
+    V -- fail --> FC
+    V --> REL[Release]
+
+    ST[(Fact store<br/>20,394 records<br/>iXBRL + legacy)] -.-> R
+    ST -.-> B
+    ST -.-> C
+    TR[(Trace / audit)] -.-> H
+```
+
+The **production** execution path, as the code actually runs it:
 
 ```text
-finquery_rag/backend/
-├── docs/showcase/                              # 权威证据封存与设计展示文档
-│   ├── nano-finance-interview-evidence.md     # 面试证据链、标准量化话术与局限性声明
-│   ├── multiturn-context-baseline-audit.md    # M0 阶段基准架构审计文档
-│   ├── multiturn-context-design.md            # 多轮上下文层完整架构设计规范
-│   └── multiturn-context-evaluation.md        # 140 题多轮压力基准评测报告
-├── src/
-│   ├── conversation/                          # Layer 1: 多轮会话管理与上下文解释层
-│   │   ├── contracts.py                       # 对话轮次、语义状态、意图重构数据契约
-│   │   ├── bailian_client.py                  # 阿里云百炼客户端封装 (Thinking=False, 指数退避重试)
-│   │   ├── resolver.py                        # ContextualQueryResolver (Fast Path 与重构逻辑)
-│   │   ├── relevance_filter.py                # 动态降噪过滤 (多维信号评分)
-│   │   ├── context_budget.py                  # 三层分层记忆 (L1/L2/L3) 与 Token 预算管理器
-│   │   ├── store.py                           # 线程安全会话隔离存储 (InMemoryConversationStore)
-│   │   └── service.py                         # ConversationContextManager 核心编排服务
-│   ├── generation/                            # Layer 3: 本地金融专家生成器与校验链
-│   │   ├── local_specialist_generator.py      # Step-156 模型加载、显存动态控制与推理服务
-│   │   ├── generator_routing_policy.py        # 渲染器 / 计算器 / 专家模型分流路由策略
-│   │   └── runtime_validator_chain.py         # 语义、数值、量纲、期间、引用、C1 强校验流水线
-│   └── retrieval/                             # Layer 3: 结构化与分槽检索模块
-│       └── metadata_scope.py                  # 财报元数据过滤与检索范围规划
-├── rag_v2/runtime/                            # Layer 2: Financial RAG Supervisor 调度中枢
-│   ├── contracts.py                           # TrustedRAGQueryV2, TrustedRAGResponseV2 契约
-│   └── runtime.py                             # TrustedRAGRuntimeV2 核心执行引擎
-├── scripts/
-│   ├── evaluation/                            # 评测基准运行脚本
-│   │   └── run_multiturn_context_eval.py      # 140-Case 多轮上下文基准评测套件
-│   └── runtime/                               # 生产与回归验证脚本
-│       ├── run_nf_v2_21_runtime_integration.py# 运行时集成与显存/时延压测脚本
-│       ├── run_nf_v2_22_shadow_verification.py# Shadow 模式验证与 31 项 Fail-Closed 对账
-│       └── run_nf_v2_23_retrieval_final_mile.py# R4 检索最终一公里恢复与 120 题回归套件
-└── tests/conversation/                        # 单元测试与对抗测试套件
-    ├── test_conversation_contracts.py         # 契约实例化与 ReasonCode 测试
-    ├── test_resolver.py                       # 快速旁路、继承与歧义门禁测试
-    ├── test_relevance_and_budget.py           # 动态降噪与 500 轮 Token 预算收敛测试
-    ├── test_trust_boundary.py                 # 历史虚假数字零传播对抗测试
-    ├── test_standalone_preservation.py        # 长历史后独立问题防污染测试
-    └── test_session_isolation.py              # 多 Session 状态物理隔离测试
+Request
+  ↓
+Trusted V2 Runtime            FINANCIAL_RUNTIME_MODE=v2
+  ↓
+Planning / Required Slots
+  ↓
+Hybrid Retrieval              BM25 + dense → RRF fusion
+  ↓
+Evidence Binding / Admission  one value per (entity, metric, period, scope)
+  ↓
+Deterministic Calculation     9 registered operations
+  ↓
+Financial Generation          specialist LM, narrative only
+  ↓
+Validation                    numeric · scope · citation
+  ↓
+Release / Fail-Closed
 ```
 
----
+> **Not in the production chain.** A structured reranker, a structured
+> operand-binding module, entity-isolated retrieval and a structural sidecar all
+> exist in the tree. **None is enabled by default**, and none is drawn above. See
+> [§10](#10-design-decisions).
 
-## ⚡ 快速上手
+## 4. Trusted Agent Harness
 
-### 1. 环境依赖配置
+- **Bounded planning.** A supervisor produces an intent, an operation and
+  `required_slots`, each naming an entity, a metric and a period. Planning is
+  bounded, not open-ended.
+- **Explicit run state.** Every run carries a `RunState`, a budget (tool calls,
+  replan rounds, retries) and a stop policy, so a question has a shape and a
+  bounded cost rather than an open-ended agent loop.
+- **Provider-neutral.** The harness talks to a `ModelProviderV1` seam. The
+  specialist LM, the binder and the planner are replaceable without touching the
+  harness; the benchmark's replay track substitutes only the supervisor.
+- **Fail-closed by construction.** Each stage can refuse. A refusal carries a
+  reason code and a terminal state, so "it did not answer" is always attributable
+  to a stage rather than to a shrug.
+- **Deterministic calculation.** Nine registered operations (`difference`,
+  `sum`, `average`, `growth_rate`, `percentage_share`, margins, ratios,
+  scaling). The calculator infers nothing; operand roles come from the pinned
+  plan.
+- **No Root / no side effects.** The runtime reads a fact store and an index. It
+  does not mutate evidence.
+
+## 5. Retrieval Pipeline
+
+Four candidate lanes over an R4 candidate index (310 MB), fused with Reciprocal
+Rank Fusion:
+
+```
+question ──┬─ raw        BM25      ┐
+           ├─ raw        dense     │
+           ├─ structured BM25      ├─ RRF (k=60) ─→ pool cut ─→ Binder
+           └─ structured dense     ┘
+```
+
+Pool construction is deterministic: lane truncation, round-robin merge,
+materialisation, entity/scope ordering and the final cap are all non-model steps.
+The Binder may issue further retrieval rounds to repair slots.
+
+## 6. Evaluation
+
+Benchmark **V2**: 120 questions, 77 answerable, 43 abstention. Gold `a3d17211`,
+eval set `227f0341`, fixtures **v9** `c20afaec`.
+
+### 6.1 Offline Retrieval
+
+Measured with `run_nf_v3_retrieval_benchmark.py`; **75 of 120 cases are
+scorable**. The 20-case `cross_entity_comparison` stratum is
+`STRUCTURALLY_UNMEASURABLE` — all 47 of its gold ids are `ixbrl:` keys while the
+R4 index is keyed on `v2fact:`, so the two cannot be compared and the row is
+reported blank rather than as a zero.
+
+**Production — Hybrid RRF (the shipped path):**
+
+| Metric | Production Hybrid RRF |
+|---|---:|
+| Recall@5 | **50.7%** |
+| Recall@10 | **58.0%** |
+| Recall@20 | **65.3%** |
+
+**Structured reranking — experimental, default off:**
+
+| Metric | Hybrid RRF | + Structured Rerank |
+|---|---:|---:|
+| Recall@5 | 50.7% | **85.3%** |
+| Recall@10 | 58.0% | **93.3%** |
+| Recall@20 | 65.3% | **95.3%** |
+
+**The negative finding, which is the point.** Structured reranking substantially
+improved frozen offline ranking and produced **no production gain**, because the
+evidence it promoted was already inside the window the Binder reads:
+
+```
+PROMOTED_ALREADY_VISIBLE = 12
+PROMOTED_INTO_WINDOW     = 0
+DEMOTED_OUT_OF_WINDOW    = 0
+```
+
+Every promotion landed in a window the Binder was already looking at. The
+component is therefore benchmark-positive, production-default-off, **with no
+demonstrated end-to-end gain** — and the E2E coverage below is what the system
+does *without* it.
+
+**The trade-off, with the cost side measured only where it was measured:**
+
+| Variant | R@5 | Retrieval p50 | Retrieval p95 | E2E gain |
+|---|---:|---:|---:|---|
+| Production Hybrid RRF | 50.7% | 434.4 ms | 711.3 ms | baseline |
+| + Structured Rerank | 85.3% | *not re-measured* | *not re-measured* | not demonstrated |
+
+The reranker's latency was **not re-measured in this round**, so no figure is
+given rather than a stale one. The production row is the warm measurement from
+[§7.1](#71-latency), on the same machine as everything else here.
+
+### 6.2 Trusted End-to-End
+
+| Metric | Result |
+|---|---:|
+| Answerable | 77 |
+| Abstention | 43 |
+| Trusted Release Coverage | **52/77 = 67.53%** |
+| Released Accuracy | **52/52 = 100%** |
+| Incorrect Release | **0** |
+| Correct Refusal | **43/43 = 100%** |
+
+**Coverage and accuracy are different questions and are never merged.** 67.53%
+is how much the system is willing to answer; 100% is how often it is right when
+it does. Trading the second for the first is exactly what the harness exists to
+prevent.
+
+**Offline retrieval is not E2E coverage.** A high R@K does not become a release:
+
+```text
+Retrieval Reachability      gold fact reaches the pool
+        ↓
+Evidence Binding            one value at the coordinate
+        ↓
+Slot Completeness           every required slot filled
+        ↓
+Calculation / Generation    deterministic arithmetic, narrative
+        ↓
+Validation                  numeric · scope · citation
+        ↓
+Trusted Release             52 / 77
+```
+
+Of the 25 answerable cases that are not released, **14** have at least one slot
+whose gold never reached the pool on the first pass, **8** have their gold in the
+pool at a coordinate that holds several values, and **2** are refused by
+validation. They are **not** one bucket and are not all retrieval failures.
+
+### 6.3 Citation / Grounding
+
+| | Canonical identity | Strict IDs |
+|---|---:|---:|
+| Citation precision | **96.0%** (95/99) | 68.7% (68/99) |
+| Citation recall | **95.3%** (82/86) | 79.1% (68/86) |
+
+The canonical-identity column is the grounding measurement. The strict-ID column
+is **not** a quality metric here: gold for the cross-entity stratum names
+rebuilt-iXBRL keys while every citation names a legacy candidate id, so a correct
+citation to the same quantity reads as a miss. Measured: iXBRL-keyed gold misses
+**16/16**; legacy-keyed gold misses **2/70**.
+
+## 7. Performance & Engineering Metrics
+
+Measured on the sealed commit, one run, one machine. **Not a production SLA.**
+
+**Environment.** Intel Xeon Gold 6242R @ 3.10 GHz (80 threads) · 251 GB RAM ·
+4 × NVIDIA RTX 4090 24 GB, driver 580.178.04 · Ubuntu 22.04.5 LTS ·
+Python 3.12.14 · PyTorch 2.9.1 + CUDA 12.8 · fact store 20,394 records /
+49 MB · R4 index 310 MB · corpus 279 MB.
+
+### 7.1 Latency
+
+**Local-only stages** (no model, no network, over all 120 questions):
+
+| Stage | p50 | p95 | p99 |
+|---|---:|---:|---:|
+| Semantic alignment | **0.58 ms** | 0.76 ms | 1.05 ms |
+| Hybrid retrieval (cold) | **451.6 ms** | 874.4 ms | 2061.4 ms |
+| Hybrid retrieval (warm) | **434.4 ms** | 711.3 ms | 897.6 ms |
+
+**End-to-end** (`request → release / refusal`, all 120 questions):
+
+| Path | n | p50 | p95 | p99 |
+|---|---:|---:|---:|---:|
+| **All** | 120 | **1634.1 ms** | **3385.8 ms** | 3887.7 ms |
+| Released | 51 | 1464.5 ms | 2383.5 ms | 2686.7 ms |
+| Refused | 69 | 1960.7 ms | 3582.4 ms | 3936.4 ms |
+| Calculation route | 50 | 1708.6 ms | 3642.9 ms | 3942.9 ms |
+
+**Refusing is slower than answering.** A refusal is not a fast rejection — it is
+the run exhausting its bounded repair attempts before failing closed, which is
+the intended behaviour and is why the refused p50 is ~500 ms above the released
+one.
+
+**The generator is not the latency bottleneck.** The specialist LM is called on a
+small minority of cases — the answers here come from the deterministic calculator
+and the bound evidence. The runtime exposed generation timing on 1 of 120 cases
+and output tokens on 1, so **TTFT and tokens/s are not reported**: they were not
+measurable on this workload, and a number invented for the table would be worse
+than its absence. The dominant cost is retrieval plus the Binder's remote calls.
+
+**Run-to-run repeatability.** This E2E run is an independent second run of the
+sealed code, and it released **51** where the seal recorded **52**:
+
+```
+sealed   52 released, 52 correct, 0 incorrect, 100.0% released accuracy
+fresh    51 released, 51 correct, 0 incorrect, 100.0% released accuracy
+flipped  tv2f01-s2-pctshare-002   RELEASED -> CAPABILITY_EXCEPTION
+```
+
+The Binder is a remote language model, and `CAPABILITY_EXCEPTION` is a malformed
+structured response that the retry policy does not re-roll. **Coverage therefore
+carries a ±1 run-to-run spread; accuracy does not.** The sealed figures (§6.2)
+are the frozen ones; this is the disclosure that they are a sample.
+
+> **Provider latency is not harness latency.** The Binder and the generator call
+> a remote model over the network, and that time is inside every end-to-end
+> figure above. The local stages are reported separately for exactly this reason.
+> Do not read the end-to-end p50 as this machine's compute cost.
+
+### 7.2 Throughput / Runtime
+
+Single-process, single-GPU, concurrency 1. Throughput is the reciprocal of the
+end-to-end latency at that concurrency and is **not** a serving claim; no
+batching or multi-worker measurement was made.
+
+### 7.3 Reliability / Tests
+
+**Fault injection** — 15 injected faults (provider timeout / unavailable /
+invalid response, malformed and empty model output, fabricated number, budget
+exhaustion, missing evidence, conflicting evidence, invalid calculation):
+
+```
+fault cases                 15
+incorrect release            0     ← the number that matters
+correct fail-closed         14
+recovered by bounded repair  1
+escaped exceptions           0
+deterministic               true    (2 runs, classification and trace stable)
+```
+
+**Test suite** (run host, `TRANSFORMERS_OFFLINE=1`):
+
+```
+5148 passed · 143 skipped · 1 environment-blocked
+```
+
+The blocked case inits a `SentenceTransformer` and the run host cannot reach
+`huggingface.co`; it is an environment limitation, not a regression. **No
+behavioural regression was detected.** The count is higher than the previous full
+run (4500) because later work added tests; none was removed.
+
+**Reproducibility.**
+
+```
+BEHAVIORAL_DRIFT = 0
+Benchmark V2 reproducible from a clean checkout
+Fixture integrity guard: pass
+```
+
+## 8. Quick Start
+
 ```bash
-# 克隆仓库
 git clone https://github.com/Dorring/Nano_finRAG.git
 cd Nano_finRAG/finquery_rag/backend
 
-# 安装依赖
-pip install torch transformers pydantic tiktoken
+uv sync                                   # or: python -m venv .venv && pip install -e .
+
+cp .env.example .env                      # add your model provider credentials
 ```
 
-### 2. 环境变量配置
-系统所有核心开关均已参数化配置，无任何硬编码常量：
-```bash
-# 多轮会话扩展配置
-export MULTITURN_CONTEXT_ENABLED=true
-export BAILIAN_API_KEY="your-bailian-api-key"
-export BAILIAN_BASE_URL="https://dashscope.aliyuncs.com/compatible-mode/v1"
-export BAILIAN_CONTEXT_MODEL="qwen3.6-flash"
-export BAILIAN_CONTEXT_THINKING=false
+The runtime reads two assets that are **not** in this repository and must be
+pointed at explicitly:
 
-# 内存预算配置 (Application-Level Budget)
-export CONTEXT_RECENT_TURNS=4
-export CONTEXT_SUMMARY_TRIGGER_TURNS=8
-export CONTEXT_TARGET_TOKENS=4096
-export CONTEXT_MAX_TOKENS=8192
-export CONTEXT_RESOLVER_MAX_OUTPUT_TOKENS=512
+```bash
+export TRUSTED_V2_FACT_STORE_PATH=/path/to/financial-facts.jsonl
+export TRUSTED_V2_R4_INDEX_DIR=/path/to/r4-index
 ```
 
-### 3. 运行全量测试与基准评测
+Start the backend:
+
 ```bash
-# 1. 运行多轮会话模块全量单元测试与对抗测试
-python -m unittest discover -s tests/conversation -p 'test_*.py'
+python -m uvicorn src.main:app --host 127.0.0.1 --port 18002 --workers 1
+```
 
-# 2. 运行 140-Case 多轮金融上下文压力基准
-python scripts/evaluation/run_multiturn_context_eval.py
+> Several evaluation scripts still carry a host-specific default path. **Override
+> them on the command line** rather than editing the runtime — every script below
+> takes `--eval-set` / `--gold-evidence` / `--fixtures` / `--fact-store`.
 
-# 3. 运行 120 题端到端单轮财务问答回归
-python scripts/runtime/run_nf_v2_23_retrieval_final_mile.py
+## 9. Evaluation Reproduction
+
+Everything below runs from `finquery_rag/backend`. Benchmark V2 is **reproduced
+from this repository**, not shipped as a measured artifact:
+
+```bash
+# 1. Benchmark V2:   V1 gold 3d2a0c5b  ->  V2 gold a3d17211
+python scripts/evaluation/build_p1_8c_benchmark_v2.py \
+    --base benchmarks/tv2_canonical_v1 --out /tmp/v2
+
+# 2. Fixtures v9 from v8, through the authoring contract
+python scripts/evaluation/build_p1_8_d1_fixture_v9.py --apply
+
+# 3. The operand-order guard must pass on both
+python scripts/evaluation/verify_fixture_integrity.py \
+    --eval-set benchmarks/tv2_canonical_v1/canonical-eval-v1.jsonl \
+    benchmarks/tv2_canonical_v1/plan-fixtures-v9.jsonl
+
+# 4. Trusted end-to-end replay (the slow one; makes model calls)
+python scripts/evaluation/run_p1_2_dual_track_benchmark.py \
+    --track replay \
+    --eval-set  /tmp/v2/canonical-eval-v1.jsonl \
+    --gold-evidence /tmp/v2/gold-evidence-v1.jsonl \
+    --fixtures <v9 fixtures> \
+    --out-dir /tmp/replay
+
+# 5. Retrieval Recall@K
+python scripts/evaluation/run_nf_v3_retrieval_benchmark.py \
+    --eval-set /tmp/v2/canonical-eval-v1.jsonl \
+    --gold-evidence /tmp/v2/gold-evidence-v1.jsonl \
+    --fixtures <v9 fixtures> --out-dir /tmp/retrieval
+
+# 6. Runtime performance (alignment / retrieval / end-to-end)
+python scripts/evaluation/measure_runtime_performance.py \
+    --eval-set /tmp/v2/canonical-eval-v1.jsonl \
+    --gold-evidence /tmp/v2/gold-evidence-v1.jsonl \
+    --fixtures <v9 fixtures> --out-dir /tmp/perf
+```
+
+**The freeze gate.** One command re-derives every sealed number and fails loudly
+if any moved:
+
+```bash
+python scripts/evaluation/final_regression_guard.py --expect --write baseline.json
+python scripts/evaluation/final_regression_guard.py --check  baseline.json
+# -> BEHAVIORAL_DRIFT = 0
+```
+
+It rebuilds V2 from this commit's V1, hashes the store and fixtures, runs the
+fixture guard, re-scores the sealed predictions and recovers the E2E and citation
+metrics. Exit code carries the verdict.
+
+## 10. Design Decisions
+
+**Why a deterministic calculator instead of letting the model do arithmetic.**
+Arithmetic is the one part of a financial answer that can be *checked*. Moving it
+out of the model turns "did it compute correctly" from a prompt-engineering
+question into a unit test.
+
+**Why not just enable the reranker?** Because it was measured, not assumed.
+Structured reranking lifts R@5 from 50.7% to 85.3% offline — and
+`PROMOTED_INTO_WINDOW = 0`, so every promotion was already visible to the Binder.
+Enabling it would add latency and complexity for no additional release. It stays
+in the tree as a measured, default-off experiment.
+
+**Why the harness owns operand order, not the question string.** A plan is
+authoritative. A runtime that re-derived operand order from the question's
+surface wording would be inventing an order the plan did not state — the failure
+mode the fixture integrity guard exists to catch.
+
+**Why fail-closed rather than best-effort.** A financial answer that is wrong is
+worse than no answer, and a system that guesses at a conflicting coordinate
+cannot be audited. Coverage is the metric that gives up ground for this;
+accuracy is the one that does not.
+
+## 11. Limitations / Future Work
+
+- **Row / column / logical-table semantics are not fully in the fact
+  representation.** This is the largest remaining coverage limit: the store
+  records which cells a row holds, not which row it is. The pool can carry a
+  table row's *parts* while the question asks for the row's *total*.
+- **Structural ambiguity.** Some coordinates legitimately hold several values,
+  and the residual gap between "in the pool" and "released" is dominated by the
+  system correctly refusing to choose between them.
+- **A known unit-emission bug** (`tsla-035`): the source row states a `%` unit
+  that the emitter drops, so the validator cannot read it. One case, registered
+  rather than patched.
+- **Cross-store provenance vocabulary is not unified** — the iXBRL and legacy
+  schemas share no provenance field, which is why one identity rung is
+  unrunnable today.
+- **Multi-round Binder repair is not fully traced**, so the retrieval-attribution
+  figure is an upper bound.
+- **Some evaluation tooling still needs explicit path overrides** (see §8).
+- **Coverage carries a ±1 run-to-run spread.** An independent re-run of the
+  sealed code released 51 rather than 52; the Binder is a remote model and a
+  malformed structured response (`CAPABILITY_EXCEPTION`) is not re-rolled.
+  Accuracy held at 100% in both runs. The sealed figures are a sample, not a
+  constant.
+
+## 12. Repository Structure
+
+```text
+finquery_rag/backend/
+  src/                      runtime: harness, coordinator, binder, calculator, planner
+  rag_v2/                   contracts: plans, evidence, supervisor, binder service
+  benchmarks/tv2_canonical_v1/
+                            Benchmark V1 + fixtures v9 + the migration record
+  scripts/evaluation/       final evaluation authority
+    run_p1_2_dual_track_benchmark.py    trusted E2E replay
+    run_nf_v3_retrieval_benchmark.py    Recall@K
+    score_nf_v3_final.py                final scorer
+    final_regression_guard.py           the freeze gate
+    fixture_integrity.py                fixture consistency guard
+    measure_runtime_performance.py      latency harness
+    archive/                            superseded eras (nf_legacy, pdf_retrieval_v4)
+  docs/evaluation/
+    FINAL_SEAL.md                       ← start here
+    p1-9-repository-audit.md            inventory, classification and registered debt
+    p1-8-*.md                           the P1.8 evidence chain
+  tests/                    5148 passing
 ```
 
 ---
 
-## 📄 许可证 (License)
-
-本项目采用 [Apache License 2.0](LICENSE) 许可证开源。
+<div align="center">
+<sub>Benchmark sealed at <code>nano-finrag-interview-final</code> · this README at <code>nano-finrag-interview-release</code>.<br/>
+Behaviour is frozen; see <code>finquery_rag/backend/docs/evaluation/FINAL_SEAL.md</code>.</sub>
+</div>

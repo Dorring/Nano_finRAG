@@ -10,6 +10,7 @@ from typing import Any
 from rag_v2.adaptive import AdaptiveRAGBudgetV1
 from rag_v2.supervisor import SupervisorService, UnknownSemanticPolicy
 
+from .harness_runtime_mode import AgentRuntimeMode, coerce_agent_runtime_mode
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
 from .trusted_v2_capabilities import TrustedV2CapabilityPorts
 from .trusted_v2_coordinator import BoundedTrustedV2Coordinator
@@ -36,11 +37,20 @@ def build_trusted_v2_runtime(
     unknown_semantic_policy: UnknownSemanticPolicy | str = (
         UnknownSemanticPolicy.COMPATIBILITY
     ),
+    runtime_mode: AgentRuntimeMode | str | None = None,
+    alignment_override: Any | None = None,
+    source_label_grounding: Any | None = None,
 ) -> TrustedFinancialRuntimeV2:
     """Build the complete V2 runtime with explicit dependencies.
 
     Missing ports fail fast.  There is deliberately no V1 fallback and no
     production registration in this function.
+
+    ``alignment_override`` is P1.2's seam and is ``None`` everywhere in
+    production -- no environment variable reaches it and this function's own
+    default is the production value.  It is threaded through here rather than
+    set on the coordinator afterwards because a coordinator that had been
+    configured by mutation would be indistinguishable from one that had not.
     """
 
     if not isinstance(supervisor, SupervisorService):
@@ -74,6 +84,9 @@ def build_trusted_v2_runtime(
         budget=budget,
         allow_test_release=False,
         unknown_semantic_policy=unknown_semantic_policy,
+        runtime_mode=coerce_agent_runtime_mode(runtime_mode),
+        alignment_override=alignment_override,
+        source_label_grounding=source_label_grounding,
     )
     return TrustedFinancialRuntimeV2(coordinator)
 

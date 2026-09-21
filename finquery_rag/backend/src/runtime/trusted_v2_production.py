@@ -20,15 +20,17 @@ import gzip
 import hashlib
 import json
 import os
+import re
 import sqlite3
 import threading
-from collections.abc import Iterable, Mapping, MutableMapping
+import warnings
+from collections.abc import Callable, Iterable, Mapping, MutableMapping
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from rag_v2.adaptive import AdaptiveRAGBudgetV1
-from rag_v2.evidence import BailianBinderProvider, SemanticBinderService
+from rag_v2.evidence import APIBinderProvider, BailianBinderProvider, SemanticBinderService
 from rag_v2.supervisor import (
     APIProvider,
     BailianProvider,
@@ -36,6 +38,9 @@ from rag_v2.supervisor import (
     UnknownSemanticPolicy,
 )
 
+from src.finance.source_label_grounding import SourceLabelGrounding
+
+from .harness_runtime_mode import resolve_agent_runtime_mode
 from .runtime_contract import FinancialQueryRequest
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
 from .trusted_v2_binder import SemanticEvidenceEvaluationCapability
@@ -44,7 +49,6 @@ from .trusted_v2_capabilities import TrustedV2CapabilityPorts
 from .trusted_v2_factory import build_trusted_v2_runtime
 from .trusted_v2_generation import (
     DeterministicFactRenderer,
-    LocalSpecialistGenerationAdapter,
     TrustedV2GenerationCapability,
 )
 from .trusted_v2_r4 import CandidateDirectR4Policy, R4RetrievalCapability
@@ -89,6 +93,36 @@ def _stable_unique(values: Iterable[Any]) -> tuple[str, ...]:
     return tuple(result)
 
 
+_SPLIT_CURRENCY_NUMBER_RE = re.compile(
+    r"^\s*(?P<sign>\(?)\s*"
+    r"(?P<head>\d[\d,.]*)\s*"
+    r"(?P<currency>[$€£¥])\s*"
+    r"(?P<tail>\d+)\s*(?P<close>\)?)\s*$"
+)
+
+
+def _normalize_split_currency_number(value: Any) -> str | None:
+    """Repair one lossless PDF text-extraction artifact in a numeric field.
+
+    Some table extractors place a currency glyph between the last digits of a
+    value when the glyph and trailing digit occupy separate PDF text spans
+    (for example ``281,72$ 4`` for the source value ``281,724``).  This helper
+    only removes that interleaved glyph and whitespace; it does not infer a
+    missing digit, scale, currency, or value from answer text.  Values that do
+    not match the complete, unambiguous shape are left untouched.
+    """
+
+    if not isinstance(value, str):
+        return None
+    match = _SPLIT_CURRENCY_NUMBER_RE.fullmatch(value)
+    if match is None:
+        return None
+    if bool(match.group("sign")) != bool(match.group("close")):
+        return None
+    combined = f"{match.group('head')}{match.group('tail')}"
+    return f"-{combined}" if match.group("sign") else combined
+
+
 def _env(environ: Mapping[str, str], name: str, default: str | None = None) -> str | None:
     value = environ.get(name, default)
     if value is None:
@@ -121,6 +155,12 @@ def _path_env(
             f"{name} must point to an existing {kind}: {path}"
         )
     return path.resolve()
+
+
+def _is_deepseek_endpoint(base_url: str) -> bool:
+    """Whether a direct DeepSeek-compatible endpoint supports `thinking` control."""
+
+    return "api.deepseek.com" in base_url.casefold()
 
 
 def _bool_env(environ: Mapping[str, str], name: str, default: bool = False) -> bool:
@@ -255,6 +295,61 @@ def _read_json_rows(path: Path) -> list[Mapping[str, Any]]:
     return normalized_rows
 
 
+def _coordinate_key(record: Mapping[str, Any]) -> tuple[str, str, str]:
+    """The semantic coordinate a fact is filed under.
+
+    Case- and whitespace-folded, because a different spelling of a company is
+    not a different company.  Entity, metric and period only -- and that is the
+    whole point: the dimensions that would tell these facts apart (scope, table,
+    row hierarchy, unit) are the ones P1.6-A has to recover, and their absence
+    is why two different values can share one coordinate at all.
+    """
+
+    def fold(value: Any) -> str:
+        if value is None:
+            return ""
+        return " ".join(str(value).casefold().split())
+
+    return (
+        fold(record.get("entity")),
+        fold(record.get("metric")),
+        fold(record.get("period")),
+    )
+
+
+def logical_fact_id(record: Mapping[str, Any]) -> str:
+    """The identity of the *fact*, independent of where it was printed.
+
+    A filing states one quantity more than once -- the income statement and the
+    note that repeats it -- and the store keeps each statement, correctly,
+    because each is real evidence with its own page and citation.  But they are
+    one fact, and the store had no way to say so: 20,394 records carry 11,657
+    logical facts, so 43% of it is the same quantity filed twice under two
+    candidate keys.
+
+    That gap is why a citation to the note counts as a miss when the benchmark's
+    gold named the statement.  Both readings support the answer equally; the
+    metric was comparing *where* a number was printed and calling it *what* was
+    cited.
+
+    The identity is the semantic coordinate plus the stated quantity and its
+    unit -- entity, metric, period, value, unit, scale, currency -- and nothing
+    about location.  Two records share it exactly when they assert the same
+    thing about the same filer in the same period, which is what makes one of
+    them redundant *as evidence* rather than as a source.
+    """
+
+    def fold(value: Any) -> str:
+        return " ".join(str(value if value is not None else "").casefold().split())
+
+    payload = "|".join(
+        fold(record.get(field))
+        for field in ("entity", "metric", "period", "value", "unit", "scale",
+                      "currency")
+    )
+    return "logical:" + hashlib.sha256(payload.encode("utf-8")).hexdigest()[:32]
+
+
 class StructuredFactStore:
     """Read-only candidate-key -> structured FinancialFact materializer.
 
@@ -272,6 +367,11 @@ class StructuredFactStore:
             )
         self.require_citation_id = bool(require_citation_id)
         self._by_candidate: dict[str, dict[str, Any]] = {}
+        #: Facts grouped by their semantic coordinate, for the operand-ambiguity
+        #: guard.  Built from the records rather than the candidate keys,
+        #: because one record may be reachable by several keys and counting it
+        #: twice would invent a conflict that does not exist.
+        self._by_coordinate: dict[tuple[str, str, str], list[dict[str, Any]]] = {}
         self._load()
         if not self._by_candidate:
             raise TrustedV2ProductionConfigurationError(
@@ -351,6 +451,21 @@ class StructuredFactStore:
                 record[canonical] = copy.deepcopy(value)
                 break
 
+        # Preserve the extractor's raw field for physical-source auditing, but
+        # expose a canonical numeric field when a lossless currency-split
+        # artifact is present.  The runtime and calculator consume the
+        # structured canonical fields; no answer text is inspected here.
+        for source_field in ("parsed_numeric_value", "value", "raw_value"):
+            normalized_value = _normalize_split_currency_number(
+                record.get(source_field),
+            )
+            if normalized_value is None:
+                continue
+            record["parsed_numeric_value"] = normalized_value
+            record["value"] = normalized_value
+            record["value_normalization"] = "collapse_interleaved_currency"
+            break
+
         if not _first_text(
             record.get("source_id"),
             record.get("physical_source_id"),
@@ -376,6 +491,147 @@ class StructuredFactStore:
                         f"fact store has ambiguous duplicate candidate key: {candidate_key}"
                     )
                 self._by_candidate[candidate_key] = record
+        seen: set[int] = set()
+        for record in self._by_candidate.values():
+            if id(record) in seen:
+                continue
+            seen.add(id(record))
+            self._by_coordinate.setdefault(_coordinate_key(record), []).append(record)
+
+    @staticmethod
+    def _coordinate_key(record: Mapping[str, Any]) -> tuple[str, str, str]:
+        return _coordinate_key(record)
+
+    @staticmethod
+    def coordinate_key(record: Mapping[str, Any]) -> tuple[str, str, str]:
+        """The coordinate a record is filed under.
+
+        Public because callers grouping the store by coordinate -- the
+        ambiguity survey, the operand guard -- must agree on what a coordinate
+        *is*; a second definition drifting from this one would silently measure
+        a different store.
+        """
+
+        return _coordinate_key(record)
+
+    def facts_at_coordinate(
+        self,
+        entity: Any,
+        metric: Any,
+        period: Any,
+    ) -> tuple[Mapping[str, Any], ...]:
+        """Every stored fact sharing one semantic coordinate.
+
+        The *authoritative* store's answer to "which facts are these", not the
+        packet's.  A guard scoped to what retrieval returned would be safe only
+        on the days top-K happens to surface a competitor.
+        """
+
+        key = _coordinate_key({"entity": entity, "metric": metric, "period": period})
+        return tuple(self._by_coordinate.get(key, ()))
+
+    def candidate_keys_for_entities(
+        self, entities: Iterable[Any]
+    ) -> frozenset[str]:
+        """Every candidate key filed under any of these entity mentions.
+
+        Folded the way `facts_at_coordinate` folds, because a different spelling
+        of a company is not a different company.  Built on first use and kept:
+        the store is immutable for the life of a request.
+
+        This is the store's answer to "which candidates are this filer's", which
+        is the question retrieval has to ask *before* it cuts the pool.  Asking
+        it afterwards is asking about candidates already discarded.
+        """
+
+        wanted = {
+            _coordinate_key({"entity": entity})[0]
+            for entity in entities
+            if entity
+        }
+        wanted.discard("")
+        if not wanted:
+            return frozenset()
+        index = self._entity_keys()
+        keys: set[str] = set()
+        for entity in wanted:
+            keys |= index.get(entity, frozenset())
+        return frozenset(keys)
+
+    def _entity_keys(self) -> dict[str, frozenset[str]]:
+        cached = getattr(self, "_entity_key_cache", None)
+        if cached is not None:
+            return cached
+        index: dict[str, set[str]] = {}
+        for key, record in self._by_candidate.items():
+            index.setdefault(_coordinate_key(record)[0], set()).add(str(key))
+        self._entity_key_cache = {
+            entity: frozenset(keys) for entity, keys in index.items()
+        }
+        return self._entity_key_cache
+
+    def facts_for_label(
+        self,
+        metric: Any,
+        period: Any,
+    ) -> tuple[Mapping[str, Any], ...]:
+        """Every fact carrying this metric and period, whoever filed it.
+
+        A plan is not required to fill a slot's entity, and looking a missing
+        one up as the empty entity finds nothing -- which reads as *the source
+        does not have this row* when the source has it for exactly one filer.
+        That conflation cost twelve cases their vocabulary, so the store answers
+        the question the caller actually asked: which facts carry this label,
+        and the caller decides what several filers' rows mean.
+        """
+
+        def fold(value: Any) -> str:
+            return " ".join(str(value or "").casefold().split())
+
+        wanted = (fold(metric), fold(period))
+        facts: list[Mapping[str, Any]] = []
+        for coordinate, rows in self._by_coordinate.items():
+            if (coordinate[1], coordinate[2]) == wanted:
+                facts.extend(rows)
+        return tuple(facts)
+
+    def logical_fact_ids(self) -> dict[str, str]:
+        """candidate key -> the logical fact that key states.
+
+        Built on first use and kept; the store is immutable for the life of a
+        request.  Callers use it to compare *what* two citations assert rather
+        than *where* each one printed it.
+        """
+
+        cached = getattr(self, "_logical_id_cache", None)
+        if cached is not None:
+            return cached
+        self._logical_id_cache = {
+            str(key): logical_fact_id(record)
+            for key, record in self._by_candidate.items()
+        }
+        return self._logical_id_cache
+
+    def iter_records(self) -> tuple[Mapping[str, Any], ...]:
+        """Every stored fact, once.
+
+        Deduplicated by identity rather than by candidate key: one record may be
+        reachable by several keys, and a caller asking how widely a value is
+        stated must not count the same row twice for that reason.
+        """
+
+        seen: set[int] = set()
+        records: list[Mapping[str, Any]] = []
+        for record in self._by_candidate.values():
+            if id(record) in seen:
+                continue
+            seen.add(id(record))
+            records.append(record)
+        return tuple(records)
+
+    @property
+    def coordinate_count(self) -> int:
+        return len(self._by_coordinate)
 
     @property
     def candidate_count(self) -> int:
@@ -394,6 +650,48 @@ class StructuredFactStore:
         materialized["candidate_key"] = key
         materialized.setdefault("candidate_id", key)
         return materialized
+
+
+#: Optional override for the rebuilt iXBRL store.  Unset, the conventional file
+#: beside the legacy store is used when it exists; set to an empty string, the
+#: canonical path is disabled entirely.
+IXBRL_FACT_STORE_ENV = "TRUSTED_V2_IXBRL_FACT_STORE_PATH"
+
+#: The name the rebuilt store is written under, beside the legacy one.
+IXBRL_FACT_STORE_FILENAME = "financial-facts-ixbrl-v1.jsonl"
+
+
+def _build_fact_store(
+    fact_path: Path, environ: Mapping[str, str]
+) -> Any:
+    """The fact store the runtime uses.
+
+    **Returns the legacy store, and the canonical wrapper is deliberately not
+    wired here.**  It was, and the measurement killed it: on the 20 cross-entity
+    cases, with the wrapper on 0 released and 20 blocked; with it off, 5 released
+    and 13 blocked.  It made the stratum strictly worse, so it is not in
+    production.
+
+    The reason is a store mismatch, not a defect in the wrapper.  The packet's
+    candidates come from R4 retrieval over the legacy `v2fact:` key space, and
+    the operand guard asks the fact store about *those* candidates' coordinates.
+    Pointing `facts_at_coordinate` at a different store makes the guard compare a
+    legacy candidate against canonical siblings, find no agreement, and refuse --
+    `INSUFFICIENT_OPERANDS` with the binder reporting BOUND.  Instrumenting it:
+
+        GUARD s1 entity=JPMorganChase metric=None candidate='20.02'
+              siblings=[] -> conflicting_values
+
+    So the canonical store becomes usable when **retrieval returns canonical
+    candidates**, which is the remaining piece -- not by redirecting the lookup
+    underneath a path that still speaks the old key space.
+
+    The environment variable is still read so a deployment can point at a
+    different legacy store, and `CanonicalFactStore` remains available and tested
+    for the retrieval change to build on.
+    """
+
+    return StructuredFactStore(fact_path)
 
 
 def _sha256_file(path: Path) -> str:
@@ -486,6 +784,79 @@ def inspect_r4_index(index_dir: Path | str) -> dict[str, Any]:
     }
 
 
+def inspect_r4_fact_store_compatibility(
+    index_dir: Path | str,
+    fact_store: StructuredFactStore,
+) -> dict[str, Any]:
+    """Report whether every R4 candidate can be materialized by the fact store.
+
+    R4 retrieval returns ``candidate_key`` values, and the runtime treats a
+    materialization miss as an execution failure.  Treat index/fact key-space
+    alignment as a deployment contract rather than discovering a mismatch only
+    after a user request reaches the bounded runtime.
+    """
+
+    # The contract this check exists to enforce is "every R4 candidate key can be
+    # materialized", not "this object is that class".  Testing the class instead
+    # rejected the canonical wrapper, which delegates `candidate_keys` and
+    # `materialize` to a store that satisfies it -- the check would have passed
+    # on the wrapped store and failed on its wrapper, which is backwards.
+    for attribute in ("candidate_keys", "materialize"):
+        if not hasattr(fact_store, attribute):
+            raise TypeError(
+                f"fact_store must materialize candidate keys; "
+                f"missing {attribute!r}"
+            )
+    root = Path(index_dir).expanduser().resolve()
+    metadata_path = root / "candidate-metadata.sqlite"
+    try:
+        with sqlite3.connect(
+            f"file:{metadata_path.as_posix()}?mode=ro", uri=True
+        ) as connection:
+            index_keys = {
+                str(row[0]).strip()
+                for row in connection.execute(
+                    "SELECT DISTINCT candidate_key FROM view_metadata"
+                )
+                if str(row[0]).strip()
+            }
+    except sqlite3.Error as exc:
+        raise TrustedV2ProductionConfigurationError(
+            f"R4 metadata cannot be opened read-only: {metadata_path}"
+        ) from exc
+    if not index_keys:
+        raise TrustedV2ProductionConfigurationError(
+            f"R4 metadata contains no candidate keys: {metadata_path}"
+        )
+
+    fact_keys = set(fact_store.candidate_keys)
+    missing = index_keys - fact_keys
+    return {
+        "compatible": not missing,
+        "r4_candidate_key_count": len(index_keys),
+        "fact_store_candidate_key_count": len(fact_keys),
+        "materializable_r4_candidate_count": len(index_keys) - len(missing),
+        "unmaterializable_r4_candidate_count": len(missing),
+        "unmaterializable_candidate_examples": sorted(missing)[:5],
+        "unindexed_fact_candidate_count": len(fact_keys - index_keys),
+    }
+
+
+def _require_r4_fact_store_compatibility(
+    index_dir: Path | str,
+    fact_store: StructuredFactStore,
+) -> dict[str, Any]:
+    compatibility = inspect_r4_fact_store_compatibility(index_dir, fact_store)
+    if compatibility["compatible"]:
+        return compatibility
+    examples = ", ".join(compatibility["unmaterializable_candidate_examples"])
+    raise TrustedV2ProductionConfigurationError(
+        "R4 index candidates are not materializable by the configured fact store: "
+        f"missing={compatibility['unmaterializable_r4_candidate_count']}; "
+        f"examples={examples or 'none'}"
+    )
+
+
 def _provider_common(
     environ: Mapping[str, str],
     prefix: str,
@@ -512,6 +883,11 @@ def _build_supervisor(environ: Mapping[str, str]) -> SupervisorService:
     base_url, api_key, model_name = _provider_common(environ, "V2_SUPERVISOR_")
     temperature = _float_env(environ, "V2_SUPERVISOR_TEMPERATURE", 0.0, minimum=0.0)
     enable_thinking = _bool_env(environ, "V2_SUPERVISOR_ENABLE_THINKING", False)
+    api_thinking_control = _bool_env(
+        environ,
+        "V2_SUPERVISOR_API_THINKING_CONTROL",
+        _is_deepseek_endpoint(base_url),
+    )
     try:
         if provider_name == "bailian":
             provider = BailianProvider(
@@ -520,7 +896,7 @@ def _build_supervisor(environ: Mapping[str, str]) -> SupervisorService:
                 model_name=model_name,
                 enable_thinking=enable_thinking,
                 temperature=temperature,
-                max_tokens=_int_env(environ, "V2_SUPERVISOR_MAX_TOKENS", 512, minimum=1),
+                max_tokens=_int_env(environ, "V2_SUPERVISOR_MAX_TOKENS", 1024, minimum=1),
                 timeout=_float_env(environ, "V2_SUPERVISOR_TIMEOUT_SECONDS", 180.0, minimum=0.1),
                 max_retries=0,
             )
@@ -530,11 +906,14 @@ def _build_supervisor(environ: Mapping[str, str]) -> SupervisorService:
                 api_key=api_key,
                 model_name=model_name,
                 temperature=temperature,
-                max_tokens=_int_env(environ, "V2_SUPERVISOR_MAX_TOKENS", 512, minimum=1),
+                max_tokens=_int_env(environ, "V2_SUPERVISOR_MAX_TOKENS", 1024, minimum=1),
                 timeout=_float_env(environ, "V2_SUPERVISOR_TIMEOUT_SECONDS", 120.0, minimum=0.1),
                 provider_role="supervisor",
                 model_role="strong_general_llm",
                 structured_output=True,
+                enable_thinking=(
+                    enable_thinking if api_thinking_control else None
+                ),
             )
         else:
             raise TrustedV2ProductionConfigurationError(
@@ -551,33 +930,55 @@ def _build_supervisor(environ: Mapping[str, str]) -> SupervisorService:
 
 def _build_binder(environ: Mapping[str, str]) -> SemanticBinderService:
     provider_name = (_env(environ, "V2_BINDER_PROVIDER", "bailian") or "bailian").casefold()
-    if provider_name != "bailian":
+    if provider_name not in {"bailian", "api"}:
         raise TrustedV2ProductionConfigurationError(
-            "V2_BINDER_PROVIDER must be 'bailian'; no generic Binder provider is registered"
+            "V2_BINDER_PROVIDER must be 'bailian' or 'api'"
         )
     base_url, api_key, model_name = _provider_common(
         environ,
         "V2_BINDER_",
         fallback_prefix="V2_SUPERVISOR_",
     )
+    api_thinking_control = _bool_env(
+        environ,
+        "V2_BINDER_API_THINKING_CONTROL",
+        _is_deepseek_endpoint(base_url),
+    )
+    enable_thinking = _bool_env(environ, "V2_BINDER_ENABLE_THINKING", False)
     try:
-        provider = BailianBinderProvider(
-            base_url=base_url,
-            api_key=api_key,
-            model_name=model_name,
-            enable_thinking=_bool_env(environ, "V2_BINDER_ENABLE_THINKING", False),
-            temperature=_float_env(environ, "V2_BINDER_TEMPERATURE", 0.0, minimum=0.0),
-            timeout=_float_env(environ, "V2_BINDER_TIMEOUT_SECONDS", 180.0, minimum=0.1),
-            max_retries=0,
-        )
+        if provider_name == "bailian":
+            provider = BailianBinderProvider(
+                base_url=base_url,
+                api_key=api_key,
+                model_name=model_name,
+                enable_thinking=enable_thinking,
+                temperature=_float_env(environ, "V2_BINDER_TEMPERATURE", 0.0, minimum=0.0),
+                timeout=_float_env(environ, "V2_BINDER_TIMEOUT_SECONDS", 180.0, minimum=0.1),
+                max_retries=0,
+            )
+        else:  # api
+            provider = APIBinderProvider(
+                base_url=base_url,
+                api_key=api_key,
+                model_name=model_name,
+                temperature=_float_env(environ, "V2_BINDER_TEMPERATURE", 0.0, minimum=0.0),
+                max_tokens=_int_env(environ, "V2_BINDER_MAX_TOKENS", 1024, minimum=1),
+                timeout=_float_env(environ, "V2_BINDER_TIMEOUT_SECONDS", 180.0, minimum=0.1),
+                max_retries=0,
+                enable_thinking=(
+                    enable_thinking if api_thinking_control else None
+                ),
+            )
+    except TrustedV2ProductionConfigurationError:
+        raise
     except Exception as exc:
         raise TrustedV2ProductionConfigurationError(
-            "could not construct V2 Semantic Binder provider"
+            f"could not construct V2 Semantic Binder provider '{provider_name}'"
         ) from exc
     return SemanticBinderService(provider)
 
 
-def _build_specialist(environ: Mapping[str, str]) -> LocalSpecialistGenerationAdapter:
+def _build_specialist(environ: Mapping[str, str]) -> Any:
     checkpoint = _path_env(
         environ,
         "TRUSTED_V2_SPECIALIST_CHECKPOINT",
@@ -611,11 +1012,11 @@ def _build_specialist(environ: Mapping[str, str]) -> LocalSpecialistGenerationAd
         raise TrustedV2ProductionConfigurationError(
             "could not load the configured V2 Financial Specialist checkpoint"
         ) from exc
-    return LocalSpecialistGenerationAdapter(specialist)
+    return specialist
 
 
 def _build_budget(environ: Mapping[str, str]) -> AdaptiveRAGBudgetV1:
-    return AdaptiveRAGBudgetV1(
+    budget = AdaptiveRAGBudgetV1(
         max_replan_rounds=_int_env(environ, "V2_MAX_REPLANS", 2, minimum=0),
         max_total_tool_calls=_int_env(environ, "V2_MAX_TOOL_CALLS", 5, minimum=1),
         max_same_tool_retry=_int_env(
@@ -631,6 +1032,18 @@ def _build_budget(environ: Mapping[str, str]) -> AdaptiveRAGBudgetV1:
             minimum=0,
         ),
     )
+    # Accepting a bound that nothing reads is worse than rejecting it: the
+    # operator would believe a runaway loop was capped.  Say so instead.  See
+    # AdaptiveRAGBudgetV1.RESERVED_FIELDS for why it is not enforced.
+    unenforced = budget.unenforced_settings()
+    if unenforced:
+        warnings.warn(
+            "these adaptive budget settings are reserved and are not enforced: "
+            + ", ".join(sorted(unenforced)),
+            RuntimeWarning,
+            stacklevel=2,
+        )
+    return budget
 
 
 @dataclass
@@ -641,7 +1054,14 @@ class TrustedV2RuntimeResources:
     fact_store: StructuredFactStore
     supervisor: SupervisorService
     binder: SemanticBinderService
-    specialist: LocalSpecialistGenerationAdapter
+    #: The specialist backend.  H2A-3C: this is a legacy ``generate(prompt)``
+    #: backend rather than a provider, and the generation capability adapts it
+    #: through ``LegacyPromptProviderAdapterV1`` when it builds its binding.
+    #: Typed ``Any`` because the concrete class lives behind a lazy torch
+    #: import, which is the same reason it always was -- what the Harness
+    #: requires of it is now written down in ``ModelProviderV1`` instead of
+    #: being implied by a wrapper class.
+    specialist: Any
     budget: AdaptiveRAGBudgetV1
     config_fingerprint: str
     index_manifest: Mapping[str, Any]
@@ -655,11 +1075,13 @@ def _configuration_fingerprint(environ: Mapping[str, str]) -> str:
         "TRUSTED_V2_SPECIALIST_DEVICE",
         "TRUSTED_V2_SPECIALIST_MAX_NEW_TOKENS",
         "TRUSTED_V2_SPECIALIST_TEMPERATURE",
+        "EMBEDDING_MODEL_NAME",
         "V2_SUPERVISOR_PROVIDER",
         "V2_SUPERVISOR_BASE_URL",
         "V2_SUPERVISOR_API_KEY",
         "V2_SUPERVISOR_MODEL",
         "V2_SUPERVISOR_ENABLE_THINKING",
+        "V2_SUPERVISOR_API_THINKING_CONTROL",
         "V2_SUPERVISOR_TEMPERATURE",
         "V2_SUPERVISOR_MAX_TOKENS",
         "V2_SUPERVISOR_TIMEOUT_SECONDS",
@@ -668,7 +1090,9 @@ def _configuration_fingerprint(environ: Mapping[str, str]) -> str:
         "V2_BINDER_API_KEY",
         "V2_BINDER_MODEL",
         "V2_BINDER_ENABLE_THINKING",
+        "V2_BINDER_API_THINKING_CONTROL",
         "V2_BINDER_TEMPERATURE",
+        "V2_BINDER_MAX_TOKENS",
         "V2_BINDER_TIMEOUT_SECONDS",
         "V2_MAX_REPLANS",
         "V2_MAX_TOOL_CALLS",
@@ -701,7 +1125,11 @@ def validate_trusted_v2_production_configuration(
     fact_path = _path_env(env, "TRUSTED_V2_FACT_STORE_PATH", directory=False)
     checkpoint = _path_env(env, "TRUSTED_V2_SPECIALIST_CHECKPOINT", directory=False)
     index_manifest = inspect_r4_index(index_dir)
-    fact_store = StructuredFactStore(fact_path)
+    fact_store = _build_fact_store(fact_path, env)
+    fact_store_compatibility = _require_r4_fact_store_compatibility(
+        index_dir,
+        fact_store,
+    )
     # Validate that the declared provider family and all endpoint/model values
     # are present without instantiating network clients.
     supervisor_provider = (_env(env, "V2_SUPERVISOR_PROVIDER", "bailian") or "bailian").casefold()
@@ -711,14 +1139,15 @@ def validate_trusted_v2_production_configuration(
         )
     _provider_common(env, "V2_SUPERVISOR_")
     binder_provider = (_env(env, "V2_BINDER_PROVIDER", "bailian") or "bailian").casefold()
-    if binder_provider != "bailian":
+    if binder_provider not in {"bailian", "api"}:
         raise TrustedV2ProductionConfigurationError(
-            "V2_BINDER_PROVIDER must be 'bailian'"
+            "V2_BINDER_PROVIDER must be 'bailian' or 'api'"
         )
     _provider_common(env, "V2_BINDER_", fallback_prefix="V2_SUPERVISOR_")
     return {
         "config_fingerprint": _configuration_fingerprint(env),
         "r4_index": index_manifest,
+        "r4_fact_store_compatibility": fact_store_compatibility,
         "fact_store_path": str(fact_path),
         "fact_count": fact_store.candidate_count,
         "specialist_checkpoint": str(checkpoint),
@@ -727,6 +1156,9 @@ def validate_trusted_v2_production_configuration(
 
 
 _RESOURCE_CACHE: MutableMapping[str, TrustedV2RuntimeResources] = {}
+#: The last resource-build failure, for readiness to report.  Set by
+#: ``_cached_resources``; cleared whenever a build succeeds.
+_RESOURCE_LOAD_FAILURE: str | None = None
 _RESOURCE_LOCK = threading.Lock()
 
 
@@ -759,7 +1191,8 @@ def _load_resources(environ: Mapping[str, str]) -> TrustedV2RuntimeResources:
     index_dir = _path_env(environ, "TRUSTED_V2_R4_INDEX_DIR", directory=True)
     fact_path = _path_env(environ, "TRUSTED_V2_FACT_STORE_PATH", directory=False)
     index_manifest = inspect_r4_index(index_dir)
-    fact_store = StructuredFactStore(fact_path)
+    fact_store = _build_fact_store(fact_path, environ)
+    _require_r4_fact_store_compatibility(index_dir, fact_store)
     index_reader = None
     try:
         from src.pdf_retrieval_v4.candidate_view_index import CandidateViewIndexReader
@@ -791,14 +1224,39 @@ def _load_resources(environ: Mapping[str, str]) -> TrustedV2RuntimeResources:
 
 
 def _cached_resources(environ: Mapping[str, str]) -> TrustedV2RuntimeResources:
+    global _RESOURCE_LOAD_FAILURE
     key = _configuration_fingerprint(environ)
     with _RESOURCE_LOCK:
         cached = _RESOURCE_CACHE.get(key)
         if cached is not None:
             return cached
-        resources = _load_resources(environ)
+        try:
+            resources = _load_resources(environ)
+        except Exception as exc:
+            # Recorded so readiness can report it.  Readiness used to validate
+            # *configuration* only -- paths, env, the checkpoint's digest -- and
+            # reported ready on a host where the specialist could not be
+            # loaded at all, because the card was full.  Every query returned
+            # 500 for forty minutes and the probe never moved.  A readiness
+            # signal that does not move when the service stops working is not a
+            # readiness signal.
+            _RESOURCE_LOAD_FAILURE = f"{type(exc).__name__}: {exc}"
+            raise
+        _RESOURCE_LOAD_FAILURE = None
         _RESOURCE_CACHE[key] = resources
         return resources
+
+
+def last_resource_load_failure() -> str | None:
+    """The last failure to build the trusted-v2 resources, or ``None``.
+
+    ``None`` means the last attempt succeeded *or* that none has been made yet;
+    the two are distinguishable by ``_RESOURCE_CACHE``, which readiness does not
+    need to consult -- a service that has not yet been asked to load its model is
+    not claiming that it can.
+    """
+
+    return _RESOURCE_LOAD_FAILURE
 
 
 def _document_scope(request: FinancialQueryRequest) -> tuple[str, ...]:
@@ -815,6 +1273,9 @@ def build_trusted_v2_runtime_for_request(
     request: FinancialQueryRequest,
     *,
     resources: TrustedV2RuntimeResources | None = None,
+    alignment_override: Any | None = None,
+    retriever_factory: Callable[[Any], Any] | None = None,
+    pool_reranker: Callable[[Any, Any], Any] | None = None,
 ) -> TrustedFinancialRuntimeV2:
     """Build one real ``TrustedFinancialRuntimeV2`` for a financial request.
 
@@ -823,6 +1284,17 @@ def build_trusted_v2_runtime_for_request(
     calls the legacy V1 retriever.  Expensive clients/models are process
     cached; request-scoped R4 policy and capability wrappers keep document
     scope and trace state isolated.
+
+    ``retriever_factory`` is an experiment seam, not a configuration knob.
+    ``None`` -- the default, and what every production caller passes by not
+    passing it -- builds ``CandidateDirectRetriever`` exactly as before, so the
+    default path is unchanged decision-for-decision.  A benchmark comparing two
+    *retrieval policies* passes a factory to get the other one, and because the
+    swap happens here rather than by editing the adapter, both arms run the same
+    ``CandidateDirectR4Policy``, the same materialisation and every capability
+    downstream of them.  The alternative -- patching the policy from the
+    harness -- would make the arms two different programs in a way the source
+    does not show.
     """
 
     del engine
@@ -834,14 +1306,27 @@ def build_trusted_v2_runtime_for_request(
         raise TypeError("resources must be TrustedV2RuntimeResources")
 
     document_scope = _document_scope(request)
+    # Resolved *before* the graph-building try.  ``resolve_agent_runtime_mode``
+    # raises ``AgentRuntimeModeError`` (a ValueError) for an unrecognised mode,
+    # and inside the try that purpose-built message -- the one naming the bad
+    # value and the accepted ones -- was swallowed by the generic
+    # ``except Exception`` and re-raised as "could not build the graph", with the
+    # real reason surviving only in ``__cause__``.  An operator typo in
+    # NF_AGENT_RUNTIME_MODE reported a build failure instead of a bad setting.
+    agent_runtime_mode = resolve_agent_runtime_mode()
     try:
         from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
 
-        retriever = CandidateDirectRetriever(resources.index_reader)
+        retriever = (
+            CandidateDirectRetriever(resources.index_reader)
+            if retriever_factory is None
+            else retriever_factory(resources.index_reader)
+        )
         policy = CandidateDirectR4Policy(
             retriever,
             materializer=resources.fact_store.materialize,
             document_scope=document_scope,
+            pool_reranker=pool_reranker,
         )
         retrieval = R4RetrievalCapability(
             policy,
@@ -851,11 +1336,18 @@ def build_trusted_v2_runtime_for_request(
         capabilities = TrustedV2CapabilityPorts(
             retrieval=retrieval,
             evidence_evaluator=evidence,
-            calculation=DeterministicCalculationCapability(),
+            calculation=DeterministicCalculationCapability(
+                # The authoritative store, so operand admission can ask whether
+                # a bound fact is uniquely identifiable at its coordinate --
+                # P1.6-0.  The calculator cannot answer that from the packet: a
+                # guard scoped to what retrieval returned is safe only on the
+                # days top-K happens to surface a competitor.
+                fact_store=resources.fact_store,
+            ),
             generation=TrustedV2GenerationCapability(
                 routing_policy=None,
                 renderer=DeterministicFactRenderer(),
-                specialist=resources.specialist,
+                model_backend=resources.specialist,
             ),
             release_validator=TrustedReleaseValidationCapability(),
         )
@@ -867,6 +1359,24 @@ def build_trusted_v2_runtime_for_request(
             # metric is not explicitly recognized by the alignment gate.
             # Generic operation-only calculation prompts remain compatible.
             unknown_semantic_policy=UnknownSemanticPolicy.STRICT_DIRECT_FACT,
+            # This is the only place NF_AGENT_RUNTIME_MODE is read.  The
+            # coordinator takes an explicit mode so that constructing one does
+            # not depend on ambient process state.
+            runtime_mode=agent_runtime_mode,
+            # P1.2's seam.  ``None`` on every production call path: this
+            # parameter has no environment variable, no default other than
+            # ``None``, and no caller in ``src`` that passes it.  A benchmark
+            # measuring the chain past the alignment gate passes one here
+            # rather than mutating a built coordinator, so a run that used one
+            # is distinguishable from a run that did not.
+            alignment_override=alignment_override,
+            # Production, not a seam.  The gate's vocabulary was the ontology
+            # alone, and 44 of the 48 cases it refused were refused because a
+            # filing states rows the ontology has no reason to name.  Handing it
+            # the source's own determinate row labels lets those questions be
+            # answered; a label whose rows disagree is not grounded and is still
+            # refused, and the fail-closed policy is untouched.
+            source_label_grounding=SourceLabelGrounding(resources.fact_store),
         )
     except TrustedV2ProductionConfigurationError:
         raise
@@ -883,5 +1393,7 @@ __all__ = [
     "build_trusted_v2_runtime_for_request",
     "clear_trusted_v2_production_cache",
     "inspect_r4_index",
+    "last_resource_load_failure",
+    "inspect_r4_fact_store_compatibility",
     "validate_trusted_v2_production_configuration",
 ]

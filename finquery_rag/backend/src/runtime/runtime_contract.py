@@ -41,6 +41,30 @@ class RuntimeVersion(str, Enum):
     V2 = "V2"
 
 
+class ContextTrustLevel(str, Enum):
+    """Origin and authority level for context passed through the runtime.
+
+    Conversation context can help interpret a query without becoming a
+    financial fact.  Only Binder-admitted evidence is allowed to cross the
+    financial fact/calculation boundary; all other levels remain semantic or
+    candidate context.
+    """
+
+    USER_EXPLICIT_QUERY = "USER_EXPLICIT_QUERY"
+    STRUCTURED_DIALOGUE_STATE = "STRUCTURED_DIALOGUE_STATE"
+    COMPRESSED_HISTORY = "COMPRESSED_HISTORY"
+    ASSISTANT_TEXT = "ASSISTANT_TEXT"
+    MODEL_GENERATED_SUMMARY = "MODEL_GENERATED_SUMMARY"
+    RETRIEVED_CANDIDATE = "RETRIEVED_CANDIDATE"
+    BINDER_ADMITTED_EVIDENCE = "BINDER_ADMITTED_EVIDENCE"
+
+    @property
+    def can_enter_financial_fact_chain(self) -> bool:
+        """Whether this source may become a financial fact or operand."""
+
+        return self is ContextTrustLevel.BINDER_ADMITTED_EVIDENCE
+
+
 class RuntimeRouterMode(str, Enum):
     """How a runtime implementation is being invoked by a future router."""
 
@@ -426,6 +450,7 @@ class FinancialQueryResult:
     answer: str | None = None
     clarification: ClarificationPayload | None = None
     citations: list[dict[str, Any]] = field(default_factory=list)
+    calculations: list[dict[str, Any]] = field(default_factory=list)
     evidence_ids: list[str] = field(default_factory=list)
     citation_ids: list[str] = field(default_factory=list)
     calculation_ids: list[str] = field(default_factory=list)
@@ -487,6 +512,7 @@ class FinancialQueryResult:
         object.__setattr__(self, "clarification", clarification)
 
         object.__setattr__(self, "citations", _normalize_citations(self.citations))
+        object.__setattr__(self, "calculations", _normalize_citations(self.calculations))
         object.__setattr__(
             self,
             "evidence_ids",
@@ -583,6 +609,7 @@ class FinancialQueryResult:
                 None if self.clarification is None else self.clarification.to_dict()
             ),
             "citations": copy.deepcopy(self.citations),
+            "calculations": copy.deepcopy(self.calculations),
             "evidence_ids": list(self.evidence_ids),
             "citation_ids": list(self.citation_ids),
             "calculation_ids": list(self.calculation_ids),
@@ -611,6 +638,7 @@ class FinancialQueryResult:
             answer=value.get("answer"),
             clarification=value.get("clarification"),
             citations=value.get("citations"),
+            calculations=value.get("calculations"),
             evidence_ids=value.get("evidence_ids"),
             citation_ids=value.get("citation_ids"),
             calculation_ids=value.get("calculation_ids"),

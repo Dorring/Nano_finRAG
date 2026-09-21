@@ -50,7 +50,18 @@ cleanup_started() {
 }
 trap cleanup_started EXIT
 
-"${__DIR}/start_model.sh"
+case "${FINANCIAL_RUNTIME_MODE:-v2}" in
+    v1|shadow)
+        "${__DIR}/start_model.sh"
+        ;;
+    v2)
+        echo "[start_all] Skipping legacy model service: FINANCIAL_RUNTIME_MODE=v2."
+        ;;
+    *)
+        echo "[start_all] FINANCIAL_RUNTIME_MODE must be v1, shadow, or v2 (got '${FINANCIAL_RUNTIME_MODE}')." >&2
+        exit 1
+        ;;
+esac
 "${__DIR}/start_backend.sh"
 "${__DIR}/start_frontend.sh"
 

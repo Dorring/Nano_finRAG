@@ -17,7 +17,12 @@ from rag_v2.adaptive import AdaptiveRAGStateV1
 from rag_v2.generation.contracts import AnswerEnvelopeV1, ValidationSeverity
 from rag_v2.generation.validator import RuntimeGenerationValidatorV1
 from rag_v2.runtime.semantic_claims import SemanticClaimDecision, SemanticClaimVerifierV1
-from src.domain.calculation import CalculationResult, CalculationStatus
+from src.domain.calculation import (
+    RELATIONAL_OPERATIONS,
+    CalculationOperation,
+    CalculationResult,
+    CalculationStatus,
+)
 from src.finance.calculation_renderer import render_calculation_result
 
 from .trusted_v2_generation import CandidateExecutionResult, DeterministicFactRenderer
@@ -310,17 +315,89 @@ class TrustedReleaseValidationCapability:
         self._release_record: dict[str, Any] = {}
 
     @staticmethod
+    def _relational_result_gap(state: AdaptiveRAGStateV1) -> str | None:
+        """The reason a relational plan must not release, or ``None`` if it may.
+
+        A comparison or a ranking answered in prose is unfalsifiable here: there
+        is nothing structured to compare the answer against.  That is exactly
+        how `compare-002` released "General and administrative for FY2025 at
+        8,077" for a question whose answer is Visa -- both operands bound, no
+        comparison performed, and a validator with nothing to check.
+
+        An invariant, not a stopgap.  A task requiring a relational operation
+        and holding no admissible structured result cannot release, whether the
+        result is missing because the operands did not bind, because the
+        calculator was blocked, or because the operands could not be ordered.
+        Each of those is a reason to refuse, and none is a reason to let prose
+        answer instead.
+
+        Returns ``None`` for every plan that does not require a relational
+        operation, so no other stratum's behaviour depends on this.
+        """
+
+        plan_blob = (
+            state.plan.get("supervisor_plan")
+            if isinstance(getattr(state, "plan", None), Mapping)
+            else None
+        )
+        if not isinstance(plan_blob, Mapping):
+            return None
+        raw_operation = plan_blob.get("operation")
+        if raw_operation is None:
+            return None
+        try:
+            operation = CalculationOperation(str(raw_operation))
+        except ValueError:
+            return None
+        if operation not in RELATIONAL_OPERATIONS:
+            return None
+
+        calculation = getattr(state, "_calculation_result_obj", None)
+        if (
+            isinstance(calculation, CalculationResult)
+            and calculation.relational_result_is_well_formed
+        ):
+            return None
+        return "RELATIONAL_RESULT_REQUIRED"
+
+    @staticmethod
     def _candidate(value: Any, state: AdaptiveRAGStateV1) -> CandidateExecutionResult:
         if isinstance(value, CandidateExecutionResult):
             return value
         if isinstance(value, str) and value.strip():
+            # A bare string candidate has no way to declare citation or
+            # calculation references, and this branch used to *invent* them:
+            #
+            #     citation_ids=tuple(getattr(state, "_candidate_citation_ids", ()))
+            #     calculation_ids=tuple(getattr(state, "_candidate_calculation_ids", ()))
+            #
+            # Neither attribute is written anywhere in the repository -- no
+            # assignment, no `setattr`, no field on `AdaptiveRAGStateV1`, no
+            # deserialization path, no fixture. Because the state has an ordinary
+            # ``__dict__``, `getattr` returned the default, so the candidate was
+            # handed an empty set it had never declared, and the guard that
+            # consumes it -- "candidate citation metadata is not Binder-admitted"
+            # -- was trivially satisfied for every input. A trust invariant that
+            # has never once been evaluated is not a strict guard; it is an
+            # absent one wearing a guard's name.
+            #
+            # H2A-2D-3A: the fabrication is removed rather than repaired.
+            # Candidate-reference authorization is **not applicable** on this
+            # path, and "not declared" is deliberately not expressed as "declared
+            # empty" -- the first says the question cannot be asked here, the
+            # second would say it was asked and answered. What actually protects
+            # this path is the downstream envelope contract: `_coerce_envelope`
+            # requires structured citation ids, which is the failure a bare
+            # string generator actually produces.
+            #
+            # The path that *can* declare references is the structured one, and
+            # its contract is live and separate: `_validation_packet` rejects a
+            # candidate whose declared citations are not Binder-admitted.
             return CandidateExecutionResult(
                 candidate_answer=value.strip(),
                 route=str(getattr(state, "generation_route", "") or "STRUCTURED_SINGLE"),
                 route_reason=str(getattr(state, "route_reason", "") or "candidate"),
                 bound_evidence_ids=tuple(getattr(state, "bound_evidence_ids", ())),
-                citation_ids=tuple(str(item) for item in getattr(state, "_candidate_citation_ids", ())),
-                calculation_ids=tuple(str(item) for item in getattr(state, "_candidate_calculation_ids", ())),
             )
         raise TypeError("candidate must be CandidateExecutionResult or non-empty string")
 
@@ -403,6 +480,17 @@ class TrustedReleaseValidationCapability:
             self.last_result = result
             return result
 
+        relational_gap = self._relational_result_gap(state)
+        if relational_gap is not None:
+            result = self._failure(
+                candidate=candidate_obj,
+                validation_id=validation_id,
+                reason_codes=[relational_gap],
+                started=started,
+            )
+            self.last_result = result
+            return result
+
         try:
             envelope = _coerce_envelope(state, candidate_obj)
         except ValueError:
@@ -424,22 +512,9 @@ class TrustedReleaseValidationCapability:
                 semantic_failed = tuple(semantic.reason_codes or ("SCV_CLAIM_UNSUPPORTED",))
 
         generation_failures = tuple(report.failure_codes)
-        # The canonical validator represents ratio values as percentages in
-        # the deterministic C1 renderer.  Treat that display alias as a
-        # structured unit equivalence; do not relax arbitrary unit claims.
-        calculation_payload = getattr(state, "calculation_result", None)
-        if (
-            candidate_obj.route == "CALCULATION_SIMPLE"
-            and isinstance(calculation_payload, Mapping)
-            and str(calculation_payload.get("unit", "")).casefold() == "ratio"
-            and "%" in candidate_obj.candidate_answer
-            and "GV5_UNIT_CURRENCY_SCALE_FIDELITY" in generation_failures
-        ):
-            generation_failures = tuple(
-                code
-                for code in generation_failures
-                if code != "GV5_UNIT_CURRENCY_SCALE_FIDELITY"
-            )
+        # RuntimeGenerationValidatorV1 owns the structured ratio/percentage
+        # equivalence. Keep its report and failure codes authoritative here;
+        # a release result must never contain a hidden HARD_FAIL finding.
         reasons = _stable_unique((*generation_failures, *semantic_failed))
         passed = not generation_failures and not semantic_failed
         generation_payload = report.to_dict()

@@ -23,7 +23,10 @@ class ProgressDetectorV1:
         payload = {
             "query": " ".join(str(query).split()).casefold(),
             "capability": str(capability),
-            "evidence": sorted(packet.content_hash for packet in packets),
+            # Content identity, not instance identity: a round that returns the same
+            # evidence under a new id has not learned anything, and treating it as
+            # progress spent budget re-reading what the run already had.
+            "evidence": sorted(packet.content_fingerprint for packet in packets),
             "filled": sorted(str(item) for item in filled_slots),
             "missing": sorted(str(item) for item in missing_slots),
             "conflicts": sorted(map(str, conflicts)),

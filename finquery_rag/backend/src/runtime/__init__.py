@@ -18,6 +18,7 @@ from .response_mapper import (
 from .runtime_contract import (
     ClaimProvenance,
     ClarificationPayload,
+    ContextTrustLevel,
     FinancialQARuntime,
     FinancialQueryRequest,
     FinancialQueryResult,
@@ -70,7 +71,6 @@ from .trusted_v2_generation import (
     CandidateExecutionResult,
     CandidateGenerationCapabilityError,
     DeterministicFactRenderer,
-    LocalSpecialistGenerationAdapter,
     TrustedV2GenerationCapability,
 )
 from .trusted_v2_r4 import (
@@ -96,12 +96,14 @@ from .trusted_v2_production import (
     build_trusted_v2_runtime_for_request,
     clear_trusted_v2_production_cache,
     inspect_r4_index,
+    inspect_r4_fact_store_compatibility,
     validate_trusted_v2_production_configuration,
 )
 
 __all__ = [
     "ClarificationPayload",
     "ClaimProvenance",
+    "ContextTrustLevel",
     "FinancialQARuntime",
     "FinancialQueryRequest",
     "FinancialQueryResult",
@@ -146,7 +148,6 @@ __all__ = [
     "CandidateExecutionResult",
     "CandidateGenerationCapabilityError",
     "DeterministicFactRenderer",
-    "LocalSpecialistGenerationAdapter",
     "TrustedV2GenerationCapability",
     "CandidateRepairCapability",
     "CandidateRepairError",
@@ -173,6 +174,7 @@ __all__ = [
     "build_trusted_v2_runtime_for_request",
     "clear_trusted_v2_production_cache",
     "inspect_r4_index",
+    "inspect_r4_fact_store_compatibility",
     "validate_trusted_v2_production_configuration",
     "to_legacy_query_dict",
 ]

@@ -12,6 +12,12 @@
 *.css text eol=lf
 *.html text eol=lf
 *.txt text eol=lf
+# Shell scripts and checksum sidecars are missing from the list above, so with
+# `core.autocrlf=true` a Windows checkout gives them CRLF.  For a `.sh` that is
+# not cosmetic: the kernel reads the shebang as `/bin/bash\r` and the script
+# fails with "bad interpreter".  For a `.sha256` it silently changes the bytes.
+*.sh text eol=lf
+*.sha256 text eol=lf
 *.png binary
 *.jpg binary
 *.jpeg binary

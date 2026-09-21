@@ -5,25 +5,44 @@ Specialist Generator (Step-156, checkpoint SHA:
 3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a)
 into the financial RAG runtime under the FinancialGenerationViewV1 semantic contract.
 """
+
 from __future__ import annotations
 
 import hashlib
 import os
 from pathlib import Path
-import re
 import sys
 import time
 from typing import Any
 
 import torch
 
-NANOCHAT_REPO = Path("/mnt/disk/mxf/projects/Qhhhhhhaaa/nanochat")
+from rag_v2.invocation import ModelProviderError, ProviderFailureKind
+
+
+def _resolve_nanochat_repo() -> Path:
+    """Resolve the NanoChat source root without coupling V2 to one host path.
+
+    ``NANOCHAT_REPO`` is the explicit deployment override; the source tree
+    containing this module is the safe local default. No unrelated Python
+    environment is appended to the interpreter path.
+    """
+    configured = os.getenv("NANOCHAT_REPO")
+    if configured:
+        return Path(configured).expanduser().resolve()
+    return Path(__file__).resolve().parents[4]
+
+
+NANOCHAT_REPO = _resolve_nanochat_repo()
 if str(NANOCHAT_REPO) not in sys.path:
     sys.path.insert(0, str(NANOCHAT_REPO))
 
-extra_site = "/mnt/disk/mxf/anaconda3/lib/python3.12/site-packages"
-if extra_site not in sys.path:
-    sys.path.append(extra_site)
+# Keep the backend interpreter isolated.  Appending an unrelated Anaconda
+# site-packages directory here made imports process-global and allowed binary
+# extensions built against NumPy 1.x (for example numexpr/bottleneck) to
+# shadow the backend venv's NumPy 2.x dependencies.  The canonical backend
+# environment already contains the NanoChat runtime dependencies; if it does
+# not, startup should fail fast instead of silently mixing environments.
 
 try:
     from nanochat.checkpoint_manager import build_model
@@ -38,9 +57,7 @@ EXPECTED_CHECKPOINT_PATH = Path(
 EXPECTED_CHECKPOINT_SHA256 = (
     "3bda9f032d7bfb29a3bdf7e0eeeee930a57a05e899e11e67e108483ca920894a"
 )
-EXPECTED_VIEW_SHA = (
-    "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4"
-)
+EXPECTED_VIEW_SHA = "943decf288dffb99ffa6f196abc44e0a5bdb226350cede40e0a160c4bd61f6e4"
 
 
 def sha256_file(path: Path) -> str:
@@ -51,8 +68,33 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def exceeds_sequence_window(
+    prompt_tokens: int,
+    max_new_tokens: int,
+    sequence_len: int | None,
+) -> bool:
+    """Whether a request would run past the model's physical window.
+
+    The whole sequence the engine holds is the prompt *plus* what is generated,
+    so a prompt that fits on its own can still overflow once generation starts.
+    Counting only the prompt is the mistake this exists to avoid, and it is why
+    the rule is a named function rather than an inline comparison: it is
+    testable without a checkpoint, a GPU or torch.
+
+    ``None`` means the checkpoint declared no window, which is reported rather
+    than guessed at -- an engine whose limit is unknown is not checked here
+    rather than being checked against a made-up number.
+    """
+
+    return (
+        sequence_len is not None
+        and prompt_tokens + max_new_tokens > sequence_len
+    )
+
+
 class LocalSpecialistUnavailableError(Exception):
     """Raised when the Local Financial Specialist cannot be loaded or verified."""
+
     pass
 
 
@@ -65,6 +107,13 @@ class LocalSpecialistGenerator:
 
     ROLE = "LOCAL_FINANCIAL_SPECIALIST_GENERATOR"
     CONTRACT_VERSION = "FinancialGenerationViewV1"
+
+    #: The model's stable identity, P1.1.  A registry name rather than a path:
+    #: an absolute Linux path describes one host's filesystem layout, and the
+    #: checkpoint's SHA256 is deployment metadata that already travels in the
+    #: configuration fingerprint.  Neither belongs in a field that names *which
+    #: model produced this answer*.
+    MODEL_ID = "nano-finance-2.08b-step156"
 
     def __init__(
         self,
@@ -83,6 +132,8 @@ class LocalSpecialistGenerator:
         self.tokenizer = None
         self.engine = None
         self.checkpoint_sha256 = None
+        #: Set by ``load()`` from the checkpoint's own config.
+        self.sequence_len: int | None = None
         self._model_loaded = False
         self._load_duration_seconds = 0.0
 
@@ -120,12 +171,22 @@ class LocalSpecialistGenerator:
 
         t0 = time.perf_counter()
         ckpt_dir = str(self.checkpoint_path.parent)
-        self.model, self.tokenizer, _ = build_model(
+        self.model, self.tokenizer, meta = build_model(
             ckpt_dir, 156, self.device, phase="eval"
         )
         self.model.eval()
         self.engine = Engine(self.model, self.tokenizer)
         self._load_duration_seconds = time.perf_counter() - t0
+
+        #: The model's physical window, taken from the checkpoint's own config
+        #: rather than assumed.  This is a *provider fact* -- what this engine
+        #: can accept -- and not a context policy: nothing here decides how much
+        #: context anyone should send, only what happens when they send more
+        #: than the engine can hold.  ``None`` when the checkpoint does not
+        #: declare one, which is reported rather than guessed at.
+        config = meta.get("model_config") if isinstance(meta, dict) else None
+        declared = config.get("sequence_len") if isinstance(config, dict) else None
+        self.sequence_len = int(declared) if isinstance(declared, int) else None
 
         # Cache special token IDs
         self.bos_token_id = self.tokenizer.get_bos_token_id()
@@ -139,84 +200,71 @@ class LocalSpecialistGenerator:
     def is_loaded(self) -> bool:
         return self._model_loaded
 
-    def render_prompt(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: dict[str, Any] | None = None,
-    ) -> str:
-        """Render prompt adhering strictly to FinancialGenerationViewV1."""
-        lines = [f"[QUESTION]\n{question.strip()}\n", "[VERIFIED EVIDENCE]\n"]
+    @property
+    def model_id(self) -> str:
+        """The model's identity, for the binding that reaches it.
 
-        for i, ev in enumerate(evidence_items, start=1):
-            cite_id = ev.get("citation_id", f"E{i}")
-            if not re.match(r"^E\d+$", cite_id):
-                cite_id = f"E{i}"
+        P1.1.  ``build_financial_model_binding`` reads this rather than stamping
+        a constant on whatever backend it is handed, so a test double -- which
+        declares no identity -- yields ``None`` instead of being labelled the
+        financial model.
 
-            metric = ev.get("metric") or ev.get("normalized_metric") or "Metric"
-            period = ev.get("period") or "Period"
-            value = str(ev.get("value", "")).strip()
-            unit = ev.get("unit") or "not specified"
-            currency = ev.get("currency") or "not specified"
-            scale = ev.get("scale") or "1"
-            scope = ev.get("scope") or metric
-            source_doc = ev.get("document_id") or "filing"
-            page = ev.get("page") or 1
+        Identity is available before ``load()``: it describes which model this
+        object *is*, not whether it is currently resident.  Its counterpart,
+        ``tokenizer``, is the opposite -- ``None`` until a real checkpoint has
+        loaded, which is what makes its presence a genuine claim that this
+        backend can count its own tokens.
+        """
+        return self.MODEL_ID
 
-            lines.append(f"[{cite_id}]")
-            lines.append(f"Metric: {metric}")
-            lines.append(f"Period: {period}")
-            lines.append(f"Scope: {scope}")
-            lines.append(f"Value: {value}")
-            lines.append(f"Unit: {unit}")
-            lines.append(f"Currency: {currency}")
-            lines.append(f"Scale: {scale}")
-            lines.append(f"Source: {source_doc}:{page}")
+    def generate(self, prompt: str) -> dict[str, Any]:
+        """Generate from an already-rendered prompt.
 
-            if "source_text" in ev and ev["source_text"]:
-                lines.append(f"Evidence: {ev['source_text']}")
-            lines.append("")
+        H2A-3B3.  This used to take ``(question, evidence_items,
+        calculation_result)`` and render them here through
+        ``render_specialist_prompt``.  The renderer is now the pack-based one,
+        invoked by the candidate-generation capability from the compiled
+        ``AgentContextPackV1`` -- so the prompt handed in is the whole of what
+        the compiler released, and this method's job is the provider's own:
+        tokenize, run the engine, decode.
 
-        if calculation_result:
-            c1_val = str(calculation_result.get("value", "")).strip()
-            c1_unit = calculation_result.get("unit", "")
-            c1_op = calculation_result.get("operation", "calculated_metric")
-            lines.append("[VERIFIED CALCULATION]\n")
-            lines.append("[C1]")
-            lines.append(f"Operation: {c1_op}")
-            lines.append(f"Value: {c1_val} {c1_unit}".strip())
-            lines.append("")
-
-        lines.append("[ANSWER RULES]")
-        lines.append("1. Use only the verified evidence and calculation above.")
-        lines.append("2. Do not introduce outside financial knowledge.")
-        lines.append("3. Preserve supplied numbers, periods, units, currencies and scales exactly.")
-        lines.append("4. Do not recalculate canonical calculation results.")
-        lines.append("5. Cite factual claims using the supplied [E#] / [C#] IDs.")
-        lines.append("6. If required evidence is missing, explicitly state that the provided evidence is insufficient.")
-        lines.append("7. Answer concisely.")
-
-        return "\n".join(lines)
-
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: dict[str, Any] | None = None,
-    ) -> dict[str, Any]:
-        """Generate response using greedy evaluation decoding."""
+        The signature narrowing is the migration's guarantee rather than a
+        tidy-up.  A backend that could still be handed loose evidence would be a
+        second route to the model, and nothing on this path reads evidence at
+        all any more -- there is no argument here to bypass Disclosure
+        Authority with.
+        """
         if not self._model_loaded:
             raise LocalSpecialistUnavailableError(
                 "LocalSpecialistGenerator is not loaded. Call load() first."
             )
 
-        rendered_input = self.render_prompt(question, evidence_items, calculation_result)
-
         prompt_tokens = (
             [self.bos_token_id, self.user_start_id]
-            + self.tokenizer.encode(rendered_input)
+            + self.tokenizer.encode(prompt)
             + [self.user_end_id, self.assistant_start_id]
         )
+
+        # Refuse a request the engine cannot hold, before the engine is asked to
+        # hold it.  Nothing upstream bounds this: no evidence-count limit is
+        # configured and no token bound is configured, so the prompt grows with
+        # whatever the binder admitted.  Handing an over-long sequence to
+        # `generate_batch` does not return an error, it trips a CUDA assertion
+        # and takes the process -- and with it the service -- down.
+        #
+        # This is a window check, not a context policy.  It says this provider
+        # cannot serve this request, which is the same class of statement as the
+        # checkpoint being missing; it does not say how much context anyone
+        # should send, which is a bound somebody still has to justify.
+        if exceeds_sequence_window(
+            len(prompt_tokens), self.max_new_tokens, self.sequence_len
+        ):
+            raise ModelProviderError(
+                ProviderFailureKind.UNAVAILABLE,
+                f"prompt of {len(prompt_tokens)} tokens plus "
+                f"{self.max_new_tokens} requested exceeds this model's "
+                f"{self.sequence_len}-token window",
+            )
 
         t0 = time.perf_counter()
         with torch.no_grad():
@@ -228,7 +276,7 @@ class LocalSpecialistGenerator:
             )
         latency = time.perf_counter() - t0
 
-        new_tokens = gen_tokens[0][len(prompt_tokens):]
+        new_tokens = gen_tokens[0][len(prompt_tokens) :]
         raw_output = self.tokenizer.decode(new_tokens)
 
         finish_reason = "length" if len(new_tokens) >= self.max_new_tokens else "stop"
@@ -239,7 +287,9 @@ class LocalSpecialistGenerator:
             "tokens_generated": len(new_tokens),
             "finish_reason": finish_reason,
             "rendered_input_length": len(prompt_tokens),
-            "checkpoint_sha256_prefix": self.checkpoint_sha256[:16] if self.checkpoint_sha256 else "",
+            "checkpoint_sha256_prefix": self.checkpoint_sha256[:16]
+            if self.checkpoint_sha256
+            else "",
             "role": self.ROLE,
         }
 
@@ -248,8 +298,12 @@ class LocalSpecialistGenerator:
         vram_alloc = 0.0
         vram_reserved = 0.0
         if torch.cuda.is_available() and self.device.type == "cuda":
-            vram_alloc = round(torch.cuda.memory_allocated(self.device) / (1024 * 1024), 2)
-            vram_reserved = round(torch.cuda.memory_reserved(self.device) / (1024 * 1024), 2)
+            vram_alloc = round(
+                torch.cuda.memory_allocated(self.device) / (1024 * 1024), 2
+            )
+            vram_reserved = round(
+                torch.cuda.memory_reserved(self.device) / (1024 * 1024), 2
+            )
 
         return {
             "model_loaded": self._model_loaded,

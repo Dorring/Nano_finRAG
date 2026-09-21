@@ -121,8 +121,28 @@ TV2-02 does not call TrustedRAGRuntimeV2.handle().
 
 Every bounded run exposes a V2ExecutionTrace in debug metadata. It contains
 structured transitions, tool invocation metadata, reason codes, budget
-counters, and terminal state. It does not contain provider raw responses,
-private reasoning, or chain-of-thought.
+counters, terminal state, a stable \`execution_id\`, and the plan id. It also
+records context trust observations:
+
+\`\`\`text
+USER_EXPLICIT_QUERY
+STRUCTURED_DIALOGUE_STATE
+COMPRESSED_HISTORY
+ASSISTANT_TEXT
+MODEL_GENERATED_SUMMARY
+RETRIEVED_CANDIDATE
+BINDER_ADMITTED_EVIDENCE
+\`\`\`
+
+Conversation context and retrieved candidates can help resolve a query, but
+only \`BINDER_ADMITTED_EVIDENCE\` is recorded as financial fact authority.
+Calculation and generation are gated by Binder-admitted evidence IDs; the
+request boundary cannot self-attest that level. The trace retains structured
+state transitions, tool calls, targeted slots, reason codes, replan count,
+bound evidence IDs, route, repair count, and terminal status. It does not
+contain provider raw responses, private reasoning, or chain-of-thought. Any
+provider snapshot fields matching private reasoning/CoT markers are dropped
+before trace serialization.
 
 ## Environment boundary
 

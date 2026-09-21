@@ -9,7 +9,7 @@ try:  # Keep V2-00 contract imports usable in minimal test environments.
 except ImportError:  # pragma: no cover - exercised only without provider extras
     OpenAI = None  # type: ignore[assignment,misc]
 
-from rag_v2.contracts.plan import SupervisorPlan
+from rag_v2.contracts.plan import SupervisorPlan, slot_key_error
 
 from .prompt import build_messages
 from .provider import SupervisorCallMetadata, SupervisorProviderError
@@ -37,6 +37,7 @@ class APIProvider:
         provider_role: str = "supervisor",
         model_role: str = "strong_general_llm",
         structured_output: bool = False,
+        enable_thinking: bool | None = None,
     ) -> None:
         if OpenAI is None:
             raise RuntimeError("the API Supervisor provider requires the openai package")
@@ -47,7 +48,14 @@ class APIProvider:
         self.provider_role = provider_role
         self.model_role = model_role
         self.structured_output = structured_output
+        if enable_thinking is not None and not isinstance(enable_thinking, bool):
+            raise ValueError("enable_thinking must be a bool or None")
+        self.enable_thinking = enable_thinking
         self.last_call: SupervisorCallMetadata | None = None
+
+    def close(self) -> None:
+        """Release the underlying HTTP client connection pool."""
+        self.client.close()
 
     def plan(self, question: str) -> SupervisorPlan:
         started = time.perf_counter()
@@ -61,6 +69,16 @@ class APIProvider:
             }
             if self.structured_output:
                 request["response_format"] = {"type": "json_object"}
+            # DeepSeek uses the OpenAI SDK's extra_body extension for its
+            # thinking-mode toggle. `None` preserves generic OpenAI-compatible
+            # endpoint behavior; configured DeepSeek calls explicitly disable
+            # thinking for short strict-JSON control-plane responses.
+            if self.enable_thinking is not None:
+                request["extra_body"] = {
+                    "thinking": {
+                        "type": "enabled" if self.enable_thinking else "disabled",
+                    },
+                }
             response = self.client.chat.completions.create(**request)
             content = response.choices[0].message.content if response.choices else None
             raw = content if isinstance(content, str) else None
@@ -78,9 +96,10 @@ class APIProvider:
                 self._record(response, started, raw, parse_failure="schema_slots", error="required_slots must be an array")
                 raise SupervisorProviderError("required_slots must be an array")
             for slot in payload["required_slots"]:
-                if not isinstance(slot, dict) or set(slot) != {"slot_id", "metric", "period", "role", "value_type", "unit"}:
-                    self._record(response, started, raw, parse_failure="schema_slot_keys", error="slot keys must match RequiredSlot")
-                    raise SupervisorProviderError("required slot has extra or missing keys")
+                slot_error = slot_key_error(slot)
+                if slot_error is not None:
+                    self._record(response, started, raw, parse_failure="schema_slot_keys", error=slot_error)
+                    raise SupervisorProviderError(f"required slot is not a RequiredSlot: {slot_error}")
             try:
                 plan = SupervisorPlan.from_dict(payload)
             except Exception as exc:

@@ -281,3 +281,14 @@ class TestCalculationHTTPEndpoint:
         assert isinstance(data["calculations"], list)
         # Response is JSON-serializable (TestClient already parsed it).
         json.dumps(data)
+
+
+# Declared, not inherited.  See `legacy_single_turn_endpoint` in conftest.py for
+# why a test that patches the RAG engine must say which runtime it exercises
+# rather than depend on whichever mode is currently the default.
+
+
+@pytest.fixture(autouse=True)
+def _declared_runtime(legacy_single_turn_endpoint: None) -> None:
+    """This module patches get_rag_engine to assert the legacy /query response
+    shape, which only the V1 lifecycle produces."""

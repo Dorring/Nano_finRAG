@@ -125,6 +125,51 @@ def hidden(e: etree._Element) -> bool:
     return False
 
 
+def ixbrl_anchors(e: etree._Element) -> list[dict]:
+    """The inline-XBRL facts this element contains.
+
+    The fact id and its concept tag live on a **descendant**
+    ``<ix:nonFraction>``/``<ix:nonNumeric>``, not on the block's own element --
+    which is a ``<p>`` or a ``<table>`` and carries neither.  ``element_id``
+    therefore records ``None`` in exactly the place a link to the tagged fact
+    would be, and the parsed corpus ends up unable to say which fact a passage
+    states.
+
+    Recording them here is what makes the link recoverable from the filing's own
+    anchors rather than by matching a passage against a fact on their values --
+    which is the guess that would silently attach the wrong concept to a passage.
+    """
+
+    found: list[dict] = []
+    for node in e.iter():
+        if lname(node) not in ("nonfraction", "nonnumeric"):
+            continue
+        # The same filter `ix_facts` applies, so every anchor names a fact that
+        # actually reaches the corpus.  An anchor to a fact the parser drops
+        # would be a link to nothing, and counting it would overstate coverage.
+        if (
+            str(node.get("{http://www.w3.org/2001/XMLSchema-instance}nil") or "").lower()
+            == "true"
+        ):
+            continue
+        fact_id = str(node.get("id") or "").strip()
+        concept = str(node.get("name") or "").strip()
+        context_ref = str(
+            node.get("contextref") or node.get("contextRef") or ""
+        ).strip()
+        if not concept or not context_ref:
+            continue
+        found.append(
+            {
+                "fact_id": fact_id or None,
+                "concept": concept,
+                # lxml lower-cases attribute names when parsing HTML.
+                "context_ref": context_ref,
+            }
+        )
+    return found
+
+
 def text_of(e: etree._Element) -> str:
     out = []
     for n in e.iter():
@@ -411,6 +456,11 @@ def grid_rows(rows: list[list[etree._Element]]) -> list[list[dict | None]]:
                 "header": lname(node) == "th",
                 "rowspan": rs,
                 "colspan": cs,
+                # Captured here because the element is dropped from the grid:
+                # downstream there is no way back to the node to ask.  This is
+                # what makes a *cell* anchorable rather than only the table --
+                # and the column is the dimension the store is missing.
+                "ixbrl_anchors": ixbrl_anchors(node),
             }
             for rr in range(ri, ri + rs):
                 while len(grid) <= rr:
@@ -464,6 +514,30 @@ def header_idx(grid) -> list[int]:
 
 def col_headers(grid, idx) -> list[str]:
     w = max((len(r) for r in grid), default=0)
+
+    # Carry each header row's text forward across blank columns.
+    #
+    # A group header like `Total` is one cell with a colspan, and the layout it
+    # spans is usually wider than that colspan reaches: a filing's three years
+    # are laid out as `2025 | | 2024 | | 2023 | |` inside a group whose colspan
+    # stops a cell short.  Reading the header at a column directly then returns a
+    # year with no group -- which is how `49,552` came out under
+    # `As of December 31 / 2023` while its siblings read `... / Total / 2024`.
+    #
+    # Carrying forward is bounded by the next non-empty cell in the same row, so
+    # a new group or a new year resets it.
+    carried: dict[int, list[str]] = {}
+    for i in idx:
+        row = grid[i]
+        running = ""
+        per_column = []
+        for c in range(w):
+            text = ws(row[c]["raw_text"]) if c < len(row) and row[c] else ""
+            if text:
+                running = text
+            per_column.append(running)
+        carried[i] = per_column
+
     out = []
     for c in range(w):
         vals = []
@@ -495,11 +569,69 @@ def col_headers(grid, idx) -> list[str]:
                     scope = ws(
                         scope + " " + date_match.group(1) + " " + date_match.group(2)
                     )
-            for part in ((scope if x else ""), x):
+            header_text = x or carried[i][c]
+            for part in ((scope if header_text else ""), header_text):
                 if part and part not in vals:
                     vals.append(part)
         out.append(" / ".join(vals))
     return out
+
+
+_PERIOD_PRODUCER: Any = None
+
+
+def period_producer():
+    """The A3 period producer, loaded once.
+
+    W4-B decides admission from a `PeriodBindingV2`, and the producer that builds one needs
+    the grid -- which lives here and nowhere further down.  So it runs here, and the
+    composed binding travels to the emitter on the cell.
+
+    The name collides with `period_binding()` above, which is the legacy per-header period
+    string and a different thing entirely; this is the A3 contract's module.
+    """
+    global _PERIOD_PRODUCER
+    if _PERIOD_PRODUCER is None:
+        import importlib.util
+        import sys as _sys
+        backend = Path(__file__).resolve().parents[2]
+        if str(backend) not in _sys.path:
+            _sys.path.insert(0, str(backend))
+        path = Path(__file__).with_name("period_binding_shadow.py")
+        spec = importlib.util.spec_from_file_location("period_binding_shadow", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        _PERIOD_PRODUCER = module
+    return _PERIOD_PRODUCER
+
+
+class _ParserSurface:
+    """Exactly the functions the period producer reads off its `nf` argument.
+
+    A shim rather than `sys.modules[__name__]`: this module is loaded three ways -- run
+    directly, and via `importlib` from two callers that never register it -- so only one of
+    those puts it in `sys.modules`, and the producer would fail on the other two.
+    """
+
+    ws = staticmethod(ws)
+    header_idx = staticmethod(header_idx)
+    parse_date_text = staticmethod(parse_date_text)
+    year_tokens = staticmethod(year_tokens)
+    has_num = staticmethod(has_num)
+
+
+def composed_period_binding(producer, bound: dict, ri: int, ci: int):
+    """The period evidence for one cell: a row declaration shadows an inherited column.
+
+    Scope semantics, not precedence -- the same composition `resolve_period_evidence`
+    performs, called here because this is where the row and column coordinates exist.
+    """
+    column = bound["columns"].get(ci)
+    row = bound["rows"].get(ri)
+    inherited = [column] if isinstance(column, producer.PeriodBindingV2) else []
+    if isinstance(row, producer.PeriodBindingV2):
+        return producer.resolve_period_evidence(row, inherited)
+    return inherited[0] if inherited else None
 
 
 def parse_table(
@@ -531,6 +663,10 @@ def parse_table(
     rows = []
     cells = []
     width = len(headers)
+    # W4-B: the period producer runs here, where the grid is, and its result rides on each
+    # cell as JSON because everything between here and the emitter is serialised.
+    producer = period_producer()
+    v2_bound = producer.bind_table(_ParserSurface, grid, doc["document_id"], tid)
     for ri, row in enumerate(grid):
         label = ws(row[0]["raw_text"]) if row and row[0] else ""
         rid = did("row", doc["document_id"], tid, ri, label)
@@ -568,6 +704,16 @@ def parse_table(
                 "period_start": pb.get("period_start"),
                 "period_end": pb.get("period_end"),
                 "period_semantics": pb.get("period_semantics", "UNKNOWN"),
+                # The cell's own facts.  `row_label` and `column_header` above
+                # are what separate two cells of one row -- `Net income` under
+                # `Corporate` against the same row under `Total` -- so an anchor
+                # here is what lets a tagged fact be told from its neighbour.
+                "ixbrl_anchors": rec.get("ixbrl_anchors") or [],
+                # W4-B: the composed period evidence for this cell.  Absent means the
+                # producer bound nothing here, which the emitter reads as a refusal --
+                # never as permission.
+                "period_binding_v2": producer.binding_payload(
+                    composed_period_binding(producer, v2_bound, ri, ci)),
                 "source_provenance": {
                     "document_id": doc["document_id"],
                     "table_id": tid,
@@ -582,6 +728,15 @@ def parse_table(
                 {
                     "table_id": tid,
                     "row_id": rid,
+                    # `classify_table_rows` groups cells by `cell["row_index"]`
+                    # and looks them up by `row["row_index"]`.  Without this the
+                    # lookup is `int(None or 0)` for every row, so every row is
+                    # handed row 0's cells -- usually the header row, with no
+                    # numerics -- `_has_numeric` is false throughout, `metric_row`
+                    # is never reached, and ordinary line items fall to `unknown`.
+                    # Measured before the fix: 5,643 rows, 3,825 of which have a
+                    # numeric value column, and 448 classified as financial.
+                    "row_index": ri,
                     "row_label": label,
                     "cells": rc,
                     "source_order": order,
@@ -741,18 +896,23 @@ def ix_facts(root, contexts):
 
 
 def make_blocks(root, doc):
-    order = {id(n): i for i, n in enumerate(root.iter())}
     tables = {
         id(t): t
         for t in root.xpath(".//table")
         if not hidden(t) and not any(lname(a) == "table" for a in t.iterancestors())
     }
+    # One pass, and `o` taken from it directly.  The previous version built
+    # `{id(n): i}` from one `root.iter()` and looked it up from a second, which
+    # cannot work: lxml creates element proxies on demand and frees them, so
+    # `id()` is reused and the lookup could return another element's index -- or
+    # the 0 default.  Two different tables then derived the same `table_id`,
+    # which is where the three duplicated ids and the downstream
+    # "duplicate canonical candidate key" came from.
     els = []
-    for n in root.iter():
+    for o, n in enumerate(root.iter()):
         if hidden(n):
             continue
         tag = lname(n)
-        o = order.get(id(n), 0)
         if tag == "table" and id(n) in tables:
             els.append((o, n, "TABLE"))
         elif tag in {"h1", "h2", "h3", "h4", "h5", "h6"} and text_of(n):
@@ -795,7 +955,10 @@ def make_blocks(root, doc):
                     "source_order": o,
                     "text": tx[:2000],
                     "table_id": tid,
-                    "metadata": {"tag": "table"},
+                    "metadata": {
+                        "tag": "table",
+                        "ixbrl_anchors": ixbrl_anchors(n),
+                    },
                 }
             )
         else:
@@ -821,7 +984,11 @@ def make_blocks(root, doc):
                     "source_order": o,
                     "text": tx,
                     "table_id": None,
-                    "metadata": {"tag": lname(n), "element_id": n.get("id")},
+                    "metadata": {
+                        "tag": lname(n),
+                        "element_id": n.get("id"),
+                        "ixbrl_anchors": ixbrl_anchors(n),
+                    },
                 }
             )
             prior.append((o, tx))
@@ -994,6 +1161,16 @@ def parse_one(row: dict, raw: Path, norm_root: Path, parsed_root: Path):
             "normalization_version": NORMALIZATION_VERSION,
             "normalization_config_sha": CONFIG_SHA,
             "blocks": blocks,
+            # `tables` was computed and then dropped here, and the semantic
+            # adapter consumes exactly this key: `adapt_document_tables` reads
+            # `document["tables"]`, iterates it, and emits one atomic fact per
+            # numeric cell.  Without it the loop body never runs, `atomic_facts`
+            # stays empty, and the canonical store emits nothing at all --
+            # measured, not inferred: building from the persisted corpus gives
+            # 0 atomic facts and 0 store records.  The tables are also where the
+            # cell-level structure lives, so this is both why the corpus could
+            # not reproduce the store and where the column dimension travels.
+            "tables": tables,
             "ixbrl_context_count": len(contexts),
             "ixbrl_fact_count": len(facts),
             "ixbrl_facts": facts,

@@ -21,11 +21,13 @@ from .adaptive_contracts import (
     ToolCapability,
 )
 from .adaptive_evaluator import EvidenceStateEvaluatorV1
+from .adaptive_policy import AdaptiveActionPolicyV1
 from .adaptive_progress import ProgressDetectorV1
 from .adaptive_replanner import BoundedReplannerV1
 
 
 ToolFn = Callable[[str, AdaptiveRAGStateV1], Iterable[Mapping[str, Any]]]
+CalculatorFn = Callable[[AdaptiveRAGStateV1], Any]
 GeneratorFn = Callable[[AdaptiveRAGStateV1], Any]
 VerifierFn = Callable[[AdaptiveRAGStateV1, Any], bool]
 
@@ -58,11 +60,19 @@ class BoundedAdaptiveRAGV1:
         replanner: BoundedReplannerV1 | None = None,
         progress_detector: ProgressDetectorV1 | None = None,
         budget: AdaptiveRAGBudgetV1 | None = None,
+        policy: AdaptiveActionPolicyV1 | None = None,
     ) -> None:
         self.budget = budget or AdaptiveRAGBudgetV1()
+        if policy is not None and policy.budget != self.budget:
+            raise ValueError(
+                "policy must share the loop budget; two sources of truth for the "
+                "same limits make the run's behaviour unpredictable"
+            )
         self.evaluator = evaluator or EvidenceStateEvaluatorV1()
         self.replanner = replanner or BoundedReplannerV1(self.budget)
         self.progress = progress_detector or ProgressDetectorV1()
+        # The replanner proposes; the policy permits.  See adaptive_policy.py.
+        self.policy = policy or AdaptiveActionPolicyV1(self.budget)
 
     @staticmethod
     def _capability(value: Any) -> ToolCapability:
@@ -75,12 +85,42 @@ class BoundedAdaptiveRAGV1:
         state.stop_reason = reason.value
         state.transition(AdaptivePhase.FAIL_CLOSED, reason.value)
 
+    @staticmethod
+    def _needs_calculation(
+        state: AdaptiveRAGStateV1,
+        calculator: CalculatorFn | None,
+    ) -> bool:
+        """Whether this run should run the calculator inside the loop.
+
+        Three conditions, all required.  The plan must carry calculation
+        requirements, evidence must have been admitted, and a calculator must
+        have been supplied.
+
+        The admission condition keeps the calculator behind the evidence gate:
+        ``state.bound_evidence_ids`` is the set the evidence evaluator admitted,
+        so a run whose operands were never admitted does not calculate at all.
+        It is *not* equivalent to the coordinator's stronger
+        ``_binder_admission_is_authoritative`` check, which also needs the
+        evaluator adapter; the harness only ever sees the state.  Because the
+        adapter assigns this field during EVALUATE, the two cannot diverge on any
+        path that goes through that phase -- only for a resumed or externally
+        supplied state.  Without a calculator at all the harness is not the owner
+        of calculation: the caller keeps that step, which is the legacy contract.
+        """
+
+        if calculator is None:
+            return False
+        if not state.bound_evidence_ids:
+            return False
+        return bool(state.calculation_requirements) and not state.calculation_attempted
+
     def run(
         self,
         state: AdaptiveRAGStateV1,
         tools: Mapping[ToolCapability | str, ToolFn],
         *,
         initial_action: ReplanActionV1 | None = None,
+        calculator: CalculatorFn | None = None,
         generator: GeneratorFn | None = None,
         verifier: VerifierFn | None = None,
     ) -> AdaptiveRunResultV1:
@@ -92,15 +132,36 @@ class BoundedAdaptiveRAGV1:
         output: Any = None
         no_progress = False
         guard = 0
-        while guard < self.budget.max_total_tool_calls * 4 + 12:
+        # Spin bound, one spin per phase transition rather than per tool call.
+        # This is a backstop against a future edit that makes a phase fail to
+        # advance, not a tight budget: every branch here either advances a phase
+        # or terminates, and the only cycle (ACT -> OBSERVE -> EVALUATE -> REPLAN
+        # -> ACT) consumes a tool call per lap, so the spin count stays a small
+        # multiple of the permitted tool calls.  Measured across budgets from n=1
+        # to n=25, a bounded run terminates after 4-8 transitions with the bound
+        # no lower than 26 -- so it is never approached, not merely not exceeded.
+        #
+        # Consequence worth knowing: ``_fail(BUDGET_EXHAUSTED)`` after the loop
+        # is unreachable for the same reason and is kept as a second backstop.
+        # Budget enforcement that actually binds lives in
+        # ``AdaptiveActionPolicyV1``.
+        while guard < self.budget.max_total_tool_calls * 6 + 20:
             guard += 1
-            phase = AdaptivePhase(state.status)
+            try:
+                phase = AdaptivePhase(state.status)
+            except ValueError:
+                # A resumed or externally supplied state may carry a status this
+                # controller does not own.  Fail closed instead of raising out of
+                # run() and bypassing the bounded-result contract.
+                self._fail(state, ReasonCode.STRUCTURAL_NOT_READY)
+                break
             if phase is AdaptivePhase.PLAN:
                 state.transition(AdaptivePhase.ACT, "initial plan accepted")
                 continue
             if phase is AdaptivePhase.ACT:
-                if state.tool_calls >= self.budget.max_total_tool_calls:
-                    self._fail(state, ReasonCode.BUDGET_EXHAUSTED)
+                denied = self.policy.check_tool_call(state)
+                if denied is not None:
+                    self._fail(state, denied)
                     break
                 capability = pending.capability
                 try:
@@ -112,25 +173,32 @@ class BoundedAdaptiveRAGV1:
                     break
                 key = capability.value
                 prior = state.same_tool_retries.get(key, 0)
-                if prior > self.budget.max_same_tool_retry:
-                    self._fail(state, ReasonCode.BUDGET_EXHAUSTED)
+                denied = self.policy.check_tool_retry(state, capability)
+                if denied is not None:
+                    self._fail(state, denied)
                     break
                 state.same_tool_retries[key] = prior + 1
                 state.tool_calls += 1
                 state.iteration += 1
                 state.last_action = pending.to_dict()
+                state.record_turn(key, pending.reason_code.value, query=pending.query)
                 state.tool_history.append({"capability": key, "query": pending.query, "iteration": state.iteration})
                 state.query_history.append(pending.query)
                 try:
                     raw_packets = list(tool(pending.query, state))
+                    # Normalization is part of the tool contract: a tool that
+                    # returns a malformed packet has failed, and must fail
+                    # closed exactly like one that raised.
+                    packets = [EvidencePacketV1.from_mapping(item) for item in raw_packets]
                 except Exception as exc:  # deterministic fail-closed; expose only type
                     state.last_observation = {"error": type(exc).__name__, "packet_count": 0}
+                    state.observe_turn(state.last_observation)
                     state.stop_reason = ReasonCode.TOOL_ERROR.value
                     state.transition(AdaptivePhase.OBSERVE, ReasonCode.TOOL_ERROR.value)
                     continue
-                packets = [EvidencePacketV1.from_mapping(item) for item in raw_packets]
                 state.add_evidence(packets)
                 state.last_observation = {"packet_count": len(packets), "evidence_ids": [item.evidence_id for item in packets]}
+                state.observe_turn(state.last_observation)
                 state.transition(AdaptivePhase.OBSERVE, "tool observation captured")
                 continue
             if phase is AdaptivePhase.OBSERVE:
@@ -168,9 +236,12 @@ class BoundedAdaptiveRAGV1:
                 state.conflicts = [dict(item) for item in evaluation.conflicts]
                 state.filled_slots = {slot: [] for slot in evaluation.supported_slots}
                 if evaluation.decision is EvidenceDecision.SUFFICIENT:
-                    state.transition(AdaptivePhase.READY_TO_GENERATE, "evidence sufficient")
+                    if self._needs_calculation(state, calculator):
+                        state.transition(AdaptivePhase.CALCULATE, "evidence sufficient; calculation required")
+                    else:
+                        state.transition(AdaptivePhase.READY_TO_GENERATE, "evidence sufficient")
                 elif evaluation.decision is EvidenceDecision.REPAIRABLE:
-                    if state.replan_rounds >= self.budget.max_replan_rounds or state.tool_calls >= self.budget.max_total_tool_calls:
+                    if self.policy.check_replan(state) is not None:
                         self._fail(state, ReasonCode.BUDGET_EXHAUSTED)
                     else:
                         state.transition(AdaptivePhase.REPLAN, "concrete information gap")
@@ -188,17 +259,74 @@ class BoundedAdaptiveRAGV1:
                 no_progress = False
                 state.transition(AdaptivePhase.ACT, f"replan:{pending.reason_code.value}")
                 continue
+            if phase is AdaptivePhase.CALCULATE:
+                # Deterministic calculation is a harness step, not a downstream
+                # afterthought: it runs inside the loop so the run trace and the
+                # budget cover it.  Entered only when a calculator was supplied.
+                # Reachable when the loop is entered with a state already in
+                # this phase (a resumed or externally supplied run), even though
+                # _needs_calculation gates the normal transition into it.
+                if calculator is None:
+                    self._fail(state, ReasonCode.CALCULATOR_NOT_WIRED)
+                    break
+                state.record_turn(AdaptivePhase.CALCULATE.value)
+                try:
+                    result = calculator(state)
+                except Exception as exc:  # deterministic fail-closed; expose only type
+                    state.calculation_attempted = True
+                    state.last_observation = {"error": type(exc).__name__}
+                    state.observe_turn(state.last_observation)
+                    self._fail(state, ReasonCode.CALCULATION_ERROR)
+                    break
+                state.calculation_attempted = True
+                calculation_status = getattr(result, "status", None)
+                state.last_observation = {
+                    "calculation_status": getattr(calculation_status, "value", str(calculation_status)),
+                }
+                state.observe_turn(state.last_observation)
+                state.transition(AdaptivePhase.READY_TO_GENERATE, "calculation complete")
+                continue
             if phase is AdaptivePhase.READY_TO_GENERATE:
                 if generator is None:
                     return AdaptiveRunResultV1(state, evaluation, output)
                 state.transition(AdaptivePhase.GENERATE, "trusted evidence ready")
                 continue
             if phase is AdaptivePhase.GENERATE:
-                output = generator(state) if generator else None
+                # Reachable when the loop is entered with a state already in
+                # this phase (a resumed or externally supplied run).
+                if generator is None:
+                    self._fail(state, ReasonCode.GENERATOR_NOT_WIRED)
+                    break
+                state.record_turn(AdaptivePhase.GENERATE.value)
+                try:
+                    output = generator(state)
+                except Exception as exc:  # deterministic fail-closed; expose only type
+                    state.last_observation = {"error": type(exc).__name__}
+                    state.observe_turn(state.last_observation)
+                    self._fail(state, ReasonCode.GENERATION_ERROR)
+                    break
+                state.last_observation = {"generated": True, "output_type": type(output).__name__}
+                state.observe_turn(state.last_observation)
                 state.transition(AdaptivePhase.VERIFY, "generator output produced")
                 continue
             if phase is AdaptivePhase.VERIFY:
-                if verifier is None or verifier(state, output):
+                # A missing verifier is a wiring defect, not a release licence.
+                # Releasing on `verifier is None` would let an unvalidated answer
+                # through, so this fails closed instead.
+                if verifier is None:
+                    self._fail(state, ReasonCode.VERIFICATION_NOT_WIRED)
+                    break
+                state.record_turn(AdaptivePhase.VERIFY.value)
+                try:
+                    passed = bool(verifier(state, output))
+                except Exception as exc:  # deterministic fail-closed; expose only type
+                    state.last_observation = {"error": type(exc).__name__}
+                    state.observe_turn(state.last_observation)
+                    self._fail(state, ReasonCode.VERIFICATION_ERROR)
+                    break
+                state.last_observation = {"verification_passed": passed}
+                state.observe_turn(state.last_observation)
+                if passed:
                     state.transition(AdaptivePhase.RELEASE, "existing validator path passed")
                 else:
                     state.transition(AdaptivePhase.REPAIR, "existing validator requested repair")

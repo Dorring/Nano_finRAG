@@ -5,6 +5,7 @@ from __future__ import annotations
 import gzip
 import json
 import sqlite3
+from dataclasses import replace
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -21,9 +22,10 @@ from src.runtime import (
     TrustedV2RuntimeResources,
     build_trusted_v2_runtime_for_request,
     inspect_r4_index,
+    inspect_r4_fact_store_compatibility,
     validate_trusted_v2_production_configuration,
 )
-from src.runtime.trusted_v2_generation import LocalSpecialistGenerationAdapter
+from src.runtime.harness_runtime_mode import AgentRuntimeModeError
 
 
 def _fact(candidate_key: str = "candidate:1") -> dict[str, Any]:
@@ -64,6 +66,44 @@ def test_structured_fact_store_reads_gzipped_jsonl_and_normalizes_sealed_fields(
     # Materialization is isolated from the process-scoped registry.
     materialized["metric"] = "mutated"
     assert store.materialize("candidate:1")["metric"] == "Revenue"
+
+
+def test_structured_fact_store_repairs_lossless_split_currency_value(
+    tmp_path: Path,
+) -> None:
+    row = _fact()
+    row.pop("parsed_numeric_value")
+    row["raw_value"] = "281,72$ 4"
+    row["value"] = "281,72$ 4"
+    path = tmp_path / "split-value.jsonl"
+    path.write_text(json.dumps(row), encoding="utf-8")
+
+    materialized = StructuredFactStore(path).materialize("candidate:1")
+
+    # Keep the physically extracted source token for auditability while using
+    # the losslessly collapsed structured value for rendering/calculation.
+    assert materialized["raw_value"] == "281,72$ 4"
+    assert materialized["value"] == "281,724"
+    assert materialized["parsed_numeric_value"] == "281,724"
+    assert materialized["value_normalization"] == "collapse_interleaved_currency"
+
+
+@pytest.mark.parametrize("value", ["$ 281,724", "USD 281,72$ 4", "281,72"])
+def test_structured_fact_store_does_not_guess_non_lossless_numeric_values(
+    tmp_path: Path,
+    value: str,
+) -> None:
+    row = _fact()
+    row.pop("parsed_numeric_value")
+    row["raw_value"] = value
+    row["value"] = value
+    path = tmp_path / "unchanged-value.jsonl"
+    path.write_text(json.dumps(row), encoding="utf-8")
+
+    materialized = StructuredFactStore(path).materialize("candidate:1")
+
+    assert materialized["value"] == value
+    assert "value_normalization" not in materialized
 
 
 def test_structured_fact_store_rejects_duplicate_or_incomplete_provenance(
@@ -191,6 +231,132 @@ def test_preflight_accepts_complete_layout_without_network(tmp_path: Path) -> No
     assert len(report["config_fingerprint"]) == 64
 
 
+def test_preflight_rejects_r4_fact_store_candidate_namespace_mismatch(
+    tmp_path: Path,
+) -> None:
+    index_dir = tmp_path / "r4"
+    _minimal_r4_index(index_dir)
+    fact_path = tmp_path / "facts.json"
+    fact_path.write_text(json.dumps([_fact("candidate:other")]), encoding="utf-8")
+    checkpoint = tmp_path / "specialist.pt"
+    checkpoint.write_bytes(b"checkpoint fixture")
+
+    compatibility = inspect_r4_fact_store_compatibility(
+        index_dir,
+        StructuredFactStore(fact_path),
+    )
+    assert compatibility["compatible"] is False
+    assert compatibility["unmaterializable_r4_candidate_count"] == 1
+    assert compatibility["unmaterializable_candidate_examples"] == ["candidate:1"]
+
+    with pytest.raises(
+        TrustedV2ProductionConfigurationError,
+        match="not materializable by the configured fact store",
+    ):
+        validate_trusted_v2_production_configuration(
+            {
+                "TRUSTED_V2_R4_INDEX_DIR": str(index_dir),
+                "TRUSTED_V2_FACT_STORE_PATH": str(fact_path),
+                "TRUSTED_V2_SPECIALIST_CHECKPOINT": str(checkpoint),
+                "V2_SUPERVISOR_PROVIDER": "api",
+                "V2_SUPERVISOR_BASE_URL": "https://example.invalid/v1",
+                "V2_SUPERVISOR_API_KEY": "test-secret",
+                "V2_SUPERVISOR_MODEL": "test-model",
+                "V2_BINDER_PROVIDER": "bailian",
+            }
+        )
+
+
+def test_preflight_accepts_api_binder_provider(tmp_path: Path) -> None:
+    """V2_BINDER_PROVIDER=api must now pass preflight alongside a valid api supervisor."""
+    index_dir = tmp_path / "r4"
+    _minimal_r4_index(index_dir)
+    fact_path = tmp_path / "facts.json"
+    fact_path.write_text(json.dumps([_fact()]), encoding="utf-8")
+    checkpoint = tmp_path / "specialist.pt"
+    checkpoint.write_bytes(b"checkpoint fixture")
+
+    report = validate_trusted_v2_production_configuration(
+        {
+            "TRUSTED_V2_R4_INDEX_DIR": str(index_dir),
+            "TRUSTED_V2_FACT_STORE_PATH": str(fact_path),
+            "TRUSTED_V2_SPECIALIST_CHECKPOINT": str(checkpoint),
+            "V2_SUPERVISOR_PROVIDER": "api",
+            "V2_SUPERVISOR_BASE_URL": "https://api.deepseek.com/v1",
+            "V2_SUPERVISOR_API_KEY": "sk-test-supervisor",
+            "V2_SUPERVISOR_MODEL": "deepseek-chat",
+            "V2_BINDER_PROVIDER": "api",
+            "V2_BINDER_BASE_URL": "https://api.deepseek.com/v1",
+            "V2_BINDER_API_KEY": "sk-test-binder",
+            "V2_BINDER_MODEL": "deepseek-chat",
+        }
+    )
+
+    assert report["r4_index"]["row_count"] == 4
+    assert report["fact_count"] == 1
+    assert len(report["config_fingerprint"]) == 64
+
+
+def test_preflight_rejects_unknown_binder_provider(tmp_path: Path) -> None:
+    """Unknown V2_BINDER_PROVIDER values must be rejected at preflight."""
+    index_dir = tmp_path / "r4"
+    _minimal_r4_index(index_dir)
+    fact_path = tmp_path / "facts.json"
+    fact_path.write_text(json.dumps([_fact()]), encoding="utf-8")
+    checkpoint = tmp_path / "specialist.pt"
+    checkpoint.write_bytes(b"checkpoint fixture")
+
+    with pytest.raises(
+        TrustedV2ProductionConfigurationError,
+        match="V2_BINDER_PROVIDER must be 'bailian' or 'api'",
+    ):
+        validate_trusted_v2_production_configuration(
+            {
+                "TRUSTED_V2_R4_INDEX_DIR": str(index_dir),
+                "TRUSTED_V2_FACT_STORE_PATH": str(fact_path),
+                "TRUSTED_V2_SPECIALIST_CHECKPOINT": str(checkpoint),
+                "V2_SUPERVISOR_PROVIDER": "bailian",
+                "V2_SUPERVISOR_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+                "V2_SUPERVISOR_API_KEY": "test-key",
+                "V2_SUPERVISOR_MODEL": "qwen-plus",
+                "V2_BINDER_PROVIDER": "unsupported-provider",
+                "V2_BINDER_BASE_URL": "https://example.invalid/v1",
+                "V2_BINDER_API_KEY": "test-key",
+                "V2_BINDER_MODEL": "some-model",
+            }
+        )
+
+
+def test_preflight_api_binder_inherits_supervisor_url_when_binder_url_omitted(
+    tmp_path: Path,
+) -> None:
+    """When V2_BINDER_BASE_URL is absent, the fallback to V2_SUPERVISOR_BASE_URL must work."""
+    index_dir = tmp_path / "r4"
+    _minimal_r4_index(index_dir)
+    fact_path = tmp_path / "facts.json"
+    fact_path.write_text(json.dumps([_fact()]), encoding="utf-8")
+    checkpoint = tmp_path / "specialist.pt"
+    checkpoint.write_bytes(b"checkpoint fixture")
+
+    # Only supervisor url/key/model set; binder falls back to supervisor values.
+    report = validate_trusted_v2_production_configuration(
+        {
+            "TRUSTED_V2_R4_INDEX_DIR": str(index_dir),
+            "TRUSTED_V2_FACT_STORE_PATH": str(fact_path),
+            "TRUSTED_V2_SPECIALIST_CHECKPOINT": str(checkpoint),
+            "V2_SUPERVISOR_PROVIDER": "api",
+            "V2_SUPERVISOR_BASE_URL": "https://api.deepseek.com/v1",
+            "V2_SUPERVISOR_API_KEY": "sk-shared",
+            "V2_SUPERVISOR_MODEL": "deepseek-chat",
+            "V2_BINDER_PROVIDER": "api",
+            # No V2_BINDER_BASE_URL / V2_BINDER_API_KEY / V2_BINDER_MODEL
+            # → _provider_common falls back to V2_SUPERVISOR_* values
+        }
+    )
+
+    assert report["fact_count"] == 1
+
+
 class _BinderProvider:
     provider_name = "test-binder"
     model_name = "test-binder"
@@ -198,12 +364,7 @@ class _BinderProvider:
 
 
 class _SpecialistBackend:
-    def generate(
-        self,
-        question: str,
-        evidence_items: list[dict[str, Any]],
-        calculation_result: Mapping[str, Any] | None = None,
-    ) -> str:
+    def generate(self, prompt: str) -> str:
         return "test candidate"
 
 
@@ -222,7 +383,7 @@ def test_builder_constructs_request_scoped_v2_graph_with_injected_resources(
         fact_store=fact_store,
         supervisor=SupervisorService(provider),
         binder=SemanticBinderService(_BinderProvider()),
-        specialist=LocalSpecialistGenerationAdapter(_SpecialistBackend()),
+        specialist=_SpecialistBackend(),
         budget=AdaptiveRAGBudgetV1(),
         config_fingerprint="test-fingerprint",
         index_manifest={"row_count": 1},
@@ -257,3 +418,67 @@ def test_builder_constructs_request_scoped_v2_graph_with_injected_resources(
     # The request-scoped graph carries only the document scope; raw context is
     # filtered by FinancialQueryRequest/V2ExecutionRequest before execution.
     assert retrieval.document_scope == ()
+
+    # "Request-scoped" has to mean the capability objects, not just the graph
+    # around them.  The ports carry lifetime counters and accumulating traces
+    # (`validation_calls`, `calculator_call_count`, `retrieval_rounds`, ...) that
+    # the coordinator reports verbatim in its execution trace.  Sharing a port
+    # across requests would make those numbers describe the port's lifetime while
+    # the trace presents them as this run's, so two requests must not share one.
+    second = build_trusted_v2_runtime_for_request(
+        None,
+        replace(request, request_id="req-builder-2"),
+        resources=resources,
+    ).coordinator.capabilities
+
+    first = runtime.coordinator.capabilities
+    assert second is not first
+    for port in (
+        "retrieval",
+        "evidence_evaluator",
+        "calculation",
+        "generation",
+        "release_validator",
+    ):
+        assert getattr(second, port) is not getattr(first, port), port
+    # The heavy process-scoped resources are shared, as intended.
+    assert second.retrieval.policy.materializer.__self__ is fact_store
+
+
+def test_an_unrecognised_runtime_mode_reports_the_bad_setting(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A typo in NF_AGENT_RUNTIME_MODE must not look like a build failure.
+
+    ``resolve_agent_runtime_mode`` raises a purpose-built error naming the bad
+    value and the accepted ones.  It used to be called *inside* the graph-building
+    try, where the generic ``except Exception`` re-wrapped it as "could not build
+    the request-scoped Trusted V2 runtime graph", leaving the real reason only in
+    ``__cause__`` and sending the operator to look at their asset provisioning.
+    """
+
+    facts_path = tmp_path / "facts.json"
+    facts_path.write_text(json.dumps([_fact()]), encoding="utf-8")
+    resources = TrustedV2RuntimeResources(
+        index_reader=object(),
+        fact_store=StructuredFactStore(facts_path),
+        supervisor=SupervisorService(DeterministicFallbackProvider({})),
+        binder=SemanticBinderService(_BinderProvider()),
+        specialist=_SpecialistBackend(),
+        budget=AdaptiveRAGBudgetV1(),
+        config_fingerprint="test-fingerprint",
+        index_manifest={"row_count": 1},
+    )
+    request = FinancialQueryRequest(
+        request_id="req-mode",
+        user_id="user-mode",
+        session_id="session-mode",
+        original_query="What was Apple FY2023 revenue?",
+    )
+    monkeypatch.setenv("NF_AGENT_RUNTIME_MODE", "harnessv3")
+
+    with pytest.raises(AgentRuntimeModeError) as raised:
+        build_trusted_v2_runtime_for_request(None, request, resources=resources)
+
+    assert "harnessv3" in str(raised.value)
+    assert "harness_v3" in str(raised.value)

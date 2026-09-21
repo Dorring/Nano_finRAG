@@ -35,10 +35,65 @@ from src.pdf_retrieval_v4.semantic_graph_models import (
     build_row_matrix_id,
 )
 from src.pdf_retrieval_v4.table_html_parser import norm_text
+from src.pdf_retrieval_v4.period_binding import (
+    AdmissionRequest,
+    PeriodBindingV2,
+    binding_from_payload,
+    decide_emission_admission,
+    temporal_kind_of,
+)
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+
+def _provenance_of(binding: Any) -> dict[str, Any]:
+    """The *why* behind an admitted fact's period identity, as flat record fields.
+
+    **A3-W5.**  W4-B2 persisted WHAT the period is -- `normalized_period`, `status`,
+    `granularity`.  This persists WHY it is believed: which method produced it, what it
+    applies to, and the actual cells it was read from.
+
+    The difference is not documentation.  `normalized_period = '2025'` alone cannot be
+    audited: it does not say whether the source wrote a year, or whether a default filled
+    a day in and something downstream trimmed it.  `method` and `source_cells` settle that,
+    and `source_cells` carries document, table, row and column so a reader can go back to
+    the cell rather than to a string that merely resembles it.
+
+    Behaviour-neutral by construction.  Admission already withheld any binding without
+    source cells (`INCOMPLETE_PROVENANCE`), so this records a decision that has already
+    been made rather than making one -- the store's contents are identical with and
+    without these fields.
+
+    A `Conflict` cannot reach here: it is withheld before the fact is built.  The branch is
+    written rather than assumed so that a `CONFLICT` arriving here would be visible as an
+    empty provenance rather than as a silently wrong one.
+    """
+    if not isinstance(binding, PeriodBindingV2):
+        return {}
+    temporal = binding.temporal
+    return {
+        "period_binding_method": binding.method.value if binding.method else None,
+        "period_target_scope": binding.target_scope.value if binding.target_scope else None,
+        "period_source_cells": tuple(c.to_dict() for c in binding.source_cells),
+        # The candidates are kept rather than flattened to nothing, so a disagreement stays
+        # legible as a disagreement.  Empty on every stored fact today, by the withholding
+        # above -- a conflict is withheld before this point, so its candidates live on the
+        # admission decision rather than in the store.
+        "period_conflict_candidates": tuple(c.to_dict()
+                                            for c in binding.conflict_candidates),
+        "temporal_kind_method": temporal.method.value if temporal else None,
+        "temporal_kind_source_cells": (tuple(c.to_dict() for c in temporal.source_cells)
+                                       if temporal else ()),
+        # The A3 kind, which is the one whose method and source cells are recorded here.
+        # Named `binding_` because `AtomicFact.temporal_kind` is a *different* value -- the
+        # legacy axis kind -- and `semantic_equivalence` groups canonical facts on it, so it
+        # cannot be renamed to match. The store maps this onto its own `temporal_kind` and
+        # keeps the axis kind beside it as `legacy_temporal_kind`.
+        "binding_temporal_kind": temporal.kind.value if temporal else None,
+        "temporal_kind_matched_text": temporal.matched_text if temporal else None,
+    }
 
 
 def _get_numeric_value(cell: dict[str, Any]) -> tuple[str, str | None]:
@@ -67,11 +122,18 @@ def emit_atomic_facts(
 ) -> list[AtomicFact]:
     """Emit AtomicFact for each (financial-data row, numeric cell with temporal axis).
 
-    An atomic fact is generated when:
+    An atomic fact is generated when the A3 admission decision admits the cell:
+
     - The row is a financial-data row (metric_row / subtotal / total)
     - The cell has a parsed numeric value
-    - The cell's temporal kind is point, duration, or comparison
-      (not bucket/segment/category/non_temporal/unknown)
+    - The source declared the column to be a period, there is a settled period for it, and
+      the fact's own coordinate is complete
+
+    W4-B replaced the third clause.  It used to be `temporal_kind in point/duration/
+    comparison`, which answered a completeness question with a shape the source may never
+    have stated -- so a fully traceable `YEAR(2025)` was dropped for the same reason as a
+    table of junk.  The three questions and their order are in
+    `period_binding.decide_emission_admission`.
     """
     mp_by_row: dict[str, MetricPath] = {mp.row_id: mp for mp in metric_paths}
     axis_by_cell: dict[str, SemanticAxisBinding] = {
@@ -103,24 +165,48 @@ def emit_atomic_facts(
         if not raw_val or norm_val is None:
             continue
 
-        # Check temporal axis
+        # Check temporal axis -- the kind is what routes the cell, so it is still required.
         axis = axis_by_cell.get(cell_id)
         if not axis:
             continue
 
-        if axis.temporal_kind not in ("point", "duration", "comparison"):
-            continue
-
-        # Get metric path
         mp = mp_by_row.get(row_id)
-        if not mp:
+
+        # W4-B: admission is the A3 decision, not the legacy kind whitelist.
+        #
+        #   routing     did the source declare this column to be a period at all?
+        #   period      is there one, and is it settled?
+        #   provenance  is the fact's own coordinate complete?
+        #
+        # `temporal_kind` is still the legacy classifier's output: W3's kind is a shadow
+        # output and switching it is a different variable, so it is deliberately not moved
+        # here.  What changed is only which question decides whether the fact exists.
+        admission = decide_emission_admission(AdmissionRequest(
+            binding=binding_from_payload(cell.get("period_binding_v2")),
+            temporal_kind=temporal_kind_of(axis.temporal_kind),
+            metric_path=(mp.metric_path if mp else None),
+            metric_status=(mp.metric_status if mp else None),
+            value_normalized=norm_val,
+            cell_id=cell_id,
+        ))
+        if not admission.admitted:
             continue
 
-        # Skip if metric_status is missing
-        if mp.metric_status == "missing":
+        # Admission already required a metric path and a non-missing status.  These stay so
+        # the fields read below are reachable without a type assertion -- they no longer
+        # decide anything, and removing them would look like a behaviour change.
+        if not mp or mp.metric_status == "missing":
             continue
 
         equiv_group = equivalence_map.get(row_id)
+
+        # W4-B2: the fact's period identity is the binding's, not the legacy axis's.
+        #
+        # The gains have no legacy period at all -- that absence is why the old rule
+        # dropped them -- so reading the identity off `axis` would persist `None` for
+        # exactly the facts the switch exists to add, and the store would veto them a layer
+        # further down.
+        binding = admission.binding
 
         fact = AtomicFact(
             semantic_fact_id=build_atomic_fact_id(
@@ -133,7 +219,14 @@ def emit_atomic_facts(
             metric_path=mp.metric_path,
             leaf_metric=mp.leaf_metric,
             temporal_kind=axis.temporal_kind,
-            normalized_period=axis.normalized_period,
+            normalized_period=(binding.normalized_period if binding
+                               else axis.normalized_period),
+            period_binding_status=(binding.status.value if binding else None),
+            period_granularity=(binding.granularity.value if binding else None),
+            # W5: and *why* that identity is believed.  Expanded rather than passed as a
+            # nested object so an unrecognised key is a TypeError at construction rather
+            # than a field that quietly never arrives.
+            **_provenance_of(binding),
             period_start=axis.period_start,
             period_end=axis.period_end,
             value_raw=raw_val,
@@ -153,6 +246,12 @@ def emit_atomic_facts(
                 "bbox": cell.get("cell_bbox"),
                 "raw_text": raw_val,
             },
+            # The cell's own structural coordinates, carried explicitly.  The
+            # column is the one the store was missing: this row's `Net income`
+            # under `Corporate` and under `Total` are otherwise one coordinate.
+            column_header=str(cell.get("column_header") or "").strip() or None,
+            row_label=str(cell.get("row_label") or "").strip() or None,
+            ixbrl_anchors=tuple(cell.get("ixbrl_anchors") or ()),
         )
         facts.append(fact)
 
@@ -545,6 +644,10 @@ def emit_narrative_evidence(
 # ---------------------------------------------------------------------------
 
 # Axis kinds that are eligible for Atomic Fact emission
+#
+# **Historical as of W4-B.**  Admission is `decide_emission_admission` now, and this set is
+# the rule it replaced -- kept because the shadow accounting measures the migration against
+# it, and a rule under measurement has to stay stated.  Nothing in the emit path reads it.
 ATOMIC_ELIGIBLE_KINDS = frozenset({"point", "duration", "comparison"})
 
 # Axis kinds that are eligible for any Typed Evidence

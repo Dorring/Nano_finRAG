@@ -25,6 +25,8 @@ Key invariants enforced by these types:
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
+import json
 from decimal import Decimal
 from enum import Enum
 from typing import Any
@@ -47,6 +49,47 @@ class CalculationOperation(str, Enum):
     NET_MARGIN = "net_margin"
     DEBT_RATIO = "debt_ratio"
     SCALE_CONVERSION = "scale_conversion"
+
+    #: Relational operations.  Their answer is a *relation between operands*
+    #: rather than a quantity: "Visa is larger than Apple", or "Visa > Apple >
+    #: Tesla".  ``value`` is only a projection of that (the sign of a
+    #: difference, or ``None``), and a consumer asking which operand won must
+    #: read ``relation`` / ``ordering_groups`` rather than infer it from a
+    #: number and a role order.
+    #:
+    #: They live in this enum because whether something can be executed
+    #: deterministically is a property of the operation, not of the plan's
+    #: intent.  Cross-entity questions used to be planned with no operation at
+    #: all, so their answers were prose no validator could check.
+    COMPARISON = "comparison"
+    RANKING = "ranking"
+
+
+class ComparisonRelation(str, Enum):
+    """How a two-operand comparison resolved, **derived** from the ordering.
+
+    Expressed as the ordering's shape rather than as "left" and "right", because
+    there is no left and right: the operands are an unordered set until the
+    ordering ranks them.  An earlier version did name them ``lhs``/``rhs`` and
+    read them from ``operands[0]`` / ``operands[1]`` -- which is precisely the
+    container-order authority this contract exists to remove, and it survived
+    here for one round after ranking had already been fixed.
+
+    This is a convenience projection.  ``ordering_groups`` is the relational
+    authority, and this says nothing the ordering does not already say.
+    """
+
+    FIRST_GT_SECOND = "first_gt_second"
+    EQUAL = "equal"
+
+
+#: Operations whose answer is a relation between operands rather than a
+#: quantity.  Named here so `relational_result_is_well_formed` and the identity
+#: digest cannot disagree about which those are -- a second list would be a
+#: second authority for the same fact.
+RELATIONAL_OPERATIONS = frozenset(
+    {CalculationOperation.COMPARISON, CalculationOperation.RANKING}
+)
 
 
 class CalculationStatus(str, Enum):
@@ -95,6 +138,14 @@ class CalculationOperand:
     evidence_chunk_id: str = ""
     document_name: str | None = None
     page: int | None = None
+    #: The ``RequiredSlot.slot_id`` this operand was built for.  This is the
+    #: operand's *semantic* identity, and it is what a relational result refers
+    #: to -- never ``evidence_chunk_id``.  One canonical fact may be supported
+    #: by several independent evidence rows, so an ordering keyed on evidence
+    #: would change when a different support was bound even though the ranking
+    #: it describes had not.  Appended with a default rather than placed beside
+    #: ``name`` so existing positional construction keeps working.
+    slot_id: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         """Serialize to a plain dict for internal / trace use.
@@ -111,6 +162,7 @@ class CalculationOperand:
             "evidence_chunk_id": self.evidence_chunk_id,
             "document_name": self.document_name,
             "page": self.page,
+            "slot_id": self.slot_id,
         }
 
     def to_public_dict(self) -> dict[str, Any]:
@@ -129,6 +181,7 @@ class CalculationOperand:
             "document_name": self.document_name,
             "page": self.page,
             "evidence_excerpt": _safe_excerpt(self.source_text),
+            "slot_id": self.slot_id,
         }
 
     def to_trace_dict(self) -> dict[str, Any]:
@@ -206,8 +259,187 @@ class CalculationResult:
     formula_version: str | None = None
     target_metric: str | None = None
     operands: tuple[CalculationOperand, ...] = ()
+    #: The relational answer, as groups of equal operands in descending order::
+    #:
+    #:     (("s2",), ("s1", "s3"))     s2 > s1 = s3
+    #:
+    #: Groups are used from the start rather than a flat ordering, so a tie does
+    #: not need a schema migration to express.  The refs are ``slot_id`` values
+    #: -- semantic operands, never evidence ids: several evidence rows may
+    #: support one canonical fact, and a result keyed on which support happened
+    #: to be bound would change while the ranking it describes did not.
+    #:
+    #: **This is the relational authority for both operations.**  A comparison
+    #: is an ordering over two operands and a ranking an ordering over N; giving
+    #: them separate result shapes would leave comparison free to define "left"
+    #: from the order of ``operands``, which carries no meaning.
+    #:
+    #: ``operands`` keeps its provenance meaning and its order carries none.
+    ordering_groups: tuple[tuple[str, ...], ...] | None = None
     error_code: str | None = None
     error_message: str | None = None
+
+    @property
+    def is_admissible(self) -> bool:
+        """Whether this is a usable financial result, not merely a return value.
+
+        ``EXECUTED`` is the only status that means the calculation produced a
+        value that may be reasoned over.  ``BLOCKED`` and ``FAILED`` are
+        successful *invocations* -- the calculator ran and reported honestly --
+        that produced no admissible result, and ``NOT_APPLICABLE``/``READY`` are
+        not results at all.
+
+        Keeping this distinct from "the capability returned" is the point: a
+        function returning normally says nothing about whether what it returned
+        may be used.
+        """
+
+        return self.status is CalculationStatus.EXECUTED
+
+    @property
+    def relational_result_is_well_formed(self) -> bool:
+        """Whether a relational result's structure can be used at all.
+
+        One definition of a usable ordering, here rather than in each consumer.
+        The rules are the same for both relational operations:
+
+        * every operand carries a ``slot_id``, because an operand that cannot
+          be referred to cannot appear in an ordering that is checkable;
+        * ``COMPARISON`` states a ``relation`` over exactly two operands;
+        * ``RANKING`` states ``ordering_groups`` naming every required operand
+          **exactly once** and no ref it was not built from.
+
+        ``sorted`` rather than a set comparison on purpose: a repeated ref is a
+        different multiset from the required one, so one rule catches a
+        duplicate and a missing ref together, and a set would hide the
+        repetition.
+
+        This addresses the *structure* only.  Whether the refs are in the right
+        order is the executor's business, and whether the answer said so is the
+        validator's.
+        """
+
+        if not self.is_admissible:
+            return False
+
+        required = [operand.slot_id for operand in self.operands]
+        if not required or any(not ref for ref in required):
+            return False
+
+        groups = self.ordering_groups
+        if not groups or any(not group for group in groups):
+            return False
+        refs = [ref for group in groups for ref in group]
+        if sorted(refs) != sorted(required):
+            return False
+
+        # A comparison ranks exactly two operands.  One shared rule for both
+        # relational operations, because they share one result shape -- the only
+        # difference is the size of the ordering, and stating it separately for
+        # each would be the beginning of two shapes again.
+        if self.operation is CalculationOperation.COMPARISON:
+            return len(required) == 2
+        return True
+
+    @property
+    def relation(self) -> ComparisonRelation | None:
+        """A comparison's shape, derived from the ordering that decides it.
+
+        Derived rather than stored, so it cannot disagree with
+        ``ordering_groups``.  ``None`` for anything that is not a two-operand
+        ordering -- including a ranking, whose answer the ordering states
+        directly.
+        """
+
+        groups = self.ordering_groups
+        if not groups:
+            return None
+        if sum(len(group) for group in groups) != 2:
+            return None
+        if len(groups) == 1:
+            return ComparisonRelation.EQUAL
+        if len(groups) == 2:
+            return ComparisonRelation.FIRST_GT_SECOND
+        return None
+
+    @property
+    def calculation_id(self) -> str | None:
+        """This result's identity, or ``None`` when it is not admissible.
+
+        The identity belongs to the result rather than living beside it, so
+        there is one truth and it cannot disagree with the status.  A caller
+        cannot obtain an id for a BLOCKED or FAILED result, because there is no
+        id to obtain -- which is what makes admissibility a property of the
+        contract rather than a check every caller has to remember.
+
+        The digest covers only the arithmetic and its operand provenance, so it
+        is stable across runs for the same inputs.
+        """
+
+        if not self.is_admissible or self.operation is None:
+            return None
+        payload: dict[str, Any] = {
+            "operation": self.operation.value,
+            "formula_version": self.formula_version,
+            "value": str(self.value) if self.value is not None else None,
+            "unit": self.unit,
+            "operands": self._identity_operands(),
+        }
+        if self.operation in RELATIONAL_OPERATIONS:
+            # The ordering *is* the answer, so it belongs to the identity.  The
+            # derived `relation` is deliberately not folded in: it says nothing
+            # the ordering does not, and a digest over two statements of one
+            # fact would move for a reason that is not a change.
+            payload["ordering_groups"] = self._ordering_groups_payload()
+        digest = hashlib.sha256(
+            json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()[:16]
+        return f"C1-{digest}"
+
+    def _identity_operands(self) -> list[dict[str, Any]]:
+        """The operands as the result's identity sees them.
+
+        A quantity's identity is tied to the evidence it was read from, so the
+        existing digest keeps ``evidence_chunk_id`` and operand order.
+
+        A relational result's identity is its *semantics*: which required
+        operands stood in what relation.  Three consequences, all deliberate:
+
+        * the ref is ``slot_id``, because one canonical fact may be supported by
+          several evidence rows and binding a different support must not make
+          the same ranking a different result;
+        * the list is sorted by ``slot_id``, so the order the operands happened
+          to be built in cannot change the identity -- ``operands`` is
+          provenance, and provenance order is not a claim;
+        * ``name`` is dropped for the same reason as the evidence id: it is a
+          role label from the binding, not part of what was ranked.
+        """
+
+        if self.operation in RELATIONAL_OPERATIONS:
+            return [
+                {"slot_id": operand.slot_id, "value": str(operand.value)}
+                for operand in sorted(self.operands, key=lambda item: item.slot_id)
+            ]
+        return [
+            {
+                "name": operand.name,
+                "value": str(operand.value),
+                "evidence_chunk_id": operand.evidence_chunk_id,
+            }
+            for operand in self.operands
+        ]
+
+    def _ordering_groups_payload(self) -> list[list[str]] | None:
+        """A JSON-safe form of the ordering, or ``None`` when there is none.
+
+        Tuples become lists at the serialization boundary; the in-memory type
+        stays a tuple so a result cannot be mutated through a reference it
+        handed out.
+        """
+
+        if self.ordering_groups is None:
+            return None
+        return [list(group) for group in self.ordering_groups]
 
     def to_dict(self) -> dict[str, Any]:
         """Serialize to a dict for internal diagnostics.
@@ -225,6 +457,8 @@ class CalculationResult:
             "formula_version": self.formula_version,
             "target_metric": self.target_metric,
             "operands": [op.to_dict() for op in self.operands],
+            "relation": self.relation.value if self.relation else None,
+            "ordering_groups": self._ordering_groups_payload(),
             "error_code": self.error_code,
             "error_message": self.error_message,
         }
@@ -249,6 +483,8 @@ class CalculationResult:
             "formula_version": self.formula_version,
             "target_metric": self.target_metric,
             "operands": [op.to_public_dict() for op in self.operands],
+            "relation": self.relation.value if self.relation else None,
+            "ordering_groups": self._ordering_groups_payload(),
             "error_code": self.error_code,
         }
         return payload
@@ -269,6 +505,8 @@ class CalculationResult:
             "target_metric": self.target_metric,
             "operand_count": len(self.operands),
             "operands": [op.to_trace_dict() for op in self.operands],
+            "relation": self.relation.value if self.relation else None,
+            "ordering_groups": self._ordering_groups_payload(),
             "error_code": self.error_code,
         }
         return payload

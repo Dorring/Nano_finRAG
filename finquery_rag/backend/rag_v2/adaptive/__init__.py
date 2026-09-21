@@ -16,6 +16,7 @@ from .adaptive_contracts import (
     stable_hash,
 )
 from .adaptive_evaluator import EvidenceStateEvaluatorV1
+from .adaptive_policy import AdaptiveActionPolicyV1
 from .adaptive_progress import ProgressDetectorV1
 from .adaptive_replanner import BoundedReplannerV1
 from .adaptive_state_machine import AdaptiveRunResultV1, BoundedAdaptiveRAGV1
@@ -27,6 +28,7 @@ __all__ = [
     "EvidencePacketV1", "PeriodSemantics", "ReasonCode", "ReplanActionV1",
     "TemporalEvidenceV1", "TemporalRelation", "ToolCapability", "stable_hash",
     "EvidenceStateEvaluatorV1", "ProgressDetectorV1", "BoundedReplannerV1",
+    "AdaptiveActionPolicyV1",
     "AdaptiveRunResultV1", "BoundedAdaptiveRAGV1", "EvidenceConsistencyGateV1",
     "TemporalScopeResolverV1",
 ]

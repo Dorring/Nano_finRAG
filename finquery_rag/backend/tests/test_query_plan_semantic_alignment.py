@@ -9,6 +9,7 @@ from rag_v2.contracts import Action, Intent, SupervisorPlan
 from rag_v2.supervisor import (
     BoundEvidenceAlignmentStatus,
     DeterministicFallbackProvider,
+    EvidenceScope,
     SemanticAlignmentStatus,
     SupervisorService,
     UnknownSemanticPolicy,
@@ -18,6 +19,7 @@ from rag_v2.supervisor import (
     canonical_operation_id,
     canonical_metric_id,
     canonical_period_id,
+    classify_evidence_scope,
     extract_query_semantic_frame,
     metric_alias_registry,
 )
@@ -86,6 +88,15 @@ def test_metric_ontology_is_shared_and_returns_a_defensive_copy() -> None:
     assert canonical_metric_id("operating income") == "operating_income"
 
 
+def test_entity_ontology_accepts_real_filing_names_without_guessing() -> None:
+    assert canonical_entity_id("Coca-Cola") == "ko"
+    assert canonical_entity_id("The Coca-Cola Company") == "ko"
+    assert canonical_entity_id("JPMorgan Chase") == "jpmorganchase"
+    assert canonical_entity_id("JPMorganChase") == "jpmorganchase"
+    assert canonical_entity_id("Visa Inc") == "visa"
+    assert canonical_entity_id("unrecognized issuer") is None
+
+
 def test_period_vocabulary_is_normalized_without_changing_plan_contract() -> None:
     assert canonical_period_id("FY2024") == "FY2024"
     assert canonical_period_id("fiscal year 2024") == "FY2024"
@@ -105,6 +116,86 @@ def test_explicit_metric_alias_aligns_to_canonical_plan() -> None:
     assert result.allowed
     assert result.query_metric_ids == ("revenue",)
     assert result.plan_metric_ids == ("revenue",)
+
+
+def test_total_net_sales_alias_aligns_to_revenue_without_collapsing_net_income() -> None:
+    result = align_query_to_plan(
+        "What was Apple FY2024 total net sales?",
+        _plan("revenue"),
+    )
+    assert result.status is SemanticAlignmentStatus.ALIGNED
+    assert result.query_metric_ids == ("revenue",)
+    assert result.plan_metric_ids == ("revenue",)
+    assert canonical_metric_id("total net sales") == "revenue"
+    assert canonical_metric_id("net income") == "net_income"
+
+
+def test_total_net_sales_plan_alias_aligns_to_revenue() -> None:
+    result = align_query_to_plan(
+        "What was Apple FY2024 revenue?",
+        _plan("total net sales"),
+    )
+    assert result.status is SemanticAlignmentStatus.ALIGNED
+    assert result.plan_metric_ids == ("revenue",)
+
+
+def test_total_revenues_alias_aligns_to_revenue() -> None:
+    result = align_query_to_plan(
+        "What was Tesla FY2025 total revenues?",
+        _plan("total revenues", period="FY2025"),
+    )
+
+    assert result.status is SemanticAlignmentStatus.ALIGNED
+    assert result.allowed
+    assert result.query_metric_ids == ("revenue",)
+    assert result.plan_metric_ids == ("revenue",)
+    assert canonical_metric_id("total revenues") == "revenue"
+
+
+def test_net_revenue_is_explicit_and_not_generic_revenue() -> None:
+    aligned = align_query_to_plan(
+        "What was Visa FY2025 net revenue?",
+        _plan("net revenue", period="FY2025"),
+    )
+    assert aligned.status is SemanticAlignmentStatus.ALIGNED
+    assert aligned.query_metric_ids == ("net_revenue",)
+    assert aligned.plan_metric_ids == ("net_revenue",)
+    assert canonical_metric_id("net revenue") == "net_revenue"
+    assert canonical_metric_id("net revenue") != canonical_metric_id("revenue")
+
+    generic = align_query_to_plan(
+        "What was Visa FY2025 revenue?",
+        _plan("net revenue", period="FY2025"),
+    )
+    assert generic.status is SemanticAlignmentStatus.MISMATCH
+    assert not generic.allowed
+    assert "planned_metric_not_in_query:net_revenue" in generic.mismatches
+
+
+def test_filing_specific_net_revenue_aliases_share_one_explicit_concept() -> None:
+    for alias in (
+        "total net revenue",
+        "total net revenues",
+        "net operating revenue",
+        "net operating revenues",
+        "total net operating revenue",
+        "total net operating revenues",
+    ):
+        assert canonical_metric_id(alias) == "net_revenue"
+        aligned = align_query_to_plan(
+            f"What was the FY2025 {alias}?",
+            _plan(alias, period="FY2025"),
+        )
+        assert aligned.status is SemanticAlignmentStatus.ALIGNED
+        assert aligned.query_metric_ids == ("net_revenue",)
+        assert aligned.plan_metric_ids == ("net_revenue",)
+
+    generic = align_query_to_plan(
+        "What was FY2025 revenue?",
+        _plan("total net operating revenues", period="FY2025"),
+    )
+    assert generic.status is SemanticAlignmentStatus.MISMATCH
+    assert not generic.allowed
 
 
 def test_explicit_period_mismatch_is_rejected_before_retrieval() -> None:
@@ -411,6 +502,179 @@ def test_bound_evidence_cross_check_rejects_wrong_metric_and_entity() -> None:
     assert "fact_metric_not_matching_slot:F1:value" in result.mismatches
     assert "fact_metric_not_in_query:F1" in result.mismatches
     assert "fact_entity_not_in_query:F1" in result.mismatches
+
+
+def test_bound_evidence_accepts_total_net_sales_as_revenue_alias() -> None:
+    facts = [
+        {
+            "fact_id": "F1",
+            "metric": "Total net sales",
+            "period": "FY2024",
+            "entity": "Apple",
+        },
+    ]
+    result = align_bound_evidence_to_query(
+        "What was Apple FY2024 revenue?",
+        _plan("revenue"),
+        facts,
+        {"value": ("F1",)},
+    )
+
+    assert result.status is BoundEvidenceAlignmentStatus.ALIGNED
+    assert result.allowed
+    assert result.checked_fact_ids == ("F1",)
+
+
+def test_unqualified_query_rejects_structured_segment_row() -> None:
+    fact = {
+        "fact_id": "SEGMENT-REV",
+        "metric": "Revenue",
+        "period": "FY2024",
+        "entity": "Microsoft",
+        "retrieval_context": {
+            "retrieval_texts": [
+                "| Productivity and Business Processes | $50,838 | Revenue | FY2024 |",
+            ],
+            "metric_paths": ["Revenue"],
+        },
+    }
+    classification = classify_evidence_scope(fact)
+    assert classification.scope is EvidenceScope.SEGMENT
+    result = align_bound_evidence_to_query(
+        "What was Microsoft FY2024 revenue?",
+        _plan("revenue"),
+        [fact],
+        {"value": ("SEGMENT-REV",)},
+    )
+    assert result.status is BoundEvidenceAlignmentStatus.MISMATCH
+    assert "fact_segment_scope_not_requested:SEGMENT-REV" in result.mismatches
+
+
+def test_multiline_segment_header_is_not_treated_as_unqualified_total() -> None:
+    fact = {
+        "fact_id": "SEGMENT-REV-MULTILINE",
+        "metric": "Revenue",
+        "period": "FY2024",
+        "entity": "Microsoft",
+        "retrieval_context": {
+            "retrieval_texts": [
+                "Productivity and Business Processes\n"
+                "| Revenue | $50,838 | FY2024 |",
+            ],
+            "metric_paths": ["Revenue"],
+        },
+    }
+    classification = classify_evidence_scope(fact)
+    assert classification.scope is EvidenceScope.SEGMENT
+    assert classification.scope_label == "Productivity and Business Processes"
+    result = align_bound_evidence_to_query(
+        "What was Microsoft FY2024 revenue?",
+        _plan("revenue"),
+        [fact],
+        {"value": ("SEGMENT-REV-MULTILINE",)},
+    )
+    assert result.status is BoundEvidenceAlignmentStatus.MISMATCH
+
+
+def test_candidate_metadata_preamble_does_not_become_segment_label() -> None:
+    fact = {
+        "fact_id": "SEGMENT-REV-PREAMBLE",
+        "metric": "Revenue",
+        "period": "FY2024",
+        "entity": "Microsoft",
+        "retrieval_context": {
+            "retrieval_text": (
+                "Document: msft_fy2025\n"
+                "Page: 26\n"
+                "Fact Type: atomic\n"
+                "Metric: Revenue\n"
+                "Source:\n"
+                "| Productivity and Business Processes |             |        |     |\n"
+                "| Revenue | $50,838 | FY2024 |"
+            ),
+            "metric_paths": ["Revenue"],
+        },
+    }
+
+    classification = classify_evidence_scope(fact)
+
+    assert classification.scope is EvidenceScope.SEGMENT
+    assert classification.scope_label == "Productivity and Business Processes"
+
+
+def test_explicit_segment_label_allows_matching_segment_row() -> None:
+    fact = {
+        "fact_id": "SEGMENT-REV",
+        "metric": "Revenue",
+        "period": "FY2024",
+        "entity": "Microsoft",
+        "retrieval_context": {
+            "retrieval_texts": [
+                "| Productivity and Business Processes | $50,838 | Revenue | FY2024 |",
+            ],
+            "metric_paths": ["Revenue"],
+        },
+    }
+    result = align_bound_evidence_to_query(
+        "What was Microsoft FY2024 Productivity and Business Processes revenue?",
+        _plan("revenue"),
+        [fact],
+        {"value": ("SEGMENT-REV",)},
+    )
+    assert result.status is BoundEvidenceAlignmentStatus.ALIGNED
+    assert result.allowed
+
+
+def test_explicit_aggregate_row_is_classified_as_consolidated() -> None:
+    fact = {
+        "fact_id": "TOTAL-REV",
+        "metric": "Total",
+        "period": "FY2024",
+        "entity": "Microsoft",
+        "retrieval_context": {
+            "retrieval_texts": [
+                "| Total Revenue | $245,122 | FY2024 |",
+            ],
+            "metric_paths": ["Total"],
+        },
+    }
+    classification = classify_evidence_scope(fact)
+    assert classification.scope is EvidenceScope.CONSOLIDATED
+
+
+def test_consolidated_row_is_rejected_when_query_names_known_segment() -> None:
+    fact = {
+        "fact_id": "TOTAL-REV",
+        "metric": "Revenue",
+        "period": "FY2024",
+        "entity": "Microsoft",
+        "retrieval_context": {
+            "retrieval_texts": [
+                "| Total Revenue | $245,122 | FY2024 |",
+            ],
+            "metric_paths": ["Total"],
+        },
+    }
+    segment = {
+        "fact_id": "SEGMENT-REV",
+        "metric": "Revenue",
+        "period": "FY2024",
+        "entity": "Microsoft",
+        "retrieval_context": {
+            "retrieval_texts": [
+                "| Productivity and Business Processes | $50,838 | Revenue | FY2024 |",
+            ],
+            "metric_paths": ["Revenue"],
+        },
+    }
+    result = align_bound_evidence_to_query(
+        "What was Microsoft FY2024 Productivity and Business Processes revenue?",
+        _plan("revenue"),
+        [fact, segment],
+        {"value": ("TOTAL-REV",)},
+    )
+    assert result.status is BoundEvidenceAlignmentStatus.MISMATCH
+    assert "fact_scope_unverifiable:TOTAL-REV" not in result.mismatches
 
 
 def test_ambiguous_plan_is_fail_closed_without_retrieval() -> None:

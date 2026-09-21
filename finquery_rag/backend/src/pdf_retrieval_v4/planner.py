@@ -17,7 +17,10 @@ from .query_plan_validator import validate_query_plan
 from .retrieval_route_planner import build_constraints, build_routes
 
 
-PLAN_VERSION = "pdf-v4-query-plan-v1"
+# Bump whenever deterministic query-feature extraction changes. The version
+# participates in plan_id so persisted traces/caches cannot reuse a plan built
+# with older period, wrapper, or calculation-intent semantics.
+PLAN_VERSION = "pdf-v4-query-plan-v2"
 
 
 def _norm(value: str) -> str:

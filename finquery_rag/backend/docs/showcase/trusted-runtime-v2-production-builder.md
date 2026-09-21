@@ -49,8 +49,11 @@ The builder requires all of the following deployment assets:
    only from deployment configuration; deterministic test providers are not
    accepted by the production builder.
 4. `TRUSTED_V2_SPECIALIST_CHECKPOINT`, loadable by the existing specialist
-   loader.  The loader verifies the checkpoint identity/hash before serving
-   requests.
+   loader. The loader verifies the checkpoint identity/hash before serving
+   requests. If the NanoChat package is mounted outside this repository,
+   `NANOCHAT_REPO` may explicitly name that source root; otherwise the loader
+   resolves the repository root from its own source location and never appends
+   an unrelated Python environment.
 
 The optional `V2_MAX_*` values configure the existing bounded runtime.  They
 do not create a second budget policy.
@@ -123,3 +126,12 @@ The builder does not change Conversation semantics, `/query` versus
 provides the missing real V2 construction seam.  A readiness benchmark is not
 implied by the existence of this builder; production correctness and quality
 evaluation remain separate concerns.
+
+The shared lifecycle also avoids constructing the legacy RAGEngine in official
+v2 mode, so the V2 request path does not depend on V1 retrieval initialization.
+
+The application readiness endpoint (/readyz) runs the same non-secret V2
+preflight when the selected mode is v2 or shadow; v1 explicitly skips that
+check. A service is therefore not reported ready while the selected V2
+runtime is missing its callable builder, index, fact store, provider
+configuration, or checkpoint.

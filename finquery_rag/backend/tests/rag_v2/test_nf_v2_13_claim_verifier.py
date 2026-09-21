@@ -36,6 +36,17 @@ def _answer(text: str) -> AnswerEnvelopeV1:
     )
 
 
+def _answer_with_citations(text: str, citations: tuple[str, ...]) -> AnswerEnvelopeV1:
+    return AnswerEnvelopeV1(
+        query_id="q1",
+        route="DIRECT",
+        answer_text=text,
+        citation_ids=citations,
+        generator_provider="sealed",
+        generator_model="fixture",
+    )
+
+
 def test_safe_numeric_metric_period_claim_is_supported():
     result = SemanticClaimVerifierV1().verify(
         _packet("Data Center", "115186"),
@@ -60,3 +71,19 @@ def test_network_transaction_claim_remains_supported():
         _answer("Visa's networks processed 257.5 transactions in FY2025. [E1]."),
     )
     assert result.decision is SemanticClaimDecision.SUPPORTED
+
+
+def test_structured_runtime_citation_id_is_supported_and_removed_from_numbers():
+    citation_id = "citation:abc123"
+    packet = _packet("Net income", "93736")
+    packet["evidence_items"][0]["citation_id"] = citation_id
+    result = SemanticClaimVerifierV1().verify(
+        packet,
+        _answer_with_citations(
+            "Net income in FY2025 was 93736 [citation:abc123].",
+            (citation_id,),
+        ),
+    )
+    assert result.decision is SemanticClaimDecision.SUPPORTED
+    assert result.unsupported_claims == ()
+    assert result.supporting_evidence_ids == (citation_id,)

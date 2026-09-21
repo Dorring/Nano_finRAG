@@ -74,6 +74,7 @@ class QueryLifecycleService:
         financial_runtime_factory: Callable[
             [Any, FinancialQueryRequest], FinancialQARuntime
         ] | None = None,
+        financial_runtime_requires_engine: Callable[[], bool] | None = None,
     ) -> None:
         self.session_manager = session_manager
         self.memory_store = memory_store
@@ -85,6 +86,7 @@ class QueryLifecycleService:
         self.assistant_session_metadata = assistant_session_metadata
         self.execution_service_factory = execution_service_factory
         self.financial_runtime_factory = financial_runtime_factory
+        self.financial_runtime_requires_engine = financial_runtime_requires_engine
 
     @staticmethod
     def _value(value: Any) -> str:
@@ -203,6 +205,12 @@ class QueryLifecycleService:
             service=service,
             replay=replay,
         )
+        legacy_result = self._empty_legacy(answer, request.document_names)
+        # Control outcomes (clarification/out-of-scope) stop before a
+        # FinancialQARuntime is invoked, so there is no runtime trace object
+        # to provide an id.  The validated logical request id remains a safe,
+        # deterministic correlation id for these user-visible outcomes.
+        legacy_result["trace_id"] = request.request_id
         return UserTurnExecutionResult(
             status=status,
             answer=answer,
@@ -220,7 +228,7 @@ class QueryLifecycleService:
             query_as_resolved=False,
             request_id=request.request_id,
             session_id=request.session_id,
-            legacy_result=self._empty_legacy(answer, request.document_names),
+            legacy_result=legacy_result,
             idempotent_replay=replay,
         )
 
@@ -250,7 +258,18 @@ class QueryLifecycleService:
                 "memory_profile": profile,
             },
         )
-        engine = self.get_rag_engine()
+        # V2 owns its R4 index and structured fact store.  Do not eagerly
+        # construct the legacy RAG engine for an official V2 request: doing so
+        # would make V2 depend on V1 retrieval dependencies before its own
+        # production builder is reached.  Keep the historical eager behavior
+        # for callers that do not provide an explicit runtime dependency
+        # policy, and for V1/shadow paths which still need the legacy engine.
+        requires_engine = self.financial_runtime_requires_engine
+        engine = (
+            self.get_rag_engine()
+            if requires_engine is None or requires_engine()
+            else None
+        )
         runtime: FinancialQueryResult | None = None
         if self.financial_runtime_adapter_enabled():
             runtime_impl = (
@@ -261,8 +280,29 @@ class QueryLifecycleService:
             runtime = await self.execution_service_factory(runtime_impl).execute(
                 runtime_request
             )
+            logger.info(
+                "financial runtime completed runtime=%s route=%s status=%s release=%s reason_codes=%s",
+                self._value(runtime.runtime_version),
+                (
+                    runtime.runtime_metadata.attributes.get("route")
+                    if runtime.runtime_metadata is not None
+                    else None
+                ),
+                self._value(runtime.status),
+                self._value(runtime.release_status),
+                list(runtime.reason_codes),
+            )
             legacy = to_legacy_query_dict(runtime)
+            # V2 intentionally does not construct the legacy RAG engine, so
+            # early coordinator failures may not have a trace execution id.
+            # Keep the public correlation contract total by using the already
+            # validated logical request id as a deterministic fallback.
+            legacy.setdefault("trace_id", request.request_id)
         else:
+            if engine is None:
+                raise RuntimeError(
+                    "legacy query execution requires the RAG engine",
+                )
             kwargs = {
                 "question": query,
                 "doc_names": list(request.document_names),

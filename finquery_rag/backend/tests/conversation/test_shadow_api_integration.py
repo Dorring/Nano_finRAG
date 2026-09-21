@@ -136,7 +136,11 @@ def _post(
         patch("src.main.get_conversation_shadow_service", return_value=service or ctx.service),
         patch.dict(
             os.environ,
-            {"FINANCIAL_RUNTIME_ADAPTER_ENABLED": "true", "MULTITURN_CONTEXT_MODE": mode},
+            {
+                "FINANCIAL_RUNTIME_MODE": "v1",
+                "FINANCIAL_RUNTIME_ADAPTER_ENABLED": "true",
+                "MULTITURN_CONTEXT_MODE": mode,
+            },
             clear=False,
         ),
     ):
@@ -293,7 +297,11 @@ def test_active_stateless_context_dependent_query_clarifies_without_calling_v1(a
         patch("src.main.session_manager", api_context.session_manager),
         patch.dict(
             os.environ,
-            {"FINANCIAL_RUNTIME_ADAPTER_ENABLED": "true", "MULTITURN_CONTEXT_MODE": "on"},
+            {
+                "FINANCIAL_RUNTIME_MODE": "v1",
+                "FINANCIAL_RUNTIME_ADAPTER_ENABLED": "true",
+                "MULTITURN_CONTEXT_MODE": "on",
+            },
             clear=False,
         ),
     ):
@@ -706,7 +714,11 @@ def _post_stream(
         patch("src.main.get_conversation_shadow_service", return_value=service or ctx.service),
         patch.dict(
             os.environ,
-            {"FINANCIAL_RUNTIME_ADAPTER_ENABLED": "true", "MULTITURN_CONTEXT_MODE": mode},
+            {
+                "FINANCIAL_RUNTIME_MODE": "v1",
+                "FINANCIAL_RUNTIME_ADAPTER_ENABLED": "true",
+                "MULTITURN_CONTEXT_MODE": mode,
+            },
             clear=False,
         ),
     ):
