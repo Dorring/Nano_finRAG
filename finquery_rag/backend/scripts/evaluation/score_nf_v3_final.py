@@ -111,8 +111,20 @@ def score_released(prediction: dict, gold: dict) -> str | None:
     got = numbers_in(answer)
     if not want or not got:
         return None
-    if operation == "percentage_share" or (tolerance and abs(want[0]) < 1.01):
-        # A share: the answer may state it as a percentage of the same quantity.
+    if (
+        operation in ("percentage_share", "growth_rate")
+        or (tolerance and abs(want[0]) < 1.01)
+    ):
+        # A ratio, which the answer may state as a percentage of itself.  A
+        # growth rate of `-2.0204` and `-202.04%` are one quantity in two
+        # conventions, and the benchmark's gold fixes only one of them -- so
+        # comparing them as written scores a correct answer wrong and reports a
+        # rendering difference as a capability gap.
+        #
+        # This rescales a representation; it cannot rescue a wrong answer.  Two
+        # operands from the wrong years still miss at every scale, and the
+        # reciprocal a role inversion produces -- `-23.1429` where the gold is
+        # `-0.0432` -- misses too, because `0.01 * -23.1429` is not `-0.0432`.
         for candidate in got:
             for scale in (1.0, 0.01):
                 if abs(candidate * scale - want[0]) <= (tolerance or 0.0001):

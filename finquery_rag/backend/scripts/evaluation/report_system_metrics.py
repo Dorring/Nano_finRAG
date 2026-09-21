@@ -89,7 +89,25 @@ def main(argv: list[str] | None = None) -> int:
                 tally["correct_refusal" if not released else "INCORRECT_RELEASE"] += 1
             else:
                 tally["answerable"] += 1
+                # Release coverage is over *every* answerable case.  Counting
+                # only the comparable ones made the headline read 16/95 where
+                # the rows said 17, because two cases release whose gold carries
+                # a relation rather than a fact id.  A release is a release.
+                if released:
+                    tally["released"] += 1
+                    verdict = scorer.score_released(row, record)
+                    if verdict == "correct":
+                        tally["released_correct"] += 1
+                    elif verdict == "wrong":
+                        tally["released_WRONG"] += 1
+                    else:
+                        tally["released_unscoreable"] += 1
                 if not comparable:
+                    # Citation precision is measured against the gold's fact
+                    # ids, and a case whose gold carries only a relation has
+                    # none.  Counting it here would compare citation ids against
+                    # an empty set and report the absence of a gold fact as a
+                    # precision failure.
                     tally["answerable_not_comparable"] += 1
                     continue
                 tally["comparable"] += 1
@@ -105,14 +123,6 @@ def main(argv: list[str] | None = None) -> int:
                         row.get("retrieval_rounds") or row.get("pool_size")):
                     tally["slots_complete"] += 1
                 if released:
-                    tally["released"] += 1
-                    verdict = scorer.score_released(row, record)
-                    if verdict == "correct":
-                        tally["released_correct"] += 1
-                    elif verdict == "wrong":
-                        tally["released_WRONG"] += 1
-                    else:
-                        tally["released_unscoreable"] += 1
                     cited = [scorer.resolve(c, aliases)
                              for c in (row.get("citation_ids") or [])]
                     admitted = [scorer.resolve(e, aliases)

@@ -516,7 +516,14 @@ def test_an_overridden_run_records_both_verdicts() -> None:
     assert isinstance(record, dict), outcome.runtime_metadata
     assert record["computed_status"] == "MISMATCH"
     assert record["computed_allowed"] is False
-    assert "unrecognized_plan_metric:Deferred" in record["computed_mismatches"]
+    # The plan names `Deferred` and the question does not, and the ontology
+    # cannot name `Deferred` at all -- so the mismatch is reported against the
+    # row's own literal identity rather than as an unrecognised plan metric.
+    # The claim the assertion is here for is unchanged: the computed verdict
+    # names the row that made it a mismatch, so a reader can see why.
+    assert "literal_plan_metric_not_in_query:literal:deferred" in (
+        record["computed_mismatches"]
+    )
 
     effective = outcome.runtime_metadata.get("semantic_alignment")
     assert isinstance(effective, dict)

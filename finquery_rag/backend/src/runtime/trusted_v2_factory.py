@@ -39,6 +39,7 @@ def build_trusted_v2_runtime(
     ),
     runtime_mode: AgentRuntimeMode | str | None = None,
     alignment_override: Any | None = None,
+    source_label_grounding: Any | None = None,
 ) -> TrustedFinancialRuntimeV2:
     """Build the complete V2 runtime with explicit dependencies.
 
@@ -85,6 +86,7 @@ def build_trusted_v2_runtime(
         unknown_semantic_policy=unknown_semantic_policy,
         runtime_mode=coerce_agent_runtime_mode(runtime_mode),
         alignment_override=alignment_override,
+        source_label_grounding=source_label_grounding,
     )
     return TrustedFinancialRuntimeV2(coordinator)
 

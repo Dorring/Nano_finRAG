@@ -11,7 +11,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
-from collections.abc import Iterable, Mapping
+from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass
 from typing import Any
 
@@ -780,6 +780,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         ),
         runtime_mode: AgentRuntimeMode | str | None = None,
         alignment_override: PlanSemanticAlignment | None = None,
+        source_label_grounding: Callable[[SupervisorPlan], Mapping[str, str]]
+        | None = None,
     ) -> None:
         if not isinstance(supervisor, SupervisorService):
             raise TypeError("supervisor must be SupervisorService")
@@ -809,6 +811,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 f"{type(alignment_override).__name__}"
             )
         self.alignment_override = alignment_override
+        # Wider than the ontology, narrower than a string match: the row labels
+        # the *source* holds at a coordinate that identifies one value.  ``None``
+        # leaves the gate exactly as it was -- an ontology and nothing else --
+        # which is what every test that does not pass one still measures.
+        self.source_label_grounding = source_label_grounding
 
     @staticmethod
     def _slot_dicts(plan: SupervisorPlan) -> list[dict[str, Any]]:
@@ -1734,6 +1741,15 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     request.conversation_metadata.get("semantic_expectations"),
                     Mapping,
                 )
+                else None
+            ),
+            # Asked of the *source*, not of the ontology: which of the plan's
+            # rows the filing itself reports at one determinate value.  The gate
+            # still tests whether the question carries the label -- this supplies
+            # vocabulary, not a verdict.
+            grounded_labels=(
+                self.source_label_grounding(plan)
+                if self.source_label_grounding is not None
                 else None
             ),
         )

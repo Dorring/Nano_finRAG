@@ -20,7 +20,7 @@ import re
 import unicodedata
 from dataclasses import dataclass
 from enum import Enum
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable, Mapping, Sequence
 from typing import Any
 
 from rag_v2.contracts.plan import Intent, SupervisorPlan
@@ -666,6 +666,14 @@ _OPERATION_DEFINITIONS: tuple[_VocabularyDefinition, ...] = (
             "growth",
             "increased",
             "increase",
+            # `percentage change` is a growth rate and `change` alone is not.
+            # Aliases are matched longest-first and an overlapping span is
+            # dropped, so adding the longer form here is what stops `percentage
+            # change in X` reading as `change in` -- the difference operation --
+            # and disagreeing with a planner that read it correctly.
+            "percentage change",
+            "percent change",
+            "percentage change in",
             "同比",
             "增长率",
         ),
@@ -720,9 +728,22 @@ _FOOTNOTE_SUFFIX = re.compile(
 )
 
 
-def _normalize_surface(value: Any) -> str:
+def _normalize_surface(value: Any, *, strip_footnote: bool = True) -> str:
+    """NFKC, casefold, punctuation-stripped, whitespace-collapsed.
+
+    ``strip_footnote`` is on for the *concept* lookup and off for the *literal*
+    identity.  A marker is table furniture when the question is which concept a
+    label names -- ``Cost of revenues (1)`` is cost of revenue -- and part of the
+    row's identity when the question is which row it is.  Pfizer files both
+    ``Acquired in-process research and development expenses`` and the ``(g)``
+    row stating different numbers, and collapsing them made the two
+    indistinguishable to the one layer whose job is telling facts apart.
+    """
+
     raw = str(value or "")
-    text = unicodedata.normalize("NFKC", _FOOTNOTE_SUFFIX.sub("", raw)).casefold()
+    if strip_footnote:
+        raw = _FOOTNOTE_SUFFIX.sub("", raw)
+    text = unicodedata.normalize("NFKC", raw).casefold()
     text = text.replace("’", "'")
     # Retain Unicode word characters (including Chinese), while making
     # punctuation-separated phrases comparable to the prompt's plain text.
@@ -732,6 +753,26 @@ def _normalize_surface(value: Any) -> str:
 
 def _is_cjk_phrase(value: str) -> bool:
     return any("\u4e00" <= char <= "\u9fff" for char in value)
+
+
+def _query_mentions_label(query: str, label: str) -> bool:
+    """Whether the query quotes a whole row label.
+
+    Word-bounded, so the label ``Deferred`` is not read out of a question asking
+    for ``Deferred taxes`` -- that is a different row and the planner naming it
+    is exactly the case this has to keep honest.  Footnote markers are kept on
+    both sides, for the reason the literal identity keeps them.
+
+    Normalisation is the one the ontology's own aliases go through, so a label
+    matches however the question spells its punctuation and spacing.  It is
+    deliberately a containment test and not a parse: what it establishes is that
+    the question carries the row, which is all the source can testify to.
+    """
+
+    want = _normalize_surface(label, strip_footnote=False)
+    if not want:
+        return False
+    return _alias_matches(_normalize_surface(query, strip_footnote=False), want)
 
 
 def _alias_matches(text: str, alias: str) -> bool:
@@ -897,7 +938,13 @@ def metric_identity(value: Any) -> str | None:
     known = canonical_metric_id(value)
     if known is not None:
         return known
-    normalized = _normalize_surface(value)
+    # Footnote markers survive into the literal identity even though the concept
+    # lookup above strips them.  `Acquired in-process research and development
+    # expenses(g)` and the unmarked row are different rows of the same table
+    # stating different numbers; an identity that merged them would let a slot
+    # for one bind the other, which is the failure this identity exists to
+    # prevent rather than to cause.
+    normalized = _normalize_surface(value, strip_footnote=False)
     if not normalized:
         return None
     return LITERAL_METRIC_PREFIX + normalized.replace(" ", "_")
@@ -1394,12 +1441,78 @@ def extract_query_semantic_frame(query: str) -> QuerySemanticFrame:
     )
 
 
+def _aliases_by_id(
+    definitions: Iterable[Any],
+    id_field: str,
+) -> Mapping[str, tuple[str, ...]]:
+    mapping: dict[str, list[str]] = {}
+    for definition in definitions:
+        canonical = getattr(definition, id_field)
+        mapping.setdefault(canonical, []).extend(definition.aliases)
+    return {key: tuple(dict.fromkeys(value)) for key, value in mapping.items()}
+
+
+_METRIC_ALIASES_BY_ID = _aliases_by_id(_METRIC_DEFINITIONS, "metric_id")
+_OPERATION_ALIASES_BY_ID = _aliases_by_id(_OPERATION_DEFINITIONS, "canonical_id")
+
+
+def _mention_spans(text: str, alias: str) -> list[tuple[int, int]]:
+    """Every word-bounded occurrence of one alias, as offsets into ``text``."""
+
+    normalized_text = _normalize_surface(text)
+    normalized_alias = _normalize_surface(alias)
+    if not normalized_alias:
+        return []
+    return [
+        (match.start(), match.end())
+        for match in re.finditer(
+            rf"(?<!\w){re.escape(normalized_alias)}(?!\w)", normalized_text
+        )
+    ]
+
+
+def _phrase_spans(query: str, phrases: Iterable[str]) -> list[tuple[int, int]]:
+    spans: list[tuple[int, int]] = []
+    for phrase in phrases:
+        spans.extend(_mention_spans(query, phrase))
+    return spans
+
+
+def _named_only_inside(
+    query: str,
+    aliases: Iterable[str],
+    spans: Sequence[tuple[int, int]],
+) -> bool:
+    """Whether every mention of a vocabulary term sits inside ``spans``.
+
+    The rule this exists for: **a term that appears only inside the name of the
+    thing being asked for is part of that name.**  ``Weighted-average
+    shares-diluted`` is a metric, and reading its ``average`` as a request to
+    average something made the gate contradict a plan that had read the question
+    correctly.  The same rule covers a metric word inside a longer row label:
+    ``revenue`` inside ``International transaction revenue`` is the label's
+    revenue, not a second thing asked for.
+
+    A term with no mention at all returns False -- there is nothing to be
+    inside of, and silence is not subsumption.
+    """
+
+    found = [span for alias in aliases for span in _mention_spans(query, alias)]
+    if not found:
+        return False
+    return all(
+        any(start <= left and right <= end for start, end in spans)
+        for left, right in found
+    )
+
+
 def align_query_to_plan(
     query: str,
     plan: SupervisorPlan,
     *,
     unknown_policy: UnknownSemanticPolicy | str = UnknownSemanticPolicy.COMPATIBILITY,
     semantic_context: Mapping[str, Any] | None = None,
+    grounded_labels: Mapping[str, str] | None = None,
 ) -> PlanSemanticAlignment:
     """Compare explicit query semantics with all plan slot semantics.
 
@@ -1409,19 +1522,85 @@ def align_query_to_plan(
     context may provide already-authorized expected metric, period, entity, or
     scope expectations; it is never inferred from a candidate or from the
     answer.
+
+    ``grounded_labels`` maps a source row label the ontology cannot name to the
+    identity it resolves to, for labels the caller has established are
+    *determinate in the source* -- the store holds one value at that coordinate.
+    The gate reads the mention itself, so a label the question does not quote
+    authorizes nothing, and the identity it contributes is compared exactly like
+    an ontology id.
+
+    This widens what the gate can *name*, never what it will *accept*: a plan
+    metric is admitted only when the question carries it, whether the ontology
+    recognised it or the source grounded it.  What the gate gives up for these
+    labels is the claim that it knows what the row means -- ``iPad`` is not a
+    financial concept and no ontology makes it one.  What it keeps, and what the
+    source can actually testify to, is that the question quotes a row the filing
+    reports at one determinate value.
     """
 
     if not isinstance(plan, SupervisorPlan):
         raise TypeError("plan must be a SupervisorPlan")
     policy = coerce_unknown_semantic_policy(unknown_policy)
     frame = extract_query_semantic_frame(query)
-    query_metric_ids = frame.metric_ids
+    query_metric_ids = list(frame.metric_ids)
+    # A row label the ontology cannot name is still a metric the question can be
+    # about.  The mention test lives here, with the rest of the query reading,
+    # rather than being asserted by the caller: a caller that supplied a label
+    # the question never mentions must not thereby authorize it.
+    for surface, identity in (grounded_labels or {}).items():
+        if not identity or identity in query_metric_ids:
+            continue
+        if _query_mentions_label(query, surface):
+            query_metric_ids.append(identity)
+    # A metric word inside a longer row label the question states is the label's
+    # word.  `International transaction revenue` is one row; the ontology also
+    # recognises `revenue` inside it, and keeping that second mention made the
+    # gate report a contradiction between a question and a plan that had read it
+    # correctly.  Only a label actually admitted above can subsume anything --
+    # otherwise a plan could silence a metric by naming a longer phrase.
+    grounded_spans: list[tuple[int, int]] = [
+        span
+        for surface, identity in (grounded_labels or {}).items()
+        if identity and identity in query_metric_ids
+        for span in _mention_spans(query, surface)
+    ]
+    if grounded_spans:
+        subsumed = [
+            metric_id
+            for metric_id in query_metric_ids
+            if metric_id in _METRIC_ALIASES_BY_ID
+            and _named_only_inside(
+                query, _METRIC_ALIASES_BY_ID[metric_id], grounded_spans)
+        ]
+        if subsumed:
+            query_metric_ids = [
+                metric_id for metric_id in query_metric_ids
+                if metric_id not in subsumed
+            ]
     query_period_ids = frame.period_ids
     query_entity_ids = frame.entity_ids
     query_operation_ids = frame.operation_ids
+    # Same rule for an operation: `Weighted-average shares-diluted` is a metric,
+    # and reading its `average` as a request to average something made the gate
+    # contradict a plan that had read the question correctly.
+    metric_spans = _phrase_spans(
+        query,
+        (str(getattr(slot, "metric", "") or "") for slot in plan.required_slots),
+    )
+    if metric_spans:
+        query_operation_ids = tuple(
+            operation_id
+            for operation_id in query_operation_ids
+            if not _named_only_inside(
+                query, _OPERATION_ALIASES_BY_ID.get(operation_id, ()), metric_spans)
+        )
     query_scope_ids = frame.scope_ids
     plan_metric_ids: list[str] = []
     unknown_plan_metrics: list[str] = []
+    #: Plan metrics the ontology could not name and the source did.  They are
+    #: admissible, but only against a question that carries them.
+    literal_plan_metrics: list[str] = []
     plan_period_ids: list[str] = []
     unknown_plan_periods: list[str] = []
     mismatches: list[str] = []
@@ -1430,8 +1609,11 @@ def align_query_to_plan(
         metric_id = canonical_metric_id(slot.metric)
         if metric_id is None:
             unknown_plan_metrics.append(slot.metric)
-        else:
-            plan_metric_ids.append(metric_id)
+        identity = metric_identity(slot.metric)
+        if identity is not None:
+            plan_metric_ids.append(identity)
+            if metric_id is None:
+                literal_plan_metrics.append(identity)
         period_id = canonical_period_id(slot.period)
         if period_id is None:
             unknown_plan_periods.append(slot.period)
@@ -1504,10 +1686,19 @@ def align_query_to_plan(
             )
     if len(query_metric_ids) > 1 and query_set != plan_set:
         ambiguous_query_fields.append("metric")
-    if unknown_plan_metrics:
+    # A plan metric the ontology cannot name is admitted only against a question
+    # that carries it.  Stated here rather than inside the DIRECT_FACT branch
+    # below because a calculation plan has no planned-versus-query metric check
+    # of its own -- its operands are not the answer -- so without this a
+    # calculation could name any row in the store and align to a question that
+    # never mentioned it.
+    if literal_plan_metrics:
+        named = set(query_metric_ids)
+        result_metric = _result_metric_for_operation(plan.operation)
         mismatches.extend(
-            f"unrecognized_plan_metric:{metric}"
-            for metric in dict.fromkeys(unknown_plan_metrics)
+            f"literal_plan_metric_not_in_query:{metric_id}"
+            for metric_id in dict.fromkeys(literal_plan_metrics)
+            if metric_id not in named and metric_id != result_metric
         )
 
     # A comparison or growth plan may include an implicit prior period not
@@ -1585,7 +1776,7 @@ def align_query_to_plan(
 
     return PlanSemanticAlignment(
         status=status,
-        query_metric_ids=query_metric_ids,
+        query_metric_ids=tuple(query_metric_ids),
         plan_metric_ids=plan_metric_ids_tuple,
         unknown_plan_metrics=tuple(dict.fromkeys(unknown_plan_metrics)),
         mismatches=tuple(dict.fromkeys(mismatches)),

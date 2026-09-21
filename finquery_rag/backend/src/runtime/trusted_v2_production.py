@@ -38,6 +38,8 @@ from rag_v2.supervisor import (
     UnknownSemanticPolicy,
 )
 
+from src.finance.source_label_grounding import SourceLabelGrounding
+
 from .harness_runtime_mode import resolve_agent_runtime_mode
 from .runtime_contract import FinancialQueryRequest
 from .trusted_v2_adapter import TrustedFinancialRuntimeV2
@@ -1253,6 +1255,13 @@ def build_trusted_v2_runtime_for_request(
             # rather than mutating a built coordinator, so a run that used one
             # is distinguishable from a run that did not.
             alignment_override=alignment_override,
+            # Production, not a seam.  The gate's vocabulary was the ontology
+            # alone, and 44 of the 48 cases it refused were refused because a
+            # filing states rows the ontology has no reason to name.  Handing it
+            # the source's own determinate row labels lets those questions be
+            # answered; a label whose rows disagree is not grounded and is still
+            # refused, and the fail-closed policy is untouched.
+            source_label_grounding=SourceLabelGrounding(resources.fact_store),
         )
     except TrustedV2ProductionConfigurationError:
         raise
