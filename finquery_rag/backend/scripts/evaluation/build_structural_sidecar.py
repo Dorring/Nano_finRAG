@@ -123,35 +123,55 @@ def _column_header(rows: list[list[str]]) -> list[str]:
     return best
 
 
-def _table_role(rows: list[list[str]]) -> str:
-    """What kind of table this is, from how its columns are labelled.
+_STATEMENT_HEADING = re.compile(
+    r"consolidated\s+statements?\s+of\s+(income|operations|financial\s+position"
+    r"|cash\s+flows|comprehensive\s+income|equity|changes)",
+    re.IGNORECASE,
+)
 
-    A statement is one column per period: `2025 | 2024 | 2023`.  A segment note
-    is one column per reporting segment plus the reconciling ones -- EMEA,
-    Latin America, ..., Total, Corporate, Eliminations, Consolidated.  The two
-    are distinguishable from the header row alone and neither is a guess.
+
+def _nearest_heading(preceding: str) -> str:
+    """The last short, unpunctuated line before a table -- its heading.
+
+    A heading is what a filing puts immediately above a table to say what the
+    table is: `CONSOLIDATED STATEMENTS OF INCOME`, or a segment's name.  Reading
+    a *window* of prose instead is how the first version returned
+    CONSOLIDATED_STATEMENT for a segment table -- 4,000 characters back, a
+    filing says "consolidated" almost everywhere.
     """
 
+    lines = [line.strip() for line in preceding.split("\n") if line.strip()]
+    for line in reversed(lines[-14:]):
+        if len(line) <= 90 and not line.endswith("."):
+            return line
+    return ""
+
+
+def _table_role(rows: list[list[str]], heading: str) -> str:
+    """What kind of table this is, from its heading and its columns.
+
+    The column set alone does not do it, which the build showed: Coca-Cola's
+    segment `Operating income` table and its consolidated one are both
+    `Year Ended December 31 | 2025 | 2024 | 2023`.  The heading is what
+    separates them, and the columns only corroborate.
+    """
+
+    normalized = _norm(heading)
+    if _STATEMENT_HEADING.search(normalized):
+        return "CONSOLIDATED_STATEMENT"
+    if "consolidated balance sheet" in normalized:
+        return "CONSOLIDATED_BALANCE_SHEET"
     header = _column_header(rows)
     if len(header) < 3:
         return "UNKNOWN"
-    # Reconciliation first, and over the whole header band rather than one row.
-    # A segment note carries period columns too -- it states each segment for
-    # the year and for the prior one -- so "has periods" does not separate the
-    # two.  What separates them is that only the segment note names its parts
-    # and its reconciling items as columns.
-    labels = {
-        _norm(cell).strip(".")
-        for row in rows[:8]
-        for cell in row
-    }
+    labels = {_norm(cell).strip(".") for row in rows[:8] for cell in row}
     if labels & _RECONCILING:
         return "SEGMENT_DISCLOSURE"
     periods = sum(1 for cell in header if _is_period_cell(cell))
-    if periods >= 2:
-        return "PERIOD_COLUMNS"
-    if periods == 1:
-        return "PERIOD_COLUMNS"
+    if periods >= 1:
+        # Period columns and no statement heading: a note or a segment's own
+        # statement rather than a consolidated one.
+        return "DISCLOSURE_TABLE"
     return "UNKNOWN"
 
 
@@ -222,7 +242,9 @@ def main(argv: list[str] | None = None) -> int:
         for table_html in _TABLE.findall(raw):
             position = raw.find(table_html, offset)
             offset = max(offset, position + 1)
-            preceding = _TAGS.sub(" ", raw[max(0, position - 4000):position])
+            preceding = html_module.unescape(
+                _TAGS.sub("\n", raw[max(0, position - 4000):position]))
+            heading = _nearest_heading(preceding)
             rows = [_cell_texts(row) for row in _ROW.findall(table_html)]
             rows = [row for row in rows if any(cell for cell in row)]
             if not rows:
@@ -230,7 +252,8 @@ def main(argv: list[str] | None = None) -> int:
             identity = _table_identity(rows)
             table_meta.setdefault(identity, {
                 "logical_table_id": identity,
-                "table_role": _table_role(rows),
+                "table_role": _table_role(rows, heading),
+                "heading": heading[:90],
                 "column_semantics": _column_header(rows),
                 "row_count": len(rows),
             })
@@ -281,6 +304,7 @@ def main(argv: list[str] | None = None) -> int:
             meta = table_meta[chosen]
             record.update({
                 "table_role": meta["table_role"],
+                "heading": meta["heading"],
                 "column_semantics": meta["column_semantics"],
             })
         sidecar.append(record)

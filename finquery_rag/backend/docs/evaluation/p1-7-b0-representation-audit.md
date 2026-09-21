@@ -183,6 +183,31 @@ the **table's own structure** -- the column set. A consolidated statement has
 Total, Corporate, Eliminations and a Consolidated total. Both are deterministic
 and neither is a guess.
 
+**That second sentence is wrong, and the sidecar build is what showed it.** The
+table that actually holds Coca-Cola's segment `Operating income` is not the
+reconciliation table. It is this:
+
+```
+0  Year Ended December 31 | 2025 | 2024 | 2023
+1  Net Operating Revenues  | $ | 47,941 | $ | 47,061 | $ | 45,754
+2  Cost of goods sold      | 18,397 | 18,324 | 18,520
+...
+6  Operating Income        | 13,762 | 9,992 | 11,311
+```
+
+Its column structure is *identical* to the consolidated statement's -- both are
+`Year Ended December 31 | 2025 | 2024 | 2023`. The column set separates nothing
+here. What separates them is the **section heading above the table** (the
+segment's name), which is prose. The `EMEA | Latin America | ... | Total |
+Corporate | Eliminations` row is a different table again, the note's
+reconciliation.
+
+So B1's answer stands -- the source does carry the discriminator -- but it is a
+heading, not a structure, and recovering it means identifying the nearest
+heading reliably. The sidecar's first version read 4,000 characters of prose and
+matched keywords loosely, which is why it returned CONSOLIDATED_STATEMENT for
+both; the correction is a nearest-heading reader, not a column reader.
+
 So the eight `RECOVERABLE_IF_SOURCE_SELECTS_ONE` cases are recoverable in
 principle, and the Go verdict stands on evidence rather than on an estimate:
 **50 -> 57.7 releases, 60.7%.**
