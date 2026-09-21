@@ -5,19 +5,43 @@ Goal for this round: raise trusted-E2E **release coverage** while holding
 `document_names=[]`, Store / Binder / Validator / Finalizer unchanged.
 
 ```
-                    baseline    this round
-release coverage     20/95        46/95
-                      21.1%        48.4%
-released correct     20/20        44/46
-incorrect release       0            0
-correct refusal      25/25        25/25
-citation P / R     84.4 / 96.4   83.3 / 96.8
+                    baseline    this round    gate bypassed
+release coverage     20/95        46/95          50/95
+                      21.1%        48.4%          52.6%
+released correct     20/20        44/46          48/50
+incorrect release       0            0              0
+correct refusal      25/25        25/25          25/25
+citation P / R     84.4 / 96.4   83.3 / 96.8    82.1 / 97.0
 ```
 
-Both columns were measured on the same host, same day, same code except the
-gate's vocabulary, with the specialist on GPU. 48.4% is the pinned-plan
-release rate; the live-planner rate is a different number and is not claimed
-here.
+All three columns were measured on the same host, same day, same code except
+the gate's vocabulary -- the third removes it entirely and is the ceiling, not a
+configuration. Regenerate any of them with:
+
+```
+python scripts/evaluation/report_system_metrics.py \
+    --arm SHIPPED_BASELINE=/tmp/g-base/A_pinned_production-cases.jsonl \
+    --arm GATE_ON_SOURCE_GROUNDED=/tmp/g-new/A_pinned_production-cases.jsonl \
+    --arm GATE_BYPASS_CEILING=/tmp/g-bypass/B_gate_bypass-cases.jsonl \
+    --gold benchmarks/tv2_canonical_v1/gold-evidence-v1.jsonl \
+    --fact-store <store> --retrieval <structured-rerank.json> --out <dir>
+```
+
+48.4% is the pinned-plan release rate; the live-planner rate is a different
+number and is not claimed here.
+
+### Retrieval layer, for completeness
+
+```
+                          R@5       R@10      R@20
+shipped hybrid RRF      50.7%     58.0%     65.3%
+slot pool, unreranked   77.333%   87.333%   93.333%
+structured rerank       85.333%   93.333%   95.333%
+```
+
+The reranker is **benchmark-positive and off by default**: its production gain
+was not demonstrated (`PROMOTED_INTO_WINDOW = 0` -- every promotion landed
+inside the window the Binder was already reading).
 
 ## First: the previous numbers were measured with a broken generator
 
