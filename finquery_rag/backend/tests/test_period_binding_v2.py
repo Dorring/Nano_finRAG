@@ -254,6 +254,21 @@ def test_the_sealed_counts_are_untouched_by_this_commit():
     if not module.is_file():
         pytest.skip("W1 module is not in this checkout")
 
+    # A shallow clone cannot answer this.  `git log --diff-filter=A` reports the
+    # path as *added* by the oldest commit the clone can see -- the boundary
+    # commit -- so the assertion would be made against whatever that commit
+    # happened to touch, which on a `fetch-depth: 1` checkout is every file in
+    # the repository.  That is the "green for the wrong reason" the docstring
+    # above is written to avoid, one step further on: red for the wrong reason.
+    shallow = subprocess.run(
+        ["git", "rev-parse", "--is-shallow-repository"],
+        cwd=_BACKEND_DIR, capture_output=True, text=True,
+    )
+    if shallow.returncode != 0 or shallow.stdout.strip() == "true":
+        pytest.skip("shallow checkout: the commit that added period_binding.py "
+                    "is not in this history, and `--diff-filter=A` would name "
+                    "the boundary commit instead")
+
     found = subprocess.run(
         ["git", "log", "--diff-filter=A", "--format=%H", "--",
          str(module.relative_to(_BACKEND_DIR))],

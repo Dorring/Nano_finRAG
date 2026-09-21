@@ -52,6 +52,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Two guards read commit history rather than the working tree:
+          # `tests/test_period_binding_v2.py` looks up the commit that added a
+          # module, and the seal provenance checks resolve a revision.  On the
+          # default `fetch-depth: 1` the first of those resolves to the boundary
+          # commit and asserts against everything it touched.  Full history so
+          # the check runs against the commit it is actually about.
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
