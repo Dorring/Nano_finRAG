@@ -141,6 +141,37 @@ hashes the store and the fixtures, runs the C5 fixture guard, and re-scores the
 sealed predictions to recover the E2E and citation metrics above. Exit code 0
 means `BEHAVIORAL_DRIFT = 0`.
 
+### Test suite
+
+Run on the run host, `TRANSFORMERS_OFFLINE=1`, `.venv/bin/python -m pytest`:
+
+```
+tests/architecture + integrity + benchmark + harness   809 passed
+tests/runtime                                           10 passed
+tests/finance                                          502 passed
+tests/rag_v2                                 346 passed,  1 skipped
+tests/evaluation                             995 passed, 51 skipped, 1 FAILED
+tests/conversation + fixtures + generation +
+  refactor + retrieval + retrieval_v3 +
+  validation                                 653 passed, 16 skipped
+tests/pdf_retrieval_v4                       733 passed, 73 skipped
+tests/test_*.py (root)                      1100 passed,  2 skipped
+                                            ---------------------------
+                                           5148 passed, 143 skipped, 1 failed
+```
+
+**The one failure is the environment, not the code.**
+`test_nf39_regression_gate.py::test_production_default_is_unchanged_without_gate`
+constructs a `SentenceTransformer`, and the run host cannot reach
+`huggingface.co`; it fails with `OSError: We couldn't connect to
+'https://huggingface.co'`. `tests/evaluation/test_nf40_cli.py` cannot be
+collected at all for the same reason. Neither is affected by anything this
+phase changed.
+
+The count is **higher** than the last recorded full run (4500 passed on
+2026-09-18) because the P1.7/P1.8 work added tests since. No test was removed by
+the P1.9 cleanup: the 219 archived files are scripts, not tests.
+
 ---
 
 ## 5. Important negative findings
