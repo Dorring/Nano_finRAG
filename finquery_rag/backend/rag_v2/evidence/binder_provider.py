@@ -12,7 +12,7 @@ try:
 except ImportError:  # pragma: no cover - provider extras are optional in unit tests
     OpenAI = None  # type: ignore[assignment,misc]
 
-from rag_v2.contracts.evidence import EvidenceBinding
+from rag_v2.contracts.evidence import BindingStatus, EvidenceBinding
 
 from .prompt import BINDER_RESPONSE_FORMAT, build_binder_messages
 
@@ -133,6 +133,46 @@ def _usage_int(usage: Any, name: str) -> int | None:
     return int(value) if isinstance(value, (int, float)) else None
 
 
+def _status_the_binding_supports(
+    claimed: Any,
+    slot_bindings: Mapping[str, Any],
+    missing_slots: Any,
+    ambiguous_slots: Any,
+    invalid_reasons: Any,
+) -> Any:
+    """The status a binding's own content supports, not the one it claims.
+
+    A provider that answers ``BOUND`` and then lists the slots it did not bind
+    contradicts itself, and the frozen contract rejects the *whole response* --
+    which throws away the slots that were bound and skips the targeted-slot
+    repair loop that exists to fill the rest.  Four compare cases fail this way,
+    and the provider metadata says so: ``provider_response_success=True``,
+    ``structured_output_success=False``, ``BOUND binding must be complete and
+    error-free``.
+
+    The contract's invariant is right and is left alone: ``BOUND`` means
+    complete.  What is wrong is trusting a self-report over the thing it reports
+    on, so the status is derived here, in the adapter that builds the object,
+    from the completeness of what actually came back.  ``status`` becomes a
+    property of the binding rather than a claim about it -- the same shape as
+    ``PlanSemanticAlignment.allowed``, which is derived from ``status`` for the
+    same reason.
+
+    A truthful provider is unaffected: nothing is downgraded unless the binding
+    names its own gaps.
+    """
+
+    if claimed != BindingStatus.BOUND.value:
+        return claimed
+    if not slot_bindings or missing_slots or ambiguous_slots or invalid_reasons:
+        if invalid_reasons:
+            return BindingStatus.INVALID.value
+        if ambiguous_slots:
+            return BindingStatus.AMBIGUOUS.value
+        return BindingStatus.MISSING.value
+    return claimed
+
+
 def _binding_from_payload(payload: Any) -> EvidenceBinding:
     if not isinstance(payload, dict):
         raise BinderProviderError("EvidenceBinding response must be an object")
@@ -148,7 +188,10 @@ def _binding_from_payload(payload: Any) -> EvidenceBinding:
             raise BinderProviderError(f"{field} must be an array of strings")
     try:
         return EvidenceBinding(
-            status=payload["status"],
+            status=_status_the_binding_supports(
+                payload["status"], payload["slot_bindings"], payload["missing_slots"],
+                payload["ambiguous_slots"], payload["invalid_reasons"],
+            ),
             slot_bindings={key: tuple(value) for key, value in payload["slot_bindings"].items()},
             missing_slots=tuple(payload["missing_slots"]),
             ambiguous_slots=tuple(payload["ambiguous_slots"]),
