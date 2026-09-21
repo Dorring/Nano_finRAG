@@ -590,6 +590,29 @@ class _FixtureFactStore:
             fact for fact in self.facts.values() if _coordinate_key(fact) == key
         )
 
+    def candidate_keys_for_entities(
+        self, entities: Any
+    ) -> frozenset[str]:
+        """The coordinate lookup's sibling, for the same reason.
+
+        Retrieval narrows a cross-entity plan's slots to their own filer *before*
+        the pool is cut, and asks the store which candidates are a filer's.  A
+        stand-in that cannot answer it would raise here and not in production,
+        which is the divergence every fixture in this file exists to prevent.
+        """
+
+        wanted = {
+            _coordinate_key({"entity": entity})[0]
+            for entity in entities
+            if entity
+        }
+        wanted.discard("")
+        return frozenset(
+            str(key)
+            for key, fact in self.facts.items()
+            if _coordinate_key(fact)[0] in wanted
+        )
+
 
 class _FixtureSpecialist:
     """A specialist backend that never gets asked to generate numbers."""

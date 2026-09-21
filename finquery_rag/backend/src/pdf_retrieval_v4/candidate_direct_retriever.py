@@ -7,7 +7,7 @@ final pool K=40.
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Callable, Iterable, Sequence
 from dataclasses import replace
 from typing import Any
 
@@ -69,11 +69,63 @@ class CandidateDirectRetriever:
         *,
         rrf_k: int = 60,
         lane_k: int = 50,
+        entity_key_lookup: Callable[[Iterable[str]], frozenset[str]] | None = None,
     ) -> None:
         self.reader = reader
         self.rrf_k = int(rrf_k)
         self.lane_k = int(lane_k)
         self.final_pool_k = 40
+        #: entity mention -> every candidate key filed under it.
+        #:
+        #: **None on every production call path, and measured before being left
+        #: there.**  The defect it addresses is real: a cross-entity plan's slots
+        #: all issue the same entity-less query, so the pool fills with the few
+        #: filers the lanes rank highest -- for `higher Net income, Apple or
+        #: Visa` the packet held seven Pfizer rows and no Visa row, while the
+        #: lanes held sixty Visa rows at rank 9.  Narrowing each slot to its own
+        #: filer puts Visa back, and it does not help: release moved 46 -> 47 of
+        #: 95 with the compare cases unchanged at 7 of 20, `slots complete` fell
+        #: by two, and `EVIDENCE_CONFLICT` rose from 1 to 4.  The packet was
+        #: missing the filer, and the Binder still could not choose once it had
+        #: it.  One case is inside this binder's run-to-run spread, so the honest
+        #: reading is "no demonstrated gain" -- the same reading the structured
+        #: reranker got, and it is disabled for the same reason.
+        self.entity_key_lookup = entity_key_lookup
+
+    def _slot_allowed_keys(
+        self,
+        allowed_keys: dict[str, set[str] | None],
+        request: SlotRetrievalRequestV1,
+        cross_entity: bool,
+    ) -> dict[str, set[str] | None]:
+        """Narrow one slot's lanes to the entity that slot names.
+
+        Only for a plan whose slots name more than one entity.  A slot that
+        names an entity may only be served by that entity's facts, and the check
+        is not new -- `_entity_matches_slot` already rejects a fact from another
+        company, so a wrong-entity candidate in the packet could never have been
+        bound.  What is new is doing it *before* the pool is cut.
+
+        That ordering is the whole point.  Every slot of a cross-entity plan
+        issues the same entity-less query, so the pool filled with the few
+        filers the lanes rank highest and the others were squeezed out
+        completely: for `which company had a higher Net income, Apple or Visa`
+        the twenty-candidate pool held seven Pfizer rows, four Tesla rows, one
+        Apple row and no Visa row at all -- while the lanes held sixty Visa rows
+        at rank 9.  No later stage can bind a candidate that was never carried.
+        """
+
+        if not cross_entity or self.entity_key_lookup is None:
+            return allowed_keys
+        keys = self.entity_key_lookup(
+            {str(getattr(request, "entity", "") or "")})
+        if not keys:
+            return allowed_keys
+        return {
+            lane: (set(keys) if allowed_keys[lane] is None
+                   else (allowed_keys[lane] & keys))
+            for lane in LANES
+        }
 
     def _allowed_keys_for_scope(
         self, document_scope: set[str]
@@ -317,21 +369,28 @@ class CandidateDirectRetriever:
         """
 
         allowed_keys = self._allowed_keys_for_scope(document_scope)
+        # A plan whose slots share an entity gets exactly the behaviour it has
+        # always had; only a plan that spans filers isolates per slot.
+        cross_entity = len(
+            {str(getattr(request, "entity", "") or "") for request in requests}
+            - {""}
+        ) > 1
         slot_pools: dict[str, list[CandidateRRFHit]] = {}
         slot_queries: dict[str, list[str]] = {}
         for request in requests:
+            slot_allowed = self._slot_allowed_keys(allowed_keys, request, cross_entity)
             variants = (
                 _slot_query_variants(request) if alias_expansion else [request.query]
             )
             slot_queries[request.slot_id] = list(variants)
             if len(variants) == 1:
-                lane_hits = self._search_lanes(variants[0], allowed_keys)
+                lane_hits = self._search_lanes(variants[0], slot_allowed)
             else:
                 # The same bounded variant merge the legacy path used, so the
                 # alias-priority penalty keeps its meaning.  What is new is that
                 # every variant here belongs to *one* slot.
                 lane_hits = self._merge_variant_lane_hits(
-                    [self._search_lanes(variant, allowed_keys) for variant in variants],
+                    [self._search_lanes(variant, slot_allowed) for variant in variants],
                     variant_priorities=[
                         self._variant_priority(variant) for variant in variants
                     ],

@@ -197,6 +197,37 @@ silently:
   shipped entity-less query, and 46.3% overall against 48.4%. The hypothesis is
   refuted, not untested.
 
+### The pool defect is real, and fixing it does not help
+
+`s3-compare-002` asks which of Apple and Visa had the higher FY2025 net income.
+Both slots issue `Net income FY2025`, and the twenty-candidate packet holds
+seven Pfizer rows, four Tesla rows, one Apple row and **no Visa row**. The lanes
+hold **747** candidates for that query, sixty of them Visa, best rank 9. So the
+filer is reachable and pool construction discards it.
+
+`CandidateDirectRetriever` now takes an `entity_key_lookup` that narrows each
+slot to its own filer, before the pool is cut. The filter cannot lose a valid
+binding -- `_entity_matches_slot` already rejects a fact from another company,
+so a wrong-entity candidate was never bindable -- and the packet does gain the
+missing filer. Measured:
+
+```
+                      shipped   entity-isolated
+released (of 95)          46            47
+compare cases           7/20          7/20
+slots complete         47/75         45/75
+EVIDENCE_CONFLICT          1             4
+```
+
+One case is inside this binder's run-to-run spread, so the honest reading is
+**no demonstrated gain**: the packet was missing the filer, and the Binder still
+could not choose once it had it -- `EVIDENCE_CONFLICT` rose, which is the
+Binder seeing *more* competing facts and refusing them.
+
+The lookup is therefore **off on every production call path**, exactly as the
+structured reranker is, and for the same reason. The seam and the store API stay
+so the next attempt starts from a measured position rather than a hypothesis.
+
 ## Not claimed
 
 - **60% was not reached.** 48.4% is the measured value, and 52.6% is the

@@ -497,6 +497,46 @@ class StructuredFactStore:
         key = _coordinate_key({"entity": entity, "metric": metric, "period": period})
         return tuple(self._by_coordinate.get(key, ()))
 
+    def candidate_keys_for_entities(
+        self, entities: Iterable[Any]
+    ) -> frozenset[str]:
+        """Every candidate key filed under any of these entity mentions.
+
+        Folded the way `facts_at_coordinate` folds, because a different spelling
+        of a company is not a different company.  Built on first use and kept:
+        the store is immutable for the life of a request.
+
+        This is the store's answer to "which candidates are this filer's", which
+        is the question retrieval has to ask *before* it cuts the pool.  Asking
+        it afterwards is asking about candidates already discarded.
+        """
+
+        wanted = {
+            _coordinate_key({"entity": entity})[0]
+            for entity in entities
+            if entity
+        }
+        wanted.discard("")
+        if not wanted:
+            return frozenset()
+        index = self._entity_keys()
+        keys: set[str] = set()
+        for entity in wanted:
+            keys |= index.get(entity, frozenset())
+        return frozenset(keys)
+
+    def _entity_keys(self) -> dict[str, frozenset[str]]:
+        cached = getattr(self, "_entity_key_cache", None)
+        if cached is not None:
+            return cached
+        index: dict[str, set[str]] = {}
+        for key, record in self._by_candidate.items():
+            index.setdefault(_coordinate_key(record)[0], set()).add(str(key))
+        self._entity_key_cache = {
+            entity: frozenset(keys) for entity, keys in index.items()
+        }
+        return self._entity_key_cache
+
     def iter_records(self) -> tuple[Mapping[str, Any], ...]:
         """Every stored fact, once.
 
