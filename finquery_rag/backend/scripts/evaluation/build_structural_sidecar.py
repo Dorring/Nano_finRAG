@@ -138,17 +138,28 @@ class _Dom(HTMLParser):
 def _heading_for(flow: list[tuple], index: int) -> str:
     """The caption above the table at ``index``.
 
-    The nearest line is not it: the line above the income statement is
-    `(In millions except per share data)`.  A statement caption is bold, short,
-    and above that, so a bold text run is preferred and the nearest text run is
-    the fallback.
+    **Bounded by the previous table.**  A caption belongs to the table below it,
+    not to whatever bold prose preceded the previous table, so the search walks
+    back only as far as the last table boundary.  Without that bound the window
+    is a fixed length, and a fixed length was wrong in both directions: long
+    enough to reach the income statement's caption from a segment table, and
+    short enough to land on prose for the income statement itself.
+
+    Within the section the nearest bold run wins, because these filings mark a
+    statement caption with `font-weight:700` and the line directly above the
+    statement -- `(In millions except per share data)` -- is not bold.
     """
 
-    texts = [item for item in flow[:index] if item[0] == "text"]
-    for item in reversed(texts[-12:]):
+    window: list[tuple] = []
+    for item in reversed(flow[:index]):
+        if item[0] == "table":
+            break
+        window.append(item)
+    texts = [item for item in window if item[0] == "text"]
+    for item in texts:
         if item[2] and len(item[1]) <= 90:
             return item[1]
-    for item in reversed(texts[-6:]):
+    for item in texts:
         if len(item[1]) <= 90:
             return item[1]
     return ""
