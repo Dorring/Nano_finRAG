@@ -218,6 +218,52 @@ the same shape. And it does not make the migration smaller: recovering a table's
 column structure means re-extracting from the corpus, which is the data project
 the invalidation table above describes.
 
+## The finding that outranks the coverage question
+
+`tv2f01-s2-sum-007` asks for The Coca-Cola Company's operating income across
+FY2024 and FY2025. The gold expects `25,962`, which is `12,536 + 13,426`.
+Neither number is Coca-Cola's.
+
+The filing has two tables carrying an `Operating income` row:
+
+```
+table 3651   caption: CONSOLIDATED STATEMENTS OF INCOME
+             Net Operating Revenues | $ | 47,941 | $ | 47,061 | $ | 45,754
+             Operating Income       | 13,762 | 9,992 | 11,311
+
+table 4107   introduced by: "A summary of financial information for our
+             equity method investees"
+             Net operating revenues | $ | 102,800 | $ | 99,043
+             Operating income       | $ |  13,426 | $ |  12,536
+             Consolidated net income| $ |   9,355 | $ |   8,439
+             Less: noncontrolling interests | 153 | 98 | 75
+```
+
+Coca-Cola's own net operating revenues are **47,941**. The gold's facts come
+from **4107** -- the equity-method investees' combined statement. Coca-Cola's own
+two-year sum is `13,762 + 9,992 = 23,754`, not 25,962.
+
+**Two consequences.**
+
+The case is not a system failure. The store recorded 4107's row with
+`entity='The Coca-Cola Company'` because it is Coca-Cola's filing and Coca-Cola's
+note, so every downstream entity check -- including mine -- passes. What the
+store cannot express is *which table a row came from*, and a note table's figures
+therefore inherit the filer. This is the same table-semantics gap the audit is
+about, seen from the side where it costs coverage rather than recall.
+
+**And an entity check cannot detect it.** The last audit ran
+`entity == the question's company` across every comparable case with resolved
+gold: 40 consistent, 0 mismatched. That result is not evidence the attribution is
+right; it is evidence the check is blind to this defect class. The wrong table
+inherits the right entity, which is exactly why the last three explanations I
+proposed -- a gold defect, a store entity defect, a parser defect -- each looked
+supported and each was wrong.
+
+The check that works is comparing the two tables' **revenue**: 47,941 against
+102,800. A row whose table reports a different filer's totals is not that
+filer's row, whatever `entity` says.
+
 ## What B would invalidate
 
 | | classification |
