@@ -1,88 +1,126 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" width="1200" height="240">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 230" width="1200" height="230">
   <defs>
-    <linearGradient id="mBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090E17" />
-      <stop offset="100%" stop-color="#0F172A" />
+    <linearGradient id="metricCanvasBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F8FAFC" />
     </linearGradient>
-    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.9" />
-      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9" />
-    </linearGradient>
-    <linearGradient id="borderGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.4" />
-    </linearGradient>
-    <filter id="mCardShadow" x="-5%" y="-10%" width="110%" height="125%">
-      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.35" />
+
+    <!-- Card Drop Shadows -->
+    <filter id="mShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#64748B" flood-opacity="0.10" />
     </filter>
   </defs>
 
   <style>
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
     .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    .kpi-title { font-size: 11.5px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
-    .kpi-num { font-size: 30px; font-weight: 800; letter-spacing: -0.8px; }
-    .kpi-desc { font-size: 12px; fill: #94A3B8; font-weight: 400; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .m-title { font-size: 11px; font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase; }
+    .m-val { font-size: 32px; font-weight: 900; letter-spacing: -0.8px; }
+    .m-desc { font-size: 11.5px; font-weight: 500; }
   </style>
 
-  <rect width="1200" height="240" rx="14" fill="url(#mBg)" stroke="#1E293B" stroke-width="1.2" />
+  <!-- Background Base -->
+  <rect width="1200" height="230" rx="14" fill="url(#metricCanvasBg)" stroke="#CBD5E1" stroke-width="1.2" />
 
   <!-- Header line -->
-  <g transform="translate(40, 28)">
-    <text class="sans" font-size="14" font-weight="700" fill="#38BDF8" letter-spacing="1px">BENCHMARK V2 KEY PERFORMANCE METRICS</text>
-    <text class="sans" font-size="13" font-weight="400" fill="#64748B" x="385">|  120 SEC Filings Questions (77 Answerable / 43 Abstention) · Frozen &amp; Sealed</text>
+  <g transform="translate(35, 24)">
+    <circle cx="6" cy="7" r="4" fill="#2563EB" />
+    <text x="18" y="11" class="sans" font-size="14" font-weight="800" fill="#0F172A" letter-spacing="0.5px">BENCHMARK V2 KEY PERFORMANCE METRICS</text>
+    <text x="375" y="11" class="sans" font-size="13" font-weight="500" fill="#64748B">|  SEC Financial Reporting · End-to-End Production Verification</text>
   </g>
 
-  <!-- 5 Cards Row -->
-  <g transform="translate(40, 60)">
-    <!-- Card 1: Released Accuracy -->
-    <g transform="translate(0, 0)" filter="url(#mCardShadow)">
-      <rect width="210" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
-      <rect width="210" height="3" rx="1.5" fill="#10B981" />
-      <text x="18" y="32" class="sans kpi-title" fill="#10B981">RELEASED ACCURACY</text>
-      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">100%</text>
-      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#34D399">52 / 52 Correct</text>
-      <text x="18" y="128" class="sans kpi-desc">0 Incorrect Releases</text>
+  <!-- 5 Distinct Cards -->
+  <g transform="translate(35, 50)">
+    
+    <!-- Card 1: Released Accuracy (100%) -->
+    <g transform="translate(0, 0)" filter="url(#mShadow)">
+      <rect width="210" height="155" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect width="210" height="4" rx="2" fill="#10B981" />
+      <!-- Icon: Target & Checkmark -->
+      <g transform="translate(18, 20)">
+        <circle cx="16" cy="16" r="16" fill="#ECFDF5" />
+        <path d="M 10 16 L 14 20 L 22 12" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+        <text x="40" y="20" class="sans m-title" fill="#059669">ACCURACY</text>
+      </g>
+      <text x="18" y="88" class="sans m-val" fill="#0F172A">100%</text>
+      <!-- Visual status badge -->
+      <rect x="18" y="98" width="136" height="22" rx="4" fill="#ECFDF5" />
+      <text x="26" y="113" class="sans" font-size="11" font-weight="700" fill="#047857">0 Incorrect Releases</text>
+      <text x="18" y="138" class="sans m-desc" fill="#64748B">Zero Hallucination Rate</text>
     </g>
 
-    <!-- Card 2: Release Coverage -->
-    <g transform="translate(228, 0)" filter="url(#mCardShadow)">
-      <rect width="210" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
-      <rect width="210" height="3" rx="1.5" fill="#6366F1" />
-      <text x="18" y="32" class="sans kpi-title" fill="#818CF8">TRUSTED COVERAGE</text>
-      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">67.53%</text>
-      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#A5B4FC">52 / 77 Released</text>
-      <text x="18" y="128" class="sans kpi-desc">Zero Guessing on Conflict</text>
+    <!-- Card 2: Structured Rerank (85.3%) -->
+    <g transform="translate(230, 0)" filter="url(#mShadow)">
+      <rect width="210" height="155" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect width="210" height="4" rx="2" fill="#2563EB" />
+      <!-- Icon: Rocket / Dual-stage Search -->
+      <g transform="translate(18, 20)">
+        <circle cx="16" cy="16" r="16" fill="#EFF6FF" />
+        <path d="M 16 7 L 21 17 L 18 17 L 18 24 L 14 24 L 14 17 L 11 17 Z" fill="#2563EB" />
+        <text x="40" y="20" class="sans m-title" fill="#1D4ED8">+ RERANK R@5</text>
+      </g>
+      <text x="18" y="88" class="sans m-val" fill="#0F172A">85.3%</text>
+      <!-- Visual status badge -->
+      <rect x="18" y="98" width="144" height="22" rx="4" fill="#EFF6FF" />
+      <text x="24" y="113" class="sans" font-size="11" font-weight="700" fill="#1E40AF">95.3% Top-20 Recall</text>
+      <text x="18" y="138" class="sans m-desc" fill="#64748B">+34.6% Structured Boost</text>
     </g>
 
-    <!-- Card 3: Correct Refusal -->
-    <g transform="translate(456, 0)" filter="url(#mCardShadow)">
-      <rect width="210" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
-      <rect width="210" height="3" rx="1.5" fill="#F59E0B" />
-      <text x="18" y="32" class="sans kpi-title" fill="#FBBF24">CORRECT REFUSAL</text>
-      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">100%</text>
-      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#FDE68A">43 / 43 Blocked</text>
-      <text x="18" y="128" class="sans kpi-desc">Total Fail-Closed Defense</text>
+    <!-- Card 3: Citation Grounding (96.0%) -->
+    <g transform="translate(460, 0)" filter="url(#mShadow)">
+      <rect width="210" height="155" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect width="210" height="4" rx="2" fill="#7C3AED" />
+      <!-- Icon: Document Audit -->
+      <g transform="translate(18, 20)">
+        <circle cx="16" cy="16" r="16" fill="#F5F3FF" />
+        <path d="M 10 9 L 19 9 L 22 12 L 22 23 L 10 23 Z" fill="none" stroke="#7C3AED" stroke-width="1.6" />
+        <circle cx="15" cy="17" r="2.5" fill="#7C3AED" />
+        <line x1="17" y1="19" x2="20" y2="22" stroke="#7C3AED" stroke-width="1.5" />
+        <text x="40" y="20" class="sans m-title" fill="#6D28D9">CITATION FIDELITY</text>
+      </g>
+      <text x="18" y="88" class="sans m-val" fill="#0F172A">96.0%</text>
+      <!-- Visual status badge -->
+      <rect x="18" y="98" width="138" height="22" rx="4" fill="#F5F3FF" />
+      <text x="24" y="113" class="sans" font-size="11" font-weight="700" fill="#6D28D9">95.3% Evidence Recall</text>
+      <text x="18" y="138" class="sans m-desc" fill="#64748B">Canonical Entity Binding</text>
     </g>
 
-    <!-- Card 4: Citation Grounding -->
-    <g transform="translate(684, 0)" filter="url(#mCardShadow)">
-      <rect width="210" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
-      <rect width="210" height="3" rx="1.5" fill="#8B5CF6" />
-      <text x="18" y="32" class="sans kpi-title" fill="#A78BFA">CITATION FIDELITY</text>
-      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">96.0%</text>
-      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#C4B5FD">95.3% Recall</text>
-      <text x="18" y="128" class="sans kpi-desc">Canonical Financial Identity</text>
+    <!-- Card 4: Correct Refusal (100%) -->
+    <g transform="translate(690, 0)" filter="url(#mShadow)">
+      <rect width="210" height="155" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect width="210" height="4" rx="2" fill="#F59E0B" />
+      <!-- Icon: Shield Lock -->
+      <g transform="translate(18, 20)">
+        <circle cx="16" cy="16" r="16" fill="#FFFBEB" />
+        <path d="M 16 8 L 23 11 L 23 17 C 23 22 16 25 16 25 C 16 25 9 22 9 17 L 9 11 Z" fill="#F59E0B" />
+        <circle cx="16" cy="16" r="1.8" fill="#FFFFFF" />
+        <line x1="16" y1="18" x2="16" y2="20" stroke="#FFFFFF" stroke-width="1.5" />
+        <text x="40" y="20" class="sans m-title" fill="#B45309">SAFE REFUSAL</text>
+      </g>
+      <text x="18" y="88" class="sans m-val" fill="#0F172A">100%</text>
+      <!-- Visual status badge -->
+      <rect x="18" y="98" width="144" height="22" rx="4" fill="#FFFBEB" />
+      <text x="24" y="113" class="sans" font-size="11" font-weight="700" fill="#B45309">Fail-Closed Defense</text>
+      <text x="18" y="138" class="sans m-desc" fill="#64748B">Zero Guessing on Conflict</text>
     </g>
 
-    <!-- Card 5: Hybrid RRF Retrieval -->
-    <g transform="translate(912, 0)" filter="url(#mCardShadow)">
-      <rect width="208" height="150" rx="10" fill="url(#cardGrad1)" stroke="url(#borderGrad1)" stroke-width="1" />
-      <rect width="208" height="3" rx="1.5" fill="#06B6D4" />
-      <text x="18" y="32" class="sans kpi-title" fill="#22D3EE">PRODUCTION RETRIEVAL</text>
-      <text x="18" y="74" class="sans kpi-num" fill="#F8FAFC">50.7%</text>
-      <text x="18" y="100" class="mono" font-size="12" font-weight="600" fill="#67E8F9">R@5 (58.0% R@10)</text>
-      <text x="18" y="128" class="sans kpi-desc">Hybrid BM25+Dense RRF</text>
+    <!-- Card 5: Trusted Coverage (67.5%) -->
+    <g transform="translate(920, 0)" filter="url(#mShadow)">
+      <rect width="210" height="155" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+      <rect width="210" height="4" rx="2" fill="#0D9488" />
+      <!-- Icon: Certified Badge -->
+      <g transform="translate(18, 20)">
+        <circle cx="16" cy="16" r="16" fill="#F0FDFA" />
+        <circle cx="16" cy="16" r="9" fill="none" stroke="#0D9488" stroke-width="2" stroke-dasharray="4 2" />
+        <circle cx="16" cy="16" r="3.5" fill="#0D9488" />
+        <text x="40" y="20" class="sans m-title" fill="#0F766E">COVERAGE</text>
+      </g>
+      <text x="18" y="88" class="sans m-val" fill="#0F172A">67.5%</text>
+      <!-- Visual status badge -->
+      <rect x="18" y="98" width="142" height="22" rx="4" fill="#F0FDFA" />
+      <text x="24" y="113" class="sans" font-size="11" font-weight="700" fill="#0F766E">High-Confidence Zone</text>
+      <text x="18" y="138" class="sans m-desc" fill="#64748B">Strict Verification Boundary</text>
     </g>
+
   </g>
 </svg>

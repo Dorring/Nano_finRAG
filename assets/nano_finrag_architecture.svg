@@ -1,341 +1,347 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" width="1200" height="740">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680">
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="canvasBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#070B12" />
-      <stop offset="50%" stop-color="#0E1626" />
-      <stop offset="100%" stop-color="#080C15" />
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F8FAFC" />
     </linearGradient>
 
-    <!-- Stage Box Gradients -->
-    <linearGradient id="stageContext" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85" />
-      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95" />
-    </linearGradient>
-    <linearGradient id="stagePlan" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85" />
-      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95" />
-    </linearGradient>
-    <linearGradient id="stageAdaptive" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1A2234" stop-opacity="0.9" />
-      <stop offset="100%" stop-color="#0D1524" stop-opacity="0.95" />
-    </linearGradient>
-    <linearGradient id="stageCalc" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85" />
-      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95" />
-    </linearGradient>
-    <linearGradient id="stageRelease" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85" />
-      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95" />
-    </linearGradient>
-
-    <!-- Sub-Box Gradients -->
-    <linearGradient id="subBox" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B" />
-      <stop offset="100%" stop-color="#131D2E" />
-    </linearGradient>
-    <linearGradient id="storeBox" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#172554" />
-      <stop offset="100%" stop-color="#0F172A" />
-    </linearGradient>
-
-    <!-- Node Border & Glow Gradients -->
-    <linearGradient id="cyanBorder" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.3" />
-    </linearGradient>
-    <linearGradient id="indigoBorder" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#4F46E5" stop-opacity="0.3" />
-    </linearGradient>
-    <linearGradient id="emeraldBorder" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#34D399" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#059669" stop-opacity="0.3" />
-    </linearGradient>
-    <linearGradient id="amberBorder" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#D97706" stop-opacity="0.3" />
-    </linearGradient>
-    <linearGradient id="roseBorder" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#F43F5E" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#BE123C" stop-opacity="0.3" />
-    </linearGradient>
-
-    <!-- Arrows & Markers -->
-    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M 0 1 L 9 5 L 0 9 z" fill="#38BDF8" />
-    </marker>
-    <marker id="arrowIndigo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M 0 1 L 9 5 L 0 9 z" fill="#818CF8" />
-    </marker>
-    <marker id="arrowEmerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M 0 1 L 9 5 L 0 9 z" fill="#10B981" />
-    </marker>
-    <marker id="arrowRose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M 0 1 L 9 5 L 0 9 z" fill="#F43F5E" />
-    </marker>
-    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M 0 1 L 9 5 L 0 9 z" fill="#F59E0B" />
-    </marker>
-    <marker id="arrowMuted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-      <path d="M 0 1 L 8 5 L 0 9 z" fill="#64748B" />
-    </marker>
-
-    <!-- Drop Shadow Filter -->
-    <filter id="panelShadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.4" />
+    <!-- Card Drop Shadow -->
+    <filter id="boxShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#64748B" flood-opacity="0.08" />
     </filter>
+
+    <!-- Flow Markers -->
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#2563EB" />
+    </marker>
+    <marker id="arrIndigo" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#4F46E5" />
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#10B981" />
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#F59E0B" />
+    </marker>
   </defs>
 
   <style>
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
     .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    .stage-num { font-size: 11px; font-weight: 800; letter-spacing: 1px; }
-    .stage-title { font-size: 14.5px; font-weight: 700; fill: #F8FAFC; letter-spacing: -0.2px; }
-    .box-title { font-size: 12.5px; font-weight: 700; fill: #E2E8F0; }
-    .box-desc { font-size: 11px; fill: #94A3B8; }
-    .tag-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .card-title { font-size: 14px; font-weight: 800; letter-spacing: -0.2px; }
+    .item-text { font-size: 11.5px; font-weight: 500; fill: #334155; }
   </style>
 
   <!-- Background Canvas -->
-  <rect width="1200" height="740" rx="16" fill="url(#canvasBg)" stroke="#1E293B" stroke-width="1.5" />
+  <rect width="1200" height="680" rx="16" fill="url(#archBg)" stroke="#CBD5E1" stroke-width="1.2" />
 
-  <!-- Grid lines -->
-  <g stroke="#334155" stroke-opacity="0.12" stroke-width="1">
-    <line x1="0" y1="90" x2="1200" y2="90" />
-    <line x1="0" y1="410" x2="1200" y2="410" />
-    <line x1="390" y1="90" x2="390" y2="740" />
-    <line x1="800" y1="90" x2="800" y2="740" />
+  <!-- Subtle Blueprint Grid Lines -->
+  <g stroke="#E2E8F0" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="0" y1="75" x2="1200" y2="75" />
+    <line x1="0" y1="365" x2="1200" y2="365" />
+    <line x1="395" y1="75" x2="395" y2="680" />
+    <line x1="795" y1="75" x2="795" y2="680" />
   </g>
 
-  <!-- Title Header -->
-  <g transform="translate(45, 30)">
-    <rect width="180" height="26" rx="13" fill="#1E293B" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.4" />
-    <circle cx="13" cy="13" r="4" fill="#38BDF8" />
-    <text x="25" y="17" class="mono tag-badge" fill="#38BDF8">V2 PRODUCTION ENGINE</text>
+  <!-- Header Section -->
+  <g transform="translate(45, 22)">
+    <!-- Badge -->
+    <rect width="165" height="28" rx="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1" />
+    <circle cx="15" cy="14" r="4.5" fill="#2563EB" />
+    <text x="27" y="18.5" class="sans" font-size="11.5" font-weight="700" fill="#1E40AF">V2 PIPELINE ENGINE</text>
 
-    <text x="195" y="20" class="sans" font-size="22" font-weight="800" fill="#F8FAFC">Nano_finRAG Production Architecture &amp; Execution Pipeline</text>
-    <text x="195" y="42" class="sans" font-size="12.5" fill="#94A3B8">Strictly Verified Live Path: End-to-End Contract Binding, Deterministic Calculation &amp; Fail-Closed Safety</text>
+    <text x="180" y="20" class="sans" font-size="20" font-weight="900" fill="#0F172A">Nano_finRAG Production Architecture &amp; Execution Pipeline</text>
+    <text x="180" y="38" class="sans" font-size="12" font-weight="500" fill="#64748B">Zero-Hallucination SEC Financial QA: Contract Binding, Deterministic Math &amp; Safe Refusal Gate</text>
   </g>
 
-  <!-- ================= STAGE 1: MULTI-TURN CONTEXT & INGESTION ================= -->
-  <g transform="translate(45, 100)" filter="url(#panelShadow)">
-    <rect width="325" height="280" rx="12" fill="url(#stageContext)" stroke="url(#cyanBorder)" stroke-width="1.2" />
-    <!-- Header Banner -->
-    <rect width="325" height="3" rx="1.5" fill="#38BDF8" />
-    <text x="18" y="26" class="mono stage-num" fill="#38BDF8">STAGE 01</text>
-    <text x="18" y="46" class="sans stage-title">Multi-Turn Context &amp; Ingestion</text>
+  <!-- ==================== ROW 1: Stages 1, 2, 3 ==================== -->
 
-    <!-- Sub-Box 1: Session & History -->
-    <g transform="translate(18, 62)">
-      <rect width="289" height="58" rx="8" fill="url(#subBox)" stroke="#334155" stroke-width="0.8" />
-      <text x="14" y="22" class="sans box-title">Session &amp; Turn Management</text>
-      <text x="14" y="40" class="sans box-desc">SQLite state store · User profile &amp; history tracking</text>
+  <!-- STAGE 1: Multi-Turn Context & Query Rewriter -->
+  <g transform="translate(45, 95)" filter="url(#boxShadow)">
+    <rect width="320" height="245" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+    <rect width="320" height="4" rx="2" fill="#2563EB" />
+    
+    <!-- Stage Header with Chat/Rewrite Icon -->
+    <g transform="translate(18, 18)">
+      <circle cx="16" cy="16" r="16" fill="#EFF6FF" />
+      <path d="M 9 11 C 9 8.5 11 7 14 7 L 19 7 C 22 7 24 8.5 24 11 L 24 16 C 24 18.5 22 20 19 20 L 17 20 L 13 23 L 13 20 L 12 20 C 10 20 9 18.5 9 16 Z" fill="#2563EB" />
+      <text x="42" y="14" class="sans" font-size="10.5" font-weight="800" fill="#2563EB">STAGE 01</text>
+      <text x="42" y="27" class="sans card-title" fill="#0F172A">Context &amp; Query Rewrite</text>
     </g>
 
-    <!-- Sub-Box 2: Dynamic Denoising -->
-    <g transform="translate(18, 130)">
-      <rect width="289" height="62" rx="8" fill="url(#subBox)" stroke="#334155" stroke-width="0.8" />
-      <text x="14" y="20" class="sans box-title">Context Relevance Filter</text>
-      <text x="14" y="38" class="sans box-desc">Dynamic noise reduction: chitchat penalty (-5.0),</text>
-      <text x="14" y="52" class="sans box-desc">topic-switch penalty (-6.0), recency/entity boost</text>
-    </g>
-
-    <!-- Sub-Box 3: Contextual Query Resolver -->
-    <g transform="translate(18, 202)">
-      <rect width="289" height="64" rx="8" fill="url(#subBox)" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.4" />
-      <text x="14" y="20" class="sans box-title">Contextual Query Resolver</text>
-      <text x="14" y="38" class="sans box-desc">Coreference resolution &amp; ellipsis reconstruction</text>
-      <text x="14" y="54" class="mono" font-size="11" fill="#38BDF8">↳ Output: Standalone Query</text>
-    </g>
-  </g>
-
-  <!-- Arrow: Stage 1 -> Stage 2 -->
-  <path d="M 370 240 L 420 240" stroke="#38BDF8" stroke-width="2" fill="none" marker-end="url(#arrowCyan)" />
-
-  <!-- ================= STAGE 2: SUPERVISOR PLANNING & SEMANTIC GATE ================= -->
-  <g transform="translate(425, 100)" filter="url(#panelShadow)">
-    <rect width="335" height="280" rx="12" fill="url(#stagePlan)" stroke="url(#indigoBorder)" stroke-width="1.2" />
-    <rect width="335" height="3" rx="1.5" fill="#818CF8" />
-    <text x="18" y="26" class="mono stage-num" fill="#818CF8">STAGE 02</text>
-    <text x="18" y="46" class="sans stage-title">Supervisor Planning &amp; Semantic Gate</text>
-
-    <!-- Sub-Box 1: Task Planning -->
-    <g transform="translate(18, 62)">
-      <rect width="299" height="70" rx="8" fill="url(#subBox)" stroke="#334155" stroke-width="0.8" />
-      <text x="14" y="20" class="sans box-title">SupervisorService (Bounded Planning)</text>
-      <text x="14" y="38" class="sans box-desc">Generates typed plan: Intent · Operation</text>
-      <text x="14" y="54" class="mono" font-size="11" fill="#818CF8">↳ RequiredSlots Contract (Entity, Metric, Period)</text>
-    </g>
-
-    <!-- Sub-Box 2: Semantic Alignment Gate -->
-    <g transform="translate(18, 142)">
-      <rect width="299" height="64" rx="8" fill="url(#subBox)" stroke="#6366F1" stroke-width="1" stroke-opacity="0.4" />
-      <text x="14" y="20" class="sans box-title">Semantic Alignment Gate</text>
-      <text x="14" y="38" class="sans box-desc">Checks metric recognition &amp; row-label grounding</text>
-      <text x="14" y="54" class="sans box-desc" fill="#A5B4FC">Rejects ungrounded or ambiguous query fields</text>
-    </g>
-
-    <!-- Fail-Closed Branch -->
-    <g transform="translate(18, 216)">
-      <rect width="299" height="50" rx="8" fill="#1C1917" stroke="#F43F5E" stroke-width="0.8" />
-      <text x="14" y="20" class="sans" font-weight="700" font-size="11.5" fill="#FB7185">Gate Refusal / Supervisor Abstain</text>
-      <text x="14" y="36" class="sans" font-size="10.5" fill="#FDA4AF">↳ Immediate Fail-Closed Refusal (with ReasonCode)</text>
-    </g>
-  </g>
-
-  <!-- Arrow: Stage 2 -> Stage 3 -->
-  <path d="M 760 240 L 810 240" stroke="#818CF8" stroke-width="2" fill="none" marker-end="url(#arrowIndigo)" />
-
-  <!-- ================= STAGE 3: BOUNDED ADAPTIVE RAG (RETRIEVAL & BINDING LOOP) ================= -->
-  <g transform="translate(815, 100)" filter="url(#panelShadow)">
-    <rect width="340" height="280" rx="12" fill="url(#stageAdaptive)" stroke="url(#amberBorder)" stroke-width="1.2" />
-    <rect width="340" height="3" rx="1.5" fill="#F59E0B" />
-    <text x="18" y="26" class="mono stage-num" fill="#F59E0B">STAGE 03</text>
-    <text x="18" y="46" class="sans stage-title">Bounded Adaptive Retrieval Loop</text>
-
-    <!-- Internal Loop Flow Diagram -->
-    <g transform="translate(16, 60)">
-      <!-- ACT: R4 Hybrid Retrieval -->
+    <!-- Visual Items -->
+    <g transform="translate(18, 68)">
       <g transform="translate(0, 0)">
-        <rect width="148" height="66" rx="6" fill="url(#subBox)" stroke="#F59E0B" stroke-width="0.8" />
-        <text x="10" y="18" class="mono" font-size="10.5" font-weight="800" fill="#FBBF24">[ACT] R4 Hybrid</text>
-        <text x="10" y="34" class="sans" font-size="10" fill="#94A3B8">BM25 + Dense (RRF k=60)</text>
-        <text x="10" y="48" class="sans" font-size="10" fill="#CBD5E1">Per-Slot Retrieval Demand</text>
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#3B82F6" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">Multi-Turn Session Context</text>
+        <text x="210" y="21" class="mono" font-size="10" font-weight="700" fill="#2563EB">Live Path</text>
       </g>
 
-      <!-- OBSERVE: Progress -->
-      <g transform="translate(160, 0)">
-        <rect width="148" height="66" rx="6" fill="url(#subBox)" stroke="#64748B" stroke-width="0.8" />
-        <text x="10" y="18" class="mono" font-size="10.5" font-weight="800" fill="#94A3B8">[OBSERVE] Progress</text>
-        <text x="10" y="34" class="sans" font-size="10" fill="#94A3B8">Evidence packet capture</text>
-        <text x="10" y="48" class="sans" font-size="10" fill="#CBD5E1">ProgressDetector signature</text>
+      <g transform="translate(0, 42)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#6366F1" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">Pronoun Resolution &amp; Anchor</text>
+        <text x="215" y="21" class="mono" font-size="10" font-weight="700" fill="#4F46E5">Resolved</text>
       </g>
 
-      <!-- EVALUATE: Semantic Binder -->
-      <g transform="translate(0, 76)">
-        <rect width="148" height="74" rx="6" fill="url(#subBox)" stroke="#38BDF8" stroke-width="0.8" />
-        <text x="10" y="18" class="mono" font-size="10.5" font-weight="800" fill="#38BDF8">[EVALUATE] Binder</text>
-        <text x="10" y="34" class="sans" font-size="10" fill="#94A3B8">One value per slot</text>
-        <text x="10" y="48" class="sans" font-size="10" fill="#94A3B8">Unresolved conflict test</text>
-        <text x="10" y="62" class="mono" font-size="9.5" fill="#38BDF8">SUFFICIENT / REPAIRABLE</text>
+      <g transform="translate(0, 84)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#0D9488" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">Standalone Query Synthesis</text>
+        <text x="218" y="21" class="mono" font-size="10" font-weight="700" fill="#0D9488">Rewritten</text>
       </g>
 
-      <!-- REPLAN: Targeted Re-retrieval -->
-      <g transform="translate(160, 76)">
-        <rect width="148" height="74" rx="6" fill="url(#subBox)" stroke="#F59E0B" stroke-width="0.8" />
-        <text x="10" y="18" class="mono" font-size="10.5" font-weight="800" fill="#FBBF24">[REPLAN] Repair</text>
-        <text x="10" y="34" class="sans" font-size="10" fill="#CBD5E1">Targeted Re-retrieval</text>
-        <text x="10" y="48" class="sans" font-size="10" fill="#94A3B8">Filters missing target_slots</text>
-        <text x="10" y="62" class="mono" font-size="9.5" fill="#FBBF24">Bounded: Max 2 rounds</text>
-      </g>
-
-      <!-- Loop cycle connector line -->
-      <path d="M 234 76 L 234 66" stroke="#F59E0B" stroke-width="1.5" fill="none" marker-end="url(#arrowAmber)" />
-      <path d="M 74 112 L 160 112" stroke="#F59E0B" stroke-width="1.5" fill="none" marker-end="url(#arrowAmber)" />
-    </g>
-
-    <!-- Adaptive State & Budget Bounds -->
-    <g transform="translate(16, 222)">
-      <rect width="308" height="46" rx="6" fill="#18181B" stroke="#3F3F46" stroke-width="0.8" />
-      <text x="12" y="18" class="mono" font-size="10.5" font-weight="700" fill="#FBBF24">AdaptiveActionPolicy Guards:</text>
-      <text x="12" y="34" class="mono" font-size="10" fill="#A1A1AA">Max replan: 2 · Max tool calls: 5 · Same tool retry: 1</text>
-    </g>
-  </g>
-
-  <!-- Connective Downward Arrow from Stage 3 to Stage 4 -->
-  <path d="M 985 380 L 985 415 L 210 415 L 210 440" stroke="#10B981" stroke-width="2" fill="none" marker-end="url(#arrowEmerald)" />
-  <text x="590" y="410" class="mono" font-size="11" font-weight="700" fill="#10B981" text-anchor="middle">[EVALUATE: Evidence SUFFICIENT → Exit Loop to Computation &amp; Release]</text>
-
-  <!-- ================= STAGE 4: DETERMINISTIC CALCULATION ================= -->
-  <g transform="translate(45, 445)" filter="url(#panelShadow)">
-    <rect width="325" height="260" rx="12" fill="url(#stageCalc)" stroke="url(#cyanBorder)" stroke-width="1.2" />
-    <rect width="325" height="3" rx="1.5" fill="#06B6D4" />
-    <text x="18" y="26" class="mono stage-num" fill="#06B6D4">STAGE 04</text>
-    <text x="18" y="46" class="sans stage-title">Deterministic Calculation</text>
-
-    <!-- Sub-Box 1: Mathematical Engine -->
-    <g transform="translate(18, 62)">
-      <rect width="289" height="78" rx="8" fill="url(#subBox)" stroke="#334155" stroke-width="0.8" />
-      <text x="14" y="20" class="sans box-title">DeterministicCalculationCapability</text>
-      <text x="14" y="38" class="sans box-desc">9 registered operations: diff, sum, growth, share,</text>
-      <text x="14" y="52" class="sans box-desc">margin, ratio, scale, average, compound growth</text>
-      <text x="14" y="68" class="mono" font-size="10.5" fill="#38BDF8">Python Decimal · Strict Precision Control</text>
-    </g>
-
-    <!-- Sub-Box 2: Operand Admission -->
-    <g transform="translate(18, 148)">
-      <rect width="289" height="82" rx="8" fill="url(#subBox)" stroke="#06B6D4" stroke-width="1" stroke-opacity="0.4" />
-      <text x="14" y="20" class="sans box-title">Operand Uniqueness &amp; Ambiguity Guard</text>
-      <text x="14" y="38" class="sans box-desc">Checks against authoritative Fact Store:</text>
-      <text x="14" y="52" class="sans box-desc">"Does this coordinate identify exactly ONE value?"</text>
-      <text x="14" y="68" class="mono" font-size="10.5" font-weight="700" fill="#10B981">✓ LLM strictly barred from performing math</text>
-    </g>
-  </g>
-
-  <!-- Arrow: Stage 4 -> Stage 5 -->
-  <path d="M 370 575 L 420 575" stroke="#06B6D4" stroke-width="2" fill="none" marker-end="url(#arrowCyan)" />
-
-  <!-- ================= STAGE 5: SPECIALIST LM NARRATIVE ================= -->
-  <g transform="translate(425, 445)" filter="url(#panelShadow)">
-    <rect width="335" height="260" rx="12" fill="url(#stagePlan)" stroke="url(#indigoBorder)" stroke-width="1.2" />
-    <rect width="335" height="3" rx="1.5" fill="#818CF8" />
-    <text x="18" y="26" class="mono stage-num" fill="#818CF8">STAGE 05</text>
-    <text x="18" y="46" class="sans stage-title">Financial Specialist LM</text>
-
-    <g transform="translate(18, 62)">
-      <rect width="299" height="78" rx="8" fill="url(#subBox)" stroke="#334155" stroke-width="0.8" />
-      <text x="14" y="20" class="sans box-title">TrustedV2GenerationCapability</text>
-      <text x="14" y="38" class="sans box-desc">Produces contextual financial explanation</text>
-      <text x="14" y="54" class="sans box-desc" fill="#A5B4FC">Operands &amp; results injected deterministically</text>
-      <text x="14" y="68" class="mono" font-size="10.5" fill="#818CF8">↳ Narrative Synthesis Only</text>
-    </g>
-
-    <g transform="translate(18, 148)">
-      <rect width="299" height="82" rx="8" fill="#18181B" stroke="#4F46E5" stroke-width="0.8" />
-      <text x="14" y="20" class="sans box-title">Boundary Model Firewall</text>
-      <text x="14" y="38" class="sans box-desc">Enforces provider-neutral ModelProviderV1 seam.</text>
-      <text x="14" y="52" class="sans box-desc">Prevents free-form reasoning from altering numbers.</text>
-      <text x="14" y="68" class="mono" font-size="10.5" fill="#C7D2FE">Hardware isolated on GPU 0/1</text>
-    </g>
-  </g>
-
-  <!-- Arrow: Stage 5 -> Stage 6 -->
-  <path d="M 760 575 L 810 575" stroke="#10B981" stroke-width="2" fill="none" marker-end="url(#arrowEmerald)" />
-
-  <!-- ================= STAGE 6: RELEASE VALIDATION GATE ================= -->
-  <g transform="translate(815, 445)" filter="url(#panelShadow)">
-    <rect width="340" height="260" rx="12" fill="url(#stageRelease)" stroke="url(#emeraldBorder)" stroke-width="1.2" />
-    <rect width="340" height="3" rx="1.5" fill="#10B981" />
-    <text x="18" y="26" class="mono stage-num" fill="#10B981">STAGE 06</text>
-    <text x="18" y="46" class="sans stage-title">Release Validation &amp; Safety Gate</text>
-
-    <!-- Sub-Box 1: Triple Validation Gate -->
-    <g transform="translate(18, 62)">
-      <rect width="304" height="84" rx="8" fill="url(#subBox)" stroke="#10B981" stroke-width="1" stroke-opacity="0.4" />
-      <text x="14" y="20" class="sans box-title">TrustedReleaseValidationCapability</text>
-      <text x="14" y="38" class="sans box-desc">1. Numeric Consistency: claim matches calculation</text>
-      <text x="14" y="52" class="sans box-desc">2. Scope Consistency: consolidated vs segment check</text>
-      <text x="14" y="66" class="sans box-desc">3. Citation Grounding: canonical financial identity</text>
-    </g>
-
-    <!-- Out-come branches: Release vs Fail-Closed -->
-    <g transform="translate(18, 156)">
-      <!-- PASS: 100% Release -->
-      <rect width="146" height="74" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="1.2" />
-      <text x="10" y="22" class="sans" font-weight="800" font-size="12" fill="#34D399">RELEASED</text>
-      <text x="10" y="40" class="sans" font-size="10.5" fill="#A7F3D0">100% Accuracy</text>
-      <text x="10" y="56" class="mono" font-size="10" fill="#6EE7B7">52 / 52 Correct</text>
-      <text x="10" y="68" class="mono" font-size="9" fill="#D1FAE5">0 False Releases</text>
-
-      <!-- FAIL: Fail-Closed -->
-      <g transform="translate(158, 0)">
-        <rect width="146" height="74" rx="8" fill="#4C0519" stroke="#F43F5E" stroke-width="1.2" />
-        <text x="10" y="22" class="sans" font-weight="800" font-size="12" fill="#FB7185">FAIL-CLOSED</text>
-        <text x="10" y="40" class="sans" font-size="10.5" fill="#FECDD3">100% Safe Refusal</text>
-        <text x="10" y="56" class="mono" font-size="10" fill="#FDA4AF">43 / 43 Blocked</text>
-        <text x="10" y="68" class="mono" font-size="9" fill="#FFE4E6">Terminal ReasonCode</text>
+      <g transform="translate(0, 126)">
+        <rect width="284" height="30" rx="6" fill="#EFF6FF" />
+        <text x="12" y="19" class="sans" font-size="11" font-weight="600" fill="#1D4ED8">
+          Token Budgeting &amp; Noise Denoising
+        </text>
       </g>
     </g>
   </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 365 215 L 435 215" stroke="#2563EB" stroke-width="2" marker-end="url(#arrBlue)" />
+
+  <!-- STAGE 2: Multi-Track Retrieval & Structured Rerank -->
+  <g transform="translate(440, 95)" filter="url(#boxShadow)">
+    <rect width="320" height="245" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+    <rect width="320" height="4" rx="2" fill="#4F46E5" />
+    
+    <!-- Header with Radar / Multi-Track Icon -->
+    <g transform="translate(18, 18)">
+      <circle cx="16" cy="16" r="16" fill="#EEF2FF" />
+      <circle cx="16" cy="16" r="11" fill="none" stroke="#4F46E5" stroke-width="1.5" />
+      <circle cx="16" cy="16" r="4" fill="#4F46E5" />
+      <text x="42" y="14" class="sans" font-size="10.5" font-weight="800" fill="#4F46E5">STAGE 02</text>
+      <text x="42" y="27" class="sans card-title" fill="#0F172A">Multi-Track Retrieval</text>
+    </g>
+
+    <!-- Visual Track Items -->
+    <g transform="translate(18, 68)">
+      <g transform="translate(0, 0)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <text x="14" y="21" class="mono" font-size="11" font-weight="700" fill="#2563EB">Track A</text>
+        <text x="72" y="21" class="sans item-text">BM25 Lexical (Exact Terms)</text>
+      </g>
+
+      <g transform="translate(0, 42)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <text x="14" y="21" class="mono" font-size="11" font-weight="700" fill="#7C3AED">Track B</text>
+        <text x="72" y="21" class="sans item-text">Dense Embedding (Semantics)</text>
+      </g>
+
+      <g transform="translate(0, 84)">
+        <rect width="284" height="36" rx="6" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1.2" />
+        <text x="12" y="22" class="mono" font-size="11" font-weight="800" fill="#4338CA">Track C</text>
+        <text x="70" y="22" class="sans" font-size="11.5" font-weight="700" fill="#312E81">Structured Candidate Rerank</text>
+        <rect x="230" y="7" width="46" height="20" rx="4" fill="#4F46E5" />
+        <text x="235" y="21" class="mono" font-size="9" font-weight="800" fill="#FFFFFF">85.3%</text>
+      </g>
+
+      <g transform="translate(0, 128)">
+        <rect width="284" height="28" rx="6" fill="#F1F5F9" />
+        <text x="14" y="18" class="sans" font-size="10.5" font-weight="600" fill="#475569">
+          Reciprocal Rank Fusion (RRF k=60)
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 760 215 L 830 215" stroke="#4F46E5" stroke-width="2" marker-end="url(#arrIndigo)" />
+
+  <!-- STAGE 3: Evidence Binder & Uniqueness Guard -->
+  <g transform="translate(835, 95)" filter="url(#boxShadow)">
+    <rect width="320" height="245" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+    <rect width="320" height="4" rx="2" fill="#0D9488" />
+    
+    <!-- Header with Table / Alignment Icon -->
+    <g transform="translate(18, 18)">
+      <circle cx="16" cy="16" r="16" fill="#F0FDFA" />
+      <rect x="9" y="9" width="14" height="14" rx="2" fill="none" stroke="#0D9488" stroke-width="1.5" />
+      <line x1="9" y1="16" x2="23" y2="16" stroke="#0D9488" stroke-width="1" />
+      <line x1="16" y1="9" x2="16" y2="23" stroke="#0D9488" stroke-width="1" />
+      <text x="42" y="14" class="sans" font-size="10.5" font-weight="800" fill="#0D9488">STAGE 03</text>
+      <text x="42" y="27" class="sans card-title" fill="#0F172A">Evidence Binder &amp; Align</text>
+    </g>
+
+    <!-- Visual Items -->
+    <g transform="translate(18, 68)">
+      <g transform="translate(0, 0)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#0D9488" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">Coordinate (Entity, Metric, Period)</text>
+      </g>
+
+      <g transform="translate(0, 42)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#10B981" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">1-to-1 Slot Evidence Mapping</text>
+      </g>
+
+      <g transform="translate(0, 84)">
+        <rect width="284" height="34" rx="6" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#F59E0B" />
+        <text x="32" y="21" class="sans" font-size="11.5" font-weight="700" fill="#92400E">Adaptive Replan Loop (Max 2)</text>
+      </g>
+
+      <g transform="translate(0, 126)">
+        <rect width="284" height="30" rx="6" fill="#F1F5F9" />
+        <text x="12" y="19" class="sans" font-size="10.5" font-weight="600" fill="#475569">
+          Targeted Re-fetch on Missing Slot
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Flow Connector Down: Stage 3 to Row 2 -->
+  <path d="M 995 340 L 995 375 L 995 405" stroke="#0D9488" stroke-width="2" marker-end="url(#arrGreen)" />
+
+  <!-- ==================== ROW 2: Stages 4, 5, 6 ==================== -->
+
+  <!-- STAGE 4: Deterministic Decimal Calculator -->
+  <g transform="translate(45, 415)" filter="url(#boxShadow)">
+    <rect width="320" height="235" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+    <rect width="320" height="4" rx="2" fill="#7C3AED" />
+    
+    <!-- Header with Calculator Icon -->
+    <g transform="translate(18, 18)">
+      <circle cx="16" cy="16" r="16" fill="#F5F3FF" />
+      <rect x="10" y="7" width="12" height="18" rx="2" fill="none" stroke="#7C3AED" stroke-width="1.5" />
+      <line x1="12" y1="11" x2="20" y2="11" stroke="#7C3AED" stroke-width="1" />
+      <circle cx="13" cy="15" r="0.8" fill="#7C3AED" />
+      <circle cx="16" cy="15" r="0.8" fill="#7C3AED" />
+      <circle cx="19" cy="15" r="0.8" fill="#7C3AED" />
+      <circle cx="13" cy="19" r="0.8" fill="#7C3AED" />
+      <circle cx="16" cy="19" r="0.8" fill="#7C3AED" />
+      <circle cx="19" cy="19" r="0.8" fill="#7C3AED" />
+      <text x="42" y="14" class="sans" font-size="10.5" font-weight="800" fill="#7C3AED">STAGE 04</text>
+      <text x="42" y="27" class="sans card-title" fill="#0F172A">Deterministic Calculator</text>
+    </g>
+
+    <!-- Visual Items -->
+    <g transform="translate(18, 68)">
+      <g transform="translate(0, 0)">
+        <rect width="284" height="34" rx="6" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#7C3AED" />
+        <text x="32" y="21" class="sans" font-size="11.5" font-weight="700" fill="#5B21B6">Python Decimal (9 Ops)</text>
+        <text x="210" y="21" class="mono" font-size="10" font-weight="700" fill="#7C3AED">Exact Math</text>
+      </g>
+
+      <g transform="translate(0, 42)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#EF4444" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">LLM Barred from Arithmetic</text>
+        <text x="220" y="21" class="mono" font-size="10" font-weight="700" fill="#EF4444">No Drift</text>
+      </g>
+
+      <g transform="translate(0, 84)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#059669" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">Units &amp; Scale Normalization</text>
+        <text x="225" y="21" class="mono" font-size="10" font-weight="700" fill="#059669">$ / M / B</text>
+      </g>
+
+      <g transform="translate(0, 126)">
+        <rect width="284" height="24" rx="5" fill="#F1F5F9" />
+        <text x="12" y="16" class="sans" font-size="10" font-weight="600" fill="#475569">
+          Exact arithmetic + scale factor preservation
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Arrow 3 to 4 connector line -->
+  <path d="M 835 470 L 375 470" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrIndigo)" />
+
+  <!-- STAGE 5: Dual Verification Gatekeeper -->
+  <g transform="translate(440, 415)" filter="url(#boxShadow)">
+    <rect width="320" height="235" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+    <rect width="320" height="4" rx="2" fill="#F59E0B" />
+    
+    <!-- Header with Shield Scanner Icon -->
+    <g transform="translate(18, 18)">
+      <circle cx="16" cy="16" r="16" fill="#FFFBEB" />
+      <path d="M 16 8 L 23 11 L 23 17 C 23 22 16 25 16 25 C 16 25 9 22 9 17 L 9 11 Z" fill="#F59E0B" />
+      <path d="M 13 16 L 15 18 L 19 14" stroke="#FFFFFF" stroke-width="1.5" fill="none" />
+      <text x="42" y="14" class="sans" font-size="10.5" font-weight="800" fill="#B45309">STAGE 05</text>
+      <text x="42" y="27" class="sans card-title" fill="#0F172A">Dual Verification Gate</text>
+    </g>
+
+    <!-- Visual Items -->
+    <g transform="translate(18, 68)">
+      <g transform="translate(0, 0)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#2563EB" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">Numeric Payload Integrity Audit</text>
+      </g>
+
+      <g transform="translate(0, 42)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#7C3AED" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">96.0% Citation Fidelity Guard</text>
+      </g>
+
+      <g transform="translate(0, 84)">
+        <rect width="284" height="34" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+        <circle cx="18" cy="17" r="5" fill="#F59E0B" />
+        <text x="32" y="21" class="sans item-text" font-weight="600">Question-Evidence Alignment</text>
+      </g>
+
+      <g transform="translate(0, 126)">
+        <rect width="284" height="24" rx="5" fill="#FFFBEB" />
+        <text x="12" y="16" class="sans" font-size="10" font-weight="700" fill="#B45309">
+          Any failure triggers immediate Fail-Closed
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Arrow 4 -> 5 -->
+  <path d="M 365 530 L 435 530" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrIndigo)" />
+
+  <!-- STAGE 6: Terminal States (Bifurcated: Success vs Fail-Closed) -->
+  <g transform="translate(835, 415)">
+    <!-- Branch A: Verified Release (Green) -->
+    <g transform="translate(0, 0)" filter="url(#boxShadow)">
+      <rect width="320" height="110" rx="10" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.5" />
+      <g transform="translate(16, 16)">
+        <circle cx="18" cy="18" r="18" fill="#10B981" />
+        <path d="M 11 18 L 16 23 L 26 13" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <text x="46" y="16" class="sans" font-size="13.5" font-weight="900" fill="#065F46">VERIFIED RELEASE</text>
+        <text x="46" y="32" class="sans" font-size="11" font-weight="600" fill="#047857">100% Verified Accuracy</text>
+      </g>
+      <text x="24" y="74" class="sans" font-size="11" font-weight="500" fill="#064E3B">
+        - Grounded Numeric Answer &amp; Units
+      </text>
+      <text x="24" y="92" class="sans" font-size="11" font-weight="500" fill="#064E3B">
+        - Full SEC Citation &amp; Document Coordinates
+      </text>
+    </g>
+
+    <!-- Branch B: Fail-Closed Refusal (Amber/Red) -->
+    <g transform="translate(0, 125)" filter="url(#boxShadow)">
+      <rect width="320" height="110" rx="10" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.5" />
+      <g transform="translate(16, 16)">
+        <circle cx="18" cy="18" r="18" fill="#F59E0B" />
+        <path d="M 18 10 L 24 13 L 24 19 C 24 23 18 26 18 26 C 18 26 12 23 12 19 L 12 13 Z" fill="#FFFFFF" />
+        <circle cx="18" cy="18" r="1.5" fill="#D97706" />
+        <text x="46" y="16" class="sans" font-size="13.5" font-weight="900" fill="#92400E">FAIL-CLOSED REFUSAL</text>
+        <text x="46" y="32" class="sans" font-size="11" font-weight="600" fill="#B45309">100% Safe Abstention</text>
+      </g>
+      <text x="24" y="74" class="sans" font-size="11" font-weight="500" fill="#78350F">
+        - Specific ReasonCode (Missing / Ambiguous)
+      </text>
+      <text x="24" y="92" class="sans" font-size="11" font-weight="500" fill="#78350F">
+        - 0 Hallucination / 0 Incorrect Releases
+      </text>
+    </g>
+  </g>
+
+  <!-- Split Arrows from Stage 5 to Terminal States -->
+  <path d="M 760 490 L 795 490 L 795 465 L 830 465" fill="none" stroke="#10B981" stroke-width="2" marker-end="url(#arrGreen)" />
+  <path d="M 760 575 L 795 575 L 795 595 L 830 595" fill="none" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrAmber)" />
+
 </svg>
