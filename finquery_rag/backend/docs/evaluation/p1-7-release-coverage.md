@@ -310,3 +310,20 @@ have been a correctable extraction defect -- a coordinate holding last year's
 number under this year's label -- does not occur. Coca-Cola's `Operating income`
 is clean: `FY2025 13,426`, `FY2024 12,536`, `FY2023 11,868`, one value each. The
 conflicts are rows and columns, which is why they need the representation.
+
+**And the record does not contain what would settle them.** Each fact's `content`
+is its own row, so the row's cells survive:
+
+```
+Microsoft, Cost of revenue, FY2025
+  value=87,831   content=| Cost of revenue | | 87,831 | 74,114 | 65,863 |
+  value=22,422   content=| Cost of revenue | | 22,422 | 19,611 | 17,202 |
+```
+
+-- and the *label is identical on every one of them*. The header that tells them
+apart, `Productivity and Business Processes`, sits in the table fragment and is
+flattened onto all four rows equally. So the store records which cells a row
+holds and not which row it is, which is exactly the missing dimension, and no
+rule over the existing fields recovers it. `Colette M. Kress` is the same shape
+one level down: its five "competing values" are four columns of a single row
+plus the year column, read as if they were five quantities.
