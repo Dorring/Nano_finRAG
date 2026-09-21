@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C14" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#0B0F19" />
+    </linearGradient>
+    <radialGradient id="cyanGlow" cx="20%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#06B6D4" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="indigoGlow" cx="80%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#6366F1" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="emeraldGlow" cx="50%" cy="90%" r="40%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Card Background Gradient -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.85" />
+    </linearGradient>
+    <linearGradient id="cardBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.4" />
+      <stop offset="50%" stop-color="#6366F1" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.5" />
+    </linearGradient>
+
+    <!-- Pill Gradients -->
+    <linearGradient id="pillAccuracy" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="pillCalc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <linearGradient id="pillCoverage" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+    <linearGradient id="pillGrounding" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="subtleShadow" x="-5%" y="-10%" width="110%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <style>
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    .title { font-weight: 800; font-size: 46px; letter-spacing: -1.2px; }
+    .subtitle { font-weight: 400; font-size: 15.5px; fill: #94A3B8; letter-spacing: 0.2px; }
+    .tag-title { font-weight: 700; font-size: 12px; letter-spacing: 0.8px; text-transform: uppercase; }
+    .stat-val { font-weight: 800; font-size: 21px; letter-spacing: -0.5px; }
+    .stat-lbl { font-weight: 500; font-size: 12px; fill: #94A3B8; }
+  </style>
+
+  <!-- Base Canvas -->
+  <rect width="1200" height="360" rx="16" fill="url(#bgGrad)" stroke="#1E293B" stroke-width="1.5" />
+  <rect width="1200" height="360" rx="16" fill="url(#cyanGlow)" />
+  <rect width="1200" height="360" rx="16" fill="url(#indigoGlow)" />
+  <rect width="1200" height="360" rx="16" fill="url(#emeraldGlow)" />
+
+  <!-- Subtle Tech Grid Lines -->
+  <g stroke="#334155" stroke-opacity="0.18" stroke-width="1">
+    <line x1="80" y1="0" x2="80" y2="360" />
+    <line x1="240" y1="0" x2="240" y2="360" />
+    <line x1="400" y1="0" x2="400" y2="360" />
+    <line x1="560" y1="0" x2="560" y2="360" />
+    <line x1="720" y1="0" x2="720" y2="360" />
+    <line x1="880" y1="0" x2="880" y2="360" />
+    <line x1="1040" y1="0" x2="1040" y2="360" />
+    <line x1="0" y1="80" x2="1200" y2="80" />
+    <line x1="0" y1="180" x2="1200" y2="180" />
+    <line x1="0" y1="280" x2="1200" y2="280" />
+  </g>
+
+  <!-- Header Category Badge -->
+  <g transform="translate(60, 42)">
+    <rect width="210" height="28" rx="14" fill="#1E293B" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.5" />
+    <circle cx="15" cy="14" r="4.5" fill="#38BDF8" />
+    <text x="28" y="18.5" class="mono tag-title" fill="#38BDF8">PRODUCTION AGENTIC RAG</text>
+  </g>
+
+  <!-- Version / Benchmark Seal Badge -->
+  <g transform="translate(285, 42)">
+    <rect width="170" height="28" rx="14" fill="#1E293B" stroke="#10B981" stroke-width="1" stroke-opacity="0.5" />
+    <circle cx="15" cy="14" r="4.5" fill="#10B981" />
+    <text x="28" y="18.5" class="mono tag-title" fill="#10B981">BENCHMARK V2 SEALED</text>
+  </g>
+
+  <!-- Title & Headline -->
+  <text x="60" y="118" class="sans title" fill="#F8FAFC">Nano_finRAG</text>
+  <text x="350" y="118" class="sans" font-weight="300" font-size="28" fill="#64748B">/</text>
+  <text x="372" y="117" class="sans" font-weight="600" font-size="22" fill="#E2E8F0">Trusted Financial Agent Harness</text>
+
+  <!-- Subtitle Paragraph -->
+  <text x="60" y="152" class="sans subtitle">Bounded Planning · Evidence-Bound Retrieval · Deterministic Calculation · Fail-Closed Release</text>
+  <text x="60" y="174" class="sans subtitle" fill="#64748B">Zero hallucinated numbers on SEC 10-K/Q primary statements through formal domain contracts &amp; verified execution trace.</text>
+
+  <!-- 4 Feature KPI Stat Cards -->
+  <g transform="translate(60, 206)">
+    <!-- Card 1: 100% Released Accuracy -->
+    <g transform="translate(0, 0)" filter="url(#subtleShadow)">
+      <rect width="252" height="110" rx="12" fill="url(#cardBg)" stroke="url(#cardBorder)" stroke-width="1.2" />
+      <rect x="0" y="0" width="252" height="4" rx="2" fill="url(#pillAccuracy)" />
+      <g transform="translate(18, 26)">
+        <circle cx="10" cy="10" r="10" fill="#10B981" fill-opacity="0.15" />
+        <path d="M6 10 L9 13 L14 7" stroke="#10B981" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        <text x="28" y="14" class="sans" font-weight="600" font-size="12" fill="#10B981">RELEASED ACCURACY</text>
+      </g>
+      <text x="18" y="74" class="sans stat-val" fill="#FFFFFF">100%</text>
+      <text x="86" y="73" class="mono" font-size="13" font-weight="600" fill="#10B981">(52/52)</text>
+      <text x="18" y="94" class="sans stat-lbl">0 Incorrect Releases · Zero Guessing</text>
+    </g>
+
+    <!-- Card 2: 67.53% Trusted Coverage -->
+    <g transform="translate(274, 0)" filter="url(#subtleShadow)">
+      <rect width="252" height="110" rx="12" fill="url(#cardBg)" stroke="url(#cardBorder)" stroke-width="1.2" />
+      <rect x="0" y="0" width="252" height="4" rx="2" fill="url(#pillCoverage)" />
+      <g transform="translate(18, 26)">
+        <circle cx="10" cy="10" r="10" fill="#6366F1" fill-opacity="0.15" />
+        <path d="M10 5 L15 10 L10 15 L5 10 Z" stroke="#6366F1" stroke-width="2" fill="none" stroke-linejoin="round" />
+        <text x="28" y="14" class="sans" font-weight="600" font-size="12" fill="#818CF8">RELEASE COVERAGE</text>
+      </g>
+      <text x="18" y="74" class="sans stat-val" fill="#FFFFFF">67.53%</text>
+      <text x="116" y="73" class="mono" font-size="13" font-weight="600" fill="#818CF8">(52/77)</text>
+      <text x="18" y="94" class="sans stat-lbl">Closed-loop verified on answerable set</text>
+    </g>
+
+    <!-- Card 3: Deterministic Calculator -->
+    <g transform="translate(548, 0)" filter="url(#subtleShadow)">
+      <rect width="252" height="110" rx="12" fill="url(#cardBg)" stroke="url(#cardBorder)" stroke-width="1.2" />
+      <rect x="0" y="0" width="252" height="4" rx="2" fill="url(#pillCalc)" />
+      <g transform="translate(18, 26)">
+        <circle cx="10" cy="10" r="10" fill="#3B82F6" fill-opacity="0.15" />
+        <path d="M7 7 L13 13 M13 7 L7 13 M6 10 L14 10" stroke="#3B82F6" stroke-width="1.8" fill="none" stroke-linecap="round" />
+        <text x="28" y="14" class="sans" font-weight="600" font-size="12" fill="#60A5FA">CALCULATION ENGINE</text>
+      </g>
+      <text x="18" y="74" class="sans stat-val" fill="#FFFFFF">9 Ops</text>
+      <text x="86" y="73" class="mono" font-size="13" font-weight="600" fill="#60A5FA">Decimal API</text>
+      <text x="18" y="94" class="sans stat-lbl">Deterministic arithmetic · No LLM math</text>
+    </g>
+
+    <!-- Card 4: 96.0% Citation Fidelity -->
+    <g transform="translate(822, 0)" filter="url(#subtleShadow)">
+      <rect width="258" height="110" rx="12" fill="url(#cardBg)" stroke="url(#cardBorder)" stroke-width="1.2" />
+      <rect x="0" y="0" width="258" height="4" rx="2" fill="url(#pillGrounding)" />
+      <g transform="translate(18, 26)">
+        <circle cx="10" cy="10" r="10" fill="#8B5CF6" fill-opacity="0.15" />
+        <path d="M6 10 C6 7 14 7 14 10 C14 13 6 13 6 10 Z" stroke="#8B5CF6" stroke-width="1.8" fill="none" />
+        <text x="28" y="14" class="sans" font-weight="600" font-size="12" fill="#A78BFA">CITATION FIDELITY</text>
+      </g>
+      <text x="18" y="74" class="sans stat-val" fill="#FFFFFF">96.0%</text>
+      <text x="96" y="73" class="sans" font-weight="500" font-size="14" fill="#94A3B8">/ 95.3% R</text>
+      <text x="18" y="94" class="sans stat-lbl">Canonical financial identity grounding</text>
+    </g>
+  </g>
+</svg>
