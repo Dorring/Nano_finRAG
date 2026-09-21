@@ -1,0 +1,66 @@
+{
+  "migration_id": "p1.7-0a",
+  "status": "PROPOSED_NOT_APPLIED",
+  "benchmark": "tv2-canonical-v1",
+  "raised_in": "docs/evaluation/p1-7-b0-representation-audit.md",
+  "spec": "user brief, Benchmark Source-Truth Audit, item 6",
+  "why_not_applied": [
+    "Applying this changes the frozen gold, and gold-evidence-v1.jsonl is hash-pinned in benchmark-version.json at 3d2a0c5b. That is a benchmark version bump, not a fixture correction, and it should be taken deliberately.",
+    "Two corrections are defensible and they are not equivalent: re-point the gold at Coca-Cola's own row (25,962 -> 23,754), or mark the case AMBIGUOUS and move it to the abstention side. The first says the question is answerable and the benchmark had the wrong number; the second says the question does not determine its answer. This audit cannot choose between them and should not.",
+    "The audit that produced it has a classifier that was wrong once already (68/120, retracted). The single case below was verified by hand and does not depend on that classifier, but the decision to edit a pinned artifact deserves the second reading."
+  ],
+  "cases": [
+    {
+      "case_id": "tv2f01-s2-sum-007",
+      "question": "What is the sum of The Coca-Cola Company's Operating income across FY2024 and FY2025?",
+      "operation": "sum",
+      "current_gold": {
+        "expected_value": "25962.0000",
+        "fact_ids": [
+          "v2fact:ac8339670baa9e6c04907561f39317ef",
+          "v2fact:b7cec5eff7725f1941a30ea541ea0929"
+        ]
+      },
+      "proposed_gold_if_repointed": {
+        "expected_value": "23754.0000",
+        "operands": {"a": "9,992", "b": "13,762"},
+        "note": "Coca-Cola's own consolidated Operating income, FY2024 9,992 and FY2025 13,762, from the table captioned CONSOLIDATED STATEMENTS OF INCOME"
+      },
+      "finding": "The current gold cites a row from the filing's equity-method investee summary, not Coca-Cola's own consolidated operating income. The store recorded that row with entity='The Coca-Cola Company' because it is Coca-Cola's filing and Coca-Cola's note, so every downstream entity check passes.",
+      "source_evidence": [
+        {
+          "table": "CONSOLIDATED STATEMENTS OF INCOME",
+          "source": "raw_sec_html/KO/SEC_21344_000162828026010047/primary.html",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm",
+          "period_end": "2025-12-31",
+          "rows": [
+            "Net Operating Revenues | $ | 47,941 | $ | 47,061 | $ | 45,754",
+            "Operating Income       |    13,762 |     9,992 |    11,311"
+          ]
+        },
+        {
+          "table": "equity-method investee summary, introduced by the prose 'A summary of financial information for our equity method investees'",
+          "source": "same filing",
+          "rows": [
+            "Net operating revenues  | $ | 102,800 | $ | 99,043",
+            "Operating income        | $ |  13,426 | $ |  12,536",
+            "Consolidated net income | $ |   9,355 | $ |   8,439",
+            "Less: noncontrolling interests | 153 | 98 | 75"
+          ]
+        }
+      ],
+      "discriminator": "Coca-Cola's own net operating revenues are 47,941; the table the gold draws from reports 102,800. A row whose table reports a different filer's totals is not that filer's row, whatever its entity field says.",
+      "why_the_obvious_check_misses_it": "An `entity == the question's company` test was run across every comparable case with resolved gold: 40 consistent, 0 mismatched, including this one. The wrong table inherited the right entity, so the check is blind to this class rather than confirming the attribution.",
+      "hashes_at_audit_time": {
+        "gold-evidence-v1.jsonl": "3d2a0c5b7839656ce1414923ab90d03b844bc5c5fc17d82dc5e68224f466eb05",
+        "canonical-eval-v1.jsonl": "227f0341d94ab8d4b9e7ee033feaa9b40e86ec32c3137a74d2931657e9281ece"
+      }
+    }
+  ],
+  "population_note": {
+    "risk_set": "32 of 120 golds sit at a coordinate the store holds more than one value for",
+    "measured_how": "store-side coordinate scan only; no classifier, no source reading",
+    "meaning": "the population needing source adjudication. It does not say the gold is wrong in any of them -- only that the coordinate does not determine the answer.",
+    "confirmed_defects": 1
+  }
+}
