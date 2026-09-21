@@ -27,10 +27,10 @@ from __future__ import annotations
 import argparse
 import collections
 import hashlib
-import html as html_module
 import json
 import re
 import unicodedata
+from html.parser import HTMLParser
 from pathlib import Path
 
 _TABLE = re.compile(r"<table\b.*?</table>", re.IGNORECASE | re.DOTALL)
@@ -79,9 +79,94 @@ def _tables(document: Path) -> list[list[list[str]]]:
     return tables
 
 
+class _Dom(HTMLParser):
+    """A linear document flow: text runs and tables, in order.
+
+    Regex tag-stripping was the wrong tool and the build showed it -- a `>`
+    inside a quoted attribute ends a `<[^>]+>` match early, so the "lines" the
+    heading reader searched were CSS fragments (`ont-size:10pt;font-weight:400;
+    line-height:`).  A real parser cannot make that mistake, and it tracks which
+    text is bold, which is how these filings mark a statement caption.
+    """
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.flow: list[tuple] = []
+        self._bold: list[bool] = []
+        self._table: list[list[str]] | None = None
+        self._row: list[str] | None = None
+        self._cell: list[str] | None = None
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        style = " ".join(v or "" for k, v in attrs if k == "style").replace(" ", "")
+        self._bold.append(
+            tag in ("b", "strong", "h1", "h2", "h3", "h4")
+            or "font-weight:700" in style
+            or "font-weight:bold" in style
+        )
+        if tag == "table":
+            self._table = []
+        elif tag == "tr" and self._table is not None:
+            self._row = []
+        elif tag in ("td", "th") and self._row is not None:
+            self._cell = []
+
+    def handle_endtag(self, tag: str) -> None:
+        if self._bold:
+            self._bold.pop()
+        if tag in ("td", "th") and self._cell is not None and self._row is not None:
+            self._row.append(" ".join("".join(self._cell).split()))
+            self._cell = None
+        elif tag == "tr" and self._row is not None and self._table is not None:
+            if any(cell for cell in self._row):
+                self._table.append(self._row)
+            self._row = None
+        elif tag == "table" and self._table is not None:
+            if self._table:
+                self.flow.append(("table", self._table))
+            self._table = None
+
+    def handle_data(self, data: str) -> None:
+        if self._cell is not None:
+            self._cell.append(data)
+        elif self._table is None:
+            text = " ".join(data.split())
+            if text:
+                self.flow.append(("text", text, any(self._bold)))
+
+
+def _heading_for(flow: list[tuple], index: int) -> str:
+    """The caption above the table at ``index``.
+
+    The nearest line is not it: the line above the income statement is
+    `(In millions except per share data)`.  A statement caption is bold, short,
+    and above that, so a bold text run is preferred and the nearest text run is
+    the fallback.
+    """
+
+    texts = [item for item in flow[:index] if item[0] == "text"]
+    for item in reversed(texts[-12:]):
+        if item[2] and len(item[1]) <= 90:
+            return item[1]
+    for item in reversed(texts[-6:]):
+        if len(item[1]) <= 90:
+            return item[1]
+    return ""
+
+
 def _table_identity(rows: list[list[str]]) -> str:
     payload = "\n".join("|".join(cell for cell in row) for row in rows)
     return "table:" + hashlib.sha256(payload.encode("utf-8")).hexdigest()[:32]
+
+
+def _parse_document(path: Path) -> tuple[list[tuple], dict[int, str]]:
+    parser = _Dom()
+    parser.feed(path.read_text(encoding="utf-8", errors="replace"))
+    headings = {
+        index: _heading_for(parser.flow, index)
+        for index, item in enumerate(parser.flow) if item[0] == "table"
+    }
+    return parser.flow, headings
 
 
 _PERIOD_YEAR = re.compile(r"^(?:19|20)\d{2}$")
@@ -242,16 +327,12 @@ def main(argv: list[str] | None = None) -> int:
     for document_name, path in filings.items():
         if path is None:
             continue
-        raw = path.read_text(encoding="utf-8", errors="replace")
-        offset = 0
-        for table_html in _TABLE.findall(raw):
-            position = raw.find(table_html, offset)
-            offset = max(offset, position + 1)
-            preceding = html_module.unescape(
-                _TAGS.sub("\n", raw[max(0, position - 4000):position]))
-            heading = _nearest_heading(preceding)
-            rows = [_cell_texts(row) for row in _ROW.findall(table_html)]
-            rows = [row for row in rows if any(cell for cell in row)]
+        flow, headings = _parse_document(path)
+        for index, item in enumerate(flow):
+            if item[0] != "table":
+                continue
+            rows = item[1]
+            heading = headings.get(index, "")
             if not rows:
                 continue
             identity = _table_identity(rows)
@@ -262,7 +343,7 @@ def main(argv: list[str] | None = None) -> int:
                 "column_semantics": _column_header(rows),
                 "row_count": len(rows),
             })
-            for row_number, row in enumerate(rows):
+            for row in rows:
                 label = next((cell for cell in row if cell.strip()), "")
                 key = _norm(label)
                 if not key:
