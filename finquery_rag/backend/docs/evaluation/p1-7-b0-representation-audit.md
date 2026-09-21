@@ -8,21 +8,21 @@ audit plus a ceiling calculation, and it is meant to be read as a decision.
 ```
                               releases    coverage   vs 57 needed
 today                            46         48.4%
-+ recoverable from the record     +3.7      52.6%     SHORT
-+ both recoverable classes        +8.8      57.7%     SHORT
++ recoverable from the record     +3.2      51.8%     SHORT
++ both recoverable classes        +7.7      56.5%     SHORT
                                     ---
 needed for 60%                   +11       60.0%
 ```
 
-Even counting **every** case the migration could plausibly touch, and assuming
-they convert at the observed gate-pass-to-release rate, the ceiling is **57.7%**.
+Even counting **every** case the migration could plausibly touch, and converting
+them at the direct-fact rate rather than a blended one, the ceiling is **56.5%**.
 A fact-representation migration cannot reach 60% on this benchmark.
 
 The migration also does not own most of what it appeared to. Of the 36 blocked
 comparable answerable cases, **five need no new field at all** -- the relation
 that identifies the answer is already arithmetic in the record -- so they are a
 Binder rule, not a representation change. B's own contribution is at most the
-seven conditional cases: **+5.1 releases, 53.7%.**
+seven conditional cases: **+4.5 releases, 53.2%.**
 
 ## Q1 — how many are really representation loss
 
@@ -88,11 +88,32 @@ question does not name is not selectable.
 
 ## Q4 — the ceiling, computed rather than assumed
 
-Conversion is measured, not assumed: 53 comparable cases clear the gate and 39
-of them release, so **0.736**. Applying it to the recovery classes gives the
-table at the top. The optimistic column assumes every conditional case converts;
-the strict column assumes only the five that need no new field -- and neither
-reaches 57.
+Conversion is measured, not assumed, and it is measured **conditionally** -- a
+blended rate would flatter this case:
+
+```
+                    gate-passed   released   conversion
+DIRECT_FACT              25          16         0.640
+CALCULATION              28          23         0.821
+```
+
+The recoverable cases are direct-fact, and direct-fact converts *worse* than
+calculation, because identifying one fact is exactly where a coordinate that
+does not identify one value bites. So the conditional rate is **0.640**, not the
+blended 0.736:
+
+```
+                              releases    coverage   vs 57 needed
+today                            46         48.4%
++ recoverable from the record     +3.2      51.8%     SHORT
++ both recoverable classes        +7.7      56.5%     SHORT
+                                    ---
+needed for 60%                   +11       60.0%
+```
+
+Even the optimistic column -- every conditional case recovered *and* converting
+at the direct-fact rate -- reaches **56.5%**. The verdict is No-Go on the
+generous bound, and no assumption left in it is favourable.
 
 ## What B would invalidate
 
