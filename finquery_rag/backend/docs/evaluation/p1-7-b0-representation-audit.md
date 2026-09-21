@@ -156,6 +156,43 @@ needed for 60%                   +7        60.0%
 The strict column -- only the four the record alone can settle -- still misses.
 The full column clears, by 0.7 of a release.
 
+## B1 — the source check, and it answers yes
+
+B0's Go verdict rested on one unverified fact. It is now verified against the
+filing the store was built from: `raw_sec_html/KO/SEC_21344_000162828026010047/
+primary.html`, whose metadata gives `source_url` ending `ko-20251231.htm` and
+`period_hits: December 31, 2025` -- Coca-Cola's FY2025 10-K.
+
+`Operating income` occurs six times. Two of them are the rows the store holds,
+and the source separates them structurally:
+
+```
+occurrence 3
+  Operating income $ 13,426 $ 12,536 $ 11,868 Consolidated net income $ 9,355 $ 8,439 ...
+  -> a two-row window of the consolidated statement of income
+
+occurrence 4
+  Operating income (loss) $ 4,298 $ 3,742 $ 5,070 $ 2,042 $ 426 $ 15,578 $ (1,816) $ -- $ 13,762
+  -> a segment table, with EMEA / Latin America / ... / Total / Corporate /
+     Eliminations / Consolidated as its column headers
+```
+
+The distinguishing information is not a caption that happens to be nearby, it is
+the **table's own structure** -- the column set. A consolidated statement has
+`2025 | 2024 | 2023`; the segment note has one column per reporting segment plus
+Total, Corporate, Eliminations and a Consolidated total. Both are deterministic
+and neither is a guess.
+
+So the eight `RECOVERABLE_IF_SOURCE_SELECTS_ONE` cases are recoverable in
+principle, and the Go verdict stands on evidence rather than on an estimate:
+**50 -> 57.7 releases, 60.7%.**
+
+Two things this does *not* establish. It is one filing and one label, so it
+shows the source carries the information rather than that all eight carry it in
+the same shape. And it does not make the migration smaller: recovering a table's
+column structure means re-extracting from the corpus, which is the data project
+the invalidation table above describes.
+
 ## What B would invalidate
 
 | | classification |
