@@ -84,31 +84,75 @@ def _table_identity(rows: list[list[str]]) -> str:
     return "table:" + hashlib.sha256(payload.encode("utf-8")).hexdigest()[:32]
 
 
-def _table_role(rows: list[list[str]], preceding: str) -> str:
-    """What kind of table this is, from its own header row and its caption."""
-
-    header = " | ".join(rows[0])[:200]
-    haystack = (_norm(preceding[-1500:]) + " " + _norm(header))
-    if re.search(r"consolidated statement", haystack):
-        return "CONSOLIDATED_STATEMENT"
-    if re.search(r"consolidated balance sheet", haystack):
-        return "CONSOLIDATED_BALANCE_SHEET"
-    if re.search(r"\bsegment", haystack):
-        return "SEGMENT_DISCLOSURE"
-    if re.search(r"notes? to consolidated", haystack):
-        return "NOTE"
-    return "UNKNOWN"
+_PERIOD_YEAR = re.compile(r"^(?:19|20)\d{2}$")
+_PERIOD_LONG = re.compile(
+    r"(?:january|february|march|april|may|june|july|august|september|october|"
+    r"november|december)\s+\d{1,2}\s*,?\s*(?:19|20)\d{2}"
+)
+#: Column labels a reconciliation table uses for its parts and its total.  A
+#: statement has periods here; a segment note has these.
+_RECONCILING = frozenset(
+    {"total", "totals", "corporate", "eliminations", "consolidated", "segments",
+     "segment", "subtotal", "other", "unallocated", "adjustments"}
+)
 
 
-def _header_row(rows: list[list[str]]) -> list[str]:
-    """The row that looks like the column header: most non-empty short cells."""
+def _is_period_cell(text: str) -> bool:
+    normalized = _norm(text)
+    return bool(_PERIOD_YEAR.match(normalized)) or bool(_PERIOD_LONG.search(normalized))
 
+
+def _column_header(rows: list[list[str]]) -> list[str]:
+    """The row that labels the columns, found by what it labels.
+
+    Not "the widest of the first three rows" -- in these filings the widest early
+    row is usually a data row, which is why the first version returned UNKNOWN
+    for the very tables it had just correctly separated.  The header is the row
+    that names *periods*, and it is looked for as such.
+    """
+
+    for row in rows[:8]:
+        filled = [cell for cell in row if cell.strip()]
+        if sum(1 for cell in filled if _is_period_cell(cell)) >= 2:
+            return filled
     best: list[str] = []
-    for row in rows[:4]:
+    for row in rows[:3]:
         filled = [cell for cell in row if cell.strip()]
         if len(filled) > len(best):
             best = filled
-    return best[:12]
+    return best
+
+
+def _table_role(rows: list[list[str]]) -> str:
+    """What kind of table this is, from how its columns are labelled.
+
+    A statement is one column per period: `2025 | 2024 | 2023`.  A segment note
+    is one column per reporting segment plus the reconciling ones -- EMEA,
+    Latin America, ..., Total, Corporate, Eliminations, Consolidated.  The two
+    are distinguishable from the header row alone and neither is a guess.
+    """
+
+    header = _column_header(rows)
+    if len(header) < 3:
+        return "UNKNOWN"
+    # Reconciliation first, and over the whole header band rather than one row.
+    # A segment note carries period columns too -- it states each segment for
+    # the year and for the prior one -- so "has periods" does not separate the
+    # two.  What separates them is that only the segment note names its parts
+    # and its reconciling items as columns.
+    labels = {
+        _norm(cell).strip(".")
+        for row in rows[:8]
+        for cell in row
+    }
+    if labels & _RECONCILING:
+        return "SEGMENT_DISCLOSURE"
+    periods = sum(1 for cell in header if _is_period_cell(cell))
+    if periods >= 2:
+        return "PERIOD_COLUMNS"
+    if periods == 1:
+        return "PERIOD_COLUMNS"
+    return "UNKNOWN"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -186,8 +230,8 @@ def main(argv: list[str] | None = None) -> int:
             identity = _table_identity(rows)
             table_meta.setdefault(identity, {
                 "logical_table_id": identity,
-                "table_role": _table_role(rows, preceding),
-                "column_semantics": _header_row(rows),
+                "table_role": _table_role(rows),
+                "column_semantics": _column_header(rows),
                 "row_count": len(rows),
             })
             for row_number, row in enumerate(rows):
