@@ -172,6 +172,41 @@ def resolve(identifier: str, aliases: dict[str, str]) -> str:
     return identifier
 
 
+def load_logical_map(fact_store: Path) -> dict[str, str]:
+    """id -> the logical fact it states, across every id namespace.
+
+    `load_alias_map` resolves *where* a number was printed; this resolves *what*
+    was asserted, one level further.  A filing states one quantity more than
+    once -- the income statement and the note that repeats it -- and the store
+    keeps both, correctly, because each is real evidence with its own page.  A
+    citation to the note where the gold named the statement is the same fact
+    cited, and comparing the two as strings calls it precision loss.
+
+    This is namespace resolution, not deduplication of a metric.  It is the same
+    act `load_alias_map` performs and for the same stated reason: the two sides
+    are in different namespaces, and resolution has to happen before scoring so
+    the number is about the citation and not about the naming.
+    """
+
+    from src.runtime.trusted_v2_production import logical_fact_id
+
+    mapping: dict[str, str] = {}
+    for line in fact_store.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        record = json.loads(line)
+        logical = logical_fact_id(record)
+        for key in ("candidate_id", "candidate_key", "fact_id", "evidence_id",
+                    "citation_id", "source_id", "physical_source_id"):
+            value = record.get(key)
+            if not value:
+                continue
+            mapping[str(value)] = logical
+            if ":" in str(value):
+                mapping.setdefault(str(value).split(":")[-1], logical)
+    return mapping
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--predictions", type=Path, required=True)

@@ -61,6 +61,12 @@ def main(argv: list[str] | None = None) -> int:
 
     gold = {row["id"]: row for row in _load(args.gold)}
     aliases = scorer.load_alias_map(args.fact_store)
+    #: The same resolution one level further: `where` a number was printed
+    #: versus `what` it asserts.  The store holds one quantity once per table
+    #: that repeats it -- 20,394 records for 11,657 logical facts -- so a
+    #: citation to the note where the gold named the statement is the same fact
+    #: cited.  Both numbers are reported; neither replaces the other.
+    logical = scorer.load_logical_map(args.fact_store)
 
     arms: dict[str, list[dict]] = {}
     for spec in args.arm:
@@ -123,17 +129,21 @@ def main(argv: list[str] | None = None) -> int:
                         row.get("retrieval_rounds") or row.get("pool_size")):
                     tally["slots_complete"] += 1
                 if released:
-                    cited = [scorer.resolve(c, aliases)
-                             for c in (row.get("citation_ids") or [])]
-                    admitted = [scorer.resolve(e, aliases)
-                                for e in (row.get("bound_evidence_ids") or [])]
-                    wanted = [scorer.resolve(f, aliases)
-                              for f in (record.get("fact_ids") or [])]
-                    tally["cited"] += len(cited)
-                    tally["cited_grounded"] += sum(1 for c in cited if c in admitted)
-                    tally["cited_in_gold"] += sum(1 for c in cited if c in wanted)
-                    tally["gold_total"] += len(wanted)
-                    tally["gold_cited"] += sum(1 for w in wanted if w in cited)
+                    for suffix, mapping in (("", aliases), ("_logical", logical)):
+                        cited = [scorer.resolve(c, mapping)
+                                 for c in (row.get("citation_ids") or [])]
+                        admitted = [scorer.resolve(e, mapping)
+                                    for e in (row.get("bound_evidence_ids") or [])]
+                        wanted = [scorer.resolve(f, mapping)
+                                  for f in (record.get("fact_ids") or [])]
+                        tally["cited" + suffix] += len(cited)
+                        tally["cited_grounded" + suffix] += sum(
+                            1 for c in cited if c in admitted)
+                        tally["cited_in_gold" + suffix] += sum(
+                            1 for c in cited if c in wanted)
+                        tally["gold_total" + suffix] += len(wanted)
+                        tally["gold_cited" + suffix] += sum(
+                            1 for w in wanted if w in cited)
 
         report["arms"][name] = dict(tally)
         comp = max(1, tally["comparable"])
@@ -157,6 +167,11 @@ def main(argv: list[str] | None = None) -> int:
             print(f"    citation grounded       {tally['cited_grounded']}/{tally['cited']}"
                   f"  precision-vs-gold {tally['cited_in_gold']}/{tally['cited']}"
                   f"  recall-vs-gold {tally['gold_cited']}/{max(1, tally['gold_total'])}")
+            print(f"    citation by logical fact {tally['cited_grounded_logical']}"
+                  f"/{tally['cited_logical']}"
+                  f"  precision {tally['cited_in_gold_logical']}/{tally['cited_logical']}"
+                  f"  recall {tally['gold_cited_logical']}"
+                  f"/{max(1, tally['gold_total_logical'])}")
         print()
 
     if args.retrieval and args.retrieval.is_file():

@@ -12,7 +12,11 @@ released correct     20/20        44/46          48/50
 incorrect release       0            0              0
 correct refusal      25/25        25/25          25/25
 citation P / R     84.4 / 96.4   83.3 / 96.8    82.1 / 97.0
+  by logical fact  87.5 / 96.4   91.7 / 98.4    92.3 / 98.5
 ```
+
+The second citation row is the same citations resolved to the *fact* rather
+than to *where it was printed* -- see below.
 
 All three columns were measured on the same host, same day, same code except
 the gate's vocabulary -- the third removes it entirely and is the ceiling, not a
@@ -275,6 +279,33 @@ not choose -- or (B) the table, column and row-hierarchy dimensions in the fact
 representation, which is where the twenty-one gate blocks and seven of the ten
 binding losses come from. Both change something this project has deliberately
 frozen, and neither is a decision to take on the way to a metric.
+
+### Citation precision, resolved to the fact
+
+A filing states one quantity more than once -- the income statement and the note
+that repeats it -- and the store keeps both, correctly, because each is real
+evidence with its own page and citation. But it had no way to say they are one
+fact: **20,394 records carry 11,657 logical facts, so 43% of the store is the
+same quantity filed twice under two candidate keys.** Comparing a citation to
+the note against a gold id naming the statement measures *where* a number was
+printed and reports it as *what* was cited.
+
+`logical_fact_id` is the semantic identity -- entity, metric, period, value,
+unit, scale, currency, and nothing about location -- and resolving both sides
+through it is the same act `load_alias_map` already performs, one namespace
+further. It is namespace resolution, not deduplication of a metric: the two
+sides name the same thing at different levels, and resolution happens before
+scoring so the number is about the citation and not about the naming.
+
+```
+                          strict ids     logical fact
+citation precision        60/72 83.3%    66/72 91.7%
+citation recall           60/62 96.8%    61/62 98.4%
+```
+
+Both numbers are reported and neither replaces the other. The baseline moves
+only 27/32 -> 28/32 under the same resolution, so this is a namespace doing real
+work rather than a metric that flatters everything.
 
 ## Not claimed
 

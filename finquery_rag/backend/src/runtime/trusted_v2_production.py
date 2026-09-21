@@ -317,6 +317,39 @@ def _coordinate_key(record: Mapping[str, Any]) -> tuple[str, str, str]:
     )
 
 
+def logical_fact_id(record: Mapping[str, Any]) -> str:
+    """The identity of the *fact*, independent of where it was printed.
+
+    A filing states one quantity more than once -- the income statement and the
+    note that repeats it -- and the store keeps each statement, correctly,
+    because each is real evidence with its own page and citation.  But they are
+    one fact, and the store had no way to say so: 20,394 records carry 11,657
+    logical facts, so 43% of it is the same quantity filed twice under two
+    candidate keys.
+
+    That gap is why a citation to the note counts as a miss when the benchmark's
+    gold named the statement.  Both readings support the answer equally; the
+    metric was comparing *where* a number was printed and calling it *what* was
+    cited.
+
+    The identity is the semantic coordinate plus the stated quantity and its
+    unit -- entity, metric, period, value, unit, scale, currency -- and nothing
+    about location.  Two records share it exactly when they assert the same
+    thing about the same filer in the same period, which is what makes one of
+    them redundant *as evidence* rather than as a source.
+    """
+
+    def fold(value: Any) -> str:
+        return " ".join(str(value if value is not None else "").casefold().split())
+
+    payload = "|".join(
+        fold(record.get(field))
+        for field in ("entity", "metric", "period", "value", "unit", "scale",
+                      "currency")
+    )
+    return "logical:" + hashlib.sha256(payload.encode("utf-8")).hexdigest()[:32]
+
+
 class StructuredFactStore:
     """Read-only candidate-key -> structured FinancialFact materializer.
 
@@ -536,6 +569,23 @@ class StructuredFactStore:
             entity: frozenset(keys) for entity, keys in index.items()
         }
         return self._entity_key_cache
+
+    def logical_fact_ids(self) -> dict[str, str]:
+        """candidate key -> the logical fact that key states.
+
+        Built on first use and kept; the store is immutable for the life of a
+        request.  Callers use it to compare *what* two citations assert rather
+        than *where* each one printed it.
+        """
+
+        cached = getattr(self, "_logical_id_cache", None)
+        if cached is not None:
+            return cached
+        self._logical_id_cache = {
+            str(key): logical_fact_id(record)
+            for key, record in self._by_candidate.items()
+        }
+        return self._logical_id_cache
 
     def iter_records(self) -> tuple[Mapping[str, Any], ...]:
         """Every stored fact, once.
