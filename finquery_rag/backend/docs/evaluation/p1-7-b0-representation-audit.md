@@ -320,3 +320,24 @@ this", which is the question the migration cannot answer from the source.
 4. If (1) comes back positive, the migration is a benchmark migration as well as
    a store migration -- see the invalidation table above -- and should be scoped
    as one, not as a data refresh.
+
+## The risk set, computed without a classifier
+
+The oracle audit's classifier was mine and was wrong (68/120 was its own
+false-positive rate). One part of it needs no classifier at all: how many golds
+sit at a coordinate the store cannot resolve to a single value.
+
+```
+MULTI_VALUE       32    the gold's coordinate holds several values
+SINGLE_VALUE      43
+NO_FACTS          45    (abstention cases, no fact ids)
+```
+
+**32 of 120.** `Deferred` (3 values), `Services` (4), `U.S. GSEs and government
+agencies` (9), `Intersegment` (7), `Colette M. Kress` (5), `Cost of revenue` (4),
+and `Operating income` for Coca-Cola.
+
+This is the population that needs source adjudication. It does **not** say the
+gold is wrong in any of them -- only that the coordinate does not determine the
+answer, which is the same fact the gate and the Binder have been reporting all
+along from the other side.
