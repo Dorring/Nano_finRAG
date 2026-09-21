@@ -3,36 +3,42 @@
 Nothing was changed to produce this: no store, no gold, no `src/`. It is an
 audit plus a ceiling calculation, and it is meant to be read as a decision.
 
-## Verdict: **NO-GO** for the 60% coverage target
+## Verdict: **GO**, and it flipped on a base that moved
 
 ```
                               releases    coverage   vs 57 needed
-today                            46         48.4%
-+ recoverable from the record     +3.2      51.8%     SHORT
-+ both recoverable classes        +7.7      56.5%     SHORT
+baseline at audit time           46         48.4%
+recoverable, on that base        +7.7      56.5%     SHORT  <- the first verdict
                                     ---
-needed for 60%                   +11       60.0%
+current                          50         52.6%
+recoverable, on the current base +7.7      60.7%     MET
 ```
 
-Even counting **every** case the migration could plausibly touch, and converting
-them at the direct-fact rate rather than a blended one, the ceiling is **56.5%**.
-A fact-representation migration cannot reach 60% on this benchmark.
+The first version of this audit was a No-Go. It was computed from a base of 46
+releases, and this round then recovered four more -- a slot with no entity had
+been read as *the source has no such row*, and a `BOUND` binding that named its
+own gaps was being discarded whole. The recovery classes were unchanged at 12;
+the base under them moved.
 
-The migration also does not own most of what it appeared to. Of the 36 blocked
-comparable answerable cases, **five need no new field at all** -- the relation
-that identifies the answer is already arithmetic in the record -- so they are a
-Binder rule, not a representation change. B's own contribution is at most the
-seven conditional cases: **+4.5 releases, 53.2%.**
+So the Go condition holds on the measurement that matters: **50 -> 57.7 releases,
+60.7%, at the direct-fact conversion rate** (0.640, the rate the recoverable
+cases actually convert at). At the blended rate it is 61.9%.
+
+**The estimate is not comfortable.** 57.7 against a threshold of 57 is a margin
+of 0.7 releases, and it rests on twelve cases all converting at the direct-fact
+rate. Two things could take it under: a conversion rate below 0.60, or any of the
+eight conditional cases turning out unrecoverable once the source is inspected.
+Both are cheap to check and neither has been.
 
 ## Q1 — how many are really representation loss
 
-36 blocked comparable answerable cases, each attributed. **UNCLASSIFIED = 0.**
+33 blocked comparable answerable cases, each attributed. **UNCLASSIFIED = 0.**
 
 ```
-BINDER_SEMANTIC                        14
-RECOVERABLE_IF_SOURCE_SELECTS_ONE       7
-SOURCE_AMBIGUOUS                        7
-RECOVERABLE_FROM_THE_RECORD             5
+SOURCE_AMBIGUOUS                        9
+BINDER_SEMANTIC                         9
+RECOVERABLE_IF_SOURCE_SELECTS_ONE       8
+RECOVERABLE_FROM_THE_RECORD             4
 NOT_ACTUALLY_BLOCKED_BY_B               3
 ```
 
@@ -100,20 +106,19 @@ CALCULATION              28          23         0.821
 The recoverable cases are direct-fact, and direct-fact converts *worse* than
 calculation, because identifying one fact is exactly where a coordinate that
 does not identify one value bites. So the conditional rate is **0.640**, not the
-blended 0.736:
+blended 0.736.
 
 ```
                               releases    coverage   vs 57 needed
-today                            46         48.4%
-+ recoverable from the record     +3.2      51.8%     SHORT
-+ both recoverable classes        +7.7      56.5%     SHORT
+current (after this round)       50         52.6%
++ recoverable from the record     +2.6      55.4%     SHORT
++ both recoverable classes        +7.7      60.7%     MET
                                     ---
-needed for 60%                   +11       60.0%
+needed for 60%                   +7        60.0%
 ```
 
-Even the optimistic column -- every conditional case recovered *and* converting
-at the direct-fact rate -- reaches **56.5%**. The verdict is No-Go on the
-generous bound, and no assumption left in it is favourable.
+The strict column -- only the four the record alone can settle -- still misses.
+The full column clears, by 0.7 of a release.
 
 ## What B would invalidate
 
@@ -156,15 +161,18 @@ this", which is the question the migration cannot answer from the source.
 
 ## Recommendation
 
-1. **Do not start the representation migration for coverage.** The ceiling is
-   57.7% optimistic and 53.7% on its own contribution, against 60% needed.
-2. **Before any migration, run the cheap Q3 check** against the HTML corpus: can
-   a row's statement or table be recovered deterministically? If no, the seven
-   conditional cases are zero and the migration is definitively dead.
-3. **The five arithmetic cases are worth doing on their own**, as a Binder rule
-   with a guard, because they need no new data. They are option (A) in scope,
-   bounded to five cases, and should be judged on `incorrect release`, not on
-   coverage.
-4. **The logical-fact-identity change is worth doing on its own merits.** It is
-   the only lever here that closes one of the stated targets, and it fails
-   toward recall rather than correctness.
+1. **The Go condition holds, but on a 0.7-release margin.** Before unfreezing
+   anything, close the two cheap uncertainties: (a) the Q3 source check -- can a
+   row's enclosing statement or table be recovered deterministically from the
+   HTML corpus? If not, the eight conditional cases are zero and the whole path
+   is dead; (b) re-measure the conditional conversion on the recoverable cases
+   specifically rather than borrowing the direct-fact rate.
+2. **The four arithmetic cases need no unfreezing at all.** They are
+   recoverable from values already in the record, so they are a Binder rule with
+   a guard, and they should be judged on `incorrect release`, not coverage. They
+   are worth +2.6 releases and 55.4% -- not the target, but not nothing.
+3. **The logical-fact-identity change is done** and closed the citation
+   precision target; it needed no migration either.
+4. If (1) comes back positive, the migration is a benchmark migration as well as
+   a store migration -- see the invalidation table above -- and should be scoped
+   as one, not as a data refresh.
