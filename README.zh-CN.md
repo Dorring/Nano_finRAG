@@ -6,6 +6,24 @@
 
 ---
 
+> **本文档描述的是较早的阶段。** 最终已封存的数字与结论以
+> [`finquery_rag/backend/docs/evaluation/FINAL_SEAL.md`](finquery_rag/backend/docs/evaluation/FINAL_SEAL.md)
+> 为准：
+>
+> | 指标 | 最终结果 |
+> |---|---:|
+> | Trusted Release Coverage | 52/77 = **67.53%** |
+> | Released Accuracy | 52/52 = **100%** |
+> | Incorrect Release | **0** |
+> | Correct Refusal | 43/43 = **100%** |
+> | Citation P/R（canonical identity） | **96.0% / 95.3%** |
+> | Offline Retrieval R@5（production Hybrid RRF） | **50.7%** |
+> | Offline Retrieval R@5（structured rerank，默认关闭） | 85.3% |
+>
+> 正文若与此表冲突，以本表为准。
+
+---
+
 ## 项目概览
 
 nano_finance 是一个端到端的金融领域语言模型与 RAG 系统，基于原生
