@@ -55,7 +55,9 @@ def _strict_plan(raw: str) -> SupervisorPlan:
         payload = json.loads(raw.strip())
     except json.JSONDecodeError as exc:
         raise SupervisorProviderError("Bailian response was not strict JSON") from exc
-    if not isinstance(payload, dict) or set(payload) != {"intent", "required_slots", "operation", "next_action"}:
+    required_keys = {"intent", "required_slots", "operation", "next_action"}
+    allowed_keys = {"intent", "required_slots", "operation", "next_action", "execution_dag"}
+    if not isinstance(payload, dict) or not (required_keys <= set(payload) <= allowed_keys):
         raise SupervisorProviderError("Bailian response has invalid SupervisorPlan keys")
     slots = payload.get("required_slots")
     if not isinstance(slots, list):

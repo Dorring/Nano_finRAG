@@ -197,6 +197,173 @@ class RequiredSlot:
 
 
 @dataclass(frozen=True)
+class OperandRef:
+    """A reference to an input operand in an ExecutionDAG step.
+
+    ref_type must be either 'slot' (referencing a RequiredSlot in the plan)
+    or 'step' (referencing an earlier OperationStep in the DAG).
+    """
+
+    ref_type: str
+    ref_id: str
+    role: str | None = None
+
+    def __post_init__(self) -> None:
+        normalized_type = _required_text(self.ref_type, "ref_type").lower()
+        if normalized_type not in {"slot", "step"}:
+            raise ContractError(f"ref_type must be 'slot' or 'step', got {self.ref_type!r}")
+        object.__setattr__(self, "ref_type", normalized_type)
+        object.__setattr__(self, "ref_id", _required_text(self.ref_id, "ref_id"))
+        if self.role is not None:
+            object.__setattr__(self, "role", _optional_text(self.role, "role"))
+
+    @property
+    def is_slot(self) -> bool:
+        return self.ref_type == "slot"
+
+    @property
+    def is_step(self) -> bool:
+        return self.ref_type == "step"
+
+    @property
+    def slot_id(self) -> str | None:
+        return self.ref_id if self.ref_type == "slot" else None
+
+    @property
+    def step_id(self) -> str | None:
+        return self.ref_id if self.ref_type == "step" else None
+
+    def to_dict(self) -> dict[str, Any]:
+        data: dict[str, Any] = {
+            "ref_type": self.ref_type,
+            "ref_id": self.ref_id,
+        }
+        if self.role is not None:
+            data["role"] = self.role
+        return data
+
+    @classmethod
+    def from_dict(cls, payload: Mapping[str, Any]) -> "OperandRef":
+        if not isinstance(payload, Mapping):
+            raise ContractError("OperandRef must be an object")
+        if "slot_id" in payload and payload.get("slot_id"):
+            return cls(ref_type="slot", ref_id=str(payload["slot_id"]), role=payload.get("role"))
+        if "step_id" in payload and payload.get("step_id"):
+            return cls(ref_type="step", ref_id=str(payload["step_id"]), role=payload.get("role"))
+        ref_type = payload.get("ref_type")
+        ref_id = payload.get("ref_id")
+        if not ref_type or not ref_id:
+            raise ContractError("OperandRef missing ref_type or ref_id")
+        return cls(ref_type=str(ref_type), ref_id=str(ref_id), role=payload.get("role"))
+
+
+@dataclass(frozen=True)
+class OperationStep:
+    """An atomic calculation step in an ExecutionDAG."""
+
+    step_id: str
+    operation: str
+    operands: tuple[OperandRef, ...]
+    output_unit: str | None = None
+    target_metric: str | None = None
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "step_id", _required_text(self.step_id, "step_id"))
+        op = _required_text(self.operation, "operation")
+        if op not in _OPERATION_VALUES:
+            raise ContractError(f"unsupported operation in step: {op}")
+        object.__setattr__(self, "operation", op)
+        if not self.operands:
+            raise ContractError("OperationStep operands must not be empty")
+        for operand in self.operands:
+            if not isinstance(operand, OperandRef):
+                raise ContractError("OperationStep operand must be an OperandRef")
+        if self.output_unit is not None:
+            object.__setattr__(self, "output_unit", _optional_text(self.output_unit, "output_unit"))
+        if self.target_metric is not None:
+            object.__setattr__(self, "target_metric", _optional_text(self.target_metric, "target_metric"))
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "step_id": self.step_id,
+            "operation": self.operation,
+            "operands": [op.to_dict() for op in self.operands],
+            "output_unit": self.output_unit,
+            "target_metric": self.target_metric,
+        }
+
+    @classmethod
+    def from_dict(cls, payload: Mapping[str, Any]) -> "OperationStep":
+        if not isinstance(payload, Mapping):
+            raise ContractError("OperationStep must be an object")
+        for key in ("step_id", "operation", "operands"):
+            if key not in payload:
+                raise ContractError(f"OperationStep missing field: {key}")
+        raw_ops = payload["operands"]
+        if not isinstance(raw_ops, (list, tuple)):
+            raise ContractError("OperationStep operands must be an array")
+        return cls(
+            step_id=str(payload["step_id"]),
+            operation=str(payload["operation"]),
+            operands=tuple(OperandRef.from_dict(item) for item in raw_ops),
+            output_unit=payload.get("output_unit"),
+            target_metric=payload.get("target_metric"),
+        )
+
+
+@dataclass(frozen=True)
+class ExecutionDAG:
+    """An immutable directed acyclic graph of deterministic financial steps."""
+
+    steps: tuple[OperationStep, ...]
+    output_step_id: str
+    target_metric: str | None = None
+    definition_version: str | None = None
+
+    def __post_init__(self) -> None:
+        if not self.steps:
+            raise ContractError("ExecutionDAG steps must not be empty")
+        object.__setattr__(self, "output_step_id", _required_text(self.output_step_id, "output_step_id"))
+        for step in self.steps:
+            if not isinstance(step, OperationStep):
+                raise ContractError("ExecutionDAG step must be an OperationStep")
+        step_ids = [s.step_id for s in self.steps]
+        if len(set(step_ids)) != len(step_ids):
+            raise ContractError("ExecutionDAG steps must have unique step_ids")
+        if self.output_step_id not in step_ids:
+            raise ContractError(f"output_step_id {self.output_step_id!r} not found in steps")
+        if self.target_metric is not None:
+            object.__setattr__(self, "target_metric", _optional_text(self.target_metric, "target_metric"))
+        if self.definition_version is not None:
+            object.__setattr__(self, "definition_version", _optional_text(self.definition_version, "definition_version"))
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "steps": [s.to_dict() for s in self.steps],
+            "output_step_id": self.output_step_id,
+            "target_metric": self.target_metric,
+            "definition_version": self.definition_version,
+        }
+
+    @classmethod
+    def from_dict(cls, payload: Mapping[str, Any]) -> "ExecutionDAG":
+        if not isinstance(payload, Mapping):
+            raise ContractError("ExecutionDAG must be an object")
+        for key in ("steps", "output_step_id"):
+            if key not in payload:
+                raise ContractError(f"ExecutionDAG missing field: {key}")
+        raw_steps = payload["steps"]
+        if not isinstance(raw_steps, (list, tuple)):
+            raise ContractError("ExecutionDAG steps must be an array")
+        return cls(
+            steps=tuple(OperationStep.from_dict(item) for item in raw_steps),
+            output_step_id=str(payload["output_step_id"]),
+            target_metric=payload.get("target_metric"),
+            definition_version=payload.get("definition_version"),
+        )
+
+
+@dataclass(frozen=True)
 class SupervisorPlan:
     """The only output the supervisor may send to the control plane."""
 
@@ -204,6 +371,7 @@ class SupervisorPlan:
     required_slots: tuple[RequiredSlot, ...]
     operation: str | None
     next_action: Action
+    execution_dag: ExecutionDAG | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.intent, Intent):
@@ -216,16 +384,21 @@ class SupervisorPlan:
             operation = _required_text(self.operation, "operation")
             if operation not in _OPERATION_VALUES:
                 raise ContractError(f"unsupported operation: {operation}")
+        if self.execution_dag is not None and not isinstance(self.execution_dag, ExecutionDAG):
+            raise ContractError("execution_dag must be an ExecutionDAG or None")
         if not isinstance(self.next_action, Action):
             raise ContractError("next_action must be an Action enum")
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        payload: dict[str, Any] = {
             "intent": self.intent.value,
             "required_slots": [slot.to_dict() for slot in self.required_slots],
             "operation": self.operation,
             "next_action": self.next_action.value,
         }
+        if self.execution_dag is not None:
+            payload["execution_dag"] = self.execution_dag.to_dict()
+        return payload
 
     @classmethod
     def from_dict(cls, payload: Mapping[str, Any]) -> "SupervisorPlan":
@@ -243,9 +416,12 @@ class SupervisorPlan:
         slots = payload["required_slots"]
         if not isinstance(slots, (list, tuple)):
             raise ContractError("required_slots must be an array")
+        dag_payload = payload.get("execution_dag")
+        dag = ExecutionDAG.from_dict(dag_payload) if dag_payload is not None else None
         return cls(
             intent=intent,
             required_slots=tuple(RequiredSlot.from_dict(slot) for slot in slots),
             operation=payload["operation"],
             next_action=action,
+            execution_dag=dag,
         )

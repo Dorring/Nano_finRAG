@@ -600,6 +600,22 @@ _METRIC_DEFINITIONS: tuple[MetricDefinition, ...] = (
         "noncurrent_term_debt",
         ("total non-current portion of term debt", "non-current portion of term debt"),
     ),
+    MetricDefinition(
+        "net_debt",
+        ("net debt", "净负债"),
+    ),
+    MetricDefinition(
+        "short_term_debt",
+        ("short-term debt", "short term debt", "current portion of long-term debt", "短期借款", "短期债务"),
+    ),
+    MetricDefinition(
+        "long_term_debt",
+        ("long-term debt", "long term debt", "长期借款", "长期债务"),
+    ),
+    MetricDefinition(
+        "cash",
+        ("cash and cash equivalents", "cash", "现金及现金等价物", "货币资金"),
+    ),
 )
 
 
@@ -1650,7 +1666,7 @@ def align_query_to_plan(
     if query_metric_ids:
         query_set = set(query_metric_ids)
         plan_set = set(plan_metric_ids_tuple)
-        result_metric = _result_metric_for_operation(plan.operation)
+        result_metric = _result_metric_for_plan(plan)
         for metric_id in query_metric_ids:
             if metric_id in plan_set or metric_id == result_metric:
                 continue
@@ -1833,6 +1849,20 @@ def _result_metric_for_operation(operation: str | None) -> str | None:
         "gross_margin": "gross_margin",
         "net_margin": "net_margin",
     }.get(normalized)
+
+
+def _result_metric_for_plan(plan: SupervisorPlan) -> str | None:
+    if getattr(plan, "execution_dag", None) is not None:
+        dag = plan.execution_dag
+        target = dag.target_metric
+        if target:
+            return canonical_metric_id(target) or str(target).strip().lower()
+        for step in dag.steps:
+            if step.step_id == dag.output_step_id:
+                if step.target_metric:
+                    return canonical_metric_id(step.target_metric) or str(step.target_metric).strip().lower()
+                return _result_metric_for_operation(step.operation)
+    return _result_metric_for_operation(plan.operation)
 
 
 def _fact_value(fact: Mapping[str, Any], *keys: str) -> Any:

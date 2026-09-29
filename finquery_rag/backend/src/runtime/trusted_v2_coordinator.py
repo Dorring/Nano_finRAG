@@ -837,6 +837,10 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             "operation": plan.operation,
             "operand_slots": [slot.slot_id for slot in plan.required_slots],
         }
+        if plan.execution_dag is not None:
+            requirements["execution_dag"] = plan.execution_dag.to_dict()
+            if plan.execution_dag.target_metric:
+                requirements.setdefault("target_metric", plan.execution_dag.target_metric)
         metadata = request_metadata or {}
         calculation_metadata = metadata.get("calculation")
         if isinstance(calculation_metadata, Mapping):

@@ -108,6 +108,11 @@ def _supported_numbers(packet: Mapping[str, Any]) -> list[Decimal]:
         for operand in calculation.get("operands", ()):
             if isinstance(operand, Mapping):
                 values.extend(_numbers(operand.get("value")))
+        for step in calculation.get("steps", ()):
+            if isinstance(step, Mapping):
+                step_canonical = _numbers(step.get("value"))
+                values.extend(step_canonical)
+                values.extend([item * Decimal("100") for item in step_canonical])
     return values
 
 

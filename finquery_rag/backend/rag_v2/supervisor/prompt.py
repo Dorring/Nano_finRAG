@@ -22,6 +22,9 @@ Allowed operation values are exactly: difference, growth_rate,
 percentage_share, sum, average, gross_margin, net_margin, debt_ratio,
 scale_conversion. Use operation null for non-calculation intents.
 
+For multi-step composite calculations, set operation to null and provide an
+execution_dag containing steps and output_step_id.
+
 Each required slot must contain these keys:
 slot_id, metric, period, role, value_type, unit.
 A slot may also carry the evidence coordinates entity, entity_id, scope and
@@ -39,18 +42,19 @@ minuend/subtrahend, operand, value, gross_profit/revenue,
 net_income/revenue, debt/assets, and value.
 
 Hard consistency rules:
-- If operation is non-null, intent must be CALCULATION.
+- If operation is non-null or execution_dag is non-null, intent must be CALCULATION.
+- A CALCULATION plan must provide either operation (single-step) or execution_dag (multi-step), never both.
 - If the question explicitly asks for growth, year-over-year growth, or a
   difference across two explicit periods, use CALCULATION with the matching
   operation and one slot per period.
-- Never emit MULTI_EVIDENCE together with an operation; never attach an
-  operation to a non-calculation plan.
+- Never emit MULTI_EVIDENCE together with an operation or execution_dag; never attach an
+  operation or execution_dag to a non-calculation plan.
 - For growth_rate, the later period is current_period and the earlier period
   is base_period. For difference, the later period is minuend and the earlier
   period is subtrahend.
 
-The JSON object must have exactly these top-level keys:
-intent, required_slots, operation, next_action.
+The JSON object must have these top-level keys:
+intent, required_slots, operation, next_action, and optionally execution_dag.
 """
 
 
@@ -89,6 +93,48 @@ SUPERVISOR_PLAN_JSON_SCHEMA: dict[str, Any] = {
             "difference", "growth_rate", "percentage_share", "sum", "average",
             "gross_margin", "net_margin", "debt_ratio", "scale_conversion", None,
         ]},
+        "execution_dag": {
+            "type": ["object", "null"],
+            "additionalProperties": False,
+            "required": ["steps", "output_step_id"],
+            "properties": {
+                "steps": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": False,
+                        "required": ["step_id", "operation", "operands"],
+                        "properties": {
+                            "step_id": {"type": "string", "minLength": 1},
+                            "operation": {"type": "string", "enum": [
+                                "difference", "growth_rate", "percentage_share", "sum", "average",
+                                "gross_margin", "net_margin", "debt_ratio", "scale_conversion",
+                            ]},
+                            "operands": {
+                                "type": "array",
+                                "minItems": 1,
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": False,
+                                    "required": ["ref_type", "ref_id"],
+                                    "properties": {
+                                        "ref_type": {"type": "string", "enum": ["slot", "step"]},
+                                        "ref_id": {"type": "string", "minLength": 1},
+                                        "role": {"type": ["string", "null"]},
+                                    },
+                                },
+                            },
+                            "output_unit": {"type": ["string", "null"]},
+                            "target_metric": {"type": ["string", "null"]},
+                        },
+                    },
+                },
+                "output_step_id": {"type": "string", "minLength": 1},
+                "target_metric": {"type": ["string", "null"]},
+                "definition_version": {"type": ["string", "null"]},
+            },
+        },
         "next_action": {"type": "string", "enum": ["RETRIEVE", "ABSTAIN"]},
     },
 }

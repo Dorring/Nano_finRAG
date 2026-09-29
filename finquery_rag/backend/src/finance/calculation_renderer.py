@@ -90,6 +90,13 @@ def _render_executed(result: CalculationResult) -> str:
         formula_line,
     ]
 
+    if result.steps:
+        lines.append("")
+        lines.append("Calculation Steps:")
+        for step in result.steps:
+            step_val = _format_value(step.value, step.unit)
+            lines.append(f"  - {step.step_id}: {step.formula} = {step_val}")
+
     if result.operands:
         lines.append("Inputs:")
         for operand in result.operands:

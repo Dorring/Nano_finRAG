@@ -89,7 +89,9 @@ class APIProvider:
             except json.JSONDecodeError as exc:
                 self._record(response, started, raw, parse_failure="strict_json_parse", error=str(exc))
                 raise SupervisorProviderError("response was not strict JSON") from exc
-            if not isinstance(payload, dict) or set(payload) != {"intent", "required_slots", "operation", "next_action"}:
+            required_keys = {"intent", "required_slots", "operation", "next_action"}
+            allowed_keys = {"intent", "required_slots", "operation", "next_action", "execution_dag"}
+            if not isinstance(payload, dict) or not (required_keys <= set(payload) <= allowed_keys):
                 self._record(response, started, raw, parse_failure="schema_keys", error="top-level keys must match SupervisorPlan")
                 raise SupervisorProviderError("response has extra or missing SupervisorPlan keys")
             if not isinstance(payload.get("required_slots"), list):
@@ -100,6 +102,9 @@ class APIProvider:
                 if slot_error is not None:
                     self._record(response, started, raw, parse_failure="schema_slot_keys", error=slot_error)
                     raise SupervisorProviderError(f"required slot is not a RequiredSlot: {slot_error}")
+            if payload.get("execution_dag") is not None and not isinstance(payload["execution_dag"], dict):
+                self._record(response, started, raw, parse_failure="schema_dag", error="execution_dag must be an object or null")
+                raise SupervisorProviderError("execution_dag must be an object or null")
             try:
                 plan = SupervisorPlan.from_dict(payload)
             except Exception as exc:

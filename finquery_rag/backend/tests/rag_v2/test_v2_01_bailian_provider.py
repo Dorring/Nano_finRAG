@@ -24,6 +24,6 @@ def test_bailian_role_is_not_financial_domain_generator() -> None:
 
 def test_schema_contains_only_frozen_supervisor_fields() -> None:
     properties = BAILIAN_SUPERVISOR_RESPONSE_FORMAT["json_schema"]["schema"]["properties"]
-    assert set(properties) == {"intent", "required_slots", "operation", "next_action"}
+    assert set(properties) == {"intent", "required_slots", "operation", "next_action", "execution_dag"}
     assert "answer" not in properties
     assert "value" not in properties

@@ -22,16 +22,20 @@ module imports from ``src.domain.calculation`` and
 ``src.finance.calculation_registry`` (both allowed) and stdlib only.
 """
 
-from __future__ import annotations
-
+from collections.abc import Mapping
 import logging
 import re
+from typing import Any
 
+from rag_v2.contracts.plan import ExecutionDAG
 from src.domain.calculation import (
+    CalculationOperand,
     CalculationOperation,
     CalculationPlan,
     CalculationResult,
     CalculationStatus,
+    CalculationStepRecord,
+    IntermediateValue,
 )
 from src.finance.calculation_registry import RelationalToolResult, get_operation_entry
 from src.finance.primitive_tools import convert_scale
@@ -294,4 +298,233 @@ def execute_plan(plan: CalculationPlan) -> CalculationResult:
         formula_version=entry.formula_version,
         target_metric=plan.target_metric,
         operands=plan.operands,
+    )
+
+
+def execute_dag(
+    dag: ExecutionDAG,
+    leaf_operands: Mapping[str, CalculationOperand],
+    precision: int = 4,
+    target_metric: str | None = None,
+) -> CalculationResult:
+    """Execute a structured ExecutionDAG deterministically using registered primitives.
+
+    Args:
+        dag: An immutable ExecutionDAG instance.
+        leaf_operands: Mapping from slot_id to bound CalculationOperand.
+        precision: Decimal precision for calculation steps.
+        target_metric: Optional overriding target metric name.
+
+    Returns:
+        CalculationResult with EXECUTED, BLOCKED, or FAILED status,
+        containing steps and leaf operands.
+    """
+    if not dag.steps:
+        return CalculationResult(
+            status=CalculationStatus.BLOCKED,
+            error_code="EMPTY_DAG",
+            error_message="ExecutionDAG has no steps",
+        )
+
+    # Topological sorting of DAG steps
+    step_ids = [s.step_id for s in dag.steps]
+    step_map = {s.step_id: s for s in dag.steps}
+    in_degree = {s.step_id: 0 for s in dag.steps}
+    adjacency: dict[str, list[str]] = {s.step_id: [] for s in dag.steps}
+
+    for step in dag.steps:
+        for op in step.operands:
+            if op.is_step:
+                if op.ref_id not in step_map:
+                    return CalculationResult(
+                        status=CalculationStatus.BLOCKED,
+                        error_code="DANGLING_STEP_REF",
+                        error_message=f"Step {step.step_id} references non-existent step {op.ref_id}",
+                    )
+                adjacency[op.ref_id].append(step.step_id)
+                in_degree[step.step_id] += 1
+
+    queue = [s_id for s_id in step_ids if in_degree[s_id] == 0]
+    topo_order: list[str] = []
+    while queue:
+        curr = queue.pop(0)
+        topo_order.append(curr)
+        for nxt in adjacency[curr]:
+            in_degree[nxt] -= 1
+            if in_degree[nxt] == 0:
+                queue.append(nxt)
+
+    if len(topo_order) != len(step_ids):
+        return CalculationResult(
+            status=CalculationStatus.BLOCKED,
+            error_code="DAG_CYCLE",
+            error_message="ExecutionDAG contains cycles",
+        )
+
+    step_intermediates: dict[str, IntermediateValue] = {}
+    executed_records: list[CalculationStepRecord] = []
+    used_leaf_operands: dict[str, CalculationOperand] = {}
+
+    for step_id in topo_order:
+        step = step_map[step_id]
+        try:
+            step_op_enum = CalculationOperation(step.operation)
+        except ValueError:
+            return CalculationResult(
+                status=CalculationStatus.FAILED,
+                error_code="UNKNOWN_OPERATION",
+                error_message=f"Unsupported operation {step.operation!r}",
+                steps=tuple(executed_records),
+            )
+
+        entry = get_operation_entry(step_op_enum)
+        if entry is None:
+            return CalculationResult(
+                status=CalculationStatus.FAILED,
+                error_code="UNKNOWN_OPERATION",
+                error_message=f"No registry entry for operation {step.operation!r}",
+                steps=tuple(executed_records),
+            )
+
+        step_operands: list[Any] = []
+        input_refs: list[str] = []
+
+        for ref in step.operands:
+            if ref.is_slot:
+                op = leaf_operands.get(ref.ref_id)
+                if op is None or op.value is None:
+                    return CalculationResult(
+                        status=CalculationStatus.BLOCKED,
+                        operation=step_op_enum,
+                        error_code="INSUFFICIENT_OPERANDS",
+                        error_message=f"Missing leaf slot operand {ref.ref_id!r}",
+                        steps=tuple(executed_records),
+                    )
+                used_leaf_operands[ref.ref_id] = op
+                step_operands.append(op)
+                input_refs.append(ref.ref_id)
+            elif ref.is_step:
+                interm = step_intermediates.get(ref.ref_id)
+                if interm is None:
+                    return CalculationResult(
+                        status=CalculationStatus.BLOCKED,
+                        operation=step_op_enum,
+                        error_code="MISSING_STEP_OPERAND",
+                        error_message=f"Missing intermediate step {ref.ref_id!r}",
+                        steps=tuple(executed_records),
+                    )
+                step_operands.append(interm)
+                input_refs.append(ref.ref_id)
+
+        # Count check
+        if len(step_operands) < entry.min_operands:
+            return CalculationResult(
+                status=CalculationStatus.BLOCKED,
+                operation=step_op_enum,
+                error_code="INSUFFICIENT_OPERANDS",
+                error_message=f"Step {step.step_id} requires at least {entry.min_operands} operands",
+                steps=tuple(executed_records),
+            )
+        if len(step_operands) > entry.max_operands:
+            return CalculationResult(
+                status=CalculationStatus.BLOCKED,
+                operation=step_op_enum,
+                error_code="TOO_MANY_OPERANDS",
+                error_message=f"Step {step.step_id} accepts at most {entry.max_operands} operands",
+                steps=tuple(executed_records),
+            )
+
+        # Check unit consistency for operations that require same units
+        stated_units = {
+            getattr(op, "unit", None)
+            for op in step_operands
+            if getattr(op, "unit", None) not in (None, "base")
+        }
+        if step_op_enum in {CalculationOperation.DIFFERENCE, CalculationOperation.SUM, CalculationOperation.AVERAGE} and len(stated_units) > 1:
+            return CalculationResult(
+                status=CalculationStatus.BLOCKED,
+                operation=step_op_enum,
+                error_code="UNIT_MISMATCH",
+                error_message=f"Step {step.step_id} operands have mismatched units: {sorted(stated_units)}",
+                steps=tuple(executed_records),
+            )
+
+        try:
+            tool_res = entry.func(tuple(step_operands), precision)
+        except Exception as exc:
+            logger.warning("Calculation primitive raised in DAG step %s: %s", step.step_id, exc, exc_info=True)
+            return CalculationResult(
+                status=CalculationStatus.FAILED,
+                operation=step_op_enum,
+                error_code="PRIMITIVE_EXCEPTION",
+                error_message=str(exc),
+                steps=tuple(executed_records),
+            )
+
+        if not tool_res.ok or tool_res.points_value is None:
+            return CalculationResult(
+                status=CalculationStatus.BLOCKED,
+                operation=step_op_enum,
+                error_code="PRIMITIVE_DECLINED",
+                error_message=tool_res.error or f"Primitive declined in step {step.step_id}",
+                steps=tuple(executed_records),
+            )
+
+        # Inherit unit from operands if primitive returns base unit
+        operand_unit = next((getattr(op, "unit", None) for op in step_operands if getattr(op, "unit", None) not in (None, "base")), None)
+        if entry.unit != "base":
+            step_unit = entry.unit
+        elif step.output_unit and step.output_unit != "base":
+            step_unit = step.output_unit
+        else:
+            step_unit = operand_unit or (step.output_unit if step.output_unit else "base")
+        intermediate = IntermediateValue(
+            step_id=step.step_id,
+            value=tool_res.points_value,
+            unit=step_unit,
+            formula_version=entry.formula_version,
+            upstream_steps=tuple(input_refs),
+            name=step.step_id,
+        )
+        step_intermediates[step.step_id] = intermediate
+
+        rec = CalculationStepRecord(
+            step_id=step.step_id,
+            operation=step_op_enum,
+            value=tool_res.points_value,
+            unit=step_unit,
+            formula=entry.formula,
+            formula_version=entry.formula_version,
+            target_metric=step.target_metric or step.step_id,
+            status=CalculationStatus.EXECUTED,
+            input_refs=tuple(input_refs),
+        )
+        executed_records.append(rec)
+
+    final_intermediate = step_intermediates.get(dag.output_step_id)
+    if final_intermediate is None:
+        return CalculationResult(
+            status=CalculationStatus.FAILED,
+            error_code="OUTPUT_STEP_NOT_FOUND",
+            error_message=f"Output step {dag.output_step_id!r} not executed",
+            steps=tuple(executed_records),
+        )
+
+    out_step_def = step_map[dag.output_step_id]
+    final_op = CalculationOperation(out_step_def.operation)
+    final_target = target_metric or dag.target_metric or out_step_def.target_metric or dag.output_step_id
+    final_version = dag.definition_version or f"dag.{dag.output_step_id}.v1"
+    formula_str = f"DAG({' -> '.join(s.step_id for s in executed_records)})"
+
+    return CalculationResult(
+        status=CalculationStatus.EXECUTED,
+        operation=final_op,
+        value=final_intermediate.value,
+        unit=final_intermediate.unit,
+        formula=formula_str,
+        formula_version=final_version,
+        target_metric=final_target,
+        operands=tuple(used_leaf_operands.values()),
+        steps=tuple(executed_records),
+        execution_dag=dag,
     )

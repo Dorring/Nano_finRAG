@@ -202,6 +202,71 @@ class CalculationOperand:
 
 
 @dataclass(frozen=True)
+class IntermediateValue:
+    """Internal intermediate result within a multi-step calculation graph.
+
+    This value is purely internal to calculation execution and MUST NOT
+    carry an evidence_chunk_id or masquerade as retrieved evidence.
+    """
+
+    step_id: str
+    value: Decimal
+    unit: str | None = None
+    scale: str | None = None
+    currency: str | None = None
+    formula_version: str = ""
+    upstream_steps: tuple[str, ...] = ()
+    leaf_evidence_ids: tuple[str, ...] = ()
+    name: str = ""
+
+
+@dataclass(frozen=True)
+class CalculationStepRecord:
+    """An immutable record of a single executed step in an ExecutionDAG."""
+
+    step_id: str
+    operation: CalculationOperation
+    value: Decimal | None
+    unit: str | None
+    formula: str
+    formula_version: str
+    target_metric: str | None = None
+    status: CalculationStatus = CalculationStatus.EXECUTED
+    input_refs: tuple[str, ...] = ()
+    error_code: str | None = None
+    error_message: str | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "step_id": self.step_id,
+            "operation": self.operation.value,
+            "value": str(self.value) if self.value is not None else None,
+            "unit": self.unit,
+            "formula": self.formula,
+            "formula_version": self.formula_version,
+            "target_metric": self.target_metric,
+            "status": self.status.value,
+            "input_refs": list(self.input_refs),
+            "error_code": self.error_code,
+            "error_message": self.error_message,
+        }
+
+    def to_public_dict(self) -> dict[str, Any]:
+        return {
+            "step_id": self.step_id,
+            "operation": self.operation.value,
+            "value": str(self.value) if self.value is not None else None,
+            "unit": self.unit,
+            "formula": self.formula,
+            "formula_version": self.formula_version,
+            "target_metric": self.target_metric,
+            "status": self.status.value,
+            "input_refs": list(self.input_refs),
+            "error_code": self.error_code,
+        }
+
+
+@dataclass(frozen=True)
 class CalculationPlan:
     """An immutable plan describing a single deterministic calculation.
 
@@ -259,25 +324,11 @@ class CalculationResult:
     formula_version: str | None = None
     target_metric: str | None = None
     operands: tuple[CalculationOperand, ...] = ()
-    #: The relational answer, as groups of equal operands in descending order::
-    #:
-    #:     (("s2",), ("s1", "s3"))     s2 > s1 = s3
-    #:
-    #: Groups are used from the start rather than a flat ordering, so a tie does
-    #: not need a schema migration to express.  The refs are ``slot_id`` values
-    #: -- semantic operands, never evidence ids: several evidence rows may
-    #: support one canonical fact, and a result keyed on which support happened
-    #: to be bound would change while the ranking it describes did not.
-    #:
-    #: **This is the relational authority for both operations.**  A comparison
-    #: is an ordering over two operands and a ranking an ordering over N; giving
-    #: them separate result shapes would leave comparison free to define "left"
-    #: from the order of ``operands``, which carries no meaning.
-    #:
-    #: ``operands`` keeps its provenance meaning and its order carries none.
     ordering_groups: tuple[tuple[str, ...], ...] | None = None
     error_code: str | None = None
     error_message: str | None = None
+    steps: tuple[CalculationStepRecord, ...] = ()
+    execution_dag: Any | None = None
 
     @property
     def is_admissible(self) -> bool:
@@ -385,6 +436,17 @@ class CalculationResult:
             "unit": self.unit,
             "operands": self._identity_operands(),
         }
+        if self.steps:
+            payload["steps"] = [
+                {
+                    "step_id": s.step_id,
+                    "operation": s.operation.value,
+                    "value": str(s.value) if s.value is not None else None,
+                    "formula_version": s.formula_version,
+                    "input_refs": list(s.input_refs),
+                }
+                for s in self.steps
+            ]
         if self.operation in RELATIONAL_OPERATIONS:
             # The ordering *is* the answer, so it belongs to the identity.  The
             # derived `relation` is deliberately not folded in: it says nothing
@@ -462,6 +524,8 @@ class CalculationResult:
             "error_code": self.error_code,
             "error_message": self.error_message,
         }
+        if self.steps:
+            payload["steps"] = [s.to_dict() for s in self.steps]
         return payload
 
     def to_public_dict(self) -> dict[str, Any]:
@@ -487,6 +551,8 @@ class CalculationResult:
             "ordering_groups": self._ordering_groups_payload(),
             "error_code": self.error_code,
         }
+        if self.steps:
+            payload["steps"] = [s.to_public_dict() for s in self.steps]
         return payload
 
     def to_trace_dict(self) -> dict[str, Any]:
@@ -509,6 +575,9 @@ class CalculationResult:
             "ordering_groups": self._ordering_groups_payload(),
             "error_code": self.error_code,
         }
+        if self.steps:
+            payload["step_count"] = len(self.steps)
+            payload["steps"] = [s.to_public_dict() for s in self.steps]
         return payload
 
 

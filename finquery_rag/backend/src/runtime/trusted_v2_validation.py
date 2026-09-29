@@ -491,6 +491,29 @@ class TrustedReleaseValidationCapability:
             self.last_result = result
             return result
 
+        calculation = getattr(state, "_calculation_result_obj", None)
+        if isinstance(calculation, CalculationResult) and calculation.steps:
+            if any(step.status is not CalculationStatus.EXECUTED for step in calculation.steps):
+                result = self._failure(
+                    candidate=candidate_obj,
+                    validation_id=validation_id,
+                    reason_codes=["DAG_STEP_EXECUTION_FAILURE"],
+                    started=started,
+                )
+                self.last_result = result
+                return result
+
+            step_ids = {s.step_id for s in calculation.steps}
+            if any(ref in step_ids for ref in candidate_obj.bound_evidence_ids):
+                result = self._failure(
+                    candidate=candidate_obj,
+                    validation_id=validation_id,
+                    reason_codes=["INTERMEDIATE_RESULT_AS_EVIDENCE"],
+                    started=started,
+                )
+                self.last_result = result
+                return result
+
         try:
             envelope = _coerce_envelope(state, candidate_obj)
         except ValueError:

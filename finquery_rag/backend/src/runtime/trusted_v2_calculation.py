@@ -21,7 +21,7 @@ from src.domain.calculation import (
     CalculationResult,
     CalculationStatus,
 )
-from src.finance.calculation_executor import execute_plan
+from src.finance.calculation_executor import execute_dag, execute_plan
 from src.finance.calculation_registry import CALCULATION_REGISTRY, get_operation_entry
 from src.finance.operand_ambiguity import CoordinateStatus, coordinate_status
 from src.finance.primitive_tools import parse_financial_number
@@ -393,6 +393,63 @@ class DeterministicCalculationCapability:
         """Execute only on Binder-admitted complete structured operands."""
 
         plan = self._plan(state)
+        if plan.execution_dag is not None:
+            dag = plan.execution_dag
+            candidates = self._bound_candidates(state)
+            bindings = self._slot_bindings(state)
+            leaf_operands: dict[str, CalculationOperand] = {}
+
+            for slot in plan.required_slots:
+                operand = self._operand_for_slot(
+                    slot.slot_id,
+                    slot.role or slot.slot_id,
+                    bindings,
+                    candidates,
+                    CalculationOperation.DIFFERENCE,
+                    fact_store=self.fact_store,
+                )
+                if operand is None:
+                    result = CalculationResult(
+                        status=CalculationStatus.BLOCKED,
+                        target_metric=dag.target_metric or dag.output_step_id,
+                        error_code="INSUFFICIENT_OPERANDS",
+                        error_message=f"Binder-admitted leaf operand for slot {slot.slot_id!r} is incomplete or ambiguous",
+                    )
+                    self.last_result = result
+                    self.last_operand_evidence_ids = ()
+                    state.calculation_result = result.to_dict()
+                    state._calculation_result_obj = result
+                    return result
+                leaf_operands[slot.slot_id] = operand
+
+            requirements = state.calculation_requirements
+            precision = 4
+            if isinstance(requirements, Mapping):
+                try:
+                    precision = max(0, int(requirements.get("precision", 4)))
+                except (TypeError, ValueError):
+                    precision = 4
+            target_metric = (
+                requirements.get("target_metric")
+                if isinstance(requirements, Mapping) and requirements.get("target_metric")
+                else dag.target_metric
+            )
+
+            self.calls += 1
+            result = execute_dag(
+                dag,
+                leaf_operands,
+                precision=precision,
+                target_metric=target_metric,
+            )
+            self.last_result = result
+            self.last_operand_evidence_ids = tuple(
+                operand.evidence_chunk_id for operand in result.operands
+            )
+            state.calculation_result = result.to_dict()
+            state._calculation_result_obj = result
+            return result
+
         # Execution eligibility is a property of the *operation*, decided by the
         # registry, and deliberately not of the plan's intent.
         #
