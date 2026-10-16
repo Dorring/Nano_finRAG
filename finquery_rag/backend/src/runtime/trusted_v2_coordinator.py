@@ -19,6 +19,7 @@ from rag_v2.adaptive import (
     AdaptiveRAGBudgetV1,
     AdaptiveRAGStateV1,
     BoundedAdaptiveRAGV1,
+    BoundedReplannerV1,
     EvidenceEvaluationV1,
     EvidenceStateEvaluatorV1,
     ReasonCode,
@@ -782,6 +783,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         alignment_override: PlanSemanticAlignment | None = None,
         source_label_grounding: Callable[[SupervisorPlan], Mapping[str, str]]
         | None = None,
+        critic: Any | None = None,
+        source_router: Any | None = None,
     ) -> None:
         if not isinstance(supervisor, SupervisorService):
             raise TypeError("supervisor must be SupervisorService")
@@ -816,6 +819,8 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         # leaves the gate exactly as it was -- an ontology and nothing else --
         # which is what every test that does not pass one still measures.
         self.source_label_grounding = source_label_grounding
+        self.critic = critic
+        self.source_router = source_router
 
     @staticmethod
     def _slot_dicts(plan: SupervisorPlan) -> list[dict[str, Any]]:
@@ -1716,6 +1721,11 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
         # than fills: a plan may not assert an identity its own mention
         # contradicts.
         plan = derive_slot_identities(plan)
+        if self.source_router is not None:
+            if hasattr(self.source_router, "annotate_plan"):
+                plan = self.source_router.annotate_plan(plan, request.standalone_query)
+            elif callable(self.source_router):
+                plan = self.source_router(plan, request.standalone_query)
         plan_id = _plan_id(request, plan)
         plan_normalization = (
             supervisor_run.normalization.to_dict()
@@ -1849,11 +1859,21 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                     self.capabilities.retrieval,
                     capability_errors,
                 )
+        initial_constraints: dict[str, Any] = {}
+        section_hints = list(dict.fromkeys(getattr(slot, "section_hint", None) for slot in plan.required_slots if getattr(slot, "section_hint", None)))
+        source_preferences = list(dict.fromkeys(getattr(slot, "source_preference", None) for slot in plan.required_slots if getattr(slot, "source_preference", None)))
+        if len(section_hints) == 1:
+            initial_constraints["section_hint"] = section_hints[0]
+        elif len(section_hints) > 1:
+            initial_constraints["section_hint"] = "Item 8. Consolidated Financial Statements"
+        if len(source_preferences) == 1:
+            initial_constraints["source_preference"] = source_preferences[0]
         initial_action = ReplanActionV1(
             capability=ToolCapability.SEMANTIC_RETRIEVAL,
             query=request.standalone_query,
             reason_code=ReasonCode.MISSING_SLOT,
             target_slots=tuple(slot.slot_id for slot in plan.required_slots),
+            constraints=initial_constraints,
         )
         generator = None
         verifier = None
@@ -1898,8 +1918,10 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             )
 
         try:
+            replanner = BoundedReplannerV1(self.budget, critic=self.critic)
             bounded_result = BoundedAdaptiveRAGV1(
                 evaluator=evaluator_adapter,
+                replanner=replanner,
                 budget=self.budget,
             ).run(
                 state,

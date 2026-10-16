@@ -21,6 +21,7 @@ from .adaptive_progress import ProgressDetectorV1
 from .adaptive_replanner import BoundedReplannerV1
 from .adaptive_state_machine import AdaptiveRunResultV1, BoundedAdaptiveRAGV1
 from .adaptive_temporal import EvidenceConsistencyGateV1, TemporalScopeResolverV1
+from .diagnostic_critic import CriticDiagnosis, CriticDiagnosisCategory, DiagnosticCritic
 
 __all__ = [
     "AdaptiveRAGBudgetV1", "AdaptivePhase", "AdaptiveRAGStateV1",
@@ -31,4 +32,5 @@ __all__ = [
     "AdaptiveActionPolicyV1",
     "AdaptiveRunResultV1", "BoundedAdaptiveRAGV1", "EvidenceConsistencyGateV1",
     "TemporalScopeResolverV1",
+    "DiagnosticCritic", "CriticDiagnosis", "CriticDiagnosisCategory",
 ]

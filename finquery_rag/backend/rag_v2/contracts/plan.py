@@ -92,9 +92,9 @@ def _optional_text(value: str | None, field_name: str) -> str | None:
 #: The fields a slot payload must carry.  Unchanged since V2-00.
 _REQUIRED_SLOT_FIELDS = ("slot_id", "metric", "period", "role", "value_type", "unit")
 
-#: Additive coordinates.  Optional on the wire so a V2-00 payload -- and a
-#: supervisor that has not learned to emit them -- still parses unchanged.
-_OPTIONAL_SLOT_FIELDS = ("entity", "entity_id", "scope", "scope_id")
+#: Additive coordinates and routing hints. Optional on the wire so a V2-00 payload
+#: -- and a supervisor that has not learned to emit them -- still parses unchanged.
+_OPTIONAL_SLOT_FIELDS = ("entity", "entity_id", "scope", "scope_id", "source_preference", "section_hint")
 
 
 def slot_key_error(slot: Mapping[str, Any]) -> str | None:
@@ -157,6 +157,8 @@ class RequiredSlot:
     entity_id: str | None = None
     scope: str | None = None
     scope_id: str | None = None
+    source_preference: str | None = None
+    section_hint: str | None = None
 
     def __post_init__(self) -> None:
         for name in ("slot_id", "metric", "role", "value_type"):
@@ -168,7 +170,7 @@ class RequiredSlot:
             _optional_text(getattr(self, name), name)
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        payload: dict[str, Any] = {
             "slot_id": self.slot_id,
             "metric": self.metric,
             "period": self.period,
@@ -180,6 +182,11 @@ class RequiredSlot:
             "scope": self.scope,
             "scope_id": self.scope_id,
         }
+        if self.source_preference is not None:
+            payload["source_preference"] = self.source_preference
+        if self.section_hint is not None:
+            payload["section_hint"] = self.section_hint
+        return payload
 
     @classmethod
     def from_dict(cls, payload: Mapping[str, Any]) -> "RequiredSlot":

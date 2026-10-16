@@ -30,8 +30,13 @@ class BoundedReplannerV1:
         ReasonCode.TOOL_ERROR: ToolCapability.LEXICAL_RETRIEVAL,
     }
 
-    def __init__(self, budget: AdaptiveRAGBudgetV1 | None = None) -> None:
+    def __init__(
+        self,
+        budget: AdaptiveRAGBudgetV1 | None = None,
+        critic: Any | None = None,
+    ) -> None:
         self.budget = budget or AdaptiveRAGBudgetV1()
+        self.critic = critic
 
     def replan(
         self,
@@ -63,9 +68,25 @@ class BoundedReplannerV1:
             constraint["scope_constraint"] = [
                 slot.get("scope") or slot.get("entity") for slot in state.required_slots
             ]
-        query = state.normalized_query
-        if reason in {ReasonCode.WRONG_PERIOD, ReasonCode.AMBIGUOUS_PERIOD}:
-            query = f"{query} [period={','.join(map(str, constraint.get('period_constraint', [])))}]"
+
+        # Use fine-grained Critic diagnosis if available
+        diagnoses = []
+        if self.critic is not None and hasattr(self.critic, "diagnose"):
+            diagnoses = self.critic.diagnose(state, evaluation)
+
+        if diagnoses:
+            primary_diag = diagnoses[0]
+            query = primary_diag.suggested_query
+            constraint["critic_diagnosis"] = primary_diag.to_dict()
+            if primary_diag.target_section:
+                constraint["section_hint"] = primary_diag.target_section
+            for k, v in primary_diag.structural_constraints.items():
+                constraint[k] = v
+        else:
+            query = state.normalized_query
+            if reason in {ReasonCode.WRONG_PERIOD, ReasonCode.AMBIGUOUS_PERIOD}:
+                query = f"{query} [period={','.join(map(str, constraint.get('period_constraint', [])))}]"
+
         return ReplanActionV1(
             capability=capability,
             query=query,
