@@ -211,8 +211,12 @@ def detect_calculation_intent(question: str) -> CalculationIntent:
     if explicit:
         for metric, operation in _RATIO:
             if metric in normalized:
-                has_operands = (" from " in normalized and " and " in normalized) or (
-                    "\u6839\u636e" in question and "\u548c" in question
+                has_operands = (
+                    (" and " in normalized)
+                    or (" from " in normalized and (" to " in normalized or " and " in normalized))
+                    or (" between " in normalized and " and " in normalized)
+                    or (" across " in normalized)
+                    or ("和" in question or "与" in question or "及" in question or "根据" in question)
                 )
                 return _result(
                     question,
