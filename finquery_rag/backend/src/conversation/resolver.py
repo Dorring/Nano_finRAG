@@ -47,6 +47,44 @@ def register_known_entity(entity: str) -> None:
         KNOWN_ENTITIES.append(norm)
 
 
+def update_dialogue_matrix(
+    state: DialogueState,
+    *,
+    entities: list[str] | None = None,
+    periods: list[str] | None = None,
+    metrics: list[str] | None = None,
+) -> dict[str, list[str]]:
+    """Update active entity-period-metric matrix in DialogueState without single-value overwrites."""
+    matrix = state.active_matrix
+    if entities:
+        # Preserve multi-entity set across turns
+        for ent in entities:
+            clean = ent.strip().lower()
+            if clean and clean not in matrix["entities"]:
+                matrix["entities"].append(clean)
+    if periods:
+        for p in periods:
+            clean = p.strip().upper()
+            if clean and clean not in matrix["periods"]:
+                matrix["periods"].append(clean)
+    if metrics:
+        for m in metrics:
+            clean = m.strip().lower()
+            if clean and clean not in matrix["metrics"]:
+                matrix["metrics"].append(clean)
+    return matrix
+
+
+def get_dialogue_matrix(state: DialogueState) -> dict[str, list[str]]:
+    """Return copy of active entity-period matrix."""
+    return {
+        "entities": list(state.active_matrix.get("entities", [])),
+        "periods": list(state.active_matrix.get("periods", [])),
+        "metrics": list(state.active_matrix.get("metrics", [])),
+    }
+
+
+
 # Operation words such as ``growth`` and ``compare`` are also dependency
 # markers (they can describe a follow-up like "how much did it grow?").  A
 # complete first-turn question must therefore be recognised by the semantic

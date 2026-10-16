@@ -209,6 +209,9 @@ class DialogueState:
     recent_turns: list[DialogueTurn] = field(default_factory=list)
     compressed_history: str | None = None
     turn_count: int = 0
+    active_matrix: dict[str, list[str]] = field(
+        default_factory=lambda: {"entities": [], "periods": [], "metrics": []}
+    )
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -240,6 +243,11 @@ class DialogueState:
             "recent_turns": [t.to_dict() for t in self.recent_turns],
             "compressed_history": self.compressed_history,
             "turn_count": self.turn_count,
+            "active_matrix": {
+                "entities": list(self.active_matrix.get("entities", [])),
+                "periods": list(self.active_matrix.get("periods", [])),
+                "metrics": list(self.active_matrix.get("metrics", [])),
+            },
         }
 
     @classmethod
@@ -323,6 +331,15 @@ class DialogueState:
             recent_turns=recent_turns,
             compressed_history=value.get("compressed_history"),
             turn_count=turn_count,
+            active_matrix=(
+                {
+                    "entities": [str(x) for x in value["active_matrix"].get("entities", [])],
+                    "periods": [str(x) for x in value["active_matrix"].get("periods", [])],
+                    "metrics": [str(x) for x in value["active_matrix"].get("metrics", [])],
+                }
+                if isinstance(value.get("active_matrix"), Mapping)
+                else {"entities": [], "periods": [], "metrics": []}
+            ),
         )
 
 

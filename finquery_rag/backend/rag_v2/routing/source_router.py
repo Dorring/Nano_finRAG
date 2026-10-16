@@ -59,6 +59,11 @@ _PRIMARY_STATEMENT_PATTERNS = re.compile(
     re.IGNORECASE,
 )
 
+_NON_GAAP_PATTERNS = re.compile(
+    r"\b(non-gaap|adjusted|adj\b|ebitda|经调整|非gaap|free cash flow|fcf)\b",
+    re.IGNORECASE,
+)
+
 _STANDARD_STRUCTURED_METRICS = frozenset(
     {
         "total net sales",
@@ -118,12 +123,19 @@ class SourceRouter:
         query_norm = query.strip().lower()
 
         if _MARKET_API_PATTERNS.search(query_norm) or any(k in query_norm for k in cls._custom_market_keywords):
-
             return RouteDecision(
                 target_source=DataSourceType.MARKET_API,
                 section_hint="Market Data Provider",
                 confidence=0.95,
                 reason="Query explicitly targets market-traded or real-time metrics",
+            )
+
+        if _NON_GAAP_PATTERNS.search(query_norm):
+            return RouteDecision(
+                target_source=DataSourceType.NARRATIVE_DISCLOSURES,
+                section_hint="Item 7. Non-GAAP Financial Measures Reconciliation",
+                confidence=0.92,
+                reason="Query explicitly targets Non-GAAP or adjusted financial measures",
             )
 
         if _NARRATIVE_PATTERNS.search(query_norm):

@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
-import re
-import urllib.request
 import json
+import re
+import time
+import urllib.request
 from collections.abc import Mapping
+from decimal import Decimal
 from typing import Any, Protocol, runtime_checkable
 
 
@@ -282,3 +284,148 @@ class LiveMarketProvider(BaseMarketProvider):
         if self.fallback_provider is not None:
             return self.fallback_provider.get_quote(entity, metric)
         return None
+
+
+# =========================================================================
+# FX Rate Provider & Cross-Currency Support
+# =========================================================================
+
+_DEFAULT_FX_RATES: dict[tuple[str, str], Decimal] = {
+    ("EUR", "USD"): Decimal("1.08"),
+    ("USD", "EUR"): Decimal("0.9259"),
+    ("GBP", "USD"): Decimal("1.27"),
+    ("USD", "GBP"): Decimal("0.7874"),
+    ("JPY", "USD"): Decimal("0.0067"),
+    ("USD", "JPY"): Decimal("149.25"),
+    ("CNY", "USD"): Decimal("0.138"),
+    ("USD", "CNY"): Decimal("7.246"),
+    ("HKD", "USD"): Decimal("0.128"),
+    ("USD", "HKD"): Decimal("7.8125"),
+    ("CAD", "USD"): Decimal("0.73"),
+    ("USD", "CAD"): Decimal("1.3698"),
+    ("AUD", "USD"): Decimal("0.66"),
+    ("USD", "AUD"): Decimal("1.5152"),
+    ("CHF", "USD"): Decimal("1.12"),
+    ("USD", "CHF"): Decimal("0.8928"),
+}
+
+_CUSTOM_FX_RATES: dict[tuple[str, str], Decimal] = {}
+
+
+def register_fx_rate(from_curr: str, to_curr: str, rate: Decimal | str | float) -> None:
+    """Register custom FX conversion rate dynamically."""
+    f = from_curr.strip().upper()
+    t = to_curr.strip().upper()
+    dec_rate = Decimal(str(rate))
+    _CUSTOM_FX_RATES[(f, t)] = dec_rate
+    if dec_rate > Decimal("0"):
+        _CUSTOM_FX_RATES[(t, f)] = Decimal("1") / dec_rate
+
+
+def get_fx_rate(from_curr: str, to_curr: str) -> Decimal | None:
+    """Get currency exchange rate from from_curr to to_curr."""
+    f = from_curr.strip().upper()
+    t = to_curr.strip().upper()
+    if f == t:
+        return Decimal("1")
+    if (f, t) in _CUSTOM_FX_RATES:
+        return _CUSTOM_FX_RATES[(f, t)]
+    return _DEFAULT_FX_RATES.get((f, t))
+
+
+# =========================================================================
+# Market API Resilience: TTL Cache & Circuit Breaker
+# =========================================================================
+
+class CachedMarketProvider(BaseMarketProvider):
+    """In-memory thread-safe TTL cache wrapping any MarketDataProvider."""
+
+    def __init__(
+        self,
+        provider: MarketDataProvider,
+        ttl_seconds: float = 300.0,
+    ) -> None:
+        self.provider = provider
+        self.ttl_seconds = ttl_seconds
+        self._cache: dict[tuple[str, str], tuple[float, dict[str, Any]]] = {}
+
+    def get_quote(self, entity: str, metric: str) -> dict[str, Any] | None:
+        key = (normalize_ticker(entity), normalize_market_metric(metric))
+        now = time.time()
+        if key in self._cache:
+            ts, quote = self._cache[key]
+            if now - ts <= self.ttl_seconds:
+                # Return cached quote with cache indicator
+                cached_copy = dict(quote)
+                cached_copy["is_cached"] = True
+                return cached_copy
+
+        # Cache miss or expired
+        quote = self.provider.get_quote(entity, metric)
+        if quote is not None:
+            self._cache[key] = (now, quote)
+        return quote
+
+    def clear_cache(self) -> None:
+        self._cache.clear()
+
+
+class CircuitBreakerMarketProvider(BaseMarketProvider):
+    """Circuit breaker wrapper protecting pipeline from external API downtime.
+
+    States:
+      - CLOSED: Normal operation, routing requests to provider.
+      - OPEN: Failures exceeded threshold. Bypasses external calls for recovery_timeout.
+      - HALF_OPEN: Probe call allowed to check recovery.
+    """
+
+    def __init__(
+        self,
+        provider: MarketDataProvider,
+        failure_threshold: int = 3,
+        recovery_timeout: float = 60.0,
+        fallback_provider: MarketDataProvider | None = None,
+    ) -> None:
+        self.provider = provider
+        self.failure_threshold = failure_threshold
+        self.recovery_timeout = recovery_timeout
+        self.fallback_provider = fallback_provider or SandboxMarketProvider()
+        self.failure_count = 0
+        self.last_failure_time = 0.0
+        self.state = "CLOSED"  # CLOSED, OPEN, HALF_OPEN
+
+    def get_quote(self, entity: str, metric: str) -> dict[str, Any] | None:
+        now = time.time()
+
+        if self.state == "OPEN":
+            if now - self.last_failure_time > self.recovery_timeout:
+                self.state = "HALF_OPEN"
+            else:
+                # Breaker open: route directly to fallback
+                res = self.fallback_provider.get_quote(entity, metric)
+                if res:
+                    res = dict(res)
+                    res["circuit_breaker"] = "OPEN_FALLBACK"
+                return res
+
+        try:
+            quote = self.provider.get_quote(entity, metric)
+            if quote is not None:
+                if self.state == "HALF_OPEN":
+                    self.state = "CLOSED"
+                    self.failure_count = 0
+                return quote
+            else:
+                self._record_failure(now)
+        except Exception:
+            self._record_failure(now)
+
+        # Fallback invocation
+        return self.fallback_provider.get_quote(entity, metric)
+
+    def _record_failure(self, now: float) -> None:
+        self.failure_count += 1
+        self.last_failure_time = now
+        if self.failure_count >= self.failure_threshold:
+            self.state = "OPEN"
+

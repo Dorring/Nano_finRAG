@@ -18,6 +18,7 @@ class CriticDiagnosisCategory(str, Enum):
     RESTATED_VS_ORIGINAL = "RESTATED_VS_ORIGINAL"       # Comparative restatement column mismatch
     FOOTNOTE_MISSING = "FOOTNOTE_MISSING"               # Metric is in footnote disclosures, not statement face
     METRIC_ALIAS_GAP = "METRIC_ALIAS_GAP"               # Terminology mismatch (e.g. COGS vs Cost of sales)
+    GAAP_VS_NON_GAAP_MISMATCH = "GAAP_VS_NON_GAAP_MISMATCH" # GAAP vs Non-GAAP / Adjusted mismatch
     UNKNOWN_DEFECT = "UNKNOWN_DEFECT"
 
 
@@ -176,7 +177,21 @@ class DiagnosticCritic:
                 structural_constraints={"target_disclosure_type": "footnote"},
             )
 
-        # Check 4: Metric Alias Gap
+        # Check 4: GAAP vs Non-GAAP Mismatch
+        is_non_gaap_query = any(k in (base_query + " " + metric).lower() for k in ("non-gaap", "adjusted", "adj ", "ebitda", "经调整"))
+        has_non_gaap_candidates = any(k in all_text for k in ("non-gaap", "adjusted", "reconciliation", "ebitda"))
+        if is_non_gaap_query and not has_non_gaap_candidates and candidate_list:
+            query = f"{entity} {metric} {period} Non-GAAP reconciliation Adjusted"
+            return CriticDiagnosis(
+                category=CriticDiagnosisCategory.GAAP_VS_NON_GAAP_MISMATCH,
+                target_slot_id=slot_id,
+                explanation=f"Query requested Non-GAAP/Adjusted measure '{metric}', but candidate packets only provided primary GAAP statements",
+                suggested_query=query.strip(),
+                target_section="Item 7. Non-GAAP Financial Measures Reconciliation",
+                structural_constraints={"accounting_standard": "NON_GAAP"},
+            )
+
+        # Check 5: Metric Alias Gap
         metric_lower = metric.lower()
         matched_aliases = None
         if metric_lower in _ALIAS_MAP:

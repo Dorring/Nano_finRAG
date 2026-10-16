@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import asyncio
 from collections.abc import Iterable, Mapping
 from dataclasses import replace
+from enum import IntEnum
 from typing import Any
 
 from rag_v2.adaptive.adaptive_contracts import (
@@ -13,6 +15,98 @@ from rag_v2.adaptive.adaptive_contracts import (
 from rag_v2.routing.source_router import DataSourceType, SourceRouter
 from .market_api import MarketDataProvider, SandboxMarketProvider
 from .sql_fact_store import SqlFactStore
+
+
+class SourceAuthority(IntEnum):
+    """Authority priority for conflicting financial evidence packets."""
+
+    AUDITED_PRIMARY_STATEMENT = 100
+    AUDITED_FOOTNOTE = 90
+    STRUCTURED_IXBRL_SQL = 80
+    MARKET_API_REALTIME = 70
+    UNAUDITED_INTERIM = 50
+    UNKNOWN = 10
+
+
+def determine_source_authority(packet: Mapping[str, Any]) -> SourceAuthority:
+    """Determine authority level of an evidence packet."""
+    source = str(packet.get("source", "")).upper()
+    doc_id = str(packet.get("document_id", "")).upper()
+    citation = str(packet.get("citation_id", "")).upper()
+    is_interim = any(k in str(packet.get("period", "")).upper() for k in ("Q1", "Q2", "Q3", "Q4", "MONTHS ENDED"))
+
+    if is_interim:
+        return SourceAuthority.UNAUDITED_INTERIM
+
+    if "STATEMENT" in citation or "STATEMENT" in doc_id or "OPERATIONS" in citation or "BALANCE SHEET" in citation or "CASH FLOW" in citation:
+        return SourceAuthority.AUDITED_PRIMARY_STATEMENT
+    if "NOTE" in citation or "FOOTNOTE" in citation or "NOTE" in doc_id:
+        return SourceAuthority.AUDITED_FOOTNOTE
+    if "SQL" in source or "IXBRL" in source or "SQL_FACT_STORE" in source:
+        return SourceAuthority.STRUCTURED_IXBRL_SQL
+    if "MARKET" in source:
+        return SourceAuthority.MARKET_API_REALTIME
+
+    return SourceAuthority.UNKNOWN
+
+
+def arbitrate_candidate_packets(
+    candidates: Iterable[Mapping[str, Any]],
+) -> tuple[Mapping[str, Any], ...]:
+    """Arbitrate candidate packets claiming the same slot/coordinate based on source authority.
+
+    If multiple packets claim the same slot_id or semantic coordinate, selects the one
+    with highest SourceAuthority score and attaches arbitration metadata.
+    """
+    candidates_list = list(candidates)
+    if not candidates_list:
+        return ()
+
+    grouped: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
+    ungrouped: list[dict[str, Any]] = []
+
+    for c in candidates_list:
+        c_dict = dict(c)
+        slots = c.get("slot_ids") or c.get("slots") or [""]
+        slot_id = str(slots[0]) if slots else ""
+        entity = str(c.get("entity_id") or c.get("entity") or "").lower()
+        metric = str(c.get("metric", "")).lower()
+        period = str(c.get("period", "")).lower()
+
+        key = (slot_id, entity, metric, period)
+        if slot_id and metric:
+            grouped.setdefault(key, []).append(c_dict)
+        else:
+            ungrouped.append(c_dict)
+
+    arbitrated: list[dict[str, Any]] = list(ungrouped)
+
+    for key, packets in grouped.items():
+        if len(packets) == 1:
+            arbitrated.append(packets[0])
+            continue
+
+        # Sort by authority score descending, preferring restated audited columns
+        sorted_packets = sorted(
+            packets,
+            key=lambda p: (
+                determine_source_authority(p).value,
+                1 if p.get("is_restated") else 0,
+            ),
+            reverse=True,
+        )
+        winner = dict(sorted_packets[0])
+        suppressed = sorted_packets[1:]
+        winner["arbitration_record"] = {
+            "selected_source": winner.get("source"),
+            "selected_authority": determine_source_authority(winner).name,
+            "suppressed_count": len(suppressed),
+            "suppressed_sources": [p.get("source") for p in suppressed],
+        }
+        arbitrated.append(winner)
+
+    return tuple(arbitrated)
+
 
 
 class MultiSourceRetrievalAdapter:
@@ -145,4 +239,14 @@ class MultiSourceRetrievalAdapter:
             if pdf_packets:
                 candidates.extend(pdf_packets)
 
-        return tuple(candidates)
+        # 6. Arbitrate multiple candidates claiming the same slot/coordinate
+        return arbitrate_candidate_packets(candidates)
+
+    async def retrieve_async(
+        self,
+        action: ReplanActionV1,
+        state: AdaptiveRAGStateV1,
+    ) -> tuple[Mapping[str, Any], ...]:
+        """Asynchronously dispatch retrieval action concurrently in a non-blocking thread."""
+        return await asyncio.to_thread(self.retrieve, action, state)
+

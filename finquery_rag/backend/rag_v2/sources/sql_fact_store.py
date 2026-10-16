@@ -178,10 +178,23 @@ class SqlFactStore:
                 scale TEXT NOT NULL DEFAULT 'million',
                 scope TEXT NOT NULL DEFAULT 'consolidated',
                 source_doc TEXT NOT NULL DEFAULT '10-K iXBRL',
+                filing_date TEXT,
+                is_restated INTEGER DEFAULT 0,
+                accounting_standard TEXT DEFAULT 'GAAP',
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
             """
         )
+        # Ensure migration columns exist for backward compatibility with existing SQLite DBs
+        for col, col_def in [
+            ("filing_date", "TEXT"),
+            ("is_restated", "INTEGER DEFAULT 0"),
+            ("accounting_standard", "TEXT DEFAULT 'GAAP'"),
+        ]:
+            try:
+                cursor.execute(f"ALTER TABLE financial_facts ADD COLUMN {col} {col_def}")
+            except sqlite3.OperationalError:
+                pass  # column already exists
         cursor.execute(
             """
             CREATE INDEX IF NOT EXISTS idx_facts_lookup
@@ -207,29 +220,34 @@ class SqlFactStore:
         scale: str = "million",
         scope: str = "consolidated",
         source_doc: str = "10-K iXBRL",
+        filing_date: str | None = None,
+        is_restated: bool = False,
+        accounting_standard: str = "GAAP",
     ) -> None:
         """Insert or update a single financial fact."""
         clean_ent, entity_id = normalize_entity(entity)
         norm_m = normalize_metric(metric)
         norm_p = normalize_period(period)
         val_str = str(value).strip()
+        rest_int = 1 if is_restated else 0
+        std_str = (accounting_standard or "GAAP").strip().upper()
 
         cursor = self._conn.cursor()
         # Delete existing duplicate fact if any to guarantee uniqueness
         cursor.execute(
             """
             DELETE FROM financial_facts
-            WHERE entity_id = ? AND metric = ? AND period = ? AND scope = ?
+            WHERE entity_id = ? AND metric = ? AND period = ? AND scope = ? AND is_restated = ?
             """,
-            (entity_id, norm_m, norm_p, scope),
+            (entity_id, norm_m, norm_p, scope, rest_int),
         )
         cursor.execute(
             """
             INSERT INTO financial_facts
-            (entity, entity_id, metric, period, value, unit, scale, scope, source_doc)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (entity, entity_id, metric, period, value, unit, scale, scope, source_doc, filing_date, is_restated, accounting_standard)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
-            (clean_ent, entity_id, norm_m, norm_p, val_str, unit, scale, scope, source_doc),
+            (clean_ent, entity_id, norm_m, norm_p, val_str, unit, scale, scope, source_doc, filing_date, rest_int, std_str),
         )
         self._conn.commit()
 
@@ -245,6 +263,9 @@ class SqlFactStore:
                 scale=str(f.get("scale", "million")),
                 scope=str(f.get("scope", "consolidated")),
                 source_doc=str(f.get("source_doc", "10-K iXBRL")),
+                filing_date=f.get("filing_date"),
+                is_restated=bool(f.get("is_restated", False)),
+                accounting_standard=str(f.get("accounting_standard", "GAAP")),
             )
 
     def query_fact(
@@ -253,26 +274,44 @@ class SqlFactStore:
         metric: str,
         period: str,
         scope: str = "consolidated",
+        *,
+        as_of_date: str | None = None,
+        prefer_restated: bool = True,
+        accounting_standard: str | None = None,
     ) -> dict[str, Any] | None:
-        """Query a fact using normalized entity, metric, and period."""
+        """Query a fact using normalized entity, metric, and period with PIT and restatement support."""
         clean_ent, entity_id = normalize_entity(entity)
         norm_m = normalize_metric(metric)
         norm_p = normalize_period(period)
         norm_scope = scope.strip().lower() or "consolidated"
 
-        cursor = self._conn.cursor()
-        cursor.execute(
-            """
-            SELECT entity, entity_id, metric, period, value, unit, scale, scope, source_doc
+        query_sql = """
+            SELECT entity, entity_id, metric, period, value, unit, scale, scope, source_doc,
+                   filing_date, is_restated, accounting_standard
             FROM financial_facts
             WHERE (entity_id = ? OR LOWER(entity) = LOWER(?))
               AND metric = ?
               AND period = ?
               AND scope = ?
-            LIMIT 1
-            """,
-            (entity_id, clean_ent, norm_m, norm_p, norm_scope),
-        )
+        """
+        params: list[Any] = [entity_id, clean_ent, norm_m, norm_p, norm_scope]
+
+        if as_of_date:
+            query_sql += " AND (filing_date IS NULL OR filing_date <= ?)"
+            params.append(as_of_date.strip())
+
+        if accounting_standard:
+            query_sql += " AND (accounting_standard IS NULL OR UPPER(accounting_standard) = ?)"
+            params.append(accounting_standard.strip().upper())
+
+        # Sort: prefer restated audited columns or original columns
+        if prefer_restated:
+            query_sql += " ORDER BY is_restated DESC, filing_date DESC, id DESC LIMIT 1"
+        else:
+            query_sql += " ORDER BY is_restated ASC, filing_date DESC, id DESC LIMIT 1"
+
+        cursor = self._conn.cursor()
+        cursor.execute(query_sql, tuple(params))
         row = cursor.fetchone()
         if row is not None:
             return dict(row)
@@ -287,6 +326,8 @@ class SqlFactStore:
         """Convert a fact row into an EvidencePacket-compatible dictionary."""
         cid = candidate_id or f"sql_fact_{fact['entity_id']}_{fact['metric']}_{fact['period']}"
         source_doc = fact.get("source_doc", "10-K iXBRL")
+        is_rest = bool(fact.get("is_restated", 0))
+        rest_label = " [Restated]" if is_rest else ""
         return {
             "evidence_id": cid,
             "candidate_id": cid,
@@ -305,7 +346,10 @@ class SqlFactStore:
             "scale": fact.get("scale", "million"),
             "source": "SQL_FACT_STORE",
             "document_id": source_doc,
-            "citation_id": f"[{source_doc}] {fact['entity']} {fact['period']} {fact['metric']}",
+            "citation_id": f"[{source_doc}] {fact['entity']} {fact['period']} {fact['metric']}{rest_label}",
+            "is_restated": is_rest,
+            "filing_date": fact.get("filing_date"),
+            "accounting_standard": fact.get("accounting_standard", "GAAP"),
             "page": 0,
             "slots": (str(slot_id),),
             "slot_ids": (str(slot_id),),

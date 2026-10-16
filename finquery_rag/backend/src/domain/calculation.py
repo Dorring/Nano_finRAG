@@ -333,6 +333,8 @@ class CalculationResult:
     error_message: str | None = None
     steps: tuple[CalculationStepRecord, ...] = ()
     execution_dag: Any | None = None
+    proof_tree: dict[str, Any] | None = None
+    diagnostic_explanation: str | None = None
 
     @property
     def is_admissible(self) -> bool:
@@ -527,6 +529,8 @@ class CalculationResult:
             "ordering_groups": self._ordering_groups_payload(),
             "error_code": self.error_code,
             "error_message": self.error_message,
+            "proof_tree": self.proof_tree,
+            "diagnostic_explanation": self.diagnostic_explanation,
         }
         if self.steps:
             payload["steps"] = [s.to_dict() for s in self.steps]
@@ -554,6 +558,8 @@ class CalculationResult:
             "relation": self.relation.value if self.relation else None,
             "ordering_groups": self._ordering_groups_payload(),
             "error_code": self.error_code,
+            "proof_tree": self.proof_tree,
+            "diagnostic_explanation": self.diagnostic_explanation,
         }
         if self.steps:
             payload["steps"] = [s.to_public_dict() for s in self.steps]
