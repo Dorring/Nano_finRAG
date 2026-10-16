@@ -33,6 +33,15 @@ class DocTreeNode:
 class DocumentHierarchyTree:
     """Builds and queries the hierarchical tree of SEC 10-K document chunks."""
 
+    _CUSTOM_TOPIC_TERMS: set[str] = set()
+
+    @classmethod
+    def register_topic_term(cls, term: str) -> None:
+        """Register custom topic term for note pruning dynamically."""
+        clean = term.strip().lower()
+        if clean:
+            cls._CUSTOM_TOPIC_TERMS.add(clean)
+
     def __init__(self, doc_id: str = "SEC_10K") -> None:
         self.doc_id = doc_id
         self.root = DocTreeNode(node_id="root", title=f"SEC 10-K Filing: {doc_id}", level=0)
@@ -161,7 +170,9 @@ class DocumentHierarchyTree:
                     if res:
                         return sorted(res)
             # Match note topics dynamically across all notes in Item 8
-            topic_terms = ("segment", "debt", "lease", "borrowing", "tax", "revenue", "commitment", "contingenc", "pension")
+            topic_terms = list(("segment", "debt", "lease", "borrowing", "tax", "revenue", "commitment", "contingenc", "pension"))
+            if self._CUSTOM_TOPIC_TERMS:
+                topic_terms.extend(self._CUSTOM_TOPIC_TERMS)
             for term in topic_terms:
                 if term in hint:
                     matching_chunks: list[str] = []

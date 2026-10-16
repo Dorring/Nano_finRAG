@@ -32,10 +32,21 @@ _QUERY_WORDS = re.compile(
     r"represent|their|it)\b",
     re.IGNORECASE,
 )
+_CUSTOM_ISSUERS: set[str] = set()
+
+
+def register_operand_issuer(issuer: str) -> None:
+    """Register custom issuer or ticker to strip from operand queries dynamically."""
+    clean = issuer.strip().lower()
+    if clean:
+        _CUSTOM_ISSUERS.add(clean)
 
 
 def _clean_phrase(value: str, *, remove_periods: bool = True) -> str:
     value = _ISSUER_WORDS.sub(" ", value)
+    if _CUSTOM_ISSUERS:
+        custom_issuer_pat = r"\b(?:" + "|".join(re.escape(i) for i in _CUSTOM_ISSUERS) + r")\b(?:'s)?"
+        value = re.sub(custom_issuer_pat, " ", value, flags=re.I)
     value = re.sub(r"\b(?:aapl|amzn|googl|jpm|msft|nvda|pfe|tsla|v|ko)\b", " ", value, flags=re.I)
     if remove_periods:
         value = _PERIOD_WORDS.sub(" ", value)

@@ -42,6 +42,15 @@ _QUERY_NOISE = re.compile(
     r"comparison|versus|vs)\b",
     re.I,
 )
+_CUSTOM_QUERY_ENTITIES: set[str] = set()
+
+
+def register_query_entity(name: str) -> None:
+    """Register custom entity name or ticker to strip from metric extraction."""
+    clean = name.strip().lower()
+    if clean:
+        _CUSTOM_QUERY_ENTITIES.add(clean)
+
 
 
 def _mask_quoted_text(text: str) -> str:
@@ -102,6 +111,9 @@ def extract_metric_phrases(question: str, periods: tuple[PeriodExpression, ...])
     text = re.sub(r"^in the .*?table,\s*", "", text, flags=re.I)
     text = _QUESTION_PREFIX.sub("", text)
     text = re.sub(r"\b(?:apple|microsoft|nvidia|jpmorgan|jpmorgan chase|tesla|coca-cola|visa|pfizer)\'?s?\b", " ", text, flags=re.I)
+    if _CUSTOM_QUERY_ENTITIES:
+        custom_entity_pat = r"\b(?:" + "|".join(re.escape(e) for e in _CUSTOM_QUERY_ENTITIES) + r")\'?s?\b"
+        text = re.sub(custom_entity_pat, " ", text, flags=re.I)
     text = _TICKER_CONTEXT.sub(" ", text)
     text = _TICKERS.sub(" ", text)
     text = re.sub(r"\bin(?=\s+q[1-4]\b)", " ", text, flags=re.I)

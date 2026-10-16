@@ -39,6 +39,14 @@ KNOWN_ENTITIES = [
     "jpmorgan", "jpmorgan chase", "pfizer", "pfe", "visa", "v",
 ]
 
+
+def register_known_entity(entity: str) -> None:
+    """Register custom entity name or ticker dynamically for conversational context."""
+    norm = entity.strip().lower()
+    if norm and norm not in KNOWN_ENTITIES:
+        KNOWN_ENTITIES.append(norm)
+
+
 # Operation words such as ``growth`` and ``compare`` are also dependency
 # markers (they can describe a follow-up like "how much did it grow?").  A
 # complete first-turn question must therefore be recognised by the semantic

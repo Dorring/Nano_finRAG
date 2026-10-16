@@ -119,7 +119,7 @@ def normalize_entity(entity: str) -> tuple[str, str]:
 def normalize_period(period: str) -> str:
     """Normalize period representation to standard FYYYYY or YYYY."""
     p = period.strip().upper()
-    m = re.search(r"\b(20\d{2})\b", p)
+    m = re.search(r"\b((?:19|20)\d{2})\b", p)
     if m:
         year = m.group(1)
         if "FY" in p or "FISCAL" in p:
@@ -297,7 +297,11 @@ class SqlFactStore:
             "entity_id": fact.get("entity_id"),
             "scope": fact.get("scope", "consolidated"),
             "unit": fact.get("unit", "USD"),
-            "currency": fact.get("unit", "USD") if fact.get("unit") in ("USD", "EUR", "CNY", "GBP") else "USD",
+            "currency": (
+                fact.get("unit", "USD").upper()
+                if (len(fact.get("unit", "USD")) == 3 and fact.get("unit", "USD").isalpha())
+                else ("USD" if fact.get("unit", "USD") not in ("USD", "EUR", "CNY", "GBP", "JPY", "HKD", "CAD", "AUD", "CHF") else fact.get("unit", "USD"))
+            ),
             "scale": fact.get("scale", "million"),
             "source": "SQL_FACT_STORE",
             "document_id": source_doc,

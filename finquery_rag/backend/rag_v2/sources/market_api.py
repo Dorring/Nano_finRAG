@@ -78,6 +78,12 @@ def register_ticker(entity_name: str, ticker: str) -> None:
     _ENTITY_TICKER_MAP[entity_name.strip().lower()] = ticker.strip().upper()
 
 
+def register_market_metric(alias: str, canonical: str) -> None:
+    """Register custom market metric alias dynamically."""
+    _MARKET_METRIC_CANONICAL[alias.strip().lower()] = canonical.strip().lower()
+
+
+
 def normalize_market_metric(metric: str) -> str:
     """Normalize market metric name into canonical key."""
     cleaned = re.sub(r"[^\w\s/]", "", metric.strip().lower())
@@ -137,7 +143,11 @@ class BaseMarketProvider:
             "entity_id": ticker.lower(),
             "scope": "consolidated",
             "unit": unit,
-            "currency": unit if unit in ("USD", "EUR", "CNY", "GBP") else "USD",
+            "currency": (
+                unit.upper()
+                if (len(unit) == 3 and unit.isalpha())
+                else ("USD" if unit not in ("USD", "EUR", "CNY", "GBP", "JPY", "HKD", "CAD", "AUD", "CHF") else unit)
+            ),
             "scale": quote.get("scale", "units"),
             "source": source_label,
             "document_id": "Market Data Provider",

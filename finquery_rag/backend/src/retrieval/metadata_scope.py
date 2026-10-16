@@ -248,7 +248,17 @@ def _condition(field_name: str, values: Sequence[Any], strength: FilterStrength,
 class MetadataFilterPlannerV1:
     """Deterministic query-to-scope planner; it never fabricates metadata."""
 
-    _KNOWN_TICKERS = {"MSFT", "AAPL", "NVDA", "GOOG", "AMZN", "META", "TSLA", "IBM"}
+    _KNOWN_TICKERS = {
+        "MSFT", "AAPL", "NVDA", "GOOG", "GOOGL", "AMZN", "META", "TSLA", "IBM",
+        "JPM", "WMT", "XOM", "KO", "NFLX", "ORCL", "CRM", "INTC", "AMD", "DIS",
+        "BA", "BABA", "V", "PFE",
+    }
+
+    @classmethod
+    def register_known_ticker(cls, ticker: str) -> None:
+        """Register custom ticker symbol dynamically."""
+        cls._KNOWN_TICKERS.add(ticker.strip().upper())
+
 
     def plan(
         self,
@@ -269,7 +279,7 @@ class MetadataFilterPlannerV1:
                 field_name = "tenant_id" if key in {"tenant_id", "user_id"} else key
                 conditions.append(_condition(field_name, [auth[key]], FilterStrength.HARD, reason="authorization"))
 
-        ticker = next((token for token in re.findall(r"\b[A-Z][A-Z0-9]{1,4}\b", text) if token in self._KNOWN_TICKERS), None)
+        ticker = next((token for token in re.findall(r"\b[A-Z][A-Z0-9]{1,5}\b", text) if token in self._KNOWN_TICKERS), None)
         if ticker:
             conditions.append(_condition("ticker", [ticker], FilterStrength.HARD, reason="explicit ticker"))
         fy = re.search(r"\b(?:FY|fiscal\s+year\s*)(20\d{2})\b", text, flags=re.IGNORECASE)

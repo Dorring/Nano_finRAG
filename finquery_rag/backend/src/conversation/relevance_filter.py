@@ -11,6 +11,7 @@ import re
 from typing import Sequence
 
 from .contracts import DialogueState, DialogueTurn
+from .resolver import KNOWN_ENTITIES
 
 
 class ContextRelevanceFilter:
@@ -34,7 +35,7 @@ class ContextRelevanceFilter:
 
         # Detect if current query explicitly introduces a new entity (Topic Switch)
         new_entity_detected = False
-        for cand in ["apple", "aapl", "microsoft", "msft", "tesla", "tsla", "google", "googl", "amazon", "amzn", "coca-cola", "ko", "oracle", "orcl"]:
+        for cand in KNOWN_ENTITIES:
             if re.search(rf"\b{re.escape(cand)}\b", q_lower):
                 if active_e and cand != active_e:
                     new_entity_detected = True
