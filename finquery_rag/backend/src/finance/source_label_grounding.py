@@ -61,6 +61,7 @@ class SourceLabelGrounding:
         # rather than as "the question was spelled differently".
         period = canonical_period_id(getattr(slot, "period", None))
         entity = getattr(slot, "entity", None)
+        scope = getattr(slot, "scope", None)
         if entity:
             facts = self._store.facts_at_coordinate(entity, metric, period)
         else:
@@ -72,6 +73,13 @@ class SourceLabelGrounding:
             facts = self._store.facts_for_label(metric, period)
         if not facts:
             return None
+        if scope:
+            scoped_facts = tuple(
+                f for f in facts
+                if f.get("scope") and str(f.get("scope")).casefold() == str(scope).casefold()
+            )
+            if scoped_facts:
+                facts = scoped_facts
         if coordinate_status(facts[0], facts) is CoordinateStatus.CONFLICTING_VALUES:
             return None
         return str(metric)

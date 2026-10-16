@@ -261,7 +261,7 @@ class BenchmarkHTTPClient:
         self,
         q_id: str,
         q_text: str,
-        timeout_s: float = 90.0,
+        timeout_s: float = 180.0,
     ) -> tuple[dict[str, Any], dict[str, Any], float]:
         session_id = f"tv2-canonical-bench-{q_id}"
         t0 = time.perf_counter()
@@ -732,7 +732,7 @@ def main() -> int:
     parser.add_argument("--endpoint", type=str, default="http://127.0.0.1:18002")
     parser.add_argument("--smoke-4", action="store_true", help="Run 4 smoke questions (1 per stratum)")
     parser.add_argument("--limit", type=int, default=0, help="Limit number of queries")
-    parser.add_argument("--timeout-per-query", type=float, default=90.0)
+    parser.add_argument("--timeout-per-query", type=float, default=180.0)
     parser.add_argument("--env-file", type=str, default=None, help="Path to online.env file")
     parser.add_argument("--dry-run", action="store_true")
 

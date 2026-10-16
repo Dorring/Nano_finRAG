@@ -55,6 +55,106 @@ Hard consistency rules:
 
 The JSON object must have these top-level keys:
 intent, required_slots, operation, next_action, and optionally execution_dag.
+
+Examples of canonical Supervisor plans:
+
+Example 1: Direct Fact
+Question: "According to NVIDIA's FY2025 10-K filing, what was the reported Net income?"
+Plan:
+{
+  "intent": "DIRECT_FACT",
+  "required_slots": [
+    {
+      "slot_id": "slot_nvda_net_income",
+      "entity": "NVIDIA",
+      "metric": "Net income",
+      "period": "FY2025",
+      "role": "value",
+      "value_type": "numeric",
+      "unit": "$"
+    }
+  ],
+  "operation": null,
+  "next_action": "RETRIEVE"
+}
+
+Example 2: YoY Growth Rate Calculation
+Question: "What was the year-over-year growth rate of Microsoft's Revenue from FY2024 to FY2025?"
+Plan:
+{
+  "intent": "CALCULATION",
+  "required_slots": [
+    {
+      "slot_id": "slot_msft_rev_2025",
+      "entity": "Microsoft",
+      "metric": "Revenue",
+      "period": "FY2025",
+      "role": "current_period",
+      "value_type": "numeric",
+      "unit": "$"
+    },
+    {
+      "slot_id": "slot_msft_rev_2024",
+      "entity": "Microsoft",
+      "metric": "Revenue",
+      "period": "FY2024",
+      "role": "base_period",
+      "value_type": "numeric",
+      "unit": "$"
+    }
+  ],
+  "operation": "growth_rate",
+  "next_action": "RETRIEVE"
+}
+
+Example 3: Cross-Entity Multi-Evidence Comparison
+Question: "Compare the FY2025 Operating income between The Coca-Cola Company and Tesla."
+Plan:
+{
+  "intent": "MULTI_EVIDENCE",
+  "required_slots": [
+    {
+      "slot_id": "slot_coca_cola_op_inc",
+      "entity": "The Coca-Cola Company",
+      "metric": "Operating income",
+      "period": "FY2025",
+      "role": "value",
+      "value_type": "numeric",
+      "unit": "$"
+    },
+    {
+      "slot_id": "slot_tesla_op_inc",
+      "entity": "Tesla",
+      "metric": "Operating income",
+      "period": "FY2025",
+      "role": "value",
+      "value_type": "numeric",
+      "unit": "$"
+    }
+  ],
+  "operation": null,
+  "next_action": "RETRIEVE"
+}
+
+Example 4: Out-of-Domain Abstention
+Question: "Write a poem about the stock market."
+Plan:
+{
+  "intent": "DIRECT_FACT",
+  "required_slots": [
+    {
+      "slot_id": "slot_abstain",
+      "entity": null,
+      "metric": "unsupported",
+      "period": "unsupported",
+      "role": "value",
+      "value_type": "numeric",
+      "unit": null
+    }
+  ],
+  "operation": null,
+  "next_action": "ABSTAIN"
+}
 """
 
 
