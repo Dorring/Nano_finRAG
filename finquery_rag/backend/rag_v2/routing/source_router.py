@@ -50,7 +50,7 @@ _NARRATIVE_PATTERNS = re.compile(
 )
 
 _FOOTNOTE_PATTERNS = re.compile(
-    r"\b(segment|geographic|services revenue|intelligent cloud|azure|aws|cloud revenue|operating lease|lease liability|debt maturity|contractual obligation|restricted cash|share-based|stock compensation|note \d+|footnote|disaggregation)\b",
+    r"\b(segment|geographic|division|product line|services revenue|cloud revenue|operating lease|lease liability|debt maturity|senior notes|contractual obligation|restricted cash|share-based|stock compensation|fair value|income taxes|pension|derivative|note \d+|footnote|disaggregation)\b",
     re.IGNORECASE,
 )
 
@@ -64,6 +64,7 @@ _STANDARD_STRUCTURED_METRICS = frozenset(
         "total net sales",
         "total revenue",
         "revenue",
+        "revenues",
         "net sales",
         "gross profit",
         "operating income",
@@ -83,6 +84,8 @@ _STANDARD_STRUCTURED_METRICS = frozenset(
         "cost of revenue",
         "research and development",
         "selling, general and administrative",
+        "operating cash flows",
+        "operating cash flow",
     }
 )
 
@@ -90,12 +93,32 @@ _STANDARD_STRUCTURED_METRICS = frozenset(
 class SourceRouter:
     """Stateless router that determines optimal data source and section hints."""
 
+    _custom_structured_metrics: set[str] = set()
+    _custom_footnote_keywords: set[str] = set()
+    _custom_market_keywords: set[str] = set()
+
+    @classmethod
+    def register_structured_metric(cls, metric: str) -> None:
+        """Register custom canonical structured financial metric."""
+        cls._custom_structured_metrics.add(metric.strip().lower())
+
+    @classmethod
+    def register_footnote_keyword(cls, keyword: str) -> None:
+        """Register custom keyword identifying footnote disclosures."""
+        cls._custom_footnote_keywords.add(keyword.strip().lower())
+
+    @classmethod
+    def register_market_keyword(cls, keyword: str) -> None:
+        """Register custom keyword identifying real-time market API metrics."""
+        cls._custom_market_keywords.add(keyword.strip().lower())
+
     @classmethod
     def route_query(cls, query: str) -> RouteDecision:
         """Route based on user query phrasing."""
         query_norm = query.strip().lower()
 
-        if _MARKET_API_PATTERNS.search(query_norm):
+        if _MARKET_API_PATTERNS.search(query_norm) or any(k in query_norm for k in cls._custom_market_keywords):
+
             return RouteDecision(
                 target_source=DataSourceType.MARKET_API,
                 section_hint="Market Data Provider",
@@ -142,7 +165,7 @@ class SourceRouter:
         scope_norm = (slot.scope or "").strip().lower()
 
         # 1. Check if the slot metric itself targets market API
-        if _MARKET_API_PATTERNS.search(metric_norm):
+        if _MARKET_API_PATTERNS.search(metric_norm) or any(k in metric_norm for k in cls._custom_market_keywords):
             return RouteDecision(
                 target_source=DataSourceType.MARKET_API,
                 section_hint="Market Data Provider",
@@ -151,7 +174,7 @@ class SourceRouter:
             )
 
         # 2. Check if metric is explicitly footnote/segment
-        if _FOOTNOTE_PATTERNS.search(metric_norm) or "segment" in scope_norm:
+        if _FOOTNOTE_PATTERNS.search(metric_norm) or any(k in metric_norm for k in cls._custom_footnote_keywords) or "segment" in scope_norm:
             note_match = re.search(r"note\s+(\d+)", query or "", re.IGNORECASE) or re.search(r"note\s+(\d+)", metric_norm, re.IGNORECASE)
             if note_match:
                 hint = f"Item 8. Note {note_match.group(1)}"
@@ -172,14 +195,15 @@ class SourceRouter:
             )
 
         # 3. Standard canonical metrics route to STRUCTURED_STORE or PRIMARY_STATEMENTS
-        if metric_norm in _STANDARD_STRUCTURED_METRICS:
+        if metric_norm in _STANDARD_STRUCTURED_METRICS or metric_norm in cls._custom_structured_metrics:
             # Differentiate statement type for section_hint
-            if any(term in metric_norm for term in ("asset", "liabilit", "equity", "debt", "cash and cash", "marketable securities", "payable", "receivable", "inventory")):
+            if any(term in metric_norm for term in ("asset", "liabilit", "equity", "debt", "cash and cash", "marketable securities", "payable", "receivable", "inventory", "working capital", "retained earnings", "goodwill", "intangible", "property, plant", "ppe")):
                 section = "Item 8. Consolidated Balance Sheets"
-            elif any(term in metric_norm for term in ("cash flow", "operating activities", "investing activities", "financing activities", "capital expenditure")):
+            elif any(term in metric_norm for term in ("cash flow", "operating activities", "investing activities", "financing activities", "capital expenditure", "capex", "dividends paid")):
                 section = "Item 8. Consolidated Statements of Cash Flows"
             else:
                 section = "Item 8. Consolidated Statements of Operations"
+
 
             return RouteDecision(
                 target_source=DataSourceType.STRUCTURED_STORE,

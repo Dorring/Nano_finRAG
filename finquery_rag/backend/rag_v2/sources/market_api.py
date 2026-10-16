@@ -41,7 +41,41 @@ _ENTITY_TICKER_MAP: dict[str, str] = {
     "tsla": "TSLA",
     "nvidia": "NVDA",
     "nvda": "NVDA",
+    "amazon": "AMZN",
+    "amazon com": "AMZN",
+    "amazon.com inc": "AMZN",
+    "amzn": "AMZN",
+    "google": "GOOGL",
+    "alphabet": "GOOGL",
+    "alphabet inc": "GOOGL",
+    "googl": "GOOGL",
+    "goog": "GOOGL",
+    "meta": "META",
+    "meta platforms": "META",
+    "facebook": "META",
+    "jpmorgan": "JPM",
+    "jpmorgan chase": "JPM",
+    "jpmorgan chase & co": "JPM",
+    "jpm": "JPM",
+    "coca-cola": "KO",
+    "coca cola": "KO",
+    "coke": "KO",
+    "ko": "KO",
+    "walmart": "WMT",
+    "walmart inc": "WMT",
+    "wmt": "WMT",
+    "exxon": "XOM",
+    "exxonmobil": "XOM",
+    "exxon mobil": "XOM",
+    "xom": "XOM",
+    "netflix": "NFLX",
+    "nflx": "NFLX",
 }
+
+
+def register_ticker(entity_name: str, ticker: str) -> None:
+    """Register custom entity name to standard ticker mapping dynamically."""
+    _ENTITY_TICKER_MAP[entity_name.strip().lower()] = ticker.strip().upper()
 
 
 def normalize_market_metric(metric: str) -> str:
@@ -58,6 +92,7 @@ def normalize_ticker(entity: str) -> str:
 
 
 @runtime_checkable
+
 class MarketDataProvider(Protocol):
     """Protocol for financial market data providers."""
 

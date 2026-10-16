@@ -55,8 +55,14 @@ _ANNUAL_PATTERNS = re.compile(
 )
 
 _SEGMENT_TERMS = re.compile(
-    r"\b(segment|division|product line|geographic|reporting unit|business unit|operating segment|disaggregated|commercial|consumer|enterprise|automotive|cloud|hardware|software|services|advertising|retail|subscription|iphone|mac|ipad|wearables|intelligent cloud|productivity and business|more personal computing)\b",
+    r"\b(segment|division|product line|geographic|reporting unit|business unit|operating segment|disaggregated|commercial|consumer|enterprise|automotive|cloud|hardware|software|services|advertising|retail|subscription|upstream|downstream|banking|wealth|direct customer|intersegment|iphone|mac|ipad|wearables|intelligent cloud|productivity and business|more personal computing)\b",
     re.IGNORECASE,
+)
+
+_FOOTNOTE_INDICATORS = (
+    "restricted cash", "debt maturity", "lease liability", "commitments", "contingencies",
+    "share-based", "stock compensation", "segment revenue", "fair value", "income taxes",
+    "pension", "retirement benefits", "derivative", "hedging", "subsequent events",
 )
 
 _ALIAS_MAP: dict[str, tuple[str, ...]] = {
@@ -80,9 +86,30 @@ _ALIAS_MAP: dict[str, tuple[str, ...]] = {
 class DiagnosticCritic:
     """Evaluates why candidate packets failed to satisfy a slot and plans targeted recovery."""
 
+    _custom_segment_terms: set[str] = set()
+    _custom_footnote_terms: set[str] = set()
+
+    @classmethod
+    def register_alias(cls, canonical_metric: str, aliases: Iterable[str]) -> None:
+        """Register custom or domain-specific accounting aliases at runtime."""
+        clean = canonical_metric.strip().lower()
+        alias_tuple = tuple(str(a).strip().lower() for a in aliases)
+        _ALIAS_MAP[clean] = alias_tuple
+
+    @classmethod
+    def register_segment_term(cls, term: str) -> None:
+        """Register custom business segment identifier."""
+        cls._custom_segment_terms.add(term.strip().lower())
+
+    @classmethod
+    def register_footnote_indicator(cls, term: str) -> None:
+        """Register custom footnote-specific metric indicator."""
+        cls._custom_footnote_terms.add(term.strip().lower())
+
     @classmethod
     def diagnose_slot(
         cls,
+
         slot: Mapping[str, Any],
         candidates: Iterable[Mapping[str, Any]],
         base_query: str = "",
@@ -106,9 +133,9 @@ class DiagnosticCritic:
             query = f"{entity} {metric} {period} annual consolidated twelve months ended"
             # Target statement section dynamically depending on slot metric line item
             m_lower = metric.lower()
-            if any(k in m_lower for k in ("asset", "liabilit", "equity", "debt", "cash and cash", "marketable securities", "payable", "receivable", "inventory")):
+            if any(k in m_lower for k in ("asset", "liabilit", "equity", "debt", "cash and cash", "marketable securities", "payable", "receivable", "inventory", "working capital", "retained earnings", "goodwill", "intangible", "property, plant", "ppe")):
                 target_section = "Item 8. Consolidated Balance Sheets"
-            elif any(k in m_lower for k in ("cash flow", "operating activities", "investing activities", "financing activities")):
+            elif any(k in m_lower for k in ("cash flow", "operating activities", "investing activities", "financing activities", "capital expenditure", "capex", "dividends paid")):
                 target_section = "Item 8. Consolidated Statements of Cash Flows"
             else:
                 target_section = "Item 8. Consolidated Statements of Operations"
@@ -124,7 +151,8 @@ class DiagnosticCritic:
 
         # Check 2: Segment vs Consolidated Total
         is_consolidated_target = scope in ("", "consolidated", "total")
-        if is_consolidated_target and _SEGMENT_TERMS.search(all_text) and not ("consolidated" in all_text or "total" in all_text):
+        has_segment_indicators = bool(_SEGMENT_TERMS.search(all_text)) or any(t in all_text for t in cls._custom_segment_terms)
+        if is_consolidated_target and has_segment_indicators and not ("consolidated" in all_text or "total" in all_text):
             query = f"{entity} total consolidated {metric} {period} consolidated statements"
             return CriticDiagnosis(
                 category=CriticDiagnosisCategory.SEGMENT_VS_CONSOLIDATED,
@@ -136,8 +164,8 @@ class DiagnosticCritic:
             )
 
         # Check 3: Footnote vs Primary Statement Face
-        footnote_indicators = ("restricted cash", "debt maturity", "lease liability", "commitments", "contingencies", "share-based", "segment revenue", "fair value", "income taxes")
-        if any(term in metric.lower() for term in footnote_indicators):
+        is_footnote_metric = any(t in metric.lower() for t in _FOOTNOTE_INDICATORS) or any(t in metric.lower() for t in cls._custom_footnote_terms)
+        if is_footnote_metric:
             query = f"{entity} {period} Note disclosures {metric}"
             return CriticDiagnosis(
                 category=CriticDiagnosisCategory.FOOTNOTE_MISSING,

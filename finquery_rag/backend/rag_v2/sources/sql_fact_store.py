@@ -138,7 +138,18 @@ DEFAULT_FACT_DB_PATH = os.path.join(
 class SqlFactStore:
     """Lightweight SQLite-backed structured financial fact wide table."""
 
+    @classmethod
+    def register_metric_alias(cls, alias: str, canonical: str) -> None:
+        """Register custom or company-specific metric alias at runtime."""
+        _METRIC_CANONICAL_MAP[alias.strip().lower()] = canonical.strip().lower()
+
+    @classmethod
+    def register_entity_ticker(cls, entity: str, ticker: str) -> None:
+        """Register custom entity name to ticker mapping."""
+        _ENTITY_TICKER_MAP[entity.strip().lower()] = ticker.strip().lower()
+
     def __init__(self, db_path: str | None = None) -> None:
+
         if db_path is not None:
             self.db_path = db_path
         elif os.path.exists(DEFAULT_FACT_DB_PATH):

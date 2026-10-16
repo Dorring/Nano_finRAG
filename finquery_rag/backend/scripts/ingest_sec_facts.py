@@ -276,12 +276,25 @@ def run_checks_and_comparisons(store: SqlFactStore) -> None:
 
 
 def main() -> None:
-    db_path = os.path.join(backend_root, "data", "financial_facts.sqlite")
+    import argparse
+    parser = argparse.ArgumentParser(description="Ingest SEC EDGAR iXBRL facts into SQLite fact store.")
+    parser.add_argument("--symbol", type=str, default=None, help="Stock ticker symbol (e.g. AAPL, INTC, MSFT)")
+    parser.add_argument("--name", type=str, default=None, help="Company display name (e.g. Intel)")
+    parser.add_argument("--cik", type=str, default=None, help="SEC EDGAR 10-digit CIK (e.g. 0000050863)")
+    parser.add_argument("--db", type=str, default=None, help="Path to SQLite database file")
+    args = parser.parse_args()
+
+    db_path = args.db or os.path.join(backend_root, "data", "financial_facts.sqlite")
     print(f"Opening SQLite database at: {db_path}")
     store = SqlFactStore(db_path)
 
+    target_companies = COMPANIES
+    if args.symbol and args.cik:
+        name = args.name or args.symbol.upper()
+        target_companies = [{"symbol": args.symbol.upper(), "name": name, "cik": args.cik}]
+
     total_ingested = 0
-    for comp in COMPANIES:
+    for comp in target_companies:
         print(f"Fetching SEC EDGAR iXBRL facts for {comp['name']} ({comp['symbol']}, CIK: {comp['cik']})...")
         edgar = fetch_sec_company_facts(comp["cik"])
         if edgar:
@@ -294,10 +307,12 @@ def main() -> None:
 
     print(f"\nSuccessfully populated/updated {total_ingested} audited 10-K financial facts into {db_path}!")
 
-    # Run verification and comparison
-    run_checks_and_comparisons(store)
+    if len(target_companies) > 1:
+        # Run verification and comparison across standard portfolio
+        run_checks_and_comparisons(store)
     store.close()
 
 
 if __name__ == "__main__":
     main()
+
