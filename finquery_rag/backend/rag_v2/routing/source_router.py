@@ -206,7 +206,16 @@ class SourceRouter:
                 reason=f"Metric '{slot.metric}' or scope '{slot.scope}' is footnote/segment-specific",
             )
 
-        # 3. Standard canonical metrics route to STRUCTURED_STORE or PRIMARY_STATEMENTS
+        # 3. Check if slot metric targets Non-GAAP or adjusted reconciliation
+        if _NON_GAAP_PATTERNS.search(metric_norm):
+            return RouteDecision(
+                target_source=DataSourceType.NARRATIVE_DISCLOSURES,
+                section_hint="Item 7. Non-GAAP Financial Measures Reconciliation",
+                confidence=0.92,
+                reason=f"Slot metric '{slot.metric}' targets Non-GAAP or adjusted reconciliation measures",
+            )
+
+        # 4. Standard canonical metrics route to STRUCTURED_STORE or PRIMARY_STATEMENTS
         if metric_norm in _STANDARD_STRUCTURED_METRICS or metric_norm in cls._custom_structured_metrics:
             # Differentiate statement type for section_hint
             if any(term in metric_norm for term in ("asset", "liabilit", "equity", "debt", "cash and cash", "marketable securities", "payable", "receivable", "inventory", "working capital", "retained earnings", "goodwill", "intangible", "property, plant", "ppe")):

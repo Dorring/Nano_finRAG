@@ -129,7 +129,7 @@ class DiagnosticCritic:
         ).lower()
 
         # Check 1: Quarterly vs Annual Mismatch
-        is_annual_target = bool(re.search(r"\b(fy\d{4}|\d{4})\b", period, re.IGNORECASE))
+        is_annual_target = bool(re.search(r"\b(fy\d{2,4}|\d{4})\b", period, re.IGNORECASE))
         if is_annual_target and _INTERIM_PATTERNS.search(all_text) and not _ANNUAL_PATTERNS.search(all_text):
             query = f"{entity} {metric} {period} annual consolidated twelve months ended"
             # Target statement section dynamically depending on slot metric line item

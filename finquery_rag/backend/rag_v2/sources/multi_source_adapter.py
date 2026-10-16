@@ -29,22 +29,30 @@ class SourceAuthority(IntEnum):
 
 
 def determine_source_authority(packet: Mapping[str, Any]) -> SourceAuthority:
-    """Determine authority level of an evidence packet."""
+    """Determine authority level of an evidence packet (bilingual support)."""
     source = str(packet.get("source", "")).upper()
     doc_id = str(packet.get("document_id", "")).upper()
     citation = str(packet.get("citation_id", "")).upper()
-    is_interim = any(k in str(packet.get("period", "")).upper() for k in ("Q1", "Q2", "Q3", "Q4", "MONTHS ENDED"))
+    is_interim = any(k in str(packet.get("period", "")).upper() for k in ("Q1", "Q2", "Q3", "Q4", "MONTHS ENDED", "季度", "中期"))
 
     if is_interim:
         return SourceAuthority.UNAUDITED_INTERIM
 
-    if "STATEMENT" in citation or "STATEMENT" in doc_id or "OPERATIONS" in citation or "BALANCE SHEET" in citation or "CASH FLOW" in citation:
+    primary_markers = (
+        "STATEMENT", "OPERATIONS", "BALANCE SHEET", "CASH FLOW",
+        "资产负债表", "利润表", "损益表", "现金流量表", "主表",
+    )
+    if any(m in citation or m in doc_id for m in primary_markers):
         return SourceAuthority.AUDITED_PRIMARY_STATEMENT
-    if "NOTE" in citation or "FOOTNOTE" in citation or "NOTE" in doc_id:
+
+    footnote_markers = ("NOTE", "FOOTNOTE", "附注", "报表附注")
+    if any(m in citation or m in doc_id for m in footnote_markers):
         return SourceAuthority.AUDITED_FOOTNOTE
-    if "SQL" in source or "IXBRL" in source or "SQL_FACT_STORE" in source:
+
+    if "SQL" in source or "IXBRL" in source or "SQL_FACT_STORE" in source or "宽表" in source:
         return SourceAuthority.STRUCTURED_IXBRL_SQL
-    if "MARKET" in source:
+
+    if "MARKET" in source or "行情" in source or "实时" in source:
         return SourceAuthority.MARKET_API_REALTIME
 
     return SourceAuthority.UNKNOWN

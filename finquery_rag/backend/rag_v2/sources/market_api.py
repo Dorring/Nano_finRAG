@@ -323,14 +323,24 @@ def register_fx_rate(from_curr: str, to_curr: str, rate: Decimal | str | float) 
 
 
 def get_fx_rate(from_curr: str, to_curr: str) -> Decimal | None:
-    """Get currency exchange rate from from_curr to to_curr."""
+    """Get currency exchange rate from from_curr to to_curr with triangular cross-rate resolution."""
     f = from_curr.strip().upper()
     t = to_curr.strip().upper()
     if f == t:
         return Decimal("1")
     if (f, t) in _CUSTOM_FX_RATES:
         return _CUSTOM_FX_RATES[(f, t)]
-    return _DEFAULT_FX_RATES.get((f, t))
+    if (f, t) in _DEFAULT_FX_RATES:
+        return _DEFAULT_FX_RATES[(f, t)]
+
+    # Standard triangular cross-rate conversion via USD base currency
+    if f != "USD" and t != "USD":
+        rate_to_usd = get_fx_rate(f, "USD")
+        rate_from_usd = get_fx_rate("USD", t)
+        if rate_to_usd is not None and rate_from_usd is not None:
+            return rate_to_usd * rate_from_usd
+
+    return None
 
 
 # =========================================================================

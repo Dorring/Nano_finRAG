@@ -43,9 +43,10 @@ def format_fail_closed_explanation(
         )
 
     # Case 3: Unit / Currency Mismatch
-    if "unit_mismatch" in reason_norm or "currency" in reason_norm or "cross-currency" in reason_norm:
-        unit_a = ctx.get("unit_a", "货币A")
-        unit_b = ctx.get("unit_b", "货币B")
+    if "unit_mismatch" in reason_norm or "currency" in reason_norm or "cross-currency" in reason_norm or "operands_are_not_comparable" in reason_norm:
+        m_unit = re.search(r"['\"]?([A-Za-z0-9_%$]+)['\"]?\s+vs\s+['\"]?([A-Za-z0-9_%$]+)['\"]?", block_reason)
+        unit_a = ctx.get("unit_a") or (m_unit.group(1) if m_unit else "货币A")
+        unit_b = ctx.get("unit_b") or (m_unit.group(2) if m_unit else "货币B")
         return (
             f"【无法直接执行算术运算】：参与运算的操作数存在异构量纲冲突 ({unit_a} 与 {unit_b})。"
             "为确保财务严谨性，禁止将不同币种或不可约减物理单位直接加减；建议引入即期汇率 (FX Rate) 折算后再行计算。"

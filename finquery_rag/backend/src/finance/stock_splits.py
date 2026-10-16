@@ -32,9 +32,38 @@ _KNOWN_STOCK_SPLITS: dict[str, list[StockSplitEvent]] = {
 _CUSTOM_STOCK_SPLITS: dict[str, list[StockSplitEvent]] = {}
 
 
+_DEFAULT_ENTITY_TICKER_MAP: dict[str, str] = {
+    "apple": "AAPL",
+    "microsoft": "MSFT",
+    "nvidia": "NVDA",
+    "tesla": "TSLA",
+    "google": "GOOGL",
+    "alphabet": "GOOGL",
+    "amazon": "AMZN",
+    "meta": "META",
+}
+
+_CUSTOM_ENTITY_TICKER_MAP: dict[str, str] = {}
+
+
+def register_entity_ticker(entity: str, ticker: str) -> None:
+    """Register custom entity name to standard ticker mapping dynamically."""
+    _CUSTOM_ENTITY_TICKER_MAP[entity.strip().lower()] = ticker.strip().upper()
+
+
+def _resolve_ticker(entity_or_ticker: str) -> str:
+    """Resolve an entity name or ticker symbol to uppercase ticker."""
+    clean = entity_or_ticker.strip().lower()
+    if clean in _CUSTOM_ENTITY_TICKER_MAP:
+        return _CUSTOM_ENTITY_TICKER_MAP[clean]
+    if clean in _DEFAULT_ENTITY_TICKER_MAP:
+        return _DEFAULT_ENTITY_TICKER_MAP[clean]
+    return entity_or_ticker.strip().upper()
+
+
 def register_stock_split(ticker: str, effective_date: str, split_ratio: Decimal | int | str) -> None:
     """Register custom stock split dynamically."""
-    t = ticker.strip().upper()
+    t = _resolve_ticker(ticker)
     event = StockSplitEvent(t, effective_date.strip(), Decimal(str(split_ratio)))
     if t not in _CUSTOM_STOCK_SPLITS:
         _CUSTOM_STOCK_SPLITS[t] = []
@@ -52,7 +81,7 @@ def get_split_adjustment_factor(
     Historical per-share metric (pre-split EPS) must be divided by this factor
     to compare with post-split market stock price.
     """
-    t = ticker.strip().upper()
+    t = _resolve_ticker(ticker)
     splits = _CUSTOM_STOCK_SPLITS.get(t, []) + _KNOWN_STOCK_SPLITS.get(t, [])
     if not splits:
         return Decimal("1")
@@ -80,7 +109,15 @@ def adjust_per_share_metric(
     Returns:
         (adjusted_value, split_factor, has_split)
     """
-    is_per_share = any(k in metric_name.lower() for k in ("eps", "per share", "dividend per share", "earnings per share"))
+    m_lower = metric_name.lower()
+    is_per_share = any(
+        k in m_lower
+        for k in (
+            "eps", "per share", "dividend per share", "earnings per share",
+            "dps", "bvps", "book value per share", "cash flow per share",
+            "每股", "每股收益", "每股净资产", "每股股利", "每股现金流",
+        )
+    )
     if not is_per_share:
         return raw_value, Decimal("1"), False
 

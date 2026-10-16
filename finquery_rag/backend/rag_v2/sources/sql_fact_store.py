@@ -117,14 +117,16 @@ def normalize_entity(entity: str) -> tuple[str, str]:
 
 
 def normalize_period(period: str) -> str:
-    """Normalize period representation to standard FYYYYY or YYYY."""
+    """Normalize period representation to standard FYYYYY or YYYY (supports 2-digit & 4-digit years)."""
     p = period.strip().upper()
-    m = re.search(r"\b((?:19|20)\d{2})\b", p)
-    if m:
-        year = m.group(1)
-        if "FY" in p or "FISCAL" in p:
-            return f"FY{year}"
-        return f"FY{year}"
+    m4 = re.search(r"\b((?:19|20)\d{2})\b", p)
+    if m4:
+        return f"FY{m4.group(1)}"
+    m2 = re.search(r"\b(?:FY|CY|['’])\s*(\d{2})\b", p)
+    if m2:
+        val = int(m2.group(1))
+        full_year = 2000 + val if val < 70 else 1900 + val
+        return f"FY{full_year}"
     return p
 
 

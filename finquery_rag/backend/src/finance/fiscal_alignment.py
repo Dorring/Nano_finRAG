@@ -57,9 +57,16 @@ def get_fiscal_year_end_month(entity: str) -> int:
 
 
 def extract_year(period: str) -> int | None:
-    """Extract numeric 4-digit year from period string (e.g. FY2024, 2024)."""
-    m = re.search(r"\b((?:19|20)\d{2})\b", period)
-    return int(m.group(1)) if m else None
+    """Extract numeric year from period string (e.g. FY2024, 2024, FY24, CY23, '24)."""
+    p = period.strip()
+    m4 = re.search(r"\b((?:19|20)\d{2})\b", p)
+    if m4:
+        return int(m4.group(1))
+    m2 = re.search(r"(?:fy|cy|['’])\s*(\d{2})\b", p, re.IGNORECASE)
+    if m2:
+        val = int(m2.group(1))
+        return 2000 + val if val < 70 else 1900 + val
+    return None
 
 
 @dataclass(frozen=True)
@@ -108,8 +115,15 @@ def check_fiscal_alignment(
     m_a = get_fiscal_year_end_month(entity_a)
     m_b = get_fiscal_year_end_month(entity_b)
 
-    year_a = extract_year(period_a) or 2024
-    year_b = extract_year(period_b) or 2024
+    year_a = extract_year(period_a)
+    year_b = extract_year(period_b)
+    if year_a is None and year_b is None:
+        year_a = 0
+        year_b = 0
+    elif year_a is None:
+        year_a = year_b
+    elif year_b is None:
+        year_b = year_a
 
     # Calculate absolute calendar month timestamp (year * 12 + month)
     abs_month_a = year_a * 12 + m_a

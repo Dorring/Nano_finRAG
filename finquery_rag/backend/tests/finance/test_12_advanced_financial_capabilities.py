@@ -83,6 +83,11 @@ class Test12AdvancedFinancialCapabilities:
         assert rep2.is_aligned
         assert rep2.drift_months == 0
 
+        # Test 2-digit year generality (FY24 vs FY24)
+        rep_2digit = check_fiscal_alignment("Apple", "FY24", "Microsoft", "FY24")
+        assert not rep_2digit.is_aligned
+        assert rep_2digit.drift_months == 3
+
     # -------------------------------------------------------------
     # 2. 跨币种运算与动态 FX 汇率折算
     # -------------------------------------------------------------
@@ -95,6 +100,10 @@ class Test12AdvancedFinancialCapabilities:
         register_fx_rate("SGD", "USD", Decimal("0.75"))
         assert get_fx_rate("SGD", "USD") == Decimal("0.75")
         assert get_fx_rate("USD", "SGD") == Decimal("1") / Decimal("0.75")
+
+        # Standard triangular cross-rate conversion via USD (EUR -> JPY)
+        rate_eur_jpy = get_fx_rate("EUR", "JPY")
+        assert rate_eur_jpy == Decimal("1.08") * Decimal("149.25")
 
         # Test operand harmonization
         op_usd = CalculationOperand(name="AAPL_Rev", value=Decimal("100"), unit="USD")
@@ -144,6 +153,10 @@ class Test12AdvancedFinancialCapabilities:
         factor = get_split_adjustment_factor("NVDA", "2024-01-01", "2024-07-01")
         assert factor == Decimal("10")
 
+        # Entity name resolution (NVIDIA -> NVDA)
+        factor_name = get_split_adjustment_factor("NVIDIA", "2024-01-01", "2024-07-01")
+        assert factor_name == Decimal("10")
+
         # Pre-split EPS of $12.00 is adjusted to $1.20 post-split equivalent
         adj_val, split_fac, has_split = adjust_per_share_metric(
             "NVDA", "diluted_eps", Decimal("12.00"), "2024-01-01", "2024-07-01",
@@ -151,6 +164,13 @@ class Test12AdvancedFinancialCapabilities:
         assert has_split is True
         assert split_fac == Decimal("10")
         assert adj_val == Decimal("1.20")
+
+        # Bilingual per-share metric detection
+        adj_cn, _, has_cn = adjust_per_share_metric(
+            "NVIDIA", "每股收益 (EPS)", Decimal("12.00"), "2024-01-01", "2024-07-01",
+        )
+        assert has_cn is True
+        assert adj_cn == Decimal("1.20")
 
         # Custom split registration
         register_stock_split("TEST", "2025-01-01", Decimal("2"))
@@ -208,6 +228,13 @@ class Test12AdvancedFinancialCapabilities:
         assert "arbitration_record" in arbitrated[0]
         assert arbitrated[0]["arbitration_record"]["suppressed_count"] == 2
 
+        # Test bilingual Chinese citation identification
+        pkt_cn = {
+            "slot_ids": ["slot_rev"], "entity_id": "aapl", "metric": "revenue", "period": "FY2024",
+            "value": "391035", "source": "PDF_RETRIEVAL", "citation_id": "合并利润表",
+        }
+        assert determine_source_authority(pkt_cn) == SourceAuthority.AUDITED_PRIMARY_STATEMENT
+
     # -------------------------------------------------------------
     # 7. PIT 时点数据库与防未来函数
     # -------------------------------------------------------------
@@ -232,6 +259,11 @@ class Test12AdvancedFinancialCapabilities:
         fact_present = store.query_fact("Microsoft", "net_income", "FY2024", as_of_date="2024-12-31")
         assert fact_present is not None
         assert fact_present["value"] == "88136"
+
+        # Test 2-digit fiscal year querying (FY23 -> FY2023)
+        fact_2digit = store.query_fact("Microsoft", "net_income", "FY23", as_of_date="2024-12-31")
+        assert fact_2digit is not None
+        assert fact_2digit["value"] == "72361"
 
     # -------------------------------------------------------------
     # 8. 矩阵式多实体-多时段会话状态机
