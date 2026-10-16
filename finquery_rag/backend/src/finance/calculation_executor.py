@@ -23,6 +23,8 @@ module imports from ``src.domain.calculation`` and
 """
 
 from collections.abc import Mapping
+import dataclasses
+from decimal import Decimal
 import logging
 import re
 from typing import Any
@@ -37,10 +39,99 @@ from src.domain.calculation import (
     CalculationStepRecord,
     IntermediateValue,
 )
-from src.finance.calculation_registry import RelationalToolResult, get_operation_entry
-from src.finance.primitive_tools import convert_scale
+from src.finance.calculation_registry import (
+    RelationalToolResult,
+    _canonical_unit,
+    get_operation_entry,
+)
+from src.finance.primitive_tools import _SCALE_FACTORS, convert_scale
 
 logger = logging.getLogger(__name__)
+
+
+_SCALE_FACTOR_TO_NAME: dict[Decimal, str] = {
+    Decimal("1"): "units",
+    Decimal("1000"): "thousands",
+    Decimal("10000"): "万",
+    Decimal("1000000"): "million",
+    Decimal("100000000"): "亿",
+    Decimal("1000000000"): "billion",
+    Decimal("1000000000000"): "trillion",
+}
+
+
+def _get_operand_scale_factor(op: Any) -> Decimal:
+    """Extract the magnitude scale factor for an operand."""
+    scale = getattr(op, "scale", None)
+    if not scale:
+        return Decimal("1")
+    key = str(scale).strip().lower()
+    return _SCALE_FACTORS.get(key, Decimal("1"))
+
+
+def _harmonize_operand_scales(
+    operands: tuple[Any, ...],
+    operation: CalculationOperation | str | None = None,
+) -> tuple[Any, ...]:
+    """Harmonize differing scale magnitudes across operands into a unified base scale.
+
+    For example, if one operand has scale='million' ($391,035M) and another has
+    scale='units' ($342) or scale='thousands' ($383,285K), they are converted
+    to the finest common scale (e.g. units) to eliminate 10^6 magnitude errors
+    and avoid false-positive unit mismatch rejections.
+
+    Preserves Decimal precision with zero floating point drift.
+    """
+    if len(operands) <= 1:
+        return operands
+
+    op_enum = None
+    if isinstance(operation, CalculationOperation):
+        op_enum = operation
+    elif operation is not None:
+        try:
+            op_enum = CalculationOperation(str(operation))
+        except ValueError:
+            op_enum = None
+
+    # For CAGR: If 3 operands are passed (current, previous, periods), only harmonize current & previous
+    if op_enum is CalculationOperation.CAGR:
+        if len(operands) >= 3:
+            value_ops = operands[:2]
+            tail_ops = operands[2:]
+        else:
+            value_ops = operands
+            tail_ops = ()
+    else:
+        value_ops = operands
+        tail_ops = ()
+
+    factors = [_get_operand_scale_factor(op) for op in value_ops]
+    distinct_factors = set(factors)
+    if len(distinct_factors) <= 1:
+        # All operands already have the same scale factor (or none)
+        return operands
+
+    # Pick the finest scale (minimum factor) to convert by multiplication without fractional loss
+    target_factor = min(distinct_factors)
+    target_scale = _SCALE_FACTOR_TO_NAME.get(target_factor, "units")
+
+    harmonized_values: list[Any] = []
+    for op, factor in zip(value_ops, factors):
+        if factor == target_factor:
+            harmonized_values.append(op)
+        else:
+            multiplier = factor / target_factor
+            new_value = op.value * multiplier
+            if hasattr(op, "_replace"):  # namedtuple
+                new_op = op._replace(value=new_value, scale=target_scale)
+            elif dataclasses.is_dataclass(op) and not isinstance(op, type):
+                new_op = dataclasses.replace(op, value=new_value, scale=target_scale)
+            else:
+                new_op = op
+            harmonized_values.append(new_op)
+
+    return tuple(harmonized_values) + tuple(tail_ops)
 
 
 def _execute_scale_conversion(plan: CalculationPlan) -> CalculationResult:
@@ -218,7 +309,8 @@ def execute_plan(plan: CalculationPlan) -> CalculationResult:
 
     # Execute the primitive function.
     try:
-        result = entry.func(plan.operands, plan.precision)
+        harmonized_operands = _harmonize_operand_scales(plan.operands, plan.operation)
+        result = entry.func(harmonized_operands, plan.precision)
     except Exception as exc:  # noqa: BLE001 - executor must not raise
         logger.warning("calculation primitive raised: %s", exc, exc_info=True)
         return CalculationResult(
@@ -436,11 +528,21 @@ def execute_dag(
 
         # Check unit consistency for operations that require same units
         stated_units = {
-            getattr(op, "unit", None)
+            _canonical_unit(getattr(op, "unit", None))
             for op in step_operands
-            if getattr(op, "unit", None) not in (None, "base")
+            if _canonical_unit(getattr(op, "unit", None)) not in (None, "base")
         }
-        if step_op_enum in {CalculationOperation.DIFFERENCE, CalculationOperation.SUM, CalculationOperation.AVERAGE} and len(stated_units) > 1:
+        if (
+            step_op_enum
+            in {
+                CalculationOperation.DIFFERENCE,
+                CalculationOperation.SUM,
+                CalculationOperation.AVERAGE,
+                CalculationOperation.SPREAD,
+                CalculationOperation.MEDIAN,
+            }
+            and len(stated_units) > 1
+        ):
             return CalculationResult(
                 status=CalculationStatus.BLOCKED,
                 operation=step_op_enum,
@@ -450,7 +552,8 @@ def execute_dag(
             )
 
         try:
-            tool_res = entry.func(tuple(step_operands), precision)
+            harmonized_step_operands = _harmonize_operand_scales(tuple(step_operands), step_op_enum)
+            tool_res = entry.func(harmonized_step_operands, precision)
         except Exception as exc:
             logger.warning("Calculation primitive raised in DAG step %s: %s", step.step_id, exc, exc_info=True)
             return CalculationResult(
@@ -478,10 +581,12 @@ def execute_dag(
             step_unit = step.output_unit
         else:
             step_unit = operand_unit or (step.output_unit if step.output_unit else "base")
+        step_scale = getattr(harmonized_step_operands[0], "scale", None) if harmonized_step_operands else None
         intermediate = IntermediateValue(
             step_id=step.step_id,
             value=tool_res.points_value,
             unit=step_unit,
+            scale=step_scale,
             formula_version=entry.formula_version,
             upstream_steps=tuple(input_refs),
             name=step.step_id,

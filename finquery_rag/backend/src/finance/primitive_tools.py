@@ -55,6 +55,10 @@ __all__ = [
     "gross_margin",
     "net_margin",
     "debt_ratio",
+    "compute_cagr",
+    "valuation_multiple",
+    "spread",
+    "median_values",
 ]
 
 
@@ -85,12 +89,18 @@ _SCALE_FACTORS = {
     "": Decimal("1"),
     "ones": Decimal("1"),
     "unit": Decimal("1"),
+    "units": Decimal("1"),
+    "base": Decimal("1"),
     "thousand": Decimal("1000"),
+    "thousands": Decimal("1000"),
     "k": Decimal("1000"),
     "million": Decimal("1000000"),
+    "millions": Decimal("1000000"),
     "m": Decimal("1000000"),
     "billion": Decimal("1000000000"),
+    "billions": Decimal("1000000000"),
     "bn": Decimal("1000000000"),
+    "b": Decimal("1000000000"),
     "万": Decimal("10000"),
     "万元": Decimal("10000"),
     "千万": Decimal("10000000"),
@@ -589,6 +599,215 @@ def debt_ratio(
         RepresentationKind.RATIO,
         unit="ratio",
         details={"total_liabilities": str(liabilities), "total_assets": str(assets)},
+    )
+
+
+def compute_cagr(
+    current: Any,
+    previous: Any,
+    periods: Any = Decimal("1"),
+    precision: int = 4,
+) -> ToolResult:
+    """Return (current / previous) ** (1 / periods) - 1.
+
+    Reads ``points_value`` from operands. Fail-closed on:
+    - previous <= 0 (cannot compute CAGR starting from non-positive base)
+    - current < 0 (cannot take fractional power of negative value)
+    - periods <= 0 (must have positive period count)
+
+    Formula version: ``cagr.v1``
+    """
+    cur = _ensure_decimal(current)
+    prev = _ensure_decimal(previous)
+    n_res = _ensure_decimal(periods)
+    if not cur.ok:
+        return cur
+    if not prev.ok:
+        return prev
+    if not n_res.ok:
+        return n_res
+
+    cur_val = _points(cur)
+    prev_val = _points(prev)
+    n_val = _points(n_res)
+
+    if prev_val <= 0:
+        return ToolResult(
+            False,
+            error=f"Cannot compute CAGR with non-positive start value: {prev_val}",
+        )
+    if cur_val < 0:
+        return ToolResult(
+            False,
+            error=f"Cannot compute CAGR with negative end value: {cur_val}",
+        )
+    if n_val <= 0:
+        return ToolResult(
+            False,
+            error=f"Cannot compute CAGR with non-positive period count: {n_val}",
+        )
+
+    if cur_val == 0:
+        return _computed(
+            _quantize(Decimal("-1"), precision),
+            RepresentationKind.RATIO,
+            unit="ratio",
+            details={
+                "current": str(cur_val),
+                "previous": str(prev_val),
+                "periods": str(n_val),
+            },
+        )
+
+    try:
+        ratio = cur_val / prev_val
+        exponent = Decimal("1") / n_val
+        cagr_val = (ratio ** exponent) - Decimal("1")
+    except Exception as exc:
+        return ToolResult(
+            False,
+            error=f"CAGR calculation failed: {exc}",
+        )
+
+    return _computed(
+        _quantize(cagr_val, precision),
+        RepresentationKind.RATIO,
+        unit="ratio",
+        details={
+            "current": str(cur_val),
+            "previous": str(prev_val),
+            "periods": str(n_val),
+        },
+    )
+
+
+def valuation_multiple(
+    market_value: Any,
+    fundamental_metric: Any,
+    precision: int = 4,
+) -> ToolResult:
+    """Return market_value / fundamental_metric (e.g. Price / EPS or MarketCap / NetIncome).
+
+    Reads ``points_value``. Fail-closed on:
+    - fundamental_metric == 0 (division by zero)
+    - fundamental_metric < 0 (valuation multiples are undefined for negative fundamentals)
+
+    Formula version: ``valuation_multiple.v1``
+    """
+    mv = _ensure_decimal(market_value)
+    fm = _ensure_decimal(fundamental_metric)
+    if not mv.ok:
+        return mv
+    if not fm.ok:
+        return fm
+
+    mv_val = _points(mv)
+    fm_val = _points(fm)
+
+    if fm_val == 0:
+        return ToolResult(
+            False,
+            error="Cannot compute valuation multiple with zero fundamental metric",
+        )
+    if fm_val < 0:
+        return ToolResult(
+            False,
+            error=f"Valuation multiple undefined for non-positive fundamental metric: {fm_val}",
+        )
+
+    multiple = mv_val / fm_val
+    return _computed(
+        _quantize(multiple, precision),
+        RepresentationKind.RATIO,
+        unit="multiple",
+        details={
+            "market_value": str(mv_val),
+            "fundamental_metric": str(fm_val),
+        },
+    )
+
+
+def spread(values: list[Any], precision: int = 4) -> ToolResult:
+    """Return max(values) - min(values), or value_0 - value_1 if exactly 2 operands.
+
+    Reads ``points_value``. Requires all operands to share one representation kind.
+    Formula version: ``spread.v1``
+    """
+    if not values or len(values) < 2:
+        return ToolResult(False, error="spread requires at least 2 values")
+
+    parsed = []
+    for v in values:
+        item = _ensure_decimal(v)
+        if not item.ok:
+            return item
+        parsed.append(item)
+
+    representation = _share_one_representation(parsed)
+    if representation is None:
+        return ToolResult(
+            False, error="Cannot compute spread of quantities of different kinds"
+        )
+
+    nums = [_points(p) for p in parsed]
+    if len(nums) == 2:
+        val = nums[0] - nums[1]
+    else:
+        val = max(nums) - min(nums)
+
+    return _computed(
+        _quantize(val, precision),
+        representation,
+        unit="base",
+        details={
+            "count": len(parsed),
+            "max": str(max(nums)),
+            "min": str(min(nums)),
+            "values": [str(n) for n in nums],
+        },
+    )
+
+
+def median_values(values: list[Any], precision: int = 4) -> ToolResult:
+    """Return the median value of a list of numeric values.
+
+    Reads ``points_value``. Requires all operands to share one representation kind.
+    For an odd count, returns the middle element of the sorted list.
+    For an even count, returns the mean of the two middle elements.
+
+    Formula version: ``median.v1``
+    """
+    if not values:
+        return ToolResult(False, error="median requires at least 1 value")
+
+    parsed = []
+    for v in values:
+        item = _ensure_decimal(v)
+        if not item.ok:
+            return item
+        parsed.append(item)
+
+    representation = _share_one_representation(parsed)
+    if representation is None:
+        return ToolResult(
+            False, error="Cannot compute median of quantities of different kinds"
+        )
+
+    nums = sorted(_points(p) for p in parsed)
+    n = len(nums)
+    if n % 2 == 1:
+        med = nums[n // 2]
+    else:
+        med = (nums[n // 2 - 1] + nums[n // 2]) / Decimal("2")
+
+    return _computed(
+        _quantize(med, precision),
+        representation,
+        unit="base",
+        details={
+            "count": n,
+            "sorted_values": [str(num) for num in nums],
+        },
     )
 
 

@@ -50,6 +50,13 @@ _RATIO = (
     ("gross margin", CalculationOperation.GROSS_MARGIN),
     ("net margin", CalculationOperation.NET_MARGIN),
     ("debt ratio", CalculationOperation.DEBT_RATIO),
+    ("cagr", CalculationOperation.CAGR),
+    ("compound annual growth rate", CalculationOperation.CAGR),
+    ("valuation multiple", CalculationOperation.VALUATION_MULTIPLE),
+    ("pe ratio", CalculationOperation.VALUATION_MULTIPLE),
+    ("p/e ratio", CalculationOperation.VALUATION_MULTIPLE),
+    ("spread", CalculationOperation.SPREAD),
+    ("median", CalculationOperation.MEDIAN),
 )
 _SCALE = ("convert", "expressed in", "in terms of")
 _STOPWORDS = {

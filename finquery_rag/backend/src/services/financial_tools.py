@@ -22,6 +22,10 @@ from src.finance.primitive_tools import (  # noqa: F401
     percentage_share,
     sum_values,
     verify_sum,
+    compute_cagr,
+    valuation_multiple,
+    spread,
+    median_values,
 )
 from src.finance.primitive_tools import (  # noqa: F401
     _SCALE_FACTORS,

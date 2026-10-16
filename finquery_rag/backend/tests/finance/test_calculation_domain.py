@@ -78,9 +78,10 @@ class TestCalculationOperation:
         """ROE is excluded from v1 (requires average equity disambiguation)."""
         assert not hasattr(CalculationOperation, "ROE")
 
-    def test_cagr_is_not_included(self):
-        """CAGR is excluded from v1 (requires multi-period compounding)."""
-        assert not hasattr(CalculationOperation, "CAGR")
+    def test_cagr_is_included(self):
+        """CAGR is supported in the expanded deterministic sandbox."""
+        assert hasattr(CalculationOperation, "CAGR")
+        assert CalculationOperation.CAGR == "cagr"
 
     def test_is_str_enum(self):
         assert isinstance(CalculationOperation.DIFFERENCE, str)

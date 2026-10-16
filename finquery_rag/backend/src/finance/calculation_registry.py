@@ -21,6 +21,7 @@ module imports from ``src.domain.calculation`` and ``src.finance.primitive_tools
 from __future__ import annotations
 
 from dataclasses import dataclass
+from decimal import Decimal
 from typing import Callable
 
 from src.domain.calculation import (
@@ -30,13 +31,17 @@ from src.domain.calculation import (
 from src.finance.primitive_tools import (
     ToolResult,
     average_values,
+    compute_cagr,
     debt_ratio,
     difference,
     gross_margin,
     growth_rate,
+    median_values,
     net_margin,
     percentage_share,
+    spread,
     sum_values,
+    valuation_multiple,
 )
 
 
@@ -198,25 +203,89 @@ def _scale_conversion_adapter(
     )
 
 
+def _cagr_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> ToolResult:
+    if len(operands) < 2:
+        return ToolResult(
+            False,
+            error=f"cagr requires at least 2 operands (current, previous, [periods]), got {len(operands)}",
+        )
+    if len(operands) == 2:
+        return compute_cagr(operands[0].value, operands[1].value, periods=Decimal("1"), precision=precision)
+    if len(operands) == 3:
+        return compute_cagr(operands[0].value, operands[1].value, periods=operands[2].value, precision=precision)
+    # Chronological series: start is operands[0], end is operands[-1], periods is len - 1
+    periods = Decimal(str(len(operands) - 1))
+    return compute_cagr(operands[-1].value, operands[0].value, periods=periods, precision=precision)
+
+
+def _valuation_multiple_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> ToolResult:
+    return _two_operand_adapter(
+        valuation_multiple, precision, operands, ("market_value", "fundamental_metric")
+    )
+
+
+def _spread_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> ToolResult:
+    if not operands or len(operands) < 2:
+        return ToolResult(False, error=f"spread requires at least 2 operands, got {len(operands)}")
+    values = [op.value for op in operands]
+    return spread(values, precision=precision)
+
+
+def _median_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> ToolResult:
+    if not operands:
+        return ToolResult(False, error="median requires at least 1 operand, got 0")
+    values = [op.value for op in operands]
+    return median_values(values, precision=precision)
+
+
 # ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
 
+def _canonical_unit(u: str | None) -> str | None:
+    if not u:
+        return None
+    s = str(u).strip()
+    if not s or s.lower() in ("base", "none"):
+        return None
+    s_lower = s.lower()
+    if s in ("$", "US$") or s_lower in ("usd", "dollar", "dollars", "us dollar", "us dollars"):
+        return "USD"
+    if s in ("€",) or s_lower in ("eur", "euro", "euros"):
+        return "EUR"
+    if s in ("£",) or s_lower in ("gbp", "pound", "pounds"):
+        return "GBP"
+    if s in ("¥", "元") or s_lower in ("cny", "rmb", "yuan", "人民币"):
+        return "CNY"
+    if s_lower in ("%", "percent", "percentage"):
+        return "percent"
+    if s_lower in ("ratio",):
+        return "ratio"
+    if s_lower in ("shares", "share"):
+        return "shares"
+    return s.upper() if len(s) <= 4 and s.isalpha() else s_lower
+
+
 def _units_agree(operands: tuple[CalculationOperand, ...]) -> bool:
-    """Whether the operands are stated in a single unit.
+    """Whether the operands are stated in a single canonical unit.
 
     Checked here, on the *operands*, because the primitives cannot: every
     adapter hands them ``operand.value``, so `difference` and `average_values`
-    receive bare ``Decimal``s and a USD/EUR mismatch is invisible to them.  An
-    earlier version of this comment claimed the primitives already refused
-    mismatched units; they do not, and a test caught it.
+    receive bare ``Decimal``s and a USD/EUR mismatch is invisible to them.
 
-    ``None`` means the record did not state a unit, which is unknown rather than
-    different, so it does not disagree with anything.  Two *stated* units that
-    differ always do.
+    ``None`` or "base" means the record did not state a unit, which is unknown
+    rather than different, so it does not disagree with anything. Two *stated*
+    units that differ after normalization always do.
     """
-
-    stated = {operand.unit for operand in operands if operand.unit is not None}
+    stated = {_canonical_unit(operand.unit) for operand in operands if _canonical_unit(operand.unit) is not None}
     return len(stated) <= 1
 
 
@@ -427,6 +496,46 @@ CALCULATION_REGISTRY: dict[CalculationOperation, OperationEntry] = {
         # No fixed roles: a ranking is over however many slots the plan asked
         # for, and naming them here would be a second statement of the plan's
         # cardinality.
+        operand_roles=(),
+    ),
+    CalculationOperation.CAGR: OperationEntry(
+        operation=CalculationOperation.CAGR,
+        func=_cagr_adapter,
+        formula="(current / previous) ** (1 / periods) - 1",
+        formula_version="cagr.v1",
+        unit="ratio",
+        min_operands=2,
+        max_operands=100,
+        operand_roles=("current", "previous", "periods"),
+    ),
+    CalculationOperation.VALUATION_MULTIPLE: OperationEntry(
+        operation=CalculationOperation.VALUATION_MULTIPLE,
+        func=_valuation_multiple_adapter,
+        formula="market_value / fundamental_metric",
+        formula_version="valuation_multiple.v1",
+        unit="multiple",
+        min_operands=2,
+        max_operands=2,
+        operand_roles=("market_value", "fundamental_metric"),
+    ),
+    CalculationOperation.SPREAD: OperationEntry(
+        operation=CalculationOperation.SPREAD,
+        func=_spread_adapter,
+        formula="max(operands) - min(operands)",
+        formula_version="spread.v1",
+        unit="base",
+        min_operands=2,
+        max_operands=100,
+        operand_roles=(),
+    ),
+    CalculationOperation.MEDIAN: OperationEntry(
+        operation=CalculationOperation.MEDIAN,
+        func=_median_adapter,
+        formula="median(operands)",
+        formula_version="median.v1",
+        unit="base",
+        min_operands=1,
+        max_operands=100,
         operand_roles=(),
     ),
 }

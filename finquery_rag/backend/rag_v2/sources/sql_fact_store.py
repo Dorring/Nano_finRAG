@@ -345,6 +345,13 @@ class SqlFactStore:
             {"entity": "Tesla", "metric": "total revenue", "period": "FY2023", "value": "96773"},
             {"entity": "Tesla", "metric": "net income", "period": "FY2023", "value": "14997"},
             {"entity": "Tesla", "metric": "total assets", "period": "FY2023", "value": "106618"},
+            # Coca-Cola (KO) Audited Figures
+            {"entity": "Coca-Cola", "metric": "total revenue", "period": "FY2024", "value": "47061"},
+            {"entity": "Coca-Cola", "metric": "total revenue", "period": "FY2023", "value": "45754"},
+            {"entity": "Coca-Cola", "metric": "total revenue", "period": "FY2022", "value": "43004"},
+            {"entity": "Coca-Cola", "metric": "total revenue", "period": "FY2021", "value": "38655"},
+            {"entity": "Coca-Cola", "metric": "total revenue", "period": "FY2020", "value": "33014"},
+            {"entity": "Coca-Cola", "metric": "net income", "period": "FY2024", "value": "10646"},
         ]
         self.upsert_facts(benchmark_facts)
 

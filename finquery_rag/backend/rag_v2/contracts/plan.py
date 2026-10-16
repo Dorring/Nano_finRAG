@@ -40,6 +40,10 @@ _OPERATION_VALUES = frozenset(
         "net_margin",
         "debt_ratio",
         "scale_conversion",
+        "cagr",
+        "valuation_multiple",
+        "spread",
+        "median",
         # Relational operations: their answer is a relation between operands
         # rather than a quantity.  Cross-entity comparison and ranking used to
         # be planned with no operation at all, which left their answers as prose

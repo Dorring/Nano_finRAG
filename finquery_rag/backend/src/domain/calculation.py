@@ -49,6 +49,10 @@ class CalculationOperation(str, Enum):
     NET_MARGIN = "net_margin"
     DEBT_RATIO = "debt_ratio"
     SCALE_CONVERSION = "scale_conversion"
+    CAGR = "cagr"
+    VALUATION_MULTIPLE = "valuation_multiple"
+    SPREAD = "spread"
+    MEDIAN = "median"
 
     #: Relational operations.  Their answer is a *relation between operands*
     #: rather than a quantity: "Visa is larger than Apple", or "Visa > Apple >
