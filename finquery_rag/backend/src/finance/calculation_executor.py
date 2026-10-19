@@ -645,9 +645,6 @@ def execute_dag(
                 steps=tuple(executed_records),
             )
 
-        # Harmonize currency differences across operands via FX conversion
-        step_operands = list(_harmonize_operand_currencies(tuple(step_operands), operation=step_op_enum))
-
         # Check unit consistency for operations that require same units
         stated_units = {
             _canonical_unit(getattr(op, "unit", None))

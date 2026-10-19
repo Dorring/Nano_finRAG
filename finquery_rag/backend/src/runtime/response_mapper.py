@@ -134,18 +134,22 @@ def to_legacy_query_dict(result: FinancialQueryResult) -> dict:
     if not isinstance(result, FinancialQueryResult):
         raise TypeError("result must be FinancialQueryResult")
     if result.status is RuntimeStatus.ERROR:
-        err_msg = result.answer or (
-            "Upstream planning service unavailable (e.g. LLM API balance exhausted or provider error). Safe-refusal engaged."
+        if result.runtime_version.value == "V2":
+            err_msg = result.answer or (
+                "Upstream planning service unavailable (e.g. LLM API balance exhausted or provider error). Safe-refusal engaged."
+            )
+            return {
+                "answer": err_msg,
+                "sources": [],
+                "searched_docs": [],
+                "retrieved_chunks": [],
+                "retrieval_debug": {},
+                "calculations": [],
+                "status": "FAIL_CLOSED",
+            }
+        raise LegacyResponseMappingError(
+            "Legacy V1 runtime execution failed before a response was produced.",
         )
-        return {
-            "answer": err_msg,
-            "sources": [],
-            "searched_docs": [],
-            "retrieved_chunks": [],
-            "retrieval_debug": {},
-            "calculations": [],
-            "status": "FAIL_CLOSED",
-        }
     v2_fail_closed = (
         result.runtime_version.value == "V2"
         and result.status is RuntimeStatus.FAIL_CLOSED

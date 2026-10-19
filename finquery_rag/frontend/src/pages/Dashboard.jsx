@@ -40,10 +40,10 @@ function Dashboard() {
   const [hasProcessingDocuments, setHasProcessingDocuments] = useState(false);
   const { user, logout } = useAuth();
   const readyDocumentCount = documents.filter((doc) => (doc.status || 'ready') === 'ready').length;
-  const queryDisabledReason = hasProcessingDocuments
-    ? 'Documents are still processing. Query will be available when indexing finishes.'
+  const queryDisabledReason = readyDocumentCount === 0
+    ? (hasProcessingDocuments ? 'Documents are still processing. Query will be available when indexing finishes.' : 'Upload a ready PDF before asking a question.')
     : null;
-  const isQueryDisabled = isLoading || hasProcessingDocuments;
+  const isQueryDisabled = isLoading || readyDocumentCount === 0;
 
 
   const mapHistoryToMessages = useCallback((historyMessages = []) => (
@@ -263,8 +263,8 @@ function Dashboard() {
   };
 
   const handleSendMessage = async (question) => {
-    if (hasProcessingDocuments) {
-      toast.error('Documents are still processing. Please wait.');
+    if (readyDocumentCount === 0) {
+      toast.error(queryDisabledReason || 'No ready documents are available');
       return;
     }
 

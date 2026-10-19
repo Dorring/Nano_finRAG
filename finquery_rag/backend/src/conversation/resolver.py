@@ -586,6 +586,7 @@ class ContextualQueryResolver:
         # 6. General Ellipsis / Metric Inheritance
         active_e = entity or (state.active_entity if state else None)
         active_m = metric or (state.active_metric if state else None)
+        active_p = period or (state.active_period if state else None)
         if not entity and not metric and not period and not has_pronoun and not is_calc and not is_prev_year:
             active_name = state.active_entity if state and state.active_entity else "目标公司"
             return ConversationResolution(

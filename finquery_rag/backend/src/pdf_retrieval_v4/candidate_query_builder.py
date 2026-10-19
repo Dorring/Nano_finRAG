@@ -23,12 +23,12 @@ from src.pdf_retrieval_v4.query_plan_models import OperandSlot, QueryPlan
 # Binder/semantic alignment remains the authority for admission.  In
 # particular, operating income and net income are not aliases.
 _RETRIEVAL_METRIC_ALIASES: dict[str, tuple[str, ...]] = {
-    "revenue": ("total revenues", "revenues", "total revenue", "total net sales", "net sales"),
-    "revenues": ("total revenues", "total revenue", "revenue", "total net sales", "net sales"),
-    "total revenues": ("revenue", "total revenue", "revenues", "total net sales", "net sales"),
-    "total revenue": ("total revenues", "revenues", "revenue", "total net sales", "net sales"),
-    "net sales": ("revenue", "total revenues", "total revenue", "total net sales"),
-    "total net sales": ("revenue", "total revenues", "total revenue", "net sales"),
+    "revenue": ("net sales", "total net sales", "total revenue", "total revenues", "revenues"),
+    "revenues": ("net sales", "total net sales", "total revenue", "total revenues"),
+    "total revenues": ("total revenue", "revenue", "revenues", "total net sales", "net sales"),
+    "total revenue": ("revenue", "net sales", "total net sales", "total revenues"),
+    "net sales": ("revenue", "total net sales", "total revenue"),
+    "total net sales": ("revenue", "net sales", "total revenue"),
 }
 
 # A planner metric phrase can contain an explicit business segment before the
