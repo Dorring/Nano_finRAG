@@ -9,7 +9,7 @@ Validates the synergy between:
 
 from __future__ import annotations
 
-import pytest
+import asyncio
 from decimal import Decimal
 from typing import Any, Mapping
 
@@ -234,8 +234,7 @@ def _make_request(query: str, request_id: str = "req_test") -> V2ExecutionReques
     )
 
 
-@pytest.mark.asyncio
-async def test_single_agent_routing_and_tree_pruning_workflow() -> None:
+def test_single_agent_routing_and_tree_pruning_workflow() -> None:
     """Verify SourceRouter annotates plan, DocTree prunes 80% chunks, and calculation releases cleanly."""
     plan = SupervisorPlan(
         intent=Intent.DIRECT_FACT,
@@ -280,7 +279,7 @@ async def test_single_agent_routing_and_tree_pruning_workflow() -> None:
         request_id="req_test_1",
     )
 
-    outcome = await coordinator.execute(request)
+    outcome = asyncio.run(coordinator.execute(request))
 
     # 1. Verification of routing annotation
     assert len(outcome.evidence_ids) > 0
@@ -300,8 +299,7 @@ async def test_single_agent_routing_and_tree_pruning_workflow() -> None:
     assert outcome.answer == "Apple's total net sales in FY2024 was $391,035 million."
 
 
-@pytest.mark.asyncio
-async def test_single_agent_critic_reflection_and_self_correction() -> None:
+def test_single_agent_critic_reflection_and_self_correction() -> None:
     """Verify DiagnosticCritic diagnoses quarterly defect and triggers self-corrected round 2 retrieval."""
     plan = SupervisorPlan(
         intent=Intent.DIRECT_FACT,
@@ -376,7 +374,7 @@ async def test_single_agent_critic_reflection_and_self_correction() -> None:
         request_id="req_test_critic",
     )
 
-    outcome = await coordinator.execute(request)
+    outcome = asyncio.run(coordinator.execute(request))
 
     # Should succeed after self-correction
     assert outcome.status is V2ExecutionStatus.READY_FOR_RELEASE
@@ -391,8 +389,7 @@ async def test_single_agent_critic_reflection_and_self_correction() -> None:
     assert "annual consolidated" in round2_call["query"]
 
 
-@pytest.mark.asyncio
-async def test_single_agent_segment_footnote_routing() -> None:
+def test_single_agent_segment_footnote_routing() -> None:
     """Verify segment queries route to FOOTNOTE_DISCLOSURES and locate Note 19."""
     plan = SupervisorPlan(
         intent=Intent.DIRECT_FACT,
@@ -437,7 +434,7 @@ async def test_single_agent_segment_footnote_routing() -> None:
         request_id="req_test_segment",
     )
 
-    outcome = await coordinator.execute(request)
+    outcome = asyncio.run(coordinator.execute(request))
     assert outcome.status is V2ExecutionStatus.READY_FOR_RELEASE
     assert "chk_note19_services" in outcome.evidence_ids
 
@@ -448,8 +445,7 @@ async def test_single_agent_segment_footnote_routing() -> None:
     assert pruned == ["chk_note19_services"]
 
 
-@pytest.mark.asyncio
-async def test_single_agent_multi_source_sql_and_market_end_to_end() -> None:
+def test_single_agent_multi_source_sql_and_market_end_to_end() -> None:
     """Verify single agent Coordinator dispatches to SQL wide table and Market API simultaneously."""
     from rag_v2.sources import MultiSourceRetrievalAdapter, SandboxMarketProvider, SqlFactStore
 
@@ -515,7 +511,7 @@ async def test_single_agent_multi_source_sql_and_market_end_to_end() -> None:
     )
 
     request = _make_request(query=query, request_id="req_test_multi_source")
-    outcome = await coordinator.execute(request)
+    outcome = asyncio.run(coordinator.execute(request))
 
     assert outcome.status is V2ExecutionStatus.READY_FOR_RELEASE
     evidence_ids = outcome.evidence_ids
