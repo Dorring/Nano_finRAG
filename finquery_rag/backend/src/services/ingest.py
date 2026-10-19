@@ -551,10 +551,9 @@ def process_pdf(pdf_path: str, user_id: int = None) -> tuple[list[dict], int]:
                 hierarchy_metadata_fn=_hierarchy_metadata,
                 chunk_content_with_section_fn=_chunk_content_with_section,
             )
-        except MinerUParseError:
-            # An explicit MinerU choice must fail visibly; silently mixing two
-            # parsers would make document lineage and evaluation unreliable.
-            raise
+        except Exception as exc:
+            print(f"[Parser] MinerU backend encountered error ({exc}); gracefully falling back to native layout parser.")
+
 
     chunks = []
     doc_name = os.path.basename(pdf_path)

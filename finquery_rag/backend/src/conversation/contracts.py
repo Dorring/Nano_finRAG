@@ -200,6 +200,7 @@ class DialogueState:
 
     # Lifecycle-only state; none of these fields are financial facts.
     pending_clarification: PendingClarification | None = None
+    last_clarification: PendingClarification | None = None
     last_assistant_provenance: AssistantProvenance | None = None
     last_processed_request_id: str | None = None
     last_processed_original_query: str | None = None
@@ -231,6 +232,11 @@ class DialogueState:
                 None
                 if self.pending_clarification is None
                 else self.pending_clarification.to_dict()
+            ),
+            "last_clarification": (
+                None
+                if self.last_clarification is None
+                else self.last_clarification.to_dict()
             ),
             "last_assistant_provenance": (
                 None
@@ -303,6 +309,12 @@ class DialogueState:
             if pending_value is None
             else PendingClarification.from_dict(pending_value)
         )
+        last_clarif_value = value.get("last_clarification")
+        last_clarification = (
+            None
+            if last_clarif_value is None
+            else PendingClarification.from_dict(last_clarif_value)
+        )
         provenance_value = value.get("last_assistant_provenance")
         last_assistant_provenance = (
             None
@@ -324,6 +336,7 @@ class DialogueState:
             referenced_turn_ids=string_list("referenced_turn_ids"),
             referenced_evidence_ids=string_list("referenced_evidence_ids"),
             pending_clarification=pending_clarification,
+            last_clarification=last_clarification,
             last_assistant_provenance=last_assistant_provenance,
             last_processed_request_id=value.get("last_processed_request_id"),
             last_processed_original_query=value.get("last_processed_original_query"),

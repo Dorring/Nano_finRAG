@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from collections.abc import Iterable, Mapping
 from typing import Any
 
@@ -470,6 +471,58 @@ class SemanticEvidenceEvaluationCapability:
             return False
         return text_identity(slot_entity) == text_identity(fact_entity)
 
+    @staticmethod
+    def _fact_value_matches_target(fact_val: str, target_val: str) -> bool:
+        if not fact_val or not target_val:
+            return False
+        if fact_val.strip().lower() == target_val.strip().lower():
+            return True
+        digits_fact = re.sub(r"[^\d]", "", fact_val)
+        digits_target = re.sub(r"[^\d]", "", target_val)
+        if digits_fact and digits_target and digits_fact == digits_target:
+            is_fact_neg = "(" in fact_val or "-" in fact_val
+            is_target_neg = "(" in target_val or "-" in target_val
+            if is_target_neg:
+                return is_fact_neg
+            return True
+        return False
+
+    @classmethod
+    def _extract_target_value_for_slot(cls, query: str, slot: Any) -> str | None:
+        slot_metric = getattr(slot, "metric", None)
+        if slot_metric:
+            m_metric = re.search(
+                rf"(?:target value for|目标值|数值|金额)\s*['\"]?{re.escape(slot_metric)}['\"]?\s*[:：\s]+(\([^)]+\)|[^\s.，,]+)",
+                query,
+                re.IGNORECASE,
+            )
+            if m_metric:
+                return m_metric.group(1).strip()
+
+        # Check if there is a scoped target value for another metric
+        m_other_metric = re.search(
+            r"(?:target value for|目标值|数值|金额)\s*['\"]?([a-zA-Z0-9_\s]+)['\"]?\s*[:：\s]+(\([^)]+\)|[^\s.，,]+)",
+            query,
+            re.IGNORECASE,
+        )
+        if m_other_metric:
+            other_metric_name = m_other_metric.group(1).strip()
+            if slot_metric and slot_metric.lower() != other_metric_name.lower():
+                # Target value is designated for a different metric; do not constrain this slot!
+                return None
+            return m_other_metric.group(2).strip()
+
+        # Unscoped general target value
+        m_general = re.search(
+            r"(?:target value|目标值|数值|金额)[:：\s]+(\([^)]+\)|[^\s.，,]+)",
+            query,
+            re.IGNORECASE,
+        )
+        if m_general:
+            return m_general.group(1).strip()
+
+        return None
+
     @classmethod
     def _fact_matches_slot(
         cls,
@@ -479,6 +532,11 @@ class SemanticEvidenceEvaluationCapability:
         fact: Mapping[str, Any],
         known_segment_labels: tuple[str, ...],
     ) -> bool:
+        target_val = cls._extract_target_value_for_slot(query, slot)
+        if target_val:
+            fact_val = str(fact.get("value") or fact.get("raw_value") or "").strip()
+            if not cls._fact_value_matches_target(fact_val, target_val):
+                return False
         # The wider identity, so a metric the ontology cannot name is still
         # comparable.  This used to return False for both sides, which made any
         # slot naming such a metric unsatisfiable while the fact existed.

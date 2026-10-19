@@ -25,6 +25,7 @@ from .contracts import (
     ConversationTurnOutcome,
     DialogueState,
     DialogueTurn,
+    PendingClarification,
     ReasonCode,
 )
 from .resolver import ContextualQueryResolver
@@ -119,7 +120,6 @@ class ConversationShadowService:
         self.resolver_factory = resolver_factory or (
             lambda: ContextualQueryResolver(
                 client=BailianClient(
-                    model="qwen3.6-flash",
                     enable_thinking=False,
                 ),
             )
@@ -518,6 +518,7 @@ class ConversationShadowService:
         original_query: str | None = None,
         release_status: str = "NOT_APPLICABLE",
         outcome: str = ConversationTurnOutcome.FINANCIAL_ANSWER,
+        clarification: Mapping[str, Any] | None = None,
     ) -> bool:
         """Persist structured provenance after V1 finalization.
 
@@ -561,6 +562,20 @@ class ConversationShadowService:
             outcome=outcome,
         )
         state.last_turn_outcome = outcome
+        if clarification:
+            state.pending_clarification = PendingClarification(
+                reason_codes=list(clarification.get("reason_codes", [])),
+                candidates=list(clarification.get("options", [])),
+                unresolved_fields=["coordinate_value"],
+                source_turn_id=request_id or f"turn_{state.turn_count}",
+                entity=clarification.get("entity") or state.active_entity,
+                period=clarification.get("period") or state.active_period,
+                topic=clarification.get("metric") or state.active_topic,
+            )
+        else:
+            if state.pending_clarification:
+                state.last_clarification = state.pending_clarification
+                state.pending_clarification = None
         if request_id is not None:
             state.last_processed_request_id = request_id
             state.last_processed_original_query = original_query

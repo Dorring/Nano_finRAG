@@ -42,6 +42,9 @@ from src.finance.primitive_tools import (
     spread,
     sum_values,
     valuation_multiple,
+    compute_dupont_3factor,
+    compute_fx_conversion,
+    project_scenario_growth,
 )
 
 
@@ -244,6 +247,64 @@ def _median_adapter(
         return ToolResult(False, error="median requires at least 1 operand, got 0")
     values = [op.value for op in operands]
     return median_values(values, precision=precision)
+
+
+def _dupont_3factor_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> ToolResult:
+    if len(operands) != 4:
+        return ToolResult(
+            False,
+            error=f"dupont_3factor requires 4 operands (net_income, revenue, total_assets, equity), got {len(operands)}",
+        )
+    return compute_dupont_3factor(
+        operands[0].value,
+        operands[1].value,
+        operands[2].value,
+        operands[3].value,
+        precision=precision,
+    )
+
+
+def _fx_conversion_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> ToolResult:
+    if not operands:
+        return ToolResult(False, error="fx_conversion requires at least 1 operand (amount)")
+    amount = operands[0].value
+    from_curr = operands[0].unit or "USD"
+    to_curr = "USD"
+    fx_rate = None
+    if len(operands) >= 2:
+        if operands[1].unit and operands[1].unit not in ("ratio", "base"):
+            to_curr = operands[1].unit
+        fx_rate = operands[1].value
+    return compute_fx_conversion(
+        amount=amount,
+        from_currency=from_curr,
+        to_currency=to_curr,
+        fx_rate=fx_rate,
+        precision=precision,
+    )
+
+
+def _scenario_projection_adapter(
+    operands: tuple[CalculationOperand, ...], precision: int
+) -> ToolResult:
+    if len(operands) < 2:
+        return ToolResult(
+            False,
+            error=f"scenario_projection requires at least 2 operands (base_value, growth_rate, [periods]), got {len(operands)}",
+        )
+    base_val = operands[0].value
+    growth_rate = operands[1].value
+    periods = operands[2].value if len(operands) >= 3 else Decimal("1")
+    return project_scenario_growth(
+        base_value=base_val,
+        growth_rate=growth_rate,
+        periods=periods,
+        precision=precision,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -537,6 +598,36 @@ CALCULATION_REGISTRY: dict[CalculationOperation, OperationEntry] = {
         min_operands=1,
         max_operands=100,
         operand_roles=(),
+    ),
+    CalculationOperation.DUPONT_3FACTOR: OperationEntry(
+        operation=CalculationOperation.DUPONT_3FACTOR,
+        func=_dupont_3factor_adapter,
+        formula="net_income / revenue * revenue / total_assets * total_assets / equity",
+        formula_version="dupont_3factor.v1",
+        unit="ratio",
+        min_operands=4,
+        max_operands=4,
+        operand_roles=("net_income", "revenue", "total_assets", "equity"),
+    ),
+    CalculationOperation.FX_CONVERSION: OperationEntry(
+        operation=CalculationOperation.FX_CONVERSION,
+        func=_fx_conversion_adapter,
+        formula="amount * fx_rate",
+        formula_version="fx_conversion.v1",
+        unit="currency",
+        min_operands=1,
+        max_operands=3,
+        operand_roles=("amount", "rate"),
+    ),
+    CalculationOperation.SCENARIO_PROJECTION: OperationEntry(
+        operation=CalculationOperation.SCENARIO_PROJECTION,
+        func=_scenario_projection_adapter,
+        formula="base_value * (1 + growth_rate) ** periods",
+        formula_version="scenario_projection.v1",
+        unit="base",
+        min_operands=2,
+        max_operands=3,
+        operand_roles=("base_value", "growth_rate", "periods"),
     ),
 }
 

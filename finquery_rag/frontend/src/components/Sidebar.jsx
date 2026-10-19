@@ -163,7 +163,10 @@ const Sidebar = ({
 
         {documents.length === 0 ? (
           <div className="empty-state">
-            No documents uploaded yet
+            <div style={{ marginBottom: '0.25rem' }}>No private documents yet</div>
+            <div style={{ fontSize: '0.75rem', color: '#9ca3af', lineHeight: 1.4 }}>
+              Global 10-K filings & market data are enabled. Upload a PDF anytime to analyze your own documents.
+            </div>
           </div>
         ) : (
           <div className="document-list">

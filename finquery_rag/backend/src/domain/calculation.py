@@ -53,6 +53,9 @@ class CalculationOperation(str, Enum):
     VALUATION_MULTIPLE = "valuation_multiple"
     SPREAD = "spread"
     MEDIAN = "median"
+    DUPONT_3FACTOR = "dupont_3factor"
+    FX_CONVERSION = "fx_conversion"
+    SCENARIO_PROJECTION = "scenario_projection"
 
     #: Relational operations.  Their answer is a *relation between operands*
     #: rather than a quantity: "Visa is larger than Apple", or "Visa > Apple >

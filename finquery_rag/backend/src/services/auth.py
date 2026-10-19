@@ -13,8 +13,8 @@ from ..models.user import User
 SECRET_KEY = os.getenv("SECRET_KEY", "9594873a5e0a8ccde1adc3af1ba93f5f2bcc5632b77b750452713d216791c013")
 # JWT 令牌的加密算法
 ALGORITHM = "HS256"
-# 访问令牌的默认过期时间（分钟）
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+# 访问令牌的默认过期时间（分钟，默认24小时以支持长时间交互测试）
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "1440"))
 
 # 密码加密上下文，使用 bcrypt 方案
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")

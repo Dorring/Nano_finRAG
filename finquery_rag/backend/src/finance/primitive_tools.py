@@ -59,6 +59,9 @@ __all__ = [
     "valuation_multiple",
     "spread",
     "median_values",
+    "compute_dupont_3factor",
+    "compute_fx_conversion",
+    "project_scenario_growth",
 ]
 
 
@@ -807,6 +810,153 @@ def median_values(values: list[Any], precision: int = 4) -> ToolResult:
         details={
             "count": n,
             "sorted_values": [str(num) for num in nums],
+        },
+    )
+
+
+_FX_BENCHMARK_RATES: dict[str, Decimal] = {
+    "USD": Decimal("1.0"),
+    "EUR": Decimal("1.08"),
+    "GBP": Decimal("1.28"),
+    "CNY": Decimal("0.14"),
+    "JPY": Decimal("0.0065"),
+    "HKD": Decimal("0.128"),
+    "TWD": Decimal("0.031"),
+}
+
+
+def compute_dupont_3factor(
+    net_income: Any,
+    revenue: Any,
+    total_assets: Any,
+    equity: Any,
+    precision: int = 4,
+) -> ToolResult:
+    """DuPont 3-factor decomposition: ROE = Net Margin * Asset Turnover * Equity Multiplier."""
+    ni = _ensure_decimal(net_income)
+    if not ni.ok:
+        return ni
+    rev = _ensure_decimal(revenue)
+    if not rev.ok:
+        return rev
+    assets = _ensure_decimal(total_assets)
+    if not assets.ok:
+        return assets
+    eq = _ensure_decimal(equity)
+    if not eq.ok:
+        return eq
+
+    p_ni = _points(ni)
+    p_rev = _points(rev)
+    p_assets = _points(assets)
+    p_eq = _points(eq)
+
+    if p_rev == 0:
+        return ToolResult(False, error="DuPont decomposition requires non-zero revenue")
+    if p_assets == 0:
+        return ToolResult(False, error="DuPont decomposition requires non-zero assets")
+    if p_eq == 0:
+        return ToolResult(False, error="DuPont decomposition requires non-zero equity")
+
+    net_margin = p_ni / p_rev
+    asset_turnover = p_rev / p_assets
+    equity_multiplier = p_assets / p_eq
+    roe = net_margin * asset_turnover * equity_multiplier
+
+    return _computed(
+        _quantize(roe, precision),
+        RepresentationKind.RATIO,
+        unit="ratio",
+        details={
+            "net_margin": str(_quantize(net_margin, precision)),
+            "asset_turnover": str(_quantize(asset_turnover, precision)),
+            "equity_multiplier": str(_quantize(equity_multiplier, precision)),
+            "roe": str(_quantize(roe, precision)),
+            "formula": "ROE = Net Margin * Asset Turnover * Equity Multiplier",
+        },
+    )
+
+
+def compute_fx_conversion(
+    amount: Any,
+    from_currency: str = "USD",
+    to_currency: str = "USD",
+    fx_rate: Any | None = None,
+    precision: int = 2,
+) -> ToolResult:
+    """Convert currency amount using explicit fx_rate or central-bank benchmark cross rates."""
+    amt = _ensure_decimal(amount)
+    if not amt.ok:
+        return amt
+
+    p_amt = _points(amt)
+    from_curr = (from_currency or "USD").strip().upper()
+    to_curr = (to_currency or "USD").strip().upper()
+
+    if fx_rate is not None:
+        rate_res = _ensure_decimal(fx_rate)
+        if not rate_res.ok:
+            return rate_res
+        rate = _points(rate_res)
+    else:
+        if from_curr not in _FX_BENCHMARK_RATES:
+            return ToolResult(False, error=f"Unsupported from_currency: {from_curr}")
+        if to_curr not in _FX_BENCHMARK_RATES:
+            return ToolResult(False, error=f"Unsupported to_currency: {to_curr}")
+        rate = _FX_BENCHMARK_RATES[from_curr] / _FX_BENCHMARK_RATES[to_curr]
+
+    converted = p_amt * rate
+    return _computed(
+        _quantize(converted, precision),
+        RepresentationKind.ABSOLUTE,
+        unit=to_curr,
+        details={
+            "from_currency": from_curr,
+            "to_currency": to_curr,
+            "original_amount": str(p_amt),
+            "fx_rate": str(rate),
+        },
+    )
+
+
+def project_scenario_growth(
+    base_value: Any,
+    growth_rate: Any,
+    periods: Any = 1,
+    precision: int = 2,
+) -> ToolResult:
+    """Project a financial metric under compound growth over periods."""
+    base = _ensure_decimal(base_value)
+    if not base.ok:
+        return base
+    g = _ensure_decimal(growth_rate)
+    if not g.ok:
+        return g
+    p = _ensure_decimal(periods)
+    if not p.ok:
+        return p
+
+    p_base = _points(base)
+    r_val = _points(g)
+    if g.representation == RepresentationKind.PERCENT or abs(r_val) > 1:
+        r_val = r_val / Decimal("100")
+
+    num_periods = int(_points(p))
+    if num_periods < 0:
+        return ToolResult(False, error="periods must be non-negative")
+
+    multiplier = (Decimal("1") + r_val) ** num_periods
+    projected = p_base * multiplier
+
+    return _computed(
+        _quantize(projected, precision),
+        base.representation or RepresentationKind.SCALAR,
+        unit=base.unit or "base",
+        details={
+            "base_value": str(p_base),
+            "growth_rate": str(r_val),
+            "periods": num_periods,
+            "projected_value": str(_quantize(projected, precision)),
         },
     )
 

@@ -1316,9 +1316,33 @@ def build_trusted_v2_runtime_for_request(
     agent_runtime_mode = resolve_agent_runtime_mode()
     try:
         from src.pdf_retrieval_v4.candidate_direct_retriever import CandidateDirectRetriever
+        from src.pdf_retrieval_v4.candidate_view_index import LANES
+
+        entity_to_doc = {
+            "apple": "aapl_fy2025", "aapl": "aapl_fy2025", "苹果": "aapl_fy2025",
+            "microsoft": "msft_fy2025", "msft": "msft_fy2025", "微软": "msft_fy2025",
+            "nvidia": "nvda_fy2025", "nvda": "nvda_fy2025", "英伟达": "nvda_fy2025",
+            "tesla": "tsla_fy2025", "tsla": "tsla_fy2025", "特斯拉": "tsla_fy2025",
+            "visa": "v_fy2025", "v": "v_fy2025",
+            "pfizer": "pfe_fy2024", "pfe": "pfe_fy2024", "辉瑞": "pfe_fy2024",
+            "coca-cola": "ko_fy2025", "coca cola": "ko_fy2025", "ko": "ko_fy2025", "可口可乐": "ko_fy2025",
+            "jpmorgan": "jpm_fy2025", "jpm": "jpm_fy2025", "jpmorgan chase": "jpm_fy2025", "摩根大通": "jpm_fy2025",
+        }
+
+        def _entity_key_lookup(entities: Iterable[str]) -> frozenset[str]:
+            keys = set()
+            for ent in entities:
+                doc = entity_to_doc.get(str(ent).strip().lower())
+                if doc:
+                    for lane in LANES:
+                        keys.update(resources.index_reader.candidate_keys_for_documents(lane, {doc}))
+            return frozenset(keys)
 
         retriever = (
-            CandidateDirectRetriever(resources.index_reader)
+            CandidateDirectRetriever(
+                resources.index_reader,
+                entity_key_lookup=_entity_key_lookup,
+            )
             if retriever_factory is None
             else retriever_factory(resources.index_reader)
         )
@@ -1326,6 +1350,7 @@ def build_trusted_v2_runtime_for_request(
             retriever,
             materializer=resources.fact_store.materialize,
             document_scope=document_scope,
+            alias_expansion=True,
             pool_reranker=pool_reranker,
         )
         retrieval = R4RetrievalCapability(

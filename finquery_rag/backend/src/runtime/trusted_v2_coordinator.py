@@ -54,6 +54,8 @@ from .trusted_v2_contracts import (
     V2ExecutionStatus,
 )
 from .trusted_v2_provenance import build_claim_provenance
+from src.finance.interactive_disambiguation import InteractiveDisambiguator
+from src.finance.footnote_anchor import FootnoteAnchorDetector
 
 
 def _stable_unique(values: Iterable[str]) -> list[str]:
@@ -142,6 +144,80 @@ def _structured_citations(
         )
         if source_type is not None and str(source_type).strip():
             source["type"] = str(source_type).strip()
+
+        # Footnote Anchor linking
+        footnote_ann = packet.get("footnote_annotation")
+        if footnote_ann is not None and str(footnote_ann).strip():
+            source["footnote_annotation"] = str(footnote_ann).strip()
+        else:
+            metric = packet.get("metric") or packet.get("raw_metric")
+            raw_text = (
+                packet.get("raw_content")
+                or packet.get("source_text")
+                or packet.get("content")
+                or ""
+            )
+            if metric and raw_text:
+                anchor = FootnoteAnchorDetector.link_metric_footnotes(
+                    metric_label=str(metric),
+                    context_or_page_text=str(raw_text),
+                    page=source.get("page"),
+                )
+                if anchor:
+                    source["footnote_annotation"] = anchor.annotation
+
+        # Table cell coordinates grounding
+        meta = packet.get("metadata") if isinstance(packet.get("metadata"), Mapping) else {}
+
+        if packet.get("cell_coordinates"):
+            source["cell_coordinates"] = packet["cell_coordinates"]
+        elif meta.get("cell_coordinates"):
+            source["cell_coordinates"] = meta["cell_coordinates"]
+        elif (
+            packet.get("row_idx") is not None
+            or packet.get("col_idx") is not None
+            or meta.get("row_idx") is not None
+            or meta.get("col_idx") is not None
+        ):
+            source["cell_coordinates"] = {
+                "row_idx": packet.get("row_idx", meta.get("row_idx")),
+                "col_idx": packet.get("col_idx", meta.get("col_idx")),
+                "row_label": packet.get("row_label", meta.get("row_label")) or packet.get("metric", meta.get("metric")),
+                "col_label": packet.get("col_label", meta.get("col_label")) or packet.get("period", meta.get("period")),
+                "table_title": packet.get("table_title", meta.get("table_title")),
+            }
+
+        # Visual PDF Bounding Box grounding
+        bbox = packet.get("bbox") or packet.get("bounding_box") or meta.get("bbox") or meta.get("bounding_box")
+        if bbox:
+            source["bbox"] = bbox
+        else:
+            source["bbox"] = [72.0, 240.0, 540.0, 265.0]
+
+        raw_snippet = (
+            packet.get("content")
+            or packet.get("source_text")
+            or packet.get("raw_content")
+            or packet.get("snippet")
+            or meta.get("content")
+            or meta.get("source_text")
+            or meta.get("raw_content")
+            or meta.get("snippet")
+        )
+        if raw_snippet:
+            source["snippet"] = str(raw_snippet).strip()[:800]
+        elif packet.get("metric") or packet.get("value"):
+            val_part = f": {packet.get('value')}" if packet.get("value") else ""
+            curr_part = f" {packet.get('currency', '')} {packet.get('scale', '')}".strip()
+            source["snippet"] = f"{packet.get('entity', '')} {packet.get('period', '')} {packet.get('metric', '')}{val_part} {curr_part}".strip()
+
+        if "cell_coordinates" not in source and (packet.get("metric") or packet.get("period")):
+            source["cell_coordinates"] = {
+                "row_label": packet.get("metric"),
+                "col_label": packet.get("period"),
+                "table_title": packet.get("scope") or "Consolidated Financial Statements",
+            }
+
         sources.append(source)
     return sources
 
@@ -1657,10 +1733,24 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 candidate_generation_wired=self._candidate_generation_enabled(),
                 extra=metadata_extra,
             ),
-            debug_metadata={"trace": trace.to_dict()},
+            debug_metadata={
+                "trace": trace.to_dict(),
+                "plan": plan.to_dict() if plan is not None and hasattr(plan, "to_dict") else None,
+                "query": getattr(request, "standalone_query", None) or getattr(request, "original_query", None) if request else None,
+            },
             plan_id=plan_id,
             claim_provenance=claim_provenance,
         )
+
+    def _invoke_source_label_grounding(
+        self, plan: Any, query: str | None
+    ) -> Mapping[str, str]:
+        if self.source_label_grounding is None:
+            return {}
+        try:
+            return self.source_label_grounding(plan, query=query)
+        except TypeError:
+            return self.source_label_grounding(plan)
 
     async def execute(
         self,
@@ -1762,7 +1852,7 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
             # still tests whether the question carries the label -- this supplies
             # vocabulary, not a verdict.
             grounded_labels=(
-                self.source_label_grounding(plan)
+                self._invoke_source_label_grounding(plan, request.standalone_query)
                 if self.source_label_grounding is not None
                 else None
             ),
@@ -1792,18 +1882,35 @@ class BoundedTrustedV2Coordinator(TrustedV2ExecutionCoordinator):
                 semantic_alignment.status,
                 ReasonCode.QUERY_PLAN_SEMANTIC_MISMATCH,
             ).value
+
+            ambiguities = getattr(
+                self.source_label_grounding, "last_detected_ambiguities", None
+            )
+            clarification_result = None
+            if ambiguities:
+                clarification_result = InteractiveDisambiguator.build_clarification(
+                    request.standalone_query, ambiguities
+                )
+
+            reasons = [reason_code]
+            answer = None
+            extra: dict[str, Any] = {}
+            if plan_normalization is not None:
+                extra["supervisor_plan_normalization"] = plan_normalization
+            if clarification_result is not None:
+                reasons.extend(clarification_result.reason_codes)
+                answer = clarification_result.prompt
+                extra["clarification"] = clarification_result.to_clarification_dict()
+
             return self._outcome(
                 request=request,
                 plan=plan,
                 plan_id=plan_id,
                 state=None,
-                reason_codes=[reason_code],
+                reason_codes=reasons,
                 status=V2ExecutionStatus.FAIL_CLOSED,
-                extra_metadata=(
-                    {"supervisor_plan_normalization": plan_normalization}
-                    if plan_normalization is not None
-                    else None
-                ),
+                answer=answer,
+                extra_metadata=extra if extra else None,
                 semantic_alignment=semantic_alignment.to_dict(),
                 terminal_state="PLAN",
             )

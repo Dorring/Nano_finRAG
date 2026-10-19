@@ -32,9 +32,23 @@ class BailianClient:
         max_output_tokens: int | None = None,
         enable_thinking: bool | None = None,
     ) -> None:
-        self.api_key = api_key or os.environ.get("BAILIAN_API_KEY", "")
-        self.base_url = (base_url or os.environ.get("BAILIAN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")).rstrip("/")
-        self.model = model or os.environ.get("BAILIAN_CONTEXT_MODEL", "qwen3.6-flash")
+        self.api_key = (
+            api_key
+            or os.environ.get("BAILIAN_API_KEY", "")
+            or os.environ.get("V2_SUPERVISOR_API_KEY", "")
+        )
+        self.base_url = (
+            base_url
+            or os.environ.get("BAILIAN_BASE_URL")
+            or (os.environ.get("V2_SUPERVISOR_BASE_URL") if os.environ.get("V2_SUPERVISOR_API_KEY") else None)
+            or "https://dashscope.aliyuncs.com/compatible-mode/v1"
+        ).rstrip("/")
+        self.model = (
+            model
+            or os.environ.get("BAILIAN_CONTEXT_MODEL")
+            or (os.environ.get("V2_SUPERVISOR_MODEL") if os.environ.get("V2_SUPERVISOR_API_KEY") else None)
+            or "qwen3.6-flash"
+        )
         
         # Configuration
         timeout_val = timeout_ms or float(os.environ.get("CONTEXT_RESOLUTION_TIMEOUT_MS", "3000"))

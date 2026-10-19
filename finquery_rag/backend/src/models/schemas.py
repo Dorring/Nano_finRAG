@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field, field_validator
 from datetime import datetime
+from typing import Any
 
 QUERY_QUESTION_MAX_CHARS = 4000
 QUERY_DOCUMENT_NAMES_MAX_ITEMS = 20
@@ -9,8 +10,8 @@ class QueryRequest(BaseModel):
     """
     查询请求模型，用于封装用户发起的查询请求参数。
     """
-    question: str = Field(..., min_length=2, max_length=QUERY_QUESTION_MAX_CHARS)
-    # 查询的问题内容，最小长度为2
+    question: str = Field(..., min_length=1, max_length=QUERY_QUESTION_MAX_CHARS)
+    # 查询的问题内容，最小长度为1（允许输入数字选项如'1', '2'等）
     document_names: list[str] | None = Field(None, max_length=QUERY_DOCUMENT_NAMES_MAX_ITEMS, description="List of docs to search. If null, searches all docs.")
     # 指定要搜索的文档名称列表。如果为None，则搜索所有文档
     n_results: int = Field(default=5, ge=1, le=20)
@@ -21,8 +22,8 @@ class QueryRequest(BaseModel):
     @classmethod
     def normalize_question(cls, value: str) -> str:
         value = value.strip()
-        if len(value) < 2:
-            raise ValueError("question must contain at least 2 non-whitespace characters")
+        if len(value) < 1:
+            raise ValueError("question must contain at least 1 non-whitespace character")
         return value
 
     @field_validator("document_names")
@@ -59,6 +60,11 @@ class SourceInfo(BaseModel):
     type: str | None = None
     score: float | None = None
     chunk_id: str | None = None
+    evidence_id: str | None = None
+    bbox: list[float] | None = None
+    cell_coordinates: dict[str, Any] | None = None
+    footnote_annotation: str | None = None
+    snippet: str | None = None
 
 
 class CalculationOperandResponse(BaseModel):
@@ -121,6 +127,10 @@ class ClarificationResponse(BaseModel):
     question: str
     reason_codes: list[str] = Field(default_factory=list)
     options: list[str] = Field(default_factory=list)
+    entity: str | None = None
+    metric: str | None = None
+    period: str | None = None
+    structured_options: list[dict[str, Any]] = Field(default_factory=list)
 
 
 class ValidationResponse(BaseModel):

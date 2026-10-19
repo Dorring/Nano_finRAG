@@ -44,6 +44,31 @@ _METRIC_CANONICAL_MAP: dict[str, str] = {
     "operating cash flow": "operating cash flows",
     "operating cash flows": "operating cash flows",
     "cash flows from operating activities": "operating cash flows",
+    # US-GAAP standard taxonomy tags
+    "salesrevenuenet": "total revenue",
+    "revenuefromcontractwithcustomerexcludingassessedtax": "total revenue",
+    "operatingincomeloss": "operating income",
+    "netincomeloss": "net income",
+    "grossprofit": "gross profit",
+    "assets": "total assets",
+    "liabilities": "total liabilities",
+    "stockholdersequity": "stockholders' equity",
+    "earningspersharediluted": "diluted eps",
+    "costofgoodsandservicessold": "cost of sales",
+    "researchanddevelopmentexpense": "research and development",
+    "sellinggeneralandadministrativeexpense": "selling, general and administrative",
+    "netcashprovidedbyusedinoperatingactivities": "operating cash flows",
+    "deferredrevenuecurrent": "deferred revenue",
+    "contractwithcustomerliabilitycurrent": "deferred revenue",
+    # Chinese accounting metric aliases
+    "收益": "net income",
+    "净利润": "net income",
+    "利润": "operating income",
+    "营业收入": "total revenue",
+    "收入": "total revenue",
+    "销售额": "total revenue",
+    "毛利": "gross profit",
+    "毛利率": "gross profit",
 }
 
 # Standard ticker normalization
@@ -52,27 +77,33 @@ _ENTITY_TICKER_MAP: dict[str, str] = {
     "apple inc": "aapl",
     "apple inc.": "aapl",
     "aapl": "aapl",
+    "苹果": "aapl",
     "microsoft": "msft",
     "microsoft corp": "msft",
     "microsoft corporation": "msft",
     "msft": "msft",
+    "微软": "msft",
     "tesla": "tsla",
     "tesla inc": "tsla",
     "tesla inc.": "tsla",
     "tsla": "tsla",
+    "特斯拉": "tsla",
     "nvidia": "nvda",
     "nvidia corp": "nvda",
     "nvidia corporation": "nvda",
     "nvda": "nvda",
+    "英伟达": "nvda",
     "amazon": "amzn",
     "amazon com": "amzn",
     "amazon.com inc": "amzn",
     "amzn": "amzn",
+    "亚马逊": "amzn",
     "google": "googl",
     "alphabet": "googl",
     "alphabet inc": "googl",
     "googl": "googl",
     "goog": "googl",
+    "谷歌": "googl",
     "meta": "meta",
     "meta platforms": "meta",
     "facebook": "meta",
@@ -80,19 +111,27 @@ _ENTITY_TICKER_MAP: dict[str, str] = {
     "jpmorgan chase": "jpm",
     "jpmorgan chase & co": "jpm",
     "jpm": "jpm",
+    "摩根大通": "jpm",
     "coca-cola": "ko",
     "coca cola": "ko",
     "coke": "ko",
     "ko": "ko",
+    "可口可乐": "ko",
     "walmart": "wmt",
     "walmart inc": "wmt",
     "wmt": "wmt",
+    "沃尔玛": "wmt",
     "exxon": "xom",
     "exxonmobil": "xom",
     "exxon mobil": "xom",
     "xom": "xom",
     "netflix": "nflx",
     "nflx": "nflx",
+    "比亚迪": "byd",
+    "byd": "byd",
+    "腾讯": "tencent",
+    "阿里": "baba",
+    "阿里巴巴": "baba",
 }
 
 
@@ -100,8 +139,12 @@ _ENTITY_TICKER_MAP: dict[str, str] = {
 
 def normalize_metric(metric: str) -> str:
     """Normalize metric string into canonical accounting representation."""
-    norm = metric.strip().lower()
-    norm = norm.replace("&", " and ")
+    raw = metric.strip().lower()
+    if raw.startswith("us-gaap:") or raw.startswith("usgaap:"):
+        raw = raw.split(":", 1)[1]
+    elif raw.startswith("ifrs:") or raw.startswith("ifrs-full:"):
+        raw = raw.split(":", 1)[1]
+    norm = raw.replace("&", " and ")
     cleaned = re.sub(r"[^\w\s']", "", norm)
     cleaned = re.sub(r"\s+", " ", cleaned)
     return _METRIC_CANONICAL_MAP.get(cleaned, cleaned)

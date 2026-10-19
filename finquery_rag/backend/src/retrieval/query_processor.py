@@ -60,7 +60,11 @@ class QueryProcessor:
         normalized = (query or "").lower()
         markers = (
             "title", "author", "abstract", "paper name", "paper title",
-            "\u6807\u9898", "\u9898\u76ee", "\u8bba\u6587\u540d", "\u4f5c\u8005", "\u6458\u8981", "\u8fd9\u7bc7\u8bba\u6587",
+            "标题", "题目", "论文名", "作者", "摘要", "这篇论文",
+            "哪家公司", "啥公司", "哪个公司", "什么公司", "公司名称", "公司是谁",
+            "属于哪家", "属于哪个", "是谁的财报", "这是谁的", "哪家企业", "哪个企业",
+            "公司的财报", "这份财报", "这篇财报", "这家公司",
+            "which company", "what company", "who is the issuer", "issuer of this",
         )
         return any(marker in normalized for marker in markers) or self.is_document_overview_query(query)
 
@@ -73,7 +77,8 @@ class QueryProcessor:
             r"\bwhat\s+(?:does|is)\b.*\b(?:cover|about)\b",
             r"\bmain\s+(?:topic|subject)\b",
             r"\bwhat\s+is\s+this\s+document\s+about\b",
-            r"(?:这篇|该|这个).{0,8}(?:讲什么|关于什么|主题)",
+            r"\b(?:what|which)\s+company\b",
+            r"(?:这篇|该|这个|这份|此).{0,8}(?:讲什么|关于什么|主题|是谁|哪家|啥公司|公司)",
         )
         return any(re.search(pattern, normalized, flags=re.IGNORECASE) for pattern in patterns)
 

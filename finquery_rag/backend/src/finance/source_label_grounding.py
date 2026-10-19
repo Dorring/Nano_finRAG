@@ -27,6 +27,7 @@ quantity, and the honest response is the one the gate already gives.
 from __future__ import annotations
 
 from collections.abc import Mapping
+import re
 from typing import Any
 
 from rag_v2.supervisor.semantic_alignment import (
@@ -50,8 +51,62 @@ class SourceLabelGrounding:
 
     def __init__(self, fact_store: Any) -> None:
         self._store = fact_store
+        self.last_detected_ambiguities: list[dict[str, Any]] = []
 
-    def _grounded_surface(self, slot: Any) -> str | None:
+    @staticmethod
+    def _extract_target_value(query: str, metric: str | None = None) -> str | None:
+        if metric:
+            m_metric = re.search(
+                rf"(?:target value for|目标值|数值|金额)\s*['\"]?{re.escape(metric)}['\"]?\s*[:：\s]+(\([^)]+\)|[^\s.，,]+)",
+                query,
+                re.IGNORECASE,
+            )
+            if m_metric:
+                return m_metric.group(1).strip()
+        m_target = re.search(
+            r"(?:target value|目标值|数值|金额)(?:\s+for\s+[a-zA-Z0-9_\s]+)?[:：\s]+(\([^)]+\)|[^\s.，,]+)",
+            query,
+            re.IGNORECASE,
+        )
+        if m_target:
+            return m_target.group(1).strip()
+        return None
+
+    @classmethod
+    def _fact_value_matches_query(
+        cls, fact: Mapping[str, Any], query: str, metric: str | None = None
+    ) -> bool:
+        val = str(fact.get("value") or fact.get("raw_value") or "").strip()
+        if not val:
+            return False
+
+        target_val = cls._extract_target_value(query, metric=metric)
+        if target_val:
+            if val.strip().lower() == target_val.strip().lower():
+                return True
+            digits_fact = re.sub(r"[^\d]", "", val)
+            digits_target = re.sub(r"[^\d]", "", target_val)
+            if digits_fact and digits_target and digits_fact == digits_target:
+                is_fact_neg = "(" in val or "-" in val
+                is_target_neg = "(" in target_val or "-" in target_val
+                if is_target_neg:
+                    return is_fact_neg
+                return True
+            return False
+
+        # Direct string containment
+        if val in query:
+            return True
+
+        digits_only = re.sub(r"[^\d]", "", val)
+        if digits_only and re.search(rf"(?<!\d){re.escape(digits_only)}(?!\d)", query):
+            # Guard against false-positive matching of 4-digit calendar years
+            if len(digits_only) == 4 and digits_only.startswith(("19", "20")):
+                return False
+            return True
+        return False
+
+    def _grounded_surface(self, slot: Any, query: str | None = None) -> str | None:
         metric = getattr(slot, "metric", None)
         if not metric or canonical_metric_id(metric) is not None:
             return None
@@ -81,13 +136,30 @@ class SourceLabelGrounding:
             if scoped_facts:
                 facts = scoped_facts
         if coordinate_status(facts[0], facts) is CoordinateStatus.CONFLICTING_VALUES:
-            return None
+            if query:
+                val_matches = [
+                    f for f in facts
+                    if self._fact_value_matches_query(f, query, metric=metric)
+                ]
+                if len(val_matches) == 1:
+                    facts = tuple(val_matches)
+            if coordinate_status(facts[0], facts) is CoordinateStatus.CONFLICTING_VALUES:
+                self.last_detected_ambiguities.append({
+                    "slot_id": getattr(slot, "slot_id", None),
+                    "entity": entity or facts[0].get("entity"),
+                    "metric": metric,
+                    "period": period,
+                    "scope": scope,
+                    "conflicting_facts": facts,
+                })
+                return None
         return str(metric)
 
-    def __call__(self, plan: Any) -> Mapping[str, str]:
+    def __call__(self, plan: Any, query: str | None = None) -> Mapping[str, str]:
+        self.last_detected_ambiguities = []
         grounded: dict[str, str] = {}
         for slot in getattr(plan, "required_slots", ()) or ():
-            surface = self._grounded_surface(slot)
+            surface = self._grounded_surface(slot, query=query)
             if surface is None:
                 continue
             identity = metric_identity(surface)

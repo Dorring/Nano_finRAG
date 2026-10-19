@@ -1091,7 +1091,7 @@ class RAGOrchestrator:
             ):
                 chunks.extend(
                     self._get_page_chunks(
-                        doc_name, user_id, [1], limit_per_page=4
+                        doc_name, user_id, [1, 2], limit_per_page=4
                     )
                 )
         return chunks

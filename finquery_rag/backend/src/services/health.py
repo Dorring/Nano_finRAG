@@ -25,7 +25,7 @@ FEEDBACK_DB_PATH = "feedback.db"
 GLOBAL_COLLECTION_NAME = "rag_global_knowledge_base"
 
 RUNTIME_LIMITS = {
-    "query_question_min_chars": 2,
+    "query_question_min_chars": 1,
     "query_n_results_min": 1,
     "query_n_results_max": 20,
     "query_question_max_chars": 4000,

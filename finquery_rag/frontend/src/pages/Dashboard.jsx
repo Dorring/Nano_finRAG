@@ -40,10 +40,10 @@ function Dashboard() {
   const [hasProcessingDocuments, setHasProcessingDocuments] = useState(false);
   const { user, logout } = useAuth();
   const readyDocumentCount = documents.filter((doc) => (doc.status || 'ready') === 'ready').length;
-  const queryDisabledReason = readyDocumentCount === 0
-    ? (hasProcessingDocuments ? 'Documents are still processing. Query will be available when indexing finishes.' : 'Upload a ready PDF before asking a question.')
+  const queryDisabledReason = hasProcessingDocuments
+    ? 'Documents are still processing. Query will be available when indexing finishes.'
     : null;
-  const isQueryDisabled = isLoading || readyDocumentCount === 0;
+  const isQueryDisabled = isLoading || hasProcessingDocuments;
 
 
   const mapHistoryToMessages = useCallback((historyMessages = []) => (
@@ -53,6 +53,8 @@ function Dashboard() {
         role: message.role,
         content: message.content,
         sources: metadata.sources || message.sources || [],
+        clarification: metadata.clarification || message.clarification || null,
+        status: metadata.status || message.status || null,
         diagnostics: metadata.diagnostics || message.diagnostics || null,
       };
     })
@@ -261,8 +263,8 @@ function Dashboard() {
   };
 
   const handleSendMessage = async (question) => {
-    if (readyDocumentCount === 0) {
-      toast.error(queryDisabledReason || 'No ready documents are available');
+    if (hasProcessingDocuments) {
+      toast.error('Documents are still processing. Please wait.');
       return;
     }
 
@@ -310,12 +312,15 @@ function Dashboard() {
               {
                 ...lastMsg,
                 sources: donePayload.sources || [],
+                clarification: donePayload.clarification || null,
+                status: donePayload.status || null,
                 diagnostics: {
                   traceId: donePayload.trace_id || null,
                   contextSufficient: donePayload.context_sufficient,
                   retrievalConfidence: donePayload.confidence,
                   intent: donePayload.intent || null,
                   intentConfidence: donePayload.intent_confidence,
+                  clarification: donePayload.clarification || null,
                 },
               }
             ];
@@ -471,6 +476,7 @@ function Dashboard() {
           onExportFeedbackReplay={handleExportFeedbackReplay}
           queryDisabled={isQueryDisabled}
           queryDisabledReason={queryDisabledReason}
+          readyDocumentCount={readyDocumentCount}
         />
         <InputBar
           selectedDocs={selectedDocs}
@@ -478,6 +484,7 @@ function Dashboard() {
           onSendMessage={handleSendMessage}
           disabled={isQueryDisabled}
           disabledReason={queryDisabledReason}
+          readyDocumentCount={readyDocumentCount}
         />
       </div>
     </div>

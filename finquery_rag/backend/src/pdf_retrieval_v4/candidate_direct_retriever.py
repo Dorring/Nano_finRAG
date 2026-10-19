@@ -115,10 +115,12 @@ class CandidateDirectRetriever:
         at rank 9.  No later stage can bind a candidate that was never carried.
         """
 
-        if not cross_entity or self.entity_key_lookup is None:
+        if self.entity_key_lookup is None:
             return allowed_keys
-        keys = self.entity_key_lookup(
-            {str(getattr(request, "entity", "") or "")})
+        entity_name = str(getattr(request, "entity", "") or "").strip()
+        if not entity_name:
+            return allowed_keys
+        keys = self.entity_key_lookup({entity_name})
         if not keys:
             return allowed_keys
         return {

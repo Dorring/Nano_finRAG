@@ -36,6 +36,7 @@ const ChatArea = ({
   onExportFeedbackReplay,
   queryDisabled,
   queryDisabledReason,
+  readyDocumentCount = 0,
 }) => {
   const messagesEndRef = useRef(null);
 
@@ -49,10 +50,10 @@ const ChatArea = ({
 
   // Example questions
   const exampleQuestions = [
-    "Hi, what's up?",
-    'What do you do?',
-    'What was my highest expense?',
-    'How much did I spend at bokku?',
+    "What was Apple's Total net sales in FY2025?",
+    'What was NVIDIA FY2025 Revenue?',
+    '比亚迪最近股价怎么样',
+    'Calculate the difference between Apple Net Income and Microsoft Net Income in FY2025.',
   ];
 
   return (
@@ -188,7 +189,11 @@ const ChatArea = ({
             </svg>
           </div>
           <div className="chat-empty-text">Ready when you are.</div>
-          <div className="chat-empty-subtext">Follow-up questions will use this session's recent context.</div>
+          <div className="chat-empty-subtext">
+            {readyDocumentCount > 0
+              ? "Follow-up questions will use this session's recent context."
+              : "Global benchmark filings (Apple, NVIDIA, MSFT, Tesla...) & market quotes are ready."}
+          </div>
           {queryDisabledReason && (
             <div className="query-disabled-notice" role="status">
               {queryDisabledReason}
@@ -216,7 +221,7 @@ const ChatArea = ({
       ) : (
         <>
           {messages.map((message, index) => (
-            <Message key={`${message.role}-${index}`} message={message} />
+            <Message key={`${message.role}-${index}`} message={message} onSendMessage={onExampleClick} />
           ))}
           {isLoading && (
             <div className="loading-message">

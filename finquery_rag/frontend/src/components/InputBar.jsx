@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InputBar = ({ selectedDocs, onRemoveDoc, onSendMessage, disabled, disabledReason }) => {
+const InputBar = ({ selectedDocs, onRemoveDoc, onSendMessage, disabled, disabledReason, readyDocumentCount = 0 }) => {
   const [input, setInput] = useState('');
 
   const handleSubmit = (e) => {
@@ -22,7 +22,9 @@ const InputBar = ({ selectedDocs, onRemoveDoc, onSendMessage, disabled, disabled
     ? selectedDocs.join(', ')
     : `${selectedDocs.length} selected documents`;
   const placeholder = selectedDocs.length === 0
-    ? 'Ask a question (will search all ready documents)...'
+    ? (readyDocumentCount === 0
+        ? 'Ask about benchmark filings (Apple, NVIDIA, MSFT...) or market quotes...'
+        : 'Ask a question (will search all ready documents)...')
     : `Ask about ${selectedDocsLabel}...`;
 
   return (

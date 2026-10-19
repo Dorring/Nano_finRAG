@@ -44,6 +44,9 @@ _OPERATION_VALUES = frozenset(
         "valuation_multiple",
         "spread",
         "median",
+        "dupont_3factor",
+        "fx_conversion",
+        "scenario_projection",
         # Relational operations: their answer is a relation between operands
         # rather than a quantity.  Cross-entity comparison and ranking used to
         # be planned with no operation at all, which left their answers as prose
